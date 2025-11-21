@@ -9,30 +9,23 @@ use Netgen\ContentBrowser\Item\ItemInterface;
 
 final class Item implements ItemInterface, BlockInterface
 {
-    public function __construct(private BitBagBlockInterface $block) {}
-
-    public function getValue(): int
-    {
-        return $this->block->getId();
+    public int $value {
+        get => $this->block->getId();
     }
 
-    public function getName(): string
-    {
-        return (string) $this->block->getName();
+    public string $name {
+        get => (string) $this->block->getName();
     }
 
-    public function isVisible(): bool
-    {
-        return true;
+    public true $isVisible {
+        get => true;
     }
 
-    public function isSelectable(): bool
-    {
-        return true;
+    public true $isSelectable {
+        get => true;
     }
 
-    public function getBlock(): BitBagBlockInterface
-    {
-        return $this->block;
-    }
+    public function __construct(
+        private(set) BitBagBlockInterface $block,
+    ) {}
 }

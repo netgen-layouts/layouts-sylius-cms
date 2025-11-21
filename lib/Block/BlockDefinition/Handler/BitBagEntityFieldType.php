@@ -6,17 +6,17 @@ namespace Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler;
 
 enum BitBagEntityFieldType: string
 {
-    case STRING = 'string';
+    case String = 'string';
 
-    case NUMBER = 'number';
+    case Number = 'number';
 
-    case MEDIA = 'media';
+    case Media = 'media';
 
-    case DATETIME = 'datetime';
+    case DateTime = 'datetime';
 
-    case BOOLEAN = 'boolean';
+    case Boolean = 'boolean';
 
-    case OTHER = 'other';
+    case Other = 'other';
 
-    case CONTENT = 'content';
+    case Content = 'content';
 }

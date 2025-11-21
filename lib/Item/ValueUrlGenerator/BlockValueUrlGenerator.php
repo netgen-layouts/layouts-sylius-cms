@@ -4,17 +4,19 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\BitBag\Item\ValueUrlGenerator;
 
-use Netgen\Layouts\Item\ExtendedValueUrlGeneratorInterface;
+use Netgen\Layouts\Item\ValueUrlGeneratorInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
- * @implements \Netgen\Layouts\Item\ExtendedValueUrlGeneratorInterface<\BitBag\SyliusCmsPlugin\Entity\BlockInterface>
+ * @implements \Netgen\Layouts\Item\ValueUrlGeneratorInterface<\BitBag\SyliusCmsPlugin\Entity\BlockInterface>
  */
-final class BlockValueUrlGenerator implements ExtendedValueUrlGeneratorInterface
+final class BlockValueUrlGenerator implements ValueUrlGeneratorInterface
 {
-    public function __construct(private UrlGeneratorInterface $urlGenerator) {}
+    public function __construct(
+        private UrlGeneratorInterface $urlGenerator,
+    ) {}
 
-    public function generateDefaultUrl(object $object): ?string
+    public function generateDefaultUrl(object $object): null
     {
         return null;
     }
@@ -27,10 +29,5 @@ final class BlockValueUrlGenerator implements ExtendedValueUrlGeneratorInterface
                 'id' => $object->getId(),
             ],
         );
-    }
-
-    public function generate(object $object): ?string
-    {
-        return $this->generateDefaultUrl($object);
     }
 }

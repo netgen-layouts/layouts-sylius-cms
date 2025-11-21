@@ -45,7 +45,7 @@ final class SectionHandler implements QueryTypeHandlerInterface
 
         $this->addBitBagSortingClause($query, $queryBuilder);
 
-        $limit = $limit === null ? PHP_INT_MAX : max(0, $limit);
+        $limit = max(0, $limit ?? PHP_INT_MAX);
         $offset = max(0, $offset);
 
         return $queryBuilder->setFirstResult($offset)
@@ -66,7 +66,7 @@ final class SectionHandler implements QueryTypeHandlerInterface
             ->getSingleScalarResult();
     }
 
-    public function isContextual(Query $query): bool
+    public function isContextual(Query $query): false
     {
         return false;
     }

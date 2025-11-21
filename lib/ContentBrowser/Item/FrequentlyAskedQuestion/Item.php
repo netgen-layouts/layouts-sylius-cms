@@ -9,30 +9,23 @@ use Netgen\ContentBrowser\Item\ItemInterface;
 
 final class Item implements ItemInterface, FrequentlyAskedQuestionInterface
 {
-    public function __construct(private BitBagFrequentlyAskedQuestionInterface $frequentlyAskedQuestion) {}
-
-    public function getValue(): int
-    {
-        return $this->frequentlyAskedQuestion->getId();
+    public int $value {
+        get => $this->frequentlyAskedQuestion->getId();
     }
 
-    public function getName(): string
-    {
-        return (string) $this->frequentlyAskedQuestion->getQuestion();
+    public string $name {
+        get => (string) $this->frequentlyAskedQuestion->getQuestion();
     }
 
-    public function isVisible(): bool
-    {
-        return true;
+    public true $isVisible {
+        get => true;
     }
 
-    public function isSelectable(): bool
-    {
-        return true;
+    public true $isSelectable {
+        get => true;
     }
 
-    public function getFrequentlyAskedQuestion(): BitBagFrequentlyAskedQuestionInterface
-    {
-        return $this->frequentlyAskedQuestion;
-    }
+    public function __construct(
+        private(set) BitBagFrequentlyAskedQuestionInterface $frequentlyAskedQuestion,
+    ) {}
 }

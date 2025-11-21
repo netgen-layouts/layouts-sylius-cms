@@ -11,20 +11,20 @@ use Throwable;
 
 final class SectionValueLoader implements ValueLoaderInterface
 {
-    public function __construct(private SectionRepositoryInterface $sectionRepository) {}
+    public function __construct(
+        private SectionRepositoryInterface $sectionRepository,
+    ) {}
 
-    public function load($id): ?SectionInterface
+    public function load(int|string $id): ?SectionInterface
     {
         try {
-            $section = $this->sectionRepository->find($id);
+            return $this->sectionRepository->find($id);
         } catch (Throwable) {
             return null;
         }
-
-        return $section instanceof SectionInterface ? $section : null;
     }
 
-    public function loadByRemoteId($remoteId): ?SectionInterface
+    public function loadByRemoteId(int|string $remoteId): ?SectionInterface
     {
         return $this->load($remoteId);
     }

@@ -21,8 +21,8 @@ final class Section extends TargetType
     {
         return [
             new Constraints\NotBlank(),
-            new Constraints\Type(['type' => 'numeric']),
-            new Constraints\GreaterThan(['value' => 0]),
+            new Constraints\Type(type: 'numeric'),
+            new Constraints\Positive(),
             new SyliusBitBagConstraints\Section(),
         ];
     }

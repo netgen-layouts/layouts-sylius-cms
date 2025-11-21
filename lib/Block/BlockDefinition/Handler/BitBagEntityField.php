@@ -17,12 +17,13 @@ use function ucfirst;
 
 final class BitBagEntityField
 {
-    private const CONTENT_FIELD_IDENTIFIER = 'content';
+    private const string CONTENT_FIELD_IDENTIFIER = 'content';
 
     private BitBagEntityFieldType $type;
 
-    private function __construct(private mixed $value)
-    {
+    private function __construct(
+        private mixed $value,
+    ) {
         $this->type = $this->resolveType($this->value);
     }
 
@@ -69,13 +70,13 @@ final class BitBagEntityField
     private function resolveType(mixed $value): BitBagEntityFieldType
     {
         return match (true) {
-            $value instanceof DateTimeInterface => BitBagEntityFieldType::DATETIME,
-            is_string($value) => BitBagEntityFieldType::STRING,
-            is_numeric($value) => BitBagEntityFieldType::NUMBER,
-            is_bool($value) => BitBagEntityFieldType::BOOLEAN,
-            $value instanceof MediaInterface => BitBagEntityFieldType::MEDIA,
-            $value instanceof ContentableInterface => BitBagEntityFieldType::CONTENT,
-            default => BitBagEntityFieldType::OTHER,
+            $value instanceof DateTimeInterface => BitBagEntityFieldType::DateTime,
+            is_string($value) => BitBagEntityFieldType::String,
+            is_numeric($value) => BitBagEntityFieldType::Number,
+            is_bool($value) => BitBagEntityFieldType::Boolean,
+            $value instanceof MediaInterface => BitBagEntityFieldType::Media,
+            $value instanceof ContentableInterface => BitBagEntityFieldType::Content,
+            default => BitBagEntityFieldType::Other,
         };
     }
 }

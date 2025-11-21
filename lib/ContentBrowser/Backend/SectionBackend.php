@@ -31,23 +31,20 @@ final class SectionBackend implements BackendInterface
         return [new RootLocation()];
     }
 
-    public function loadLocation($id): RootLocation
+    public function loadLocation(int|string $id): RootLocation
     {
         return new RootLocation();
     }
 
-    public function loadItem($value): Item
+    public function loadItem(int|string $value): Item
     {
-        $section = $this->sectionRepository->find($value);
-
-        if (!$section instanceof SectionInterface) {
+        $section = $this->sectionRepository->find($value) ??
             throw new NotFoundException(
                 sprintf(
                     'Item with value "%s" not found.',
                     $value,
                 ),
             );
-        }
 
         return $this->buildItem($section);
     }
@@ -91,12 +88,12 @@ final class SectionBackend implements BackendInterface
     public function searchItems(SearchQuery $searchQuery): SearchResultInterface
     {
         $paginator = $this->sectionRepository->createSearchPaginator(
-            $searchQuery->getSearchText(),
+            $searchQuery->searchText,
             $this->localeContext->getLocaleCode(),
         );
 
-        $paginator->setMaxPerPage($searchQuery->getLimit());
-        $paginator->setCurrentPage((int) ($searchQuery->getOffset() / $searchQuery->getLimit()) + 1);
+        $paginator->setMaxPerPage($searchQuery->limit);
+        $paginator->setCurrentPage((int) ($searchQuery->offset / $searchQuery->limit) + 1);
 
         return new SearchResult(
             $this->buildItems(
@@ -108,27 +105,11 @@ final class SectionBackend implements BackendInterface
     public function searchItemsCount(SearchQuery $searchQuery): int
     {
         $paginator = $this->sectionRepository->createSearchPaginator(
-            $searchQuery->getSearchText(),
+            $searchQuery->searchText,
             $this->localeContext->getLocaleCode(),
         );
 
         return $paginator->getNbResults();
-    }
-
-    public function search(string $searchText, int $offset = 0, int $limit = 25): iterable
-    {
-        $searchQuery = new SearchQuery($searchText);
-        $searchQuery->setOffset($offset);
-        $searchQuery->setLimit($limit);
-
-        $searchResult = $this->searchItems($searchQuery);
-
-        return $searchResult->getResults();
-    }
-
-    public function searchCount(string $searchText): int
-    {
-        return $this->searchItemsCount(new SearchQuery($searchText));
     }
 
     /**
@@ -144,16 +125,12 @@ final class SectionBackend implements BackendInterface
      *
      * @param iterable<\BitBag\SyliusCmsPlugin\Entity\SectionInterface> $sections
      *
-     * @return \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Item\Section\Item[]
+     * @return iterable<\Netgen\Layouts\Sylius\BitBag\ContentBrowser\Item\Section\Item>
      */
-    private function buildItems(iterable $sections): array
+    private function buildItems(iterable $sections): iterable
     {
-        $items = [];
-
         foreach ($sections as $section) {
-            $items[] = $this->buildItem($section);
+            yield $this->buildItem($section);
         }
-
-        return $items;
     }
 }

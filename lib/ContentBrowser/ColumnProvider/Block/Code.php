@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Item\ColumnProvider\Block;
+namespace Netgen\Layouts\Sylius\BitBag\ContentBrowser\ColumnProvider\Block;
 
 use Netgen\ContentBrowser\Item\ColumnProvider\ColumnValueProviderInterface;
 use Netgen\ContentBrowser\Item\ItemInterface;
@@ -16,6 +16,6 @@ final class Code implements ColumnValueProviderInterface
             return null;
         }
 
-        return $item->getBlock()->getCode();
+        return $item->block->getCode();
     }
 }

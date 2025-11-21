@@ -25,11 +25,6 @@ final class MediaValueUrlGeneratorTest extends TestCase
         $this->urlGenerator = new MediaValueUrlGenerator($this->urlGeneratorMock);
     }
 
-    public function testGenerateDefaultUrl(): void
-    {
-        self::assertNull($this->urlGenerator->generateDefaultUrl(new Media(42, 'logo-image', 'Logo')));
-    }
-
     public function testGenerateAdminUrl(): void
     {
         $this->urlGeneratorMock
@@ -45,10 +40,5 @@ final class MediaValueUrlGeneratorTest extends TestCase
             '/admin/media/42/edit',
             $this->urlGenerator->generateAdminUrl(new Media(42, 'logo-image', 'Logo')),
         );
-    }
-
-    public function testGenerate(): void
-    {
-        self::assertNull($this->urlGenerator->generate(new Media(42, 'logo-image', 'Logo')));
     }
 }

@@ -6,7 +6,7 @@
 
     {% block bitbag_entity_field %}
         {% if field is not empty %}
-            {% if field.type is constant('CONTENT', field.type) %}
+            {% if field.type == enum('Netgen\\Layouts\\Sylius\\BitBag\\Block\\BlockDefinition\\Handler\\BitBagEntityFieldType').Content %}
                 <div class="field field-{{ field.type.value }} field-{{ field_identifier }}">
                     {{ bitbag_cms_render_content(field.value) }}
                 </div>

@@ -11,20 +11,20 @@ use Throwable;
 
 final class BlockValueLoader implements ValueLoaderInterface
 {
-    public function __construct(private BlockRepositoryInterface $blockRepository) {}
+    public function __construct(
+        private BlockRepositoryInterface $blockRepository,
+    ) {}
 
-    public function load($id): ?BlockInterface
+    public function load(int|string $id): ?BlockInterface
     {
         try {
-            $block = $this->blockRepository->find($id);
+            return $this->blockRepository->find($id);
         } catch (Throwable) {
             return null;
         }
-
-        return $block instanceof BlockInterface ? $block : null;
     }
 
-    public function loadByRemoteId($remoteId): ?BlockInterface
+    public function loadByRemoteId(int|string $remoteId): ?BlockInterface
     {
         return $this->load($remoteId);
     }

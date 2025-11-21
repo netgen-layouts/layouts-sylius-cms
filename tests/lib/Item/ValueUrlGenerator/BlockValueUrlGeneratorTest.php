@@ -25,11 +25,6 @@ final class BlockValueUrlGeneratorTest extends TestCase
         $this->urlGenerator = new BlockValueUrlGenerator($this->urlGeneratorMock);
     }
 
-    public function testGenerateDefaultUrl(): void
-    {
-        self::assertNull($this->urlGenerator->generateDefaultUrl(new Block(42, 'header', 'Header')));
-    }
-
     public function testGenerateAdminUrl(): void
     {
         $this->urlGeneratorMock
@@ -45,10 +40,5 @@ final class BlockValueUrlGeneratorTest extends TestCase
             '/blocks/42/edit',
             $this->urlGenerator->generateAdminUrl(new Block(42, 'header', 'Header')),
         );
-    }
-
-    public function testGenerate(): void
-    {
-        self::assertNull($this->urlGenerator->generate(new Block(42, 'header', 'Header')));
     }
 }

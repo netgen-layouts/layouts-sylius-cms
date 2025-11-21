@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Item\ColumnProvider\Media;
+namespace Netgen\Layouts\Sylius\BitBag\ContentBrowser\ColumnProvider\Media;
 
 use Netgen\ContentBrowser\Item\ColumnProvider\ColumnValueProviderInterface;
 use Netgen\ContentBrowser\Item\ItemInterface;
@@ -16,6 +16,6 @@ final class MimeType implements ColumnValueProviderInterface
             return null;
         }
 
-        return $item->getMedia()->getMimeType();
+        return $item->media->getMimeType();
     }
 }

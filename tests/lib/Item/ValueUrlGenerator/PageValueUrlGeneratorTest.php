@@ -58,21 +58,4 @@ final class PageValueUrlGeneratorTest extends TestCase
             $this->urlGenerator->generateAdminUrl(new Page(42, 'about-us', 'About us', 'about-us')),
         );
     }
-
-    public function testGenerate(): void
-    {
-        $this->urlGeneratorMock
-            ->expects(self::once())
-            ->method('generate')
-            ->with(
-                self::identicalTo('bitbag_sylius_cms_plugin_shop_page_show'),
-                self::identicalTo(['slug' => 'about-us']),
-            )
-            ->willReturn('/en_GB/page/about-us');
-
-        self::assertSame(
-            '/en_GB/page/about-us',
-            $this->urlGenerator->generate(new Page(42, 'about-us', 'About us', 'about-us')),
-        );
-    }
 }

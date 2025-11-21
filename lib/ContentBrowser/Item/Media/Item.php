@@ -9,30 +9,23 @@ use Netgen\ContentBrowser\Item\ItemInterface;
 
 final class Item implements ItemInterface, MediaInterface
 {
-    public function __construct(private BitBagMediaInterface $media) {}
-
-    public function getValue(): int
-    {
-        return $this->media->getId();
+    public int $value {
+        get => $this->media->getId();
     }
 
-    public function getName(): string
-    {
-        return $this->media->getName() ?? $this->media->getCode() ?? '';
+    public string $name {
+        get => $this->media->getName() ?? $this->media->getCode() ?? '';
     }
 
-    public function isVisible(): bool
-    {
-        return true;
+    public true $isVisible {
+        get => true;
     }
 
-    public function isSelectable(): bool
-    {
-        return true;
+    public true $isSelectable {
+        get => true;
     }
 
-    public function getMedia(): BitBagMediaInterface
-    {
-        return $this->media;
-    }
+    public function __construct(
+        private(set) BitBagMediaInterface $media,
+    ) {}
 }

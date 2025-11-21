@@ -31,23 +31,20 @@ final class FrequentlyAskedQuestionBackend implements BackendInterface
         return [new RootLocation()];
     }
 
-    public function loadLocation($id): RootLocation
+    public function loadLocation(int|string $id): RootLocation
     {
         return new RootLocation();
     }
 
-    public function loadItem($value): Item
+    public function loadItem(int|string $value): Item
     {
-        $frequentlyAskedQuestion = $this->frequentlyAskedQuestionRepository->find($value);
-
-        if (!$frequentlyAskedQuestion instanceof FrequentlyAskedQuestionInterface) {
+        $frequentlyAskedQuestion = $this->frequentlyAskedQuestionRepository->find($value) ??
             throw new NotFoundException(
                 sprintf(
                     'Item with value "%s" not found.',
                     $value,
                 ),
             );
-        }
 
         return $this->buildItem($frequentlyAskedQuestion);
     }
@@ -89,12 +86,12 @@ final class FrequentlyAskedQuestionBackend implements BackendInterface
     public function searchItems(SearchQuery $searchQuery): SearchResultInterface
     {
         $paginator = $this->frequentlyAskedQuestionRepository->createSearchPaginator(
-            $searchQuery->getSearchText(),
+            $searchQuery->searchText,
             $this->localeContext->getLocaleCode(),
         );
 
-        $paginator->setMaxPerPage($searchQuery->getLimit());
-        $paginator->setCurrentPage((int) ($searchQuery->getOffset() / $searchQuery->getLimit()) + 1);
+        $paginator->setMaxPerPage($searchQuery->limit);
+        $paginator->setCurrentPage((int) ($searchQuery->offset / $searchQuery->limit) + 1);
 
         return new SearchResult(
             $this->buildItems(
@@ -106,27 +103,11 @@ final class FrequentlyAskedQuestionBackend implements BackendInterface
     public function searchItemsCount(SearchQuery $searchQuery): int
     {
         $paginator = $this->frequentlyAskedQuestionRepository->createSearchPaginator(
-            $searchQuery->getSearchText(),
+            $searchQuery->searchText,
             $this->localeContext->getLocaleCode(),
         );
 
         return $paginator->getNbResults();
-    }
-
-    public function search(string $searchText, int $offset = 0, int $limit = 25): iterable
-    {
-        $searchQuery = new SearchQuery($searchText);
-        $searchQuery->setOffset($offset);
-        $searchQuery->setLimit($limit);
-
-        $searchResult = $this->searchItems($searchQuery);
-
-        return $searchResult->getResults();
-    }
-
-    public function searchCount(string $searchText): int
-    {
-        return $this->searchItemsCount(new SearchQuery($searchText));
     }
 
     /**
@@ -142,16 +123,12 @@ final class FrequentlyAskedQuestionBackend implements BackendInterface
      *
      * @param iterable<\BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionInterface> $frequentlyAskedQuestions
      *
-     * @return \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Item\FrequentlyAskedQuestion\Item[]
+     * @return iterable<\Netgen\Layouts\Sylius\BitBag\ContentBrowser\Item\FrequentlyAskedQuestion\Item>
      */
-    private function buildItems(iterable $frequentlyAskedQuestions): array
+    private function buildItems(iterable $frequentlyAskedQuestions): iterable
     {
-        $items = [];
-
         foreach ($frequentlyAskedQuestions as $frequentlyAskedQuestion) {
-            $items[] = $this->buildItem($frequentlyAskedQuestion);
+            yield $this->buildItem($frequentlyAskedQuestion);
         }
-
-        return $items;
     }
 }

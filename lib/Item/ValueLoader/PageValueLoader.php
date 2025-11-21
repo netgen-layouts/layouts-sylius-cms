@@ -11,20 +11,20 @@ use Throwable;
 
 final class PageValueLoader implements ValueLoaderInterface
 {
-    public function __construct(private PageRepositoryInterface $pageRepository) {}
+    public function __construct(
+        private PageRepositoryInterface $pageRepository,
+    ) {}
 
-    public function load($id): ?PageInterface
+    public function load(int|string $id): ?PageInterface
     {
         try {
-            $page = $this->pageRepository->find($id);
+            return $this->pageRepository->find($id);
         } catch (Throwable) {
             return null;
         }
-
-        return $page instanceof PageInterface ? $page : null;
     }
 
-    public function loadByRemoteId($remoteId): ?PageInterface
+    public function loadByRemoteId(int|string $remoteId): ?PageInterface
     {
         return $this->load($remoteId);
     }

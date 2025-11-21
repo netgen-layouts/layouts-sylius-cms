@@ -13,7 +13,10 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 final class PageShowListener implements EventSubscriberInterface
 {
-    public function __construct(private RequestStack $requestStack, private Context $context) {}
+    public function __construct(
+        private RequestStack $requestStack,
+        private Context $context,
+    ) {}
 
     public static function getSubscribedEvents(): array
     {

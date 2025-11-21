@@ -29,12 +29,12 @@ final class ItemTest extends TestCase
 
     public function testGetValue(): void
     {
-        self::assertSame(42, $this->item->getValue());
+        self::assertSame(42, $this->item->value);
     }
 
     public function testGetName(): void
     {
-        self::assertSame('Logo', $this->item->getName());
+        self::assertSame('Logo', $this->item->name);
     }
 
     public function testGetNameWithEmptyName(): void
@@ -44,7 +44,7 @@ final class ItemTest extends TestCase
         $media->setFallbackLocale('en');
         $item = new Item($media);
 
-        self::assertSame('logo', $item->getName());
+        self::assertSame('logo', $item->name);
     }
 
     public function testGetNameWithEmptyNameAndCode(): void
@@ -54,21 +54,11 @@ final class ItemTest extends TestCase
         $media->setFallbackLocale('en');
         $item = new Item($media);
 
-        self::assertSame('', $item->getName());
-    }
-
-    public function testIsVisible(): void
-    {
-        self::assertTrue($this->item->isVisible());
-    }
-
-    public function testIsSelectable(): void
-    {
-        self::assertTrue($this->item->isSelectable());
+        self::assertSame('', $item->name);
     }
 
     public function testGetMedia(): void
     {
-        self::assertSame($this->media, $this->item->getMedia());
+        self::assertSame($this->media, $this->item->media);
     }
 }

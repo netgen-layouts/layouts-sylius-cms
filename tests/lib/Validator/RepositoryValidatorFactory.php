@@ -18,8 +18,9 @@ final class RepositoryValidatorFactory implements ConstraintValidatorFactoryInte
 {
     private ConstraintValidatorFactory $baseValidatorFactory;
 
-    public function __construct(private RepositoryInterface $repository)
-    {
+    public function __construct(
+        private RepositoryInterface $repository,
+    ) {
         $this->baseValidatorFactory = new ConstraintValidatorFactory();
     }
 

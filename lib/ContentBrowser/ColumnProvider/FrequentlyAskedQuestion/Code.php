@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Item\ColumnProvider\FrequentlyAskedQuestion;
+namespace Netgen\Layouts\Sylius\BitBag\ContentBrowser\ColumnProvider\FrequentlyAskedQuestion;
 
 use Netgen\ContentBrowser\Item\ColumnProvider\ColumnValueProviderInterface;
 use Netgen\ContentBrowser\Item\ItemInterface;
@@ -16,6 +16,6 @@ final class Code implements ColumnValueProviderInterface
             return null;
         }
 
-        return $item->getFrequentlyAskedQuestion()->getCode();
+        return $item->frequentlyAskedQuestion->getCode();
     }
 }

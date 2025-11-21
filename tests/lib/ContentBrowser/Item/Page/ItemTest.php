@@ -29,26 +29,16 @@ final class ItemTest extends TestCase
 
     public function testGetValue(): void
     {
-        self::assertSame(42, $this->item->getValue());
+        self::assertSame(42, $this->item->value);
     }
 
     public function testGetName(): void
     {
-        self::assertSame('About us', $this->item->getName());
-    }
-
-    public function testIsVisible(): void
-    {
-        self::assertTrue($this->item->isVisible());
-    }
-
-    public function testIsSelectable(): void
-    {
-        self::assertTrue($this->item->isSelectable());
+        self::assertSame('About us', $this->item->name);
     }
 
     public function testGetPage(): void
     {
-        self::assertSame($this->page, $this->item->getPage());
+        self::assertSame($this->page, $this->item->page);
     }
 }

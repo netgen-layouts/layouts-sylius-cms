@@ -59,7 +59,7 @@ final class SectionBackendTest extends TestCase
 
         $item = $this->backend->loadItem(1);
 
-        self::assertSame(1, $item->getValue());
+        self::assertSame(1, $item->value);
     }
 
     public function testLoadItemThrowsNotFoundException(): void
@@ -104,9 +104,11 @@ final class SectionBackendTest extends TestCase
             ->with(self::identicalTo('en'))
             ->willReturn(new Pagerfanta($pagerfantaAdapterMock));
 
-        $items = $this->backend->getSubItems(
-            new RootLocation(),
-        );
+        $items = [
+            ...$this->backend->getSubItems(
+                new RootLocation(),
+            ),
+        ];
 
         self::assertCount(2, $items);
         self::assertContainsOnlyInstancesOf(Item::class, $items);
@@ -131,11 +133,13 @@ final class SectionBackendTest extends TestCase
             ->with(self::identicalTo('en'))
             ->willReturn(new Pagerfanta($pagerfantaAdapterMock));
 
-        $items = $this->backend->getSubItems(
-            new RootLocation(),
-            8,
-            2,
-        );
+        $items = [
+            ...$this->backend->getSubItems(
+                new RootLocation(),
+                8,
+                2,
+            ),
+        ];
 
         self::assertCount(2, $items);
         self::assertContainsOnlyInstancesOf(Item::class, $items);
@@ -175,10 +179,10 @@ final class SectionBackendTest extends TestCase
             ->with(self::identicalTo('test'), self::identicalTo('en'))
             ->willReturn(new Pagerfanta($pagerfantaAdapterMock));
 
-        $searchResult = $this->backend->searchItems(new SearchQuery('test'));
+        $searchResult = [...$this->backend->searchItems(new SearchQuery('test'))->results];
 
-        self::assertCount(2, $searchResult->getResults());
-        self::assertContainsOnlyInstancesOf(Item::class, $searchResult->getResults());
+        self::assertCount(2, $searchResult);
+        self::assertContainsOnlyInstancesOf(Item::class, $searchResult);
     }
 
     public function testSearchItemsWithOffsetAndLimit(): void
@@ -201,13 +205,13 @@ final class SectionBackendTest extends TestCase
             ->willReturn(new Pagerfanta($pagerfantaAdapterMock));
 
         $searchQuery = new SearchQuery('test');
-        $searchQuery->setOffset(8);
-        $searchQuery->setLimit(2);
+        $searchQuery->offset = 8;
+        $searchQuery->limit = 2;
 
-        $searchResult = $this->backend->searchItems($searchQuery);
+        $searchResult = [...$this->backend->searchItems($searchQuery)->results];
 
-        self::assertCount(2, $searchResult->getResults());
-        self::assertContainsOnlyInstancesOf(Item::class, $searchResult->getResults());
+        self::assertCount(2, $searchResult);
+        self::assertContainsOnlyInstancesOf(Item::class, $searchResult);
     }
 
     public function testSearchItemsCount(): void
@@ -224,69 +228,6 @@ final class SectionBackendTest extends TestCase
             ->willReturn(new Pagerfanta($pagerfantaAdapterMock));
 
         $count = $this->backend->searchItemsCount(new SearchQuery('test'));
-
-        self::assertSame(2, $count);
-    }
-
-    public function testSearch(): void
-    {
-        $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
-        $pagerfantaAdapterMock
-            ->method('getSlice')
-            ->with(self::identicalTo(0), self::identicalTo(25))
-            ->willReturn(new ArrayIterator([new Section(42, 'blog'), new Section(43, 'news')]));
-
-        $this->sectionRepositoryMock
-            ->expects(self::once())
-            ->method('createSearchPaginator')
-            ->with(self::identicalTo('test'), self::identicalTo('en'))
-            ->willReturn(new Pagerfanta($pagerfantaAdapterMock));
-
-        $items = $this->backend->search('test');
-
-        self::assertCount(2, $items);
-        self::assertContainsOnlyInstancesOf(Item::class, $items);
-    }
-
-    public function testSearchWithOffsetAndLimit(): void
-    {
-        $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
-
-        $pagerfantaAdapterMock
-            ->method('getNbResults')
-            ->willReturn(15);
-
-        $pagerfantaAdapterMock
-            ->method('getSlice')
-            ->with(self::identicalTo(8), self::identicalTo(2))
-            ->willReturn(new ArrayIterator([new Section(42, 'blog'), new Section(43, 'news')]));
-
-        $this->sectionRepositoryMock
-            ->expects(self::once())
-            ->method('createSearchPaginator')
-            ->with(self::identicalTo('test'), self::identicalTo('en'))
-            ->willReturn(new Pagerfanta($pagerfantaAdapterMock));
-
-        $items = $this->backend->search('test', 8, 2);
-
-        self::assertCount(2, $items);
-        self::assertContainsOnlyInstancesOf(Item::class, $items);
-    }
-
-    public function testSearchCount(): void
-    {
-        $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
-        $pagerfantaAdapterMock
-            ->method('getNbResults')
-            ->willReturn(2);
-
-        $this->sectionRepositoryMock
-            ->expects(self::once())
-            ->method('createSearchPaginator')
-            ->with(self::identicalTo('test'), self::identicalTo('en'))
-            ->willReturn(new Pagerfanta($pagerfantaAdapterMock));
-
-        $count = $this->backend->searchCount('test');
 
         self::assertSame(2, $count);
     }

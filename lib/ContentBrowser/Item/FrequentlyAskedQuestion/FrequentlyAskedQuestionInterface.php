@@ -11,5 +11,5 @@ interface FrequentlyAskedQuestionInterface
     /**
      * Returns the BitBag frequently asked question.
      */
-    public function getFrequentlyAskedQuestion(): BitBagFrequentlyAskedQuestionInterface;
+    public BitBagFrequentlyAskedQuestionInterface $frequentlyAskedQuestion { get; }
 }

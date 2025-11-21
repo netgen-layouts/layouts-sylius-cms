@@ -22,12 +22,12 @@ final class SectionValueConverter implements ValueConverterInterface
         return 'bitbag_section';
     }
 
-    public function getId(object $object)
+    public function getId(object $object): int
     {
         return $object->getId();
     }
 
-    public function getRemoteId(object $object)
+    public function getRemoteId(object $object): int
     {
         return $object->getId();
     }

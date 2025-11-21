@@ -19,11 +19,11 @@ final class SectionType extends ParameterType
         return 'bitbag_section';
     }
 
-    protected function getValueConstraints(ParameterDefinition $parameterDefinition, $value): array
+    protected function getValueConstraints(ParameterDefinition $parameterDefinition, mixed $value): array
     {
         return [
-            new Constraints\Type(['type' => 'numeric']),
-            new Constraints\GreaterThan(['value' => 0]),
+            new Constraints\Type(type: 'numeric'),
+            new Constraints\Positive(),
             new BitBagConstraints\Section(),
         ];
     }

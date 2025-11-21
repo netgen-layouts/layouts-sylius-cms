@@ -11,5 +11,5 @@ interface PageInterface
     /**
      * Returns the BitBag page.
      */
-    public function getPage(): BitBagPageInterface;
+    public BitBagPageInterface $page { get; }
 }

@@ -25,11 +25,6 @@ final class FrequentlyAskedQuestionValueUrlGeneratorTest extends TestCase
         $this->urlGenerator = new FrequentlyAskedQuestionValueUrlGenerator($this->urlGeneratorMock);
     }
 
-    public function testGenerateDefaultUrl(): void
-    {
-        self::assertNull($this->urlGenerator->generateDefaultUrl(new FrequentlyAskedQuestion(42, 'TEST_QUESTION')));
-    }
-
     public function testGenerateAdminUrl(): void
     {
         $this->urlGeneratorMock
@@ -45,10 +40,5 @@ final class FrequentlyAskedQuestionValueUrlGeneratorTest extends TestCase
             '/admin/faq/42/edit',
             $this->urlGenerator->generateAdminUrl(new FrequentlyAskedQuestion(42, 'TEST_QUESTION')),
         );
-    }
-
-    public function testGenerate(): void
-    {
-        self::assertNull($this->urlGenerator->generate(new FrequentlyAskedQuestion(42, 'TEST_QUESTION')));
     }
 }

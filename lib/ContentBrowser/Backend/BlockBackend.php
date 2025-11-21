@@ -31,23 +31,20 @@ final class BlockBackend implements BackendInterface
         return [new RootLocation()];
     }
 
-    public function loadLocation($id): RootLocation
+    public function loadLocation(int|string $id): RootLocation
     {
         return new RootLocation();
     }
 
-    public function loadItem($value): Item
+    public function loadItem(int|string $value): Item
     {
-        $block = $this->blockRepository->find($value);
-
-        if (!$block instanceof BlockInterface) {
+        $block = $this->blockRepository->find($value) ??
             throw new NotFoundException(
                 sprintf(
                     'Item with value "%s" not found.',
                     $value,
                 ),
             );
-        }
 
         return $this->buildItem($block);
     }
@@ -91,12 +88,12 @@ final class BlockBackend implements BackendInterface
     public function searchItems(SearchQuery $searchQuery): SearchResultInterface
     {
         $paginator = $this->blockRepository->createSearchPaginator(
-            $searchQuery->getSearchText(),
+            $searchQuery->searchText,
             $this->localeContext->getLocaleCode(),
         );
 
-        $paginator->setMaxPerPage($searchQuery->getLimit());
-        $paginator->setCurrentPage((int) ($searchQuery->getOffset() / $searchQuery->getLimit()) + 1);
+        $paginator->setMaxPerPage($searchQuery->limit);
+        $paginator->setCurrentPage((int) ($searchQuery->offset / $searchQuery->limit) + 1);
 
         return new SearchResult(
             $this->buildItems(
@@ -108,27 +105,11 @@ final class BlockBackend implements BackendInterface
     public function searchItemsCount(SearchQuery $searchQuery): int
     {
         $paginator = $this->blockRepository->createSearchPaginator(
-            $searchQuery->getSearchText(),
+            $searchQuery->searchText,
             $this->localeContext->getLocaleCode(),
         );
 
         return $paginator->getNbResults();
-    }
-
-    public function search(string $searchText, int $offset = 0, int $limit = 25): iterable
-    {
-        $searchQuery = new SearchQuery($searchText);
-        $searchQuery->setOffset($offset);
-        $searchQuery->setLimit($limit);
-
-        $searchResult = $this->searchItems($searchQuery);
-
-        return $searchResult->getResults();
-    }
-
-    public function searchCount(string $searchText): int
-    {
-        return $this->searchItemsCount(new SearchQuery($searchText));
     }
 
     /**
@@ -144,16 +125,12 @@ final class BlockBackend implements BackendInterface
      *
      * @param iterable<\BitBag\SyliusCmsPlugin\Entity\BlockInterface> $blocks
      *
-     * @return \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Item\Block\Item[]
+     * @return iterable<\Netgen\Layouts\Sylius\BitBag\ContentBrowser\Item\Block\Item>
      */
-    private function buildItems(iterable $blocks): array
+    private function buildItems(iterable $blocks): iterable
     {
-        $items = [];
-
         foreach ($blocks as $block) {
-            $items[] = $this->buildItem($block);
+            yield $this->buildItem($block);
         }
-
-        return $items;
     }
 }

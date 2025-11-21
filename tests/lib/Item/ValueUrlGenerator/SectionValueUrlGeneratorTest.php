@@ -58,21 +58,4 @@ final class SectionValueUrlGeneratorTest extends TestCase
             $this->urlGenerator->generateAdminUrl(new Section(42, 'blog', 'Blog')),
         );
     }
-
-    public function testGenerate(): void
-    {
-        $this->urlGeneratorMock
-            ->expects(self::once())
-            ->method('generate')
-            ->with(
-                self::identicalTo('bitbag_sylius_cms_plugin_shop_page_index_by_section_code'),
-                self::identicalTo(['sectionCode' => 'blog']),
-            )
-            ->willReturn('/en_GB/pages/blog');
-
-        self::assertSame(
-            '/en_GB/pages/blog',
-            $this->urlGenerator->generate(new Section(42, 'blog', 'Blog')),
-        );
-    }
 }

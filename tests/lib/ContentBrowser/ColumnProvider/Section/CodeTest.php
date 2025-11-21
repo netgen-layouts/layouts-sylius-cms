@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Tests\Item\ColumnProvider\Section;
+namespace Netgen\Layouts\Sylius\BitBag\Tests\ContentBrowser\ColumnProvider\Section;
 
+use Netgen\Layouts\Sylius\BitBag\ContentBrowser\ColumnProvider\Section\Code;
 use Netgen\Layouts\Sylius\BitBag\ContentBrowser\Item\Section\Item as SectionItem;
-use Netgen\Layouts\Sylius\BitBag\Item\ColumnProvider\Section\Code;
 use Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs\Section as SectionStub;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;

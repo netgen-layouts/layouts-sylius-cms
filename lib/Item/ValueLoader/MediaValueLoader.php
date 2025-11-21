@@ -11,20 +11,20 @@ use Throwable;
 
 final class MediaValueLoader implements ValueLoaderInterface
 {
-    public function __construct(private MediaRepositoryInterface $mediaRepository) {}
+    public function __construct(
+        private MediaRepositoryInterface $mediaRepository,
+    ) {}
 
-    public function load($id): ?MediaInterface
+    public function load(int|string $id): ?MediaInterface
     {
         try {
-            $media = $this->mediaRepository->find($id);
+            return $this->mediaRepository->find($id);
         } catch (Throwable) {
             return null;
         }
-
-        return $media instanceof MediaInterface ? $media : null;
     }
 
-    public function loadByRemoteId($remoteId): ?MediaInterface
+    public function loadByRemoteId(int|string $remoteId): ?MediaInterface
     {
         return $this->load($remoteId);
     }

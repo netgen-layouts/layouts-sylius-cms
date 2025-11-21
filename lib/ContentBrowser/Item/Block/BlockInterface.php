@@ -11,5 +11,5 @@ interface BlockInterface
     /**
      * Returns the BitBag block.
      */
-    public function getBlock(): BitBagBlockInterface;
+    public BitBagBlockInterface $block { get; }
 }

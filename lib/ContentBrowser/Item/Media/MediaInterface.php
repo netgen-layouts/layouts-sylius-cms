@@ -11,5 +11,5 @@ interface MediaInterface
     /**
      * Returns the BitBag media.
      */
-    public function getMedia(): BitBagMediaInterface;
+    public BitBagMediaInterface $media { get; }
 }

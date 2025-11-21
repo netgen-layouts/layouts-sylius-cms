@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Item\ColumnProvider\Page;
+namespace Netgen\Layouts\Sylius\BitBag\ContentBrowser\ColumnProvider\Page;
 
 use Netgen\ContentBrowser\Item\ColumnProvider\ColumnValueProviderInterface;
 use Netgen\ContentBrowser\Item\ItemInterface;
 use Netgen\Layouts\Sylius\BitBag\ContentBrowser\Item\Page\PageInterface;
 
-final class Slug implements ColumnValueProviderInterface
+final class Code implements ColumnValueProviderInterface
 {
     public function getValue(ItemInterface $item): ?string
     {
@@ -16,6 +16,6 @@ final class Slug implements ColumnValueProviderInterface
             return null;
         }
 
-        return $item->getPage()->getSlug();
+        return $item->page->getCode();
     }
 }

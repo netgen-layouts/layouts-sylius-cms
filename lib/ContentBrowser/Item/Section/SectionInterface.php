@@ -11,5 +11,5 @@ interface SectionInterface
     /**
      * Returns the BitBag section.
      */
-    public function getSection(): BitBagSectionInterface;
+    public BitBagSectionInterface $section { get; }
 }
