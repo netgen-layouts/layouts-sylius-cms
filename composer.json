@@ -43,7 +43,7 @@
         "psr-4": {
             "Netgen\\Layouts\\Sylius\\BitBag\\Tests\\": "tests/lib/",
             "Netgen\\Bundle\\LayoutsSyliusBitBagBundle\\Tests\\": "tests/bundle/",
-            "Netgen\\Layouts\\Tests\\": "vendor/netgen/layouts-core/tests/lib"
+            "Netgen\\Layouts\\Tests\\": "vendor/netgen/layouts-core/tests/lib/"
         }
     },
     "minimum-stability": "dev",
