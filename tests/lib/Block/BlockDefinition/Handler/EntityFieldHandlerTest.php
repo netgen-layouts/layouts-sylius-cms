@@ -7,6 +7,7 @@ namespace Netgen\Layouts\Sylius\BitBag\Tests\Block\BlockDefinition\Handler;
 use Netgen\Layouts\API\Values\Block\Block;
 use Netgen\Layouts\Block\DynamicParameters;
 use Netgen\Layouts\Parameters\Parameter;
+use Netgen\Layouts\Parameters\ParameterList;
 use Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler\BitBagEntityField;
 use Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler\EntityFieldHandler;
 use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Page as PageStub;
@@ -52,14 +53,23 @@ final class EntityFieldHandlerTest extends TestCase
 
         $params = new DynamicParameters();
 
-        $this->handler->getDynamicParameters($params, Block::fromArray([
-            'parameters' => [
-                'field_identifier' => Parameter::fromArray([
-                    'name' => 'field_identifier',
-                    'value' => 'name',
-                ]),
-            ],
-        ]));
+        $this->handler->getDynamicParameters(
+            $params,
+            Block::fromArray(
+                [
+                    'parameters' => new ParameterList(
+                        [
+                            'field_identifier' => Parameter::fromArray(
+                                [
+                                    'name' => 'field_identifier',
+                                    'value' => 'name',
+                                ],
+                            ),
+                        ],
+                    ),
+                ],
+            ),
+        );
 
         $field = BitBagEntityField::fromBitBagEntity($page, 'name');
 
@@ -82,14 +92,23 @@ final class EntityFieldHandlerTest extends TestCase
 
         $params = new DynamicParameters();
 
-        $this->handler->getDynamicParameters($params, Block::fromArray([
-            'parameters' => [
-                'field_identifier' => Parameter::fromArray([
-                    'name' => 'field_identifier',
-                    'value' => 'code',
-                ]),
-            ],
-        ]));
+        $this->handler->getDynamicParameters(
+            $params,
+            Block::fromArray(
+                [
+                    'parameters' => new ParameterList(
+                        [
+                            'field_identifier' => Parameter::fromArray(
+                                [
+                                    'name' => 'field_identifier',
+                                    'value' => 'code',
+                                ],
+                            ),
+                        ],
+                    ),
+                ],
+            ),
+        );
 
         $field = BitBagEntityField::fromBitBagEntity($section, 'code');
 
@@ -107,14 +126,23 @@ final class EntityFieldHandlerTest extends TestCase
 
         $params = new DynamicParameters();
 
-        $this->handler->getDynamicParameters($params, Block::fromArray([
-            'parameters' => [
-                'field_identifier' => Parameter::fromArray([
-                    'name' => 'field_identifier',
-                    'value' => 'code',
-                ]),
-            ],
-        ]));
+        $this->handler->getDynamicParameters(
+            $params,
+            Block::fromArray(
+                [
+                    'parameters' => new ParameterList(
+                        [
+                            'field_identifier' => Parameter::fromArray(
+                                [
+                                    'name' => 'field_identifier',
+                                    'value' => 'code',
+                                ],
+                            ),
+                        ],
+                    ),
+                ],
+            ),
+        );
 
         self::assertNull($params['field']);
     }

@@ -52,8 +52,8 @@ trait BitBagSortingTrait
      */
     private function addBitBagSortingClause(ParameterCollectionInterface $parameterCollection, QueryBuilder $queryBuilder): void
     {
-        $sortField = $parameterCollection->getParameter('sort_type')->getValue();
-        $sortDirection = $parameterCollection->getParameter('sort_direction')->getValue();
+        $sortField = $parameterCollection->getParameter('sort_type')->value;
+        $sortDirection = $parameterCollection->getParameter('sort_direction')->value;
         $rootAliases = $queryBuilder->getRootAliases();
 
         if (!in_array('translation', $queryBuilder->getAllAliases(), true)) {

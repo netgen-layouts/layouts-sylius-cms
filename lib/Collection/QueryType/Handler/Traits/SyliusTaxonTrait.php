@@ -44,7 +44,7 @@ trait SyliusTaxonTrait
 
     private function isSyliusTaxonContextual(ParameterCollectionInterface $parameterCollection): bool
     {
-        return $parameterCollection->getParameter('use_current_taxon')->getValue() === true;
+        return $parameterCollection->getParameter('use_current_taxon')->value === true;
     }
 
     /**
@@ -55,8 +55,8 @@ trait SyliusTaxonTrait
         QueryBuilder $queryBuilder,
         ?Request $request,
     ): void {
-        $useCurrentTaxon = $parameterCollection->getParameter('use_current_taxon')->getValue();
-        $syliusTaxonId = $parameterCollection->getParameter('sylius_taxon_id')->getValue();
+        $useCurrentTaxon = $parameterCollection->getParameter('use_current_taxon')->value;
+        $syliusTaxonId = $parameterCollection->getParameter('sylius_taxon_id')->value;
 
         if ($useCurrentTaxon === true) {
             $syliusTaxonId = $this->getCurrentTaxonId($request);

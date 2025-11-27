@@ -44,7 +44,7 @@ trait SyliusProductTrait
 
     private function isSyliusProductContextual(ParameterCollectionInterface $parameterCollection): bool
     {
-        return $parameterCollection->getParameter('use_current_product')->getValue() === true;
+        return $parameterCollection->getParameter('use_current_product')->value === true;
     }
 
     /**
@@ -55,8 +55,8 @@ trait SyliusProductTrait
         QueryBuilder $queryBuilder,
         ?Request $request,
     ): void {
-        $useCurrentProduct = $parameterCollection->getParameter('use_current_product')->getValue() === true;
-        $syliusProductId = $parameterCollection->getParameter('sylius_product_id')->getValue();
+        $useCurrentProduct = $parameterCollection->getParameter('use_current_product')->value === true;
+        $syliusProductId = $parameterCollection->getParameter('sylius_product_id')->value;
 
         if ($useCurrentProduct === true) {
             $syliusProductId = $this->getCurrentProductId($request);

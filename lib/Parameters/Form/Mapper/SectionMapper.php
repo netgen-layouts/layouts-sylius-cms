@@ -19,7 +19,7 @@ final class SectionMapper extends Mapper
     {
         return [
             'item_type' => 'bitbag_section',
-            'required' => $parameterDefinition->isRequired(),
+            'required' => $parameterDefinition->isRequired,
         ];
     }
 }

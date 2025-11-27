@@ -58,16 +58,16 @@ trait SyliusChannelFilterTrait
      */
     private function addSyliusChannelFilterCriterion(ParameterCollectionInterface $parameterCollection, QueryBuilder $queryBuilder): void
     {
-        if ($parameterCollection->getParameter('filter_by_channel')->getValue() !== true) {
+        if ($parameterCollection->getParameter('filter_by_channel')->value !== true) {
             return;
         }
 
-        $channels = $parameterCollection->getParameter('channels')->getValue() ?? [];
+        $channels = $parameterCollection->getParameter('channels')->value ?? [];
         if (count($channels) === 0) {
             return;
         }
 
-        $reverse = $parameterCollection->getParameter('channels_filter')->getValue() !== 'include';
+        $reverse = $parameterCollection->getParameter('channels_filter')->value !== 'include';
 
         if (!in_array('channels', $queryBuilder->getAllAliases(), true)) {
             $rootAliases = $queryBuilder->getRootAliases();

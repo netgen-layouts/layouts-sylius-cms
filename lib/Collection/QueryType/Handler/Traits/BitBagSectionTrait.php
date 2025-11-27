@@ -44,7 +44,7 @@ trait BitBagSectionTrait
 
     private function isBitBagSectionContextual(ParameterCollectionInterface $parameterCollection): bool
     {
-        return $parameterCollection->getParameter('use_current_section')->getValue() === true;
+        return $parameterCollection->getParameter('use_current_section')->value === true;
     }
 
     /**
@@ -55,8 +55,8 @@ trait BitBagSectionTrait
         QueryBuilder $queryBuilder,
         ?Request $request,
     ): void {
-        $useCurrentSection = $parameterCollection->getParameter('use_current_section')->getValue();
-        $bitBagSectionId = $parameterCollection->getParameter('bitbag_section_id')->getValue();
+        $useCurrentSection = $parameterCollection->getParameter('use_current_section')->value;
+        $bitBagSectionId = $parameterCollection->getParameter('bitbag_section_id')->value;
 
         if ($useCurrentSection === true) {
             $bitBagSectionId = $this->getCurrentSectionId($request);

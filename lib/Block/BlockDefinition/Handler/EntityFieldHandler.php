@@ -56,7 +56,7 @@ final class EntityFieldHandler extends BlockDefinitionHandler
 
     public function getDynamicParameters(DynamicParameters $params, Block $block): void
     {
-        $fieldIdentifier = $block->getParameter('field_identifier')->getValue();
+        $fieldIdentifier = $block->getParameter('field_identifier')->value;
         $entity = $this->getCurrentBitBagEntity();
 
         $params['field'] = null;
