@@ -8,7 +8,7 @@
     {% set field_identifier = block.parameter('field_identifier') %}
 
     {% if not field_identifier.isEmpty %}
-        {{ macros.info('block.info.bitbag_entity_field'|trans({'%field%': field_identifier.value}), 'icon-twig_block') }}
+        {{ macros.info('block.info.bitbag_entity_field'|trans({ '%field%': field_identifier.value }), 'icon-twig_block') }}
     {% else %}
         {{ macros.notice('block.notice.empty_bitbag_entity_field'|trans) }}
     {% endif %}

@@ -16,7 +16,7 @@
                     {% if field.value %} YES {% else %} NO {% endif %}
                 </{{ html_element }}>
             {% else %}
-                {{ 'bitbag.field_not_compatible'|trans({'%field_identifier%': field_identifier}, 'bitbag') }}
+                {{ 'bitbag.field_not_compatible'|trans({ '%field_identifier%': field_identifier }, 'bitbag') }}
             {% endif %}
         {% endif %}
     {% endblock %}
