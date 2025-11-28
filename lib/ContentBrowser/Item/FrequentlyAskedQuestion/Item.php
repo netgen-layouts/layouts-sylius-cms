@@ -26,6 +26,6 @@ final class Item implements ItemInterface, FrequentlyAskedQuestionInterface
     }
 
     public function __construct(
-        private(set) BitBagFrequentlyAskedQuestionInterface $frequentlyAskedQuestion,
+        public private(set) BitBagFrequentlyAskedQuestionInterface $frequentlyAskedQuestion,
     ) {}
 }

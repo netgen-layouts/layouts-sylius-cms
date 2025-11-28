@@ -26,6 +26,6 @@ final class Item implements ItemInterface, PageInterface
     }
 
     public function __construct(
-        private(set) BitBagPageInterface $page,
+        public private(set) BitBagPageInterface $page,
     ) {}
 }

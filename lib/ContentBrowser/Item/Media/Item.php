@@ -26,6 +26,6 @@ final class Item implements ItemInterface, MediaInterface
     }
 
     public function __construct(
-        private(set) BitBagMediaInterface $media,
+        public private(set) BitBagMediaInterface $media,
     ) {}
 }

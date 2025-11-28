@@ -26,6 +26,6 @@ final class Item implements ItemInterface, SectionInterface
     }
 
     public function __construct(
-        private(set) BitBagSectionInterface $section,
+        public private(set) BitBagSectionInterface $section,
     ) {}
 }
