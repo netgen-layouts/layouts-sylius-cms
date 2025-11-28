@@ -84,8 +84,8 @@ final class FrequentlyAskedQuestionValueConverterTest extends TestCase
 
     public function testGetObject(): void
     {
-        $frequentlyAskedQueston = new FrequentlyAskedQuestionStub(42, 'TEST_QUESTION');
+        $frequentlyAskedQuestion = new FrequentlyAskedQuestionStub(42, 'TEST_QUESTION');
 
-        self::assertSame($frequentlyAskedQueston, $this->valueConverter->getObject($frequentlyAskedQueston));
+        self::assertSame($frequentlyAskedQuestion, $this->valueConverter->getObject($frequentlyAskedQuestion));
     }
 }
