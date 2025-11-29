@@ -16,9 +16,11 @@ final class Section extends BaseSection
         parent::__construct();
 
         $this->id = $id;
-        $this->code = $code;
+        $this->setCode($code);
 
-        $this->currentLocale = 'en';
+        $this->setCurrentLocale('en');
+        $this->setFallbackLocale('en');
+
         $this->setName($name);
     }
 }

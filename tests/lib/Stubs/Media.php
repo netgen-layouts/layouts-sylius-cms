@@ -8,11 +8,14 @@ use BitBag\SyliusCmsPlugin\Entity\Media as BaseMedia;
 
 final class Media extends BaseMedia
 {
-    public function __construct(int $id, ?string $code = null)
+    public function __construct(int $id, string $code)
     {
         parent::__construct();
 
         $this->id = $id;
-        $this->code = $code;
+        $this->setCode($code);
+
+        $this->setCurrentLocale('en');
+        $this->setFallbackLocale('en');
     }
 }

@@ -49,7 +49,7 @@ final class ItemTest extends TestCase
 
     public function testGetNameWithEmptyNameAndCode(): void
     {
-        $media = new Media(42);
+        $media = new Media(42, '');
         $media->setCurrentLocale('en');
         $media->setFallbackLocale('en');
         $item = new Item($media);

@@ -82,7 +82,7 @@ final class MediaValueConverterTest extends TestCase
         self::assertSame(
             '',
             $this->valueConverter->getName(
-                new MediaStub(42),
+                new MediaStub(42, ''),
             ),
         );
     }

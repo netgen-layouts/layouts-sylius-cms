@@ -17,10 +17,12 @@ final class Block extends BaseBlock
         parent::__construct();
 
         $this->id = $id;
-        $this->code = $code;
-        $this->enabled = $enabled;
+        $this->setCode($code);
+        $this->setEnabled($enabled);
 
-        $this->currentLocale = 'en';
+        $this->setCurrentLocale('en');
+        $this->setFallbackLocale('en');
+
         $this->setName($name);
     }
 }

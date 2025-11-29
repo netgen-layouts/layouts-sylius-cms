@@ -18,10 +18,11 @@ final class FrequentlyAskedQuestion extends BaseFrequentlyAskedQuestion
         parent::__construct();
 
         $this->id = $id;
-        $this->code = $code;
-        $this->enabled = $enabled;
+        $this->setCode($code);
+        $this->setEnabled($enabled);
 
-        $this->currentLocale = 'en';
+        $this->setCurrentLocale('en');
+        $this->setFallbackLocale('en');
 
         if ($question !== null) {
             $this->setQuestion($question);

@@ -13,6 +13,9 @@ final class FrequentlyAskedQuestion extends BaseFrequentlyAskedQuestion
         parent::__construct();
 
         $this->id = $id;
-        $this->code = $code;
+        $this->setCode($code);
+
+        $this->setCurrentLocale('en');
+        $this->setFallbackLocale('en');
     }
 }

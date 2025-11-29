@@ -10,7 +10,7 @@ final class Media extends BaseMedia
 {
     public function __construct(
         int $id,
-        ?string $code = null,
+        string $code,
         ?string $name = null,
         string $type = 'file',
         string $mimeType = '',
@@ -19,10 +19,12 @@ final class Media extends BaseMedia
         parent::__construct();
 
         $this->id = $id;
-        $this->code = $code;
-        $this->enabled = $enabled;
+        $this->setCode($code);
+        $this->setEnabled($enabled);
 
-        $this->currentLocale = 'en';
+        $this->setCurrentLocale('en');
+        $this->setFallbackLocale('en');
+
         $this->setName($name);
         $this->setType($type);
         $this->setMimeType($mimeType);
