@@ -19,10 +19,10 @@ final class BitBagEntityField
 {
     private const string CONTENT_FIELD_IDENTIFIER = 'content';
 
-    private BitBagEntityFieldType $type;
+    public private(set) BitBagEntityFieldType $type;
 
     private function __construct(
-        private mixed $value,
+        public private(set) mixed $value,
     ) {
         $this->type = $this->resolveType($this->value);
     }
@@ -50,16 +50,6 @@ final class BitBagEntityField
         }
 
         return new self(null);
-    }
-
-    public function getValue(): mixed
-    {
-        return $this->value;
-    }
-
-    public function getType(): BitBagEntityFieldType
-    {
-        return $this->type;
     }
 
     public function isEmpty(): bool

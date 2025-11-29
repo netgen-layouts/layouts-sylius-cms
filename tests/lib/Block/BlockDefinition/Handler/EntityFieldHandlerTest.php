@@ -74,8 +74,8 @@ final class EntityFieldHandlerTest extends TestCase
         $field = BitBagEntityField::fromBitBagEntity($page, 'name');
 
         self::assertSame($field->isEmpty(), $params['field']->isEmpty());
-        self::assertSame($field->getType(), $params['field']->getType());
-        self::assertSame($field->getValue(), $params['field']->getValue());
+        self::assertSame($field->type, $params['field']->type);
+        self::assertSame($field->value, $params['field']->value);
     }
 
     public function testGetDynamicParametersWithSection(): void
@@ -113,8 +113,8 @@ final class EntityFieldHandlerTest extends TestCase
         $field = BitBagEntityField::fromBitBagEntity($section, 'code');
 
         self::assertSame($field->isEmpty(), $params['field']->isEmpty());
-        self::assertSame($field->getType(), $params['field']->getType());
-        self::assertSame($field->getValue(), $params['field']->getValue());
+        self::assertSame($field->type, $params['field']->type);
+        self::assertSame($field->value, $params['field']->value);
     }
 
     public function testGetDynamicParametersWithoutRequest(): void
