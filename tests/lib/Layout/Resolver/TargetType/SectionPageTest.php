@@ -37,7 +37,7 @@ final class SectionPageTest extends TestCase
     public function testValidationValid(): void
     {
         $this->repositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(new SectionStub(42, 'about'));
@@ -53,7 +53,7 @@ final class SectionPageTest extends TestCase
     public function testValidationInvalid(): void
     {
         $this->repositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);

@@ -47,7 +47,7 @@ final class EntityFieldHandlerTest extends TestCase
         $request->attributes->set('nglayouts_sylius_bitbag_page', $page);
 
         $this->requestStackMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('getCurrentRequest')
             ->willReturn($request);
 
@@ -86,7 +86,7 @@ final class EntityFieldHandlerTest extends TestCase
         $request->attributes->set('nglayouts_sylius_bitbag_section', $section);
 
         $this->requestStackMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('getCurrentRequest')
             ->willReturn($request);
 
@@ -120,7 +120,7 @@ final class EntityFieldHandlerTest extends TestCase
     public function testGetDynamicParametersWithoutRequest(): void
     {
         $this->requestStackMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('getCurrentRequest')
             ->willReturn(null);
 

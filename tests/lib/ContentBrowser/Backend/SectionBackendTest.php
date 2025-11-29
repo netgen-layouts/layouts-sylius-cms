@@ -52,7 +52,7 @@ final class SectionBackendTest extends TestCase
     public function testLoadItem(): void
     {
         $this->sectionRepositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('find')
             ->with(self::identicalTo(1))
             ->willReturn(new Section(1, 'blog'));
@@ -68,7 +68,7 @@ final class SectionBackendTest extends TestCase
         $this->expectExceptionMessage('Item with value "1" not found.');
 
         $this->sectionRepositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('find')
             ->with(self::identicalTo(1))
             ->willReturn(null);
@@ -99,7 +99,7 @@ final class SectionBackendTest extends TestCase
             ->willReturn(new ArrayIterator([new Section(42, 'blog'), new Section(43, 'news')]));
 
         $this->sectionRepositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('createListPaginator')
             ->with(self::identicalTo('en'))
             ->willReturn(new Pagerfanta($pagerfantaAdapterMock));
@@ -128,7 +128,7 @@ final class SectionBackendTest extends TestCase
             ->willReturn(new ArrayIterator([new Section(42, 'blog'), new Section(43, 'news')]));
 
         $this->sectionRepositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('createListPaginator')
             ->with(self::identicalTo('en'))
             ->willReturn(new Pagerfanta($pagerfantaAdapterMock));
@@ -153,7 +153,7 @@ final class SectionBackendTest extends TestCase
             ->willReturn(2);
 
         $this->sectionRepositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('createListPaginator')
             ->with(self::identicalTo('en'))
             ->willReturn(new Pagerfanta($pagerfantaAdapterMock));
@@ -174,7 +174,7 @@ final class SectionBackendTest extends TestCase
             ->willReturn(new ArrayIterator([new Section(42, 'blog'), new Section(43, 'news')]));
 
         $this->sectionRepositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('createSearchPaginator')
             ->with(self::identicalTo('test'), self::identicalTo('en'))
             ->willReturn(new Pagerfanta($pagerfantaAdapterMock));
@@ -199,7 +199,7 @@ final class SectionBackendTest extends TestCase
             ->willReturn(new ArrayIterator([new Section(42, 'blog'), new Section(43, 'news')]));
 
         $this->sectionRepositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('createSearchPaginator')
             ->with(self::identicalTo('test'), self::identicalTo('en'))
             ->willReturn(new Pagerfanta($pagerfantaAdapterMock));
@@ -222,7 +222,7 @@ final class SectionBackendTest extends TestCase
             ->willReturn(2);
 
         $this->sectionRepositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('createSearchPaginator')
             ->with(self::identicalTo('test'), self::identicalTo('en'))
             ->willReturn(new Pagerfanta($pagerfantaAdapterMock));

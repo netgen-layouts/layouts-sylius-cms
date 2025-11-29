@@ -40,7 +40,7 @@ final class BitBagRuntimeTest extends TestCase
         $page->setName('About us');
 
         $this->pageRepositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('find')
             ->with(self::identicalTo(15))
             ->willReturn($page);
@@ -55,7 +55,7 @@ final class BitBagRuntimeTest extends TestCase
         $section->setName('Articles');
 
         $this->sectionRepositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('find')
             ->with(self::identicalTo(5))
             ->willReturn($section);

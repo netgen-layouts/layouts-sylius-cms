@@ -28,7 +28,7 @@ final class SectionValueUrlGeneratorTest extends TestCase
     public function testGenerateDefaultUrl(): void
     {
         $this->urlGeneratorMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('generate')
             ->with(
                 self::identicalTo('bitbag_sylius_cms_plugin_shop_page_index_by_section_code'),
@@ -45,7 +45,7 @@ final class SectionValueUrlGeneratorTest extends TestCase
     public function testGenerateAdminUrl(): void
     {
         $this->urlGeneratorMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('generate')
             ->with(
                 self::identicalTo('bitbag_sylius_cms_plugin_admin_section_update'),

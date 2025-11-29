@@ -37,7 +37,7 @@ final class SectionValidatorTest extends ValidatorTestCase
     public function testValidateValid(): void
     {
         $this->repositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(new SectionStub(42, 'blog'));
@@ -48,7 +48,7 @@ final class SectionValidatorTest extends ValidatorTestCase
     public function testValidateNull(): void
     {
         $this->repositoryMock
-            ->expects(self::never())
+            ->expects($this->never())
             ->method('find');
 
         $this->assertValid(true, null);
@@ -57,7 +57,7 @@ final class SectionValidatorTest extends ValidatorTestCase
     public function testValidateInvalid(): void
     {
         $this->repositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);

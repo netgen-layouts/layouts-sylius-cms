@@ -64,7 +64,7 @@ final class PageIndexListenerTest extends TestCase
         $section = new Section(42, 'blog');
 
         $this->sectionRepositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('findOneByCode')
             ->with(self::identicalTo('blog'), self::identicalTo('en'))
             ->willReturn($section);
@@ -81,7 +81,7 @@ final class PageIndexListenerTest extends TestCase
     public function testOnPageIndexWithoutRequest(): void
     {
         $this->sectionRepositoryMock
-            ->expects(self::never())
+            ->expects($this->never())
             ->method('findOneByCode');
 
         $event = new ResourceControllerEvent();
@@ -96,7 +96,7 @@ final class PageIndexListenerTest extends TestCase
         $this->requestStack->push($request);
 
         $this->sectionRepositoryMock
-            ->expects(self::never())
+            ->expects($this->never())
             ->method('findOneByCode');
 
         $event = new ResourceControllerEvent();
@@ -114,7 +114,7 @@ final class PageIndexListenerTest extends TestCase
         $this->requestStack->push($request);
 
         $this->sectionRepositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('findOneByCode')
             ->with(self::identicalTo('unknown'), self::identicalTo('en'))
             ->willReturn(null);
