@@ -6,7 +6,7 @@
         <div class="content">
 
             {% if page.image %}
-                <img class="ui left floated image" src="{{ page.image.path|imagine_filter(filter|default('sylius_small')) }}" alt="">
+                <img class="ui left floated image" src="{{ page.image.path|imagine_filter(filter|default('sylius_small')) }}" alt="{{ item.name }}" />
             {% endif %}
 
             <h3>{{ page.name }}</h3>

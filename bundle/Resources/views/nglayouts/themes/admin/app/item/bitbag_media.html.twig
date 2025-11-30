@@ -2,7 +2,7 @@
 
 {% if media.type == 'image' %}
     <div class="image">
-        <img src="{{ media.path|imagine_filter('nglayouts_sylius_bitbag_media_app_preview') }}" />
+        <img src="{{ media.path|imagine_filter('nglayouts_sylius_bitbag_media_app_preview') }}" alt="{{ item.name }}" />
     </div>
 {% endif %}
 
