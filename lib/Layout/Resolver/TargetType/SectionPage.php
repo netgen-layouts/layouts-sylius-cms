@@ -8,14 +8,21 @@ use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
 use Doctrine\Common\Collections\Collection;
 use Netgen\Layouts\Layout\Resolver\TargetType;
+use Netgen\Layouts\Layout\Resolver\ValueObjectProviderInterface;
+use Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface;
 use Netgen\Layouts\Sylius\BitBag\Validator\Constraint as SyliusBitBagConstraints;
+use Sylius\Resource\Model\ResourceInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints;
 
 use function array_map;
 
-final class SectionPage extends TargetType
+final class SectionPage extends TargetType implements ValueObjectProviderInterface
 {
+    public function __construct(
+        private SectionRepositoryInterface $sectionRepository,
+    ) {}
+
     public static function getType(): string
     {
         return 'bitbag_section_page';
@@ -51,5 +58,10 @@ final class SectionPage extends TargetType
             static fn (SectionInterface $section): int => $section->getId(),
             $sections->getValues(),
         );
+    }
+
+    public function getValueObject(mixed $value): ?ResourceInterface
+    {
+        return $this->sectionRepository->find($value);
     }
 }

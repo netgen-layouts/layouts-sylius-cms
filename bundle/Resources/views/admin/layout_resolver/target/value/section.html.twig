@@ -1,3 +1,1 @@
-{% set section_name = nglayouts_sylius_bitbag_section_name(target.value) %}
-
-{{ section_name ?? '(INVALID SECTION)' }}
+{{ target.valueObject.name ?? '(INVALID SECTION)' }}

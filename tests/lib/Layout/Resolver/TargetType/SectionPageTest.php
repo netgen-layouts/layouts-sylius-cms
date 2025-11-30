@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\BitBag\Tests\Layout\Resolver\TargetType;
 
-use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
 use Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\SectionPage;
+use Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface;
 use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Page as PageStub;
 use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Section as SectionStub;
 use Netgen\Layouts\Sylius\BitBag\Tests\Validator\RepositoryValidatorFactory;
@@ -26,7 +26,7 @@ final class SectionPageTest extends TestCase
     {
         $this->repositoryMock = $this->createMock(SectionRepositoryInterface::class);
 
-        $this->targetType = new SectionPage();
+        $this->targetType = new SectionPage($this->repositoryMock);
     }
 
     public function testGetType(): void
@@ -84,5 +84,29 @@ final class SectionPageTest extends TestCase
         $request = Request::create('/');
 
         self::assertNull($this->targetType->provideValue($request));
+    }
+
+    public function testGetValueObject(): void
+    {
+        $section = new SectionStub(42, 'blog');
+
+        $this->repositoryMock
+            ->expects($this->once())
+            ->method('find')
+            ->with(self::identicalTo(42))
+            ->willReturn($section);
+
+        self::assertSame($section, $this->targetType->getValueObject(42));
+    }
+
+    public function testGetValueObjectWithNoSection(): void
+    {
+        $this->repositoryMock
+            ->expects($this->once())
+            ->method('find')
+            ->with(self::identicalTo(42))
+            ->willReturn(null);
+
+        self::assertNull($this->targetType->getValueObject(42));
     }
 }

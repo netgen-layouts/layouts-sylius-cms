@@ -1,3 +1,1 @@
-{% set page_name = nglayouts_sylius_bitbag_page_name(target.value) %}
-
-{{ page_name ?? '(INVALID PAGE)' }}
+{{ target.valueObject.name ?? '(INVALID PAGE)' }}

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\BitBag\Tests\Layout\Resolver\TargetType;
 
-use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\Page;
+use Netgen\Layouts\Sylius\BitBag\Repository\PageRepositoryInterface;
 use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Page as PageStub;
 use Netgen\Layouts\Sylius\BitBag\Tests\Validator\RepositoryValidatorFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -25,7 +25,7 @@ final class PageTest extends TestCase
     {
         $this->repositoryMock = $this->createMock(PageRepositoryInterface::class);
 
-        $this->targetType = new Page();
+        $this->targetType = new Page($this->repositoryMock);
     }
 
     public function testGetType(): void
@@ -80,5 +80,29 @@ final class PageTest extends TestCase
         $request = Request::create('/');
 
         self::assertNull($this->targetType->provideValue($request));
+    }
+
+    public function testGetValueObject(): void
+    {
+        $page = new PageStub(42, 'contact-us');
+
+        $this->repositoryMock
+            ->expects($this->once())
+            ->method('find')
+            ->with(self::identicalTo(42))
+            ->willReturn($page);
+
+        self::assertSame($page, $this->targetType->getValueObject(42));
+    }
+
+    public function testGetValueObjectWithNoPage(): void
+    {
+        $this->repositoryMock
+            ->expects($this->once())
+            ->method('find')
+            ->with(self::identicalTo(42))
+            ->willReturn(null);
+
+        self::assertNull($this->targetType->getValueObject(42));
     }
 }
