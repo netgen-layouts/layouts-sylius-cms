@@ -18,16 +18,6 @@ services:
         tags:
             - { name: netgen_layouts.cms_value_url_generator, value_type: bitbag_page }
 
-    netgen_layouts.sylius.bitbag.content_browser.template_value_provider.bitbag_page.code:
-        class: Netgen\Layouts\Sylius\BitBag\ContentBrowser\ColumnProvider\Page\Code
-        tags:
-            - { name: netgen_content_browser.column_value_provider, identifier: bitbag_page\code }
-
-    netgen_layouts.sylius.bitbag.content_browser.template_value_provider.bitbag_page.slug:
-        class: Netgen\Layouts\Sylius\BitBag\ContentBrowser\ColumnProvider\Page\Slug
-        tags:
-            - { name: netgen_content_browser.column_value_provider, identifier: bitbag_page\slug }
-
     netgen_layouts.sylius.bitbag.item.value_converter.section:
         class: Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\SectionValueConverter
         tags:
@@ -46,11 +36,6 @@ services:
             - "@router"
         tags:
             - { name: netgen_layouts.cms_value_url_generator, value_type: bitbag_section }
-
-    netgen_layouts.sylius.bitbag.content_browser.template_value_provider.bitbag_section.code:
-        class: Netgen\Layouts\Sylius\BitBag\ContentBrowser\ColumnProvider\Section\Code
-        tags:
-            - { name: netgen_content_browser.column_value_provider, identifier: bitbag_section\code }
 
     netgen_layouts.sylius.bitbag.item.value_converter.block:
         class: Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\BlockValueConverter
@@ -71,11 +56,6 @@ services:
         tags:
             - { name: netgen_layouts.cms_value_url_generator, value_type: bitbag_block }
 
-    netgen_layouts.sylius.bitbag.content_browser.template_value_provider.bitbag_block.code:
-        class: Netgen\Layouts\Sylius\BitBag\ContentBrowser\ColumnProvider\Block\Code
-        tags:
-            - { name: netgen_content_browser.column_value_provider, identifier: bitbag_block\code }
-
     netgen_layouts.sylius.bitbag.item.value_converter.media:
         class: Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\MediaValueConverter
         tags:
@@ -95,21 +75,6 @@ services:
         tags:
             - { name: netgen_layouts.cms_value_url_generator, value_type: bitbag_media }
 
-    netgen_layouts.sylius.bitbag.content_browser.template_value_provider.bitbag_media.code:
-        class: Netgen\Layouts\Sylius\BitBag\ContentBrowser\ColumnProvider\Media\Code
-        tags:
-            - { name: netgen_content_browser.column_value_provider, identifier: bitbag_media\code }
-
-    netgen_layouts.sylius.bitbag.content_browser.template_value_provider.bitbag_media.type:
-        class: Netgen\Layouts\Sylius\BitBag\ContentBrowser\ColumnProvider\Media\Type
-        tags:
-            - { name: netgen_content_browser.column_value_provider, identifier: bitbag_media\type }
-
-    netgen_layouts.sylius.bitbag.content_browser.template_value_provider.bitbag_media.mime_type:
-        class: Netgen\Layouts\Sylius\BitBag\ContentBrowser\ColumnProvider\Media\MimeType
-        tags:
-            - { name: netgen_content_browser.column_value_provider, identifier: bitbag_media\mime_type }
-
     netgen_layouts.sylius.bitbag.item.value_converter.frequently_asked_question:
         class: Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\FrequentlyAskedQuestionValueConverter
         tags:
@@ -128,8 +93,3 @@ services:
             - "@router"
         tags:
             - { name: netgen_layouts.cms_value_url_generator, value_type: bitbag_frequently_asked_question }
-
-    netgen_layouts.sylius.bitbag.content_browser.template_value_provider.bitbag_frequently_asked_question.code:
-        class: Netgen\Layouts\Sylius\BitBag\ContentBrowser\ColumnProvider\FrequentlyAskedQuestion\Code
-        tags:
-            - { name: netgen_content_browser.column_value_provider, identifier: bitbag_frequently_asked_question\code }

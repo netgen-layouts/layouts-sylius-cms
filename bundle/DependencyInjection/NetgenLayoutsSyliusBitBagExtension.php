@@ -36,6 +36,7 @@ final class NetgenLayoutsSyliusBitBagExtension extends Extension implements Prep
         );
 
         $loader->load('services/**/*.yaml', 'glob');
+        $loader->load('browser/services.yaml');
     }
 
     public function prepend(ContainerBuilder $container): void
@@ -47,7 +48,7 @@ final class NetgenLayoutsSyliusBitBagExtension extends Extension implements Prep
             'block_type_groups.yaml' => 'netgen_layouts',
             'value_types.yaml' => 'netgen_layouts',
             'query_types.yaml' => 'netgen_layouts',
-            'item_types.yaml' => 'netgen_content_browser',
+            'browser/item_types.yaml' => 'netgen_content_browser',
             'view/block_view.yaml' => 'netgen_layouts',
             'view/item_view.yaml' => 'netgen_layouts',
             'view/rule_target_view.yaml' => 'netgen_layouts',

@@ -1,0 +1,97 @@
+item_types:
+    bitbag_page:
+        name: item_types.bitbag_page
+        tree:
+            enabled: false
+        preview:
+            enabled: false
+        columns:
+            name:
+                name: columns.name
+                value_provider: name
+            code:
+                name: columns.bitbag_page.code
+                value_provider: bitbag_page\code
+            slug:
+                name: columns.bitbag_page.slug
+                value_provider: bitbag_page\slug
+        default_columns:
+            - name
+            - code
+            - slug
+
+    bitbag_section:
+        name: item_types.bitbag_section
+        tree:
+            enabled: false
+        preview:
+            enabled: false
+        columns:
+            name:
+                name: columns.name
+                value_provider: name
+            code:
+                name: columns.bitbag_section.code
+                value_provider: bitbag_section\code
+        default_columns:
+            - name
+            - code
+
+    bitbag_block:
+        name: item_types.bitbag_block
+        tree:
+            enabled: false
+        preview:
+            enabled: false
+        columns:
+            name:
+                name: columns.name
+                value_provider: name
+            code:
+                name: columns.bitbag_block.code
+                value_provider: bitbag_block\code
+        default_columns:
+            - name
+            - code
+
+    bitbag_media:
+        name: item_types.bitbag_media
+        tree:
+            enabled: false
+        preview:
+            template: '@NetgenLayoutsSyliusBitBag/ngcb/bitbag_media.html.twig'
+        columns:
+            name:
+                name: columns.name
+                value_provider: name
+            code:
+                name: columns.bitbag_media.code
+                value_provider: bitbag_media\code
+            type:
+                name: columns.bitbag_media.type
+                value_provider: bitbag_media\type
+            mime_type:
+                name: columns.bitbag_media.mime_type
+                value_provider: bitbag_media\mime_type
+        default_columns:
+            - name
+            - code
+            - type
+            - mime_type
+
+    bitbag_frequently_asked_question:
+        name: item_types.bitbag_frequently_asked_question
+        tree:
+            enabled: false
+        preview:
+            enabled: false
+        columns:
+            name:
+                name: columns.name
+                value_provider: name
+            code:
+                name: columns.bitbag_frequently_asked_question.code
+                value_provider: bitbag_frequently_asked_question\code
+        default_columns:
+            - name
+            - code
