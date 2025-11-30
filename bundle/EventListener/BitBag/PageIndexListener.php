@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Netgen\Bundle\LayoutsSyliusBitBagBundle\EventListener\BitBag;
 
 use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
-use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
 use Netgen\Layouts\Context\Context;
+use Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;

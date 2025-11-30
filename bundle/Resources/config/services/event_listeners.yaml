@@ -10,7 +10,7 @@ services:
     netgen_layouts.sylius.bitbag.event_listener.bitbag.page_index:
         class: Netgen\Bundle\LayoutsSyliusBitBagBundle\EventListener\BitBag\PageIndexListener
         arguments:
-            - "@bitbag_sylius_cms_plugin.repository.section"
+            - "@netgen_layouts.sylius.bitbag.section_repository"
             - "@sylius.context.locale"
             - "@request_stack"
             - "@netgen_layouts.context"

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Netgen\Layouts\Sylius\BitBag\Validator;
 
 use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
-use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
+use Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface;
 use Netgen\Layouts\Sylius\BitBag\Validator\Constraint\Section;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;

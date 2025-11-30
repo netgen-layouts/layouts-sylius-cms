@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Netgen\Bundle\LayoutsSyliusBitBagBundle\Tests\EventListener\BitBag;
 
-use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
 use Netgen\Bundle\LayoutsSyliusBitBagBundle\EventListener\BitBag\PageIndexListener;
 use Netgen\Layouts\Context\Context;
+use Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface;
 use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Section;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;

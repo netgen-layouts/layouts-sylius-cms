@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\BitBag\Tests\Validator;
 
-use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
+use Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface;
 use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Section as SectionStub;
 use Netgen\Layouts\Sylius\BitBag\Validator\Constraint\Section;
 use Netgen\Layouts\Sylius\BitBag\Validator\SectionValidator;

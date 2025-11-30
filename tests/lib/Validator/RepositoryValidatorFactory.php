@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\BitBag\Tests\Validator;
 
-use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
-use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
+use Netgen\Layouts\Sylius\BitBag\Repository\PageRepositoryInterface;
+use Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface;
 use Netgen\Layouts\Sylius\BitBag\Validator\PageValidator;
 use Netgen\Layouts\Sylius\BitBag\Validator\SectionValidator;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
