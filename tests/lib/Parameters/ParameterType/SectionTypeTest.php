@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\BitBag\Tests\Parameters\ParameterType;
 
-use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
 use Netgen\Layouts\Parameters\ParameterDefinition;
 use Netgen\Layouts\Sylius\BitBag\Parameters\ParameterType\SectionType;
+use Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface;
 use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Section as SectionStub;
 use Netgen\Layouts\Sylius\BitBag\Tests\Validator\RepositoryValidatorFactory;
 use Netgen\Layouts\Tests\Parameters\ParameterType\ParameterTypeTestTrait;
@@ -28,7 +28,7 @@ final class SectionTypeTest extends TestCase
     {
         $this->repositoryMock = $this->createMock(SectionRepositoryInterface::class);
 
-        $this->type = new SectionType();
+        $this->type = new SectionType($this->repositoryMock);
     }
 
     public function testGetIdentifier(): void
@@ -146,5 +146,35 @@ final class SectionTypeTest extends TestCase
             [null, true],
             [new SectionStub(42, 'blog'), false],
         ];
+    }
+
+    public function testGetValueObject(): void
+    {
+        $section = new SectionStub(42, 'blog');
+
+        $this->repositoryMock
+            ->expects($this->once())
+            ->method('find')
+            ->with(self::identicalTo(42))
+            ->willReturn($section);
+
+        /** @var \Netgen\Layouts\Sylius\BitBag\Parameters\ParameterType\SectionType $type */
+        $type = $this->type;
+
+        self::assertSame($section, $type->getValueObject(42));
+    }
+
+    public function testGetValueObjectWithNoSection(): void
+    {
+        $this->repositoryMock
+            ->expects($this->once())
+            ->method('find')
+            ->with(self::identicalTo(42))
+            ->willReturn(null);
+
+        /** @var \Netgen\Layouts\Sylius\BitBag\Parameters\ParameterType\SectionType $type */
+        $type = $this->type;
+
+        self::assertNull($type->getValueObject(42));
     }
 }

@@ -7,7 +7,8 @@ namespace Netgen\Layouts\Sylius\BitBag\Tests\Parameters\Form\Mapper;
 use Netgen\ContentBrowser\Form\Type\ContentBrowserType;
 use Netgen\Layouts\Parameters\ParameterDefinition;
 use Netgen\Layouts\Sylius\BitBag\Parameters\Form\Mapper\SectionMapper;
-use Netgen\Layouts\Sylius\BitBag\Parameters\ParameterType\SectionType as ParameterType;
+use Netgen\Layouts\Sylius\BitBag\Parameters\ParameterType\SectionType;
+use Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
@@ -28,12 +29,19 @@ final class SectionMapperTest extends TestCase
 
     public function testMapOptions(): void
     {
+        $parameterDefinition = ParameterDefinition::fromArray(
+            [
+                'type' => new SectionType($this->createMock(SectionRepositoryInterface::class)),
+                'isRequired' => false,
+            ],
+        );
+
         self::assertSame(
             [
                 'item_type' => 'bitbag_section',
                 'required' => false,
             ],
-            $this->mapper->mapOptions(ParameterDefinition::fromArray(['type' => new ParameterType(), 'isRequired' => false])),
+            $this->mapper->mapOptions($parameterDefinition),
         );
     }
 }
