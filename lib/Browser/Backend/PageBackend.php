@@ -38,6 +38,7 @@ final class PageBackend implements BackendInterface
 
     public function loadItem(int|string $value): Item
     {
+        /** @var \BitBag\SyliusCmsPlugin\Entity\PageInterface $page */
         $page = $this->pageRepository->find($value) ??
             throw new NotFoundException(
                 sprintf(

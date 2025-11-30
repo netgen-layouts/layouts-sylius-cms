@@ -10,4 +10,3 @@ parameters:
         - '#Variable method call on Sylius\\Component\\Resource\\Model\\ResourceInterface#'
 
         - '#Method Netgen\\Layouts\\Sylius\\BitBag\\Item\\ValueLoader\\\w+ValueLoader::load\(\) should return BitBag\\SyliusCmsPlugin\\Entity\\\w+Interface\|null but returns Sylius\\Resource\\Model\\ResourceInterface\|null.#'
-        - '#Parameter \#1 \$\w+ of method Netgen\\Layouts\\Sylius\\BitBag\\ContentBrowser\\Backend\\\w+Backend::buildItem\(\) expects BitBag\\SyliusCmsPlugin\\Entity\\\w+Interface, Sylius\\Resource\\Model\\ResourceInterface given.#'

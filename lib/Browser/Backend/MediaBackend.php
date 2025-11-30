@@ -38,6 +38,7 @@ final class MediaBackend implements BackendInterface
 
     public function loadItem(int|string $value): Item
     {
+        /** @var \BitBag\SyliusCmsPlugin\Entity\MediaInterface $media */
         $media = $this->mediaRepository->find($value) ??
             throw new NotFoundException(
                 sprintf(

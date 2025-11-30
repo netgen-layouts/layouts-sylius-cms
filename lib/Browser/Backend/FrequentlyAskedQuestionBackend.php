@@ -38,6 +38,7 @@ final class FrequentlyAskedQuestionBackend implements BackendInterface
 
     public function loadItem(int|string $value): Item
     {
+        /** @var \BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionInterface $frequentlyAskedQuestion */
         $frequentlyAskedQuestion = $this->frequentlyAskedQuestionRepository->find($value) ??
             throw new NotFoundException(
                 sprintf(

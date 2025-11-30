@@ -38,6 +38,7 @@ final class BlockBackend implements BackendInterface
 
     public function loadItem(int|string $value): Item
     {
+        /** @var \BitBag\SyliusCmsPlugin\Entity\BlockInterface $block */
         $block = $this->blockRepository->find($value) ??
             throw new NotFoundException(
                 sprintf(

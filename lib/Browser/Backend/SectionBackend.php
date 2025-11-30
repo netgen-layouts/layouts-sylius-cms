@@ -38,6 +38,7 @@ final class SectionBackend implements BackendInterface
 
     public function loadItem(int|string $value): Item
     {
+        /** @var \BitBag\SyliusCmsPlugin\Entity\SectionInterface $section */
         $section = $this->sectionRepository->find($value) ??
             throw new NotFoundException(
                 sprintf(
