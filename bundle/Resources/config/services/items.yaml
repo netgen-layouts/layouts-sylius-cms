@@ -7,7 +7,7 @@ services:
     netgen_layouts.sylius.bitbag.item.value_loader.page:
         class: Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\PageValueLoader
         arguments:
-            - "@netgen_layouts.sylius.bitbag.page_repository"
+            - "@netgen_layouts.sylius.bitbag.repository.page"
         tags:
             - { name: netgen_layouts.cms_value_loader, value_type: bitbag_page }
 
@@ -36,7 +36,7 @@ services:
     netgen_layouts.sylius.bitbag.item.value_loader.section:
         class: Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\SectionValueLoader
         arguments:
-            - "@netgen_layouts.sylius.bitbag.section_repository"
+            - "@netgen_layouts.sylius.bitbag.repository.section"
         tags:
             - { name: netgen_layouts.cms_value_loader, value_type: bitbag_section }
 
@@ -60,7 +60,7 @@ services:
     netgen_layouts.sylius.bitbag.item.value_loader.block:
         class: Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\BlockValueLoader
         arguments:
-            - "@netgen_layouts.sylius.bitbag.block_repository"
+            - "@netgen_layouts.sylius.bitbag.repository.block"
         tags:
             - { name: netgen_layouts.cms_value_loader, value_type: bitbag_block }
 
@@ -84,7 +84,7 @@ services:
     netgen_layouts.sylius.bitbag.item.value_loader.media:
         class: Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\MediaValueLoader
         arguments:
-            - "@netgen_layouts.sylius.bitbag.media_repository"
+            - "@netgen_layouts.sylius.bitbag.repository.media"
         tags:
             - { name: netgen_layouts.cms_value_loader, value_type: bitbag_media }
 
@@ -118,7 +118,7 @@ services:
     netgen_layouts.sylius.bitbag.item.value_loader.frequently_asked_question:
         class: Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\FrequentlyAskedQuestionValueLoader
         arguments:
-            - "@netgen_layouts.sylius.bitbag.frequently_asked_question_repository"
+            - "@netgen_layouts.sylius.bitbag.repository.frequently_asked_question"
         tags:
             - { name: netgen_layouts.cms_value_loader, value_type: bitbag_frequently_asked_question }
 

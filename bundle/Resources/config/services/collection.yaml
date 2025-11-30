@@ -2,7 +2,7 @@ services:
     netgen_layouts.sylius.bitbag.collection.query_type_handler.page:
         class: Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\PageHandler
         arguments:
-            - "@netgen_layouts.sylius.bitbag.page_repository"
+            - "@netgen_layouts.sylius.bitbag.repository.page"
             - "@sylius.context.locale"
             - "@request_stack"
         tags:
@@ -11,7 +11,7 @@ services:
     netgen_layouts.sylius.bitbag.collection.query_type_handler.block:
         class: Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\BlockHandler
         arguments:
-            - "@netgen_layouts.sylius.bitbag.block_repository"
+            - "@netgen_layouts.sylius.bitbag.repository.block"
             - "@sylius.context.locale"
             - "@request_stack"
         tags:
@@ -20,7 +20,7 @@ services:
     netgen_layouts.sylius.bitbag.collection.query_type_handler.media:
         class: Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\MediaHandler
         arguments:
-            - "@netgen_layouts.sylius.bitbag.media_repository"
+            - "@netgen_layouts.sylius.bitbag.repository.media"
             - "@sylius.context.locale"
             - "@request_stack"
         tags:
@@ -29,7 +29,7 @@ services:
     netgen_layouts.sylius.bitbag.collection.query_type_handler.section:
         class: Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\SectionHandler
         arguments:
-            - "@netgen_layouts.sylius.bitbag.section_repository"
+            - "@netgen_layouts.sylius.bitbag.repository.section"
             - "@sylius.context.locale"
         tags:
             - { name: netgen_layouts.query_type_handler, type: bitbag_section }
@@ -37,7 +37,7 @@ services:
     netgen_layouts.sylius.bitbag.collection.query_type_handler.frequently_asked_question:
         class: Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\FrequentlyAskedQuestionHandler
         arguments:
-            - "@netgen_layouts.sylius.bitbag.frequently_asked_question_repository"
+            - "@netgen_layouts.sylius.bitbag.repository.frequently_asked_question"
             - "@sylius.context.locale"
         tags:
             - { name: netgen_layouts.query_type_handler, type: bitbag_frequently_asked_question }

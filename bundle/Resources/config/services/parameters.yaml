@@ -2,7 +2,7 @@ services:
     netgen_layouts.sylius.bitbag.parameters.parameter_type.section:
         class: Netgen\Layouts\Sylius\BitBag\Parameters\ParameterType\SectionType
         arguments:
-            - "@netgen_layouts.sylius.bitbag.section_repository"
+            - "@netgen_layouts.sylius.bitbag.repository.section"
         tags:
             - { name: netgen_layouts.parameter_type }
 

@@ -2,13 +2,13 @@ services:
     netgen_layouts.sylius.bitbag.validator.page:
         class: Netgen\Layouts\Sylius\BitBag\Validator\PageValidator
         arguments:
-            - "@netgen_layouts.sylius.bitbag.page_repository"
+            - "@netgen_layouts.sylius.bitbag.repository.page"
         tags:
             - { name: validator.constraint_validator, alias: nglayouts_sylius_bitbag_page }
 
     netgen_layouts.sylius.bitbag.validator.section:
         class: Netgen\Layouts\Sylius\BitBag\Validator\SectionValidator
         arguments:
-            - "@netgen_layouts.sylius.bitbag.section_repository"
+            - "@netgen_layouts.sylius.bitbag.repository.section"
         tags:
             - { name: validator.constraint_validator, alias: nglayouts_sylius_bitbag_section }

@@ -2,7 +2,7 @@ services:
     netgen_layouts.sylius.bitbag.layout_resolver.target_type.page:
         class: Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\Page
         arguments:
-            - "@netgen_layouts.sylius.bitbag.page_repository"
+            - "@netgen_layouts.sylius.bitbag.repository.page"
         tags:
             - { name: netgen_layouts.target_type, priority: 190 }
 
@@ -19,7 +19,7 @@ services:
     netgen_layouts.sylius.bitbag.layout_resolver.target_type.section:
         class: Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\Section
         arguments:
-            - "@netgen_layouts.sylius.bitbag.section_repository"
+            - "@netgen_layouts.sylius.bitbag.repository.section"
         tags:
             - { name: netgen_layouts.target_type, priority: 180 }
 
@@ -36,7 +36,7 @@ services:
     netgen_layouts.sylius.bitbag.layout_resolver.target_type.section_page:
         class: Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\SectionPage
         arguments:
-            - "@netgen_layouts.sylius.bitbag.section_repository"
+            - "@netgen_layouts.sylius.bitbag.repository.section"
         tags:
             - { name: netgen_layouts.target_type, priority: 180 }
 
