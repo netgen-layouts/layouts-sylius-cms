@@ -7,6 +7,6 @@ includes:
 
 parameters:
     ignoreErrors:
-        - '#Variable method call on Sylius\\Component\\Resource\\Model\\ResourceInterface#'
+        - '#Variable method call on Sylius\\Resource\\Model\\ResourceInterface#'
 
         - '#Method Netgen\\Layouts\\Sylius\\BitBag\\Item\\ValueLoader\\\w+ValueLoader::load\(\) should return BitBag\\SyliusCmsPlugin\\Entity\\\w+Interface\|null but returns Sylius\\Resource\\Model\\ResourceInterface\|null.#'

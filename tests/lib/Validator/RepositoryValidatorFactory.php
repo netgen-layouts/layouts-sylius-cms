@@ -8,7 +8,7 @@ use Netgen\Layouts\Sylius\BitBag\Repository\PageRepositoryInterface;
 use Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface;
 use Netgen\Layouts\Sylius\BitBag\Validator\PageValidator;
 use Netgen\Layouts\Sylius\BitBag\Validator\SectionValidator;
-use Sylius\Component\Resource\Repository\RepositoryInterface;
+use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidatorFactory;
 use Symfony\Component\Validator\ConstraintValidatorFactoryInterface;
@@ -18,6 +18,9 @@ final class RepositoryValidatorFactory implements ConstraintValidatorFactoryInte
 {
     private ConstraintValidatorFactory $baseValidatorFactory;
 
+    /**
+     * @param \Sylius\Resource\Doctrine\Persistence\RepositoryInterface<\Sylius\Resource\Model\ResourceInterface> $repository
+     */
     public function __construct(
         private RepositoryInterface $repository,
     ) {
