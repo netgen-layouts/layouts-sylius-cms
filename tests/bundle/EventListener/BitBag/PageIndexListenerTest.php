@@ -9,7 +9,7 @@ use Netgen\Layouts\Context\Context;
 use Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface;
 use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Section;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
@@ -21,7 +21,7 @@ final class PageIndexListenerTest extends TestCase
 {
     private PageIndexListener $listener;
 
-    private MockObject&SectionRepositoryInterface $sectionRepositoryMock;
+    private Stub&SectionRepositoryInterface $sectionRepositoryStub;
 
     private RequestStack $requestStack;
 
@@ -29,18 +29,18 @@ final class PageIndexListenerTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->sectionRepositoryMock = $this->createMock(SectionRepositoryInterface::class);
+        $this->sectionRepositoryStub = self::createStub(SectionRepositoryInterface::class);
         $this->requestStack = new RequestStack();
         $this->context = new Context();
 
-        $localeContextMock = $this->createMock(LocaleContextInterface::class);
-        $localeContextMock
+        $localeContextStub = self::createStub(LocaleContextInterface::class);
+        $localeContextStub
             ->method('getLocaleCode')
             ->willReturn('en');
 
         $this->listener = new PageIndexListener(
-            $this->sectionRepositoryMock,
-            $localeContextMock,
+            $this->sectionRepositoryStub,
+            $localeContextStub,
             $this->requestStack,
             $this->context,
         );
@@ -63,8 +63,7 @@ final class PageIndexListenerTest extends TestCase
 
         $section = new Section(42, 'blog');
 
-        $this->sectionRepositoryMock
-            ->expects($this->once())
+        $this->sectionRepositoryStub
             ->method('findOneByCode')
             ->with(self::identicalTo('blog'), self::identicalTo('en'))
             ->willReturn($section);
@@ -80,10 +79,6 @@ final class PageIndexListenerTest extends TestCase
 
     public function testOnPageIndexWithoutRequest(): void
     {
-        $this->sectionRepositoryMock
-            ->expects($this->never())
-            ->method('findOneByCode');
-
         $event = new ResourceControllerEvent();
         $this->listener->onPageIndex($event);
 
@@ -94,10 +89,6 @@ final class PageIndexListenerTest extends TestCase
     {
         $request = Request::create('/');
         $this->requestStack->push($request);
-
-        $this->sectionRepositoryMock
-            ->expects($this->never())
-            ->method('findOneByCode');
 
         $event = new ResourceControllerEvent();
         $this->listener->onPageIndex($event);
@@ -113,8 +104,7 @@ final class PageIndexListenerTest extends TestCase
 
         $this->requestStack->push($request);
 
-        $this->sectionRepositoryMock
-            ->expects($this->once())
+        $this->sectionRepositoryStub
             ->method('findOneByCode')
             ->with(self::identicalTo('unknown'), self::identicalTo('en'))
             ->willReturn(null);

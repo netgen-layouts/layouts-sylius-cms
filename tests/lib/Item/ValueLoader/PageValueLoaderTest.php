@@ -9,27 +9,27 @@ use Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\PageValueLoader;
 use Netgen\Layouts\Sylius\BitBag\Repository\PageRepositoryInterface;
 use Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs\Page;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(PageValueLoader::class)]
 final class PageValueLoaderTest extends TestCase
 {
-    private MockObject&PageRepositoryInterface $pageRepositoryMock;
+    private Stub&PageRepositoryInterface $pageRepositoryStub;
 
     private PageValueLoader $valueLoader;
 
     protected function setUp(): void
     {
-        $this->pageRepositoryMock = $this->createMock(PageRepositoryInterface::class);
-        $this->valueLoader = new PageValueLoader($this->pageRepositoryMock);
+        $this->pageRepositoryStub = self::createStub(PageRepositoryInterface::class);
+        $this->valueLoader = new PageValueLoader($this->pageRepositoryStub);
     }
 
     public function testLoad(): void
     {
         $page = new Page(42, 'about-us', 'About us');
 
-        $this->pageRepositoryMock
+        $this->pageRepositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn($page);
@@ -39,7 +39,7 @@ final class PageValueLoaderTest extends TestCase
 
     public function testLoadWithNoPage(): void
     {
-        $this->pageRepositoryMock
+        $this->pageRepositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
@@ -49,7 +49,7 @@ final class PageValueLoaderTest extends TestCase
 
     public function testLoadWithRepositoryException(): void
     {
-        $this->pageRepositoryMock
+        $this->pageRepositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willThrowException(new Exception());
@@ -61,7 +61,7 @@ final class PageValueLoaderTest extends TestCase
     {
         $page = new Page(42, 'about-us', 'About us');
 
-        $this->pageRepositoryMock
+        $this->pageRepositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn($page);
@@ -71,7 +71,7 @@ final class PageValueLoaderTest extends TestCase
 
     public function testLoadByRemoteIdWithNoPage(): void
     {
-        $this->pageRepositoryMock
+        $this->pageRepositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
@@ -81,7 +81,7 @@ final class PageValueLoaderTest extends TestCase
 
     public function testLoadByRemoteIdWithRepositoryException(): void
     {
-        $this->pageRepositoryMock
+        $this->pageRepositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willThrowException(new Exception());

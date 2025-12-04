@@ -7,28 +7,27 @@ namespace Netgen\Layouts\Sylius\BitBag\Tests\Item\ValueUrlGenerator;
 use Netgen\Layouts\Sylius\BitBag\Item\ValueUrlGenerator\SectionValueUrlGenerator;
 use Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs\Section;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 #[CoversClass(SectionValueUrlGenerator::class)]
 final class SectionValueUrlGeneratorTest extends TestCase
 {
-    private MockObject&UrlGeneratorInterface $urlGeneratorMock;
+    private Stub&UrlGeneratorInterface $urlGeneratorStub;
 
     private SectionValueUrlGenerator $urlGenerator;
 
     protected function setUp(): void
     {
-        $this->urlGeneratorMock = $this->createMock(UrlGeneratorInterface::class);
+        $this->urlGeneratorStub = self::createStub(UrlGeneratorInterface::class);
 
-        $this->urlGenerator = new SectionValueUrlGenerator($this->urlGeneratorMock);
+        $this->urlGenerator = new SectionValueUrlGenerator($this->urlGeneratorStub);
     }
 
     public function testGenerateDefaultUrl(): void
     {
-        $this->urlGeneratorMock
-            ->expects($this->once())
+        $this->urlGeneratorStub
             ->method('generate')
             ->with(
                 self::identicalTo('bitbag_sylius_cms_plugin_shop_page_index_by_section_code'),
@@ -44,8 +43,7 @@ final class SectionValueUrlGeneratorTest extends TestCase
 
     public function testGenerateAdminUrl(): void
     {
-        $this->urlGeneratorMock
-            ->expects($this->once())
+        $this->urlGeneratorStub
             ->method('generate')
             ->with(
                 self::identicalTo('bitbag_sylius_cms_plugin_admin_section_update'),

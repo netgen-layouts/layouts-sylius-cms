@@ -9,27 +9,27 @@ use Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\FrequentlyAskedQuestionValueLo
 use Netgen\Layouts\Sylius\BitBag\Repository\FrequentlyAskedQuestionRepositoryInterface;
 use Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs\FrequentlyAskedQuestion;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(FrequentlyAskedQuestionValueLoader::class)]
 final class FrequentlyAskedQuestionValueLoaderTest extends TestCase
 {
-    private MockObject&FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepositoryMock;
+    private Stub&FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepositoryStub;
 
     private FrequentlyAskedQuestionValueLoader $valueLoader;
 
     protected function setUp(): void
     {
-        $this->frequentlyAskedQuestionRepositoryMock = $this->createMock(FrequentlyAskedQuestionRepositoryInterface::class);
-        $this->valueLoader = new FrequentlyAskedQuestionValueLoader($this->frequentlyAskedQuestionRepositoryMock);
+        $this->frequentlyAskedQuestionRepositoryStub = self::createStub(FrequentlyAskedQuestionRepositoryInterface::class);
+        $this->valueLoader = new FrequentlyAskedQuestionValueLoader($this->frequentlyAskedQuestionRepositoryStub);
     }
 
     public function testLoad(): void
     {
         $frequentlyAskedQuestion = new FrequentlyAskedQuestion(42, 'TEST_QUESTION');
 
-        $this->frequentlyAskedQuestionRepositoryMock
+        $this->frequentlyAskedQuestionRepositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn($frequentlyAskedQuestion);
@@ -39,7 +39,7 @@ final class FrequentlyAskedQuestionValueLoaderTest extends TestCase
 
     public function testLoadWithNoFrequentlyAskedQuestion(): void
     {
-        $this->frequentlyAskedQuestionRepositoryMock
+        $this->frequentlyAskedQuestionRepositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
@@ -49,7 +49,7 @@ final class FrequentlyAskedQuestionValueLoaderTest extends TestCase
 
     public function testLoadWithRepositoryException(): void
     {
-        $this->frequentlyAskedQuestionRepositoryMock
+        $this->frequentlyAskedQuestionRepositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willThrowException(new Exception());
@@ -61,7 +61,7 @@ final class FrequentlyAskedQuestionValueLoaderTest extends TestCase
     {
         $frequentlyAskedQuestion = new FrequentlyAskedQuestion(42, 'TEST_QUESTION');
 
-        $this->frequentlyAskedQuestionRepositoryMock
+        $this->frequentlyAskedQuestionRepositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn($frequentlyAskedQuestion);
@@ -71,7 +71,7 @@ final class FrequentlyAskedQuestionValueLoaderTest extends TestCase
 
     public function testLoadByRemoteIdWithNoFrequentlyAskedQuestion(): void
     {
-        $this->frequentlyAskedQuestionRepositoryMock
+        $this->frequentlyAskedQuestionRepositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
@@ -81,7 +81,7 @@ final class FrequentlyAskedQuestionValueLoaderTest extends TestCase
 
     public function testLoadByRemoteIdWithRepositoryException(): void
     {
-        $this->frequentlyAskedQuestionRepositoryMock
+        $this->frequentlyAskedQuestionRepositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willThrowException(new Exception());

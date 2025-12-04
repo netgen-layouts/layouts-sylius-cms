@@ -9,27 +9,27 @@ use Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\MediaValueLoader;
 use Netgen\Layouts\Sylius\BitBag\Repository\MediaRepositoryInterface;
 use Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs\Media;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(MediaValueLoader::class)]
 final class MediaValueLoaderTest extends TestCase
 {
-    private MockObject&MediaRepositoryInterface $mediaRepositoryMock;
+    private Stub&MediaRepositoryInterface $mediaRepositoryStub;
 
     private MediaValueLoader $valueLoader;
 
     protected function setUp(): void
     {
-        $this->mediaRepositoryMock = $this->createMock(MediaRepositoryInterface::class);
-        $this->valueLoader = new MediaValueLoader($this->mediaRepositoryMock);
+        $this->mediaRepositoryStub = self::createStub(MediaRepositoryInterface::class);
+        $this->valueLoader = new MediaValueLoader($this->mediaRepositoryStub);
     }
 
     public function testLoad(): void
     {
         $media = new Media(42, 'logo-image', 'Logo');
 
-        $this->mediaRepositoryMock
+        $this->mediaRepositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn($media);
@@ -39,7 +39,7 @@ final class MediaValueLoaderTest extends TestCase
 
     public function testLoadWithNoMedia(): void
     {
-        $this->mediaRepositoryMock
+        $this->mediaRepositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
@@ -49,7 +49,7 @@ final class MediaValueLoaderTest extends TestCase
 
     public function testLoadWithRepositoryException(): void
     {
-        $this->mediaRepositoryMock
+        $this->mediaRepositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willThrowException(new Exception());
@@ -61,7 +61,7 @@ final class MediaValueLoaderTest extends TestCase
     {
         $media = new Media(42, 'logo-image', 'Logo');
 
-        $this->mediaRepositoryMock
+        $this->mediaRepositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn($media);
@@ -71,7 +71,7 @@ final class MediaValueLoaderTest extends TestCase
 
     public function testLoadByRemoteIdWithNoMedia(): void
     {
-        $this->mediaRepositoryMock
+        $this->mediaRepositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
@@ -81,7 +81,7 @@ final class MediaValueLoaderTest extends TestCase
 
     public function testLoadByRemoteIdWithRepositoryException(): void
     {
-        $this->mediaRepositoryMock
+        $this->mediaRepositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willThrowException(new Exception());

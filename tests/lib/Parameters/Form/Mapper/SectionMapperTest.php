@@ -31,7 +31,7 @@ final class SectionMapperTest extends TestCase
     {
         $parameterDefinition = ParameterDefinition::fromArray(
             [
-                'type' => new SectionType($this->createMock(SectionRepositoryInterface::class)),
+                'type' => new SectionType(self::createStub(SectionRepositoryInterface::class)),
                 'isRequired' => false,
             ],
         );

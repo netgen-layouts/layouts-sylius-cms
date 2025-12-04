@@ -9,27 +9,27 @@ use Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\SectionValueLoader;
 use Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface;
 use Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs\Section;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(SectionValueLoader::class)]
 final class SectionValueLoaderTest extends TestCase
 {
-    private MockObject&SectionRepositoryInterface $sectionRepositoryMock;
+    private Stub&SectionRepositoryInterface $sectionRepositoryStub;
 
     private SectionValueLoader $valueLoader;
 
     protected function setUp(): void
     {
-        $this->sectionRepositoryMock = $this->createMock(SectionRepositoryInterface::class);
-        $this->valueLoader = new SectionValueLoader($this->sectionRepositoryMock);
+        $this->sectionRepositoryStub = self::createStub(SectionRepositoryInterface::class);
+        $this->valueLoader = new SectionValueLoader($this->sectionRepositoryStub);
     }
 
     public function testLoad(): void
     {
         $section = new Section(42, 'blog', 'Blog');
 
-        $this->sectionRepositoryMock
+        $this->sectionRepositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn($section);
@@ -39,7 +39,7 @@ final class SectionValueLoaderTest extends TestCase
 
     public function testLoadWithNoSection(): void
     {
-        $this->sectionRepositoryMock
+        $this->sectionRepositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
@@ -49,7 +49,7 @@ final class SectionValueLoaderTest extends TestCase
 
     public function testLoadWithRepositoryException(): void
     {
-        $this->sectionRepositoryMock
+        $this->sectionRepositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willThrowException(new Exception());
@@ -61,7 +61,7 @@ final class SectionValueLoaderTest extends TestCase
     {
         $section = new Section(42, 'blog', 'Blog');
 
-        $this->sectionRepositoryMock
+        $this->sectionRepositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn($section);
@@ -71,7 +71,7 @@ final class SectionValueLoaderTest extends TestCase
 
     public function testLoadByRemoteIdWithNoSection(): void
     {
-        $this->sectionRepositoryMock
+        $this->sectionRepositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
@@ -81,7 +81,7 @@ final class SectionValueLoaderTest extends TestCase
 
     public function testLoadByRemoteIdWithRepositoryException(): void
     {
-        $this->sectionRepositoryMock
+        $this->sectionRepositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willThrowException(new Exception());

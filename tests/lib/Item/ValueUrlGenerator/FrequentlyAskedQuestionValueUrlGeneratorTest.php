@@ -7,28 +7,27 @@ namespace Netgen\Layouts\Sylius\BitBag\Tests\Item\ValueUrlGenerator;
 use Netgen\Layouts\Sylius\BitBag\Item\ValueUrlGenerator\FrequentlyAskedQuestionValueUrlGenerator;
 use Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs\FrequentlyAskedQuestion;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 #[CoversClass(FrequentlyAskedQuestionValueUrlGenerator::class)]
 final class FrequentlyAskedQuestionValueUrlGeneratorTest extends TestCase
 {
-    private MockObject&UrlGeneratorInterface $urlGeneratorMock;
+    private Stub&UrlGeneratorInterface $urlGeneratorStub;
 
     private FrequentlyAskedQuestionValueUrlGenerator $urlGenerator;
 
     protected function setUp(): void
     {
-        $this->urlGeneratorMock = $this->createMock(UrlGeneratorInterface::class);
+        $this->urlGeneratorStub = self::createStub(UrlGeneratorInterface::class);
 
-        $this->urlGenerator = new FrequentlyAskedQuestionValueUrlGenerator($this->urlGeneratorMock);
+        $this->urlGenerator = new FrequentlyAskedQuestionValueUrlGenerator($this->urlGeneratorStub);
     }
 
     public function testGenerateAdminUrl(): void
     {
-        $this->urlGeneratorMock
-            ->expects($this->once())
+        $this->urlGeneratorStub
             ->method('generate')
             ->with(
                 self::identicalTo('bitbag_sylius_cms_plugin_admin_frequently_asked_question_update'),

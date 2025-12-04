@@ -10,7 +10,7 @@ use Netgen\Layouts\Sylius\BitBag\Validator\Constraint\Section;
 use Netgen\Layouts\Sylius\BitBag\Validator\SectionValidator;
 use Netgen\Layouts\Tests\TestCase\ValidatorTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\ConstraintValidatorInterface;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
@@ -18,7 +18,7 @@ use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 #[CoversClass(SectionValidator::class)]
 final class SectionValidatorTest extends ValidatorTestCase
 {
-    private MockObject&SectionRepositoryInterface $repositoryMock;
+    private Stub&SectionRepositoryInterface $repositoryStub;
 
     protected function setUp(): void
     {
@@ -29,15 +29,14 @@ final class SectionValidatorTest extends ValidatorTestCase
 
     public function getValidator(): ConstraintValidatorInterface
     {
-        $this->repositoryMock = $this->createMock(SectionRepositoryInterface::class);
+        $this->repositoryStub = self::createStub(SectionRepositoryInterface::class);
 
-        return new SectionValidator($this->repositoryMock);
+        return new SectionValidator($this->repositoryStub);
     }
 
     public function testValidateValid(): void
     {
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(new SectionStub(42, 'blog'));
@@ -47,17 +46,12 @@ final class SectionValidatorTest extends ValidatorTestCase
 
     public function testValidateNull(): void
     {
-        $this->repositoryMock
-            ->expects($this->never())
-            ->method('find');
-
         $this->assertValid(true, null);
     }
 
     public function testValidateInvalid(): void
     {
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);

@@ -15,29 +15,29 @@ use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\FrequentlyAskedQuestion;
 use Pagerfanta\Adapter\AdapterInterface;
 use Pagerfanta\Pagerfanta;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 
 #[CoversClass(FrequentlyAskedQuestionBackend::class)]
 final class FrequentlyAskedQuestionBackendTest extends TestCase
 {
-    private MockObject&FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepositoryMock;
+    private Stub&FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepositoryStub;
 
     private FrequentlyAskedQuestionBackend $backend;
 
     protected function setUp(): void
     {
-        $this->frequentlyAskedQuestionRepositoryMock = $this->createMock(FrequentlyAskedQuestionRepositoryInterface::class);
-        $localeContextMock = $this->createMock(LocaleContextInterface::class);
+        $this->frequentlyAskedQuestionRepositoryStub = self::createStub(FrequentlyAskedQuestionRepositoryInterface::class);
+        $localeContextStub = self::createStub(LocaleContextInterface::class);
 
-        $localeContextMock
+        $localeContextStub
             ->method('getLocaleCode')
             ->willReturn('en');
 
         $this->backend = new FrequentlyAskedQuestionBackend(
-            $this->frequentlyAskedQuestionRepositoryMock,
-            $localeContextMock,
+            $this->frequentlyAskedQuestionRepositoryStub,
+            $localeContextStub,
         );
     }
 
@@ -51,8 +51,7 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
 
     public function testLoadItem(): void
     {
-        $this->frequentlyAskedQuestionRepositoryMock
-            ->expects($this->once())
+        $this->frequentlyAskedQuestionRepositoryStub
             ->method('find')
             ->with(self::identicalTo(1))
             ->willReturn(new FrequentlyAskedQuestion(1, 'TEST_QUESTION'));
@@ -67,8 +66,7 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
         $this->expectException(NotFoundException::class);
         $this->expectExceptionMessage('Item with value "1" not found.');
 
-        $this->frequentlyAskedQuestionRepositoryMock
-            ->expects($this->once())
+        $this->frequentlyAskedQuestionRepositoryStub
             ->method('find')
             ->with(self::identicalTo(1))
             ->willReturn(null);
@@ -92,8 +90,8 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
 
     public function testGetSubItems(): void
     {
-        $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
-        $pagerfantaAdapterMock
+        $pagerfantaAdapterStub = self::createStub(AdapterInterface::class);
+        $pagerfantaAdapterStub
             ->method('getSlice')
             ->with(self::identicalTo(0), self::identicalTo(25))
             ->willReturn(new ArrayIterator([
@@ -101,11 +99,10 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
                 new FrequentlyAskedQuestion(43, 'TEST_QUESTION_2'),
             ]));
 
-        $this->frequentlyAskedQuestionRepositoryMock
-            ->expects($this->once())
+        $this->frequentlyAskedQuestionRepositoryStub
             ->method('createListPaginator')
             ->with(self::identicalTo('en'))
-            ->willReturn(new Pagerfanta($pagerfantaAdapterMock));
+            ->willReturn(new Pagerfanta($pagerfantaAdapterStub));
 
         $items = [
             ...$this->backend->getSubItems(
@@ -119,13 +116,13 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
 
     public function testGetSubItemsWithOffsetAndLimit(): void
     {
-        $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
+        $pagerfantaAdapterStub = self::createStub(AdapterInterface::class);
 
-        $pagerfantaAdapterMock
+        $pagerfantaAdapterStub
             ->method('getNbResults')
             ->willReturn(15);
 
-        $pagerfantaAdapterMock
+        $pagerfantaAdapterStub
             ->method('getSlice')
             ->with(self::identicalTo(8), self::identicalTo(2))
             ->willReturn(new ArrayIterator([
@@ -133,11 +130,10 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
                 new FrequentlyAskedQuestion(43, 'TEST_QUESTION_2'),
             ]));
 
-        $this->frequentlyAskedQuestionRepositoryMock
-            ->expects($this->once())
+        $this->frequentlyAskedQuestionRepositoryStub
             ->method('createListPaginator')
             ->with(self::identicalTo('en'))
-            ->willReturn(new Pagerfanta($pagerfantaAdapterMock));
+            ->willReturn(new Pagerfanta($pagerfantaAdapterStub));
 
         $items = [
             ...$this->backend->getSubItems(
@@ -153,16 +149,15 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
 
     public function testGetSubItemsCount(): void
     {
-        $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
-        $pagerfantaAdapterMock
+        $pagerfantaAdapterStub = self::createStub(AdapterInterface::class);
+        $pagerfantaAdapterStub
             ->method('getNbResults')
             ->willReturn(2);
 
-        $this->frequentlyAskedQuestionRepositoryMock
-            ->expects($this->once())
+        $this->frequentlyAskedQuestionRepositoryStub
             ->method('createListPaginator')
             ->with(self::identicalTo('en'))
-            ->willReturn(new Pagerfanta($pagerfantaAdapterMock));
+            ->willReturn(new Pagerfanta($pagerfantaAdapterStub));
 
         $count = $this->backend->getSubItemsCount(
             new RootLocation(),
@@ -173,8 +168,8 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
 
     public function testSearchItems(): void
     {
-        $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
-        $pagerfantaAdapterMock
+        $pagerfantaAdapterStub = self::createStub(AdapterInterface::class);
+        $pagerfantaAdapterStub
             ->method('getSlice')
             ->with(self::identicalTo(0), self::identicalTo(25))
             ->willReturn(new ArrayIterator([
@@ -182,11 +177,10 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
                 new FrequentlyAskedQuestion(43, 'TEST_QUESTION_2'),
             ]));
 
-        $this->frequentlyAskedQuestionRepositoryMock
-            ->expects($this->once())
+        $this->frequentlyAskedQuestionRepositoryStub
             ->method('createSearchPaginator')
             ->with(self::identicalTo('test'), self::identicalTo('en'))
-            ->willReturn(new Pagerfanta($pagerfantaAdapterMock));
+            ->willReturn(new Pagerfanta($pagerfantaAdapterStub));
 
         $searchResult = [...$this->backend->searchItems(new SearchQuery('test'))->results];
 
@@ -196,13 +190,13 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
 
     public function testSearchItemsWithOffsetAndLimit(): void
     {
-        $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
+        $pagerfantaAdapterStub = self::createStub(AdapterInterface::class);
 
-        $pagerfantaAdapterMock
+        $pagerfantaAdapterStub
             ->method('getNbResults')
             ->willReturn(15);
 
-        $pagerfantaAdapterMock
+        $pagerfantaAdapterStub
             ->method('getSlice')
             ->with(self::identicalTo(8), self::identicalTo(2))
             ->willReturn(new ArrayIterator([
@@ -210,11 +204,10 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
                 new FrequentlyAskedQuestion(43, 'TEST_QUESTION_2'),
             ]));
 
-        $this->frequentlyAskedQuestionRepositoryMock
-            ->expects($this->once())
+        $this->frequentlyAskedQuestionRepositoryStub
             ->method('createSearchPaginator')
             ->with(self::identicalTo('test'), self::identicalTo('en'))
-            ->willReturn(new Pagerfanta($pagerfantaAdapterMock));
+            ->willReturn(new Pagerfanta($pagerfantaAdapterStub));
 
         $searchQuery = new SearchQuery('test');
         $searchQuery->offset = 8;
@@ -228,16 +221,15 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
 
     public function testSearchItemsCount(): void
     {
-        $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
-        $pagerfantaAdapterMock
+        $pagerfantaAdapterStub = self::createStub(AdapterInterface::class);
+        $pagerfantaAdapterStub
             ->method('getNbResults')
             ->willReturn(2);
 
-        $this->frequentlyAskedQuestionRepositoryMock
-            ->expects($this->once())
+        $this->frequentlyAskedQuestionRepositoryStub
             ->method('createSearchPaginator')
             ->with(self::identicalTo('test'), self::identicalTo('en'))
-            ->willReturn(new Pagerfanta($pagerfantaAdapterMock));
+            ->willReturn(new Pagerfanta($pagerfantaAdapterStub));
 
         $count = $this->backend->searchItemsCount(new SearchQuery('test'));
 

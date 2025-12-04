@@ -9,7 +9,7 @@ use Netgen\Layouts\Sylius\BitBag\Repository\PageRepositoryInterface;
 use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Page as PageStub;
 use Netgen\Layouts\Sylius\BitBag\Tests\Validator\RepositoryValidatorFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Validation;
@@ -17,15 +17,15 @@ use Symfony\Component\Validator\Validation;
 #[CoversClass(Page::class)]
 final class PageTest extends TestCase
 {
-    private MockObject&PageRepositoryInterface $repositoryMock;
+    private Stub&PageRepositoryInterface $repositoryStub;
 
     private Page $targetType;
 
     protected function setUp(): void
     {
-        $this->repositoryMock = $this->createMock(PageRepositoryInterface::class);
+        $this->repositoryStub = self::createStub(PageRepositoryInterface::class);
 
-        $this->targetType = new Page($this->repositoryMock);
+        $this->targetType = new Page($this->repositoryStub);
     }
 
     public function testGetType(): void
@@ -35,14 +35,13 @@ final class PageTest extends TestCase
 
     public function testValidationValid(): void
     {
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(new PageStub(42, 'contact-us'));
 
         $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))
+            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
             ->getValidator();
 
         $errors = $validator->validate(42, $this->targetType->getConstraints());
@@ -51,14 +50,13 @@ final class PageTest extends TestCase
 
     public function testValidationInvalid(): void
     {
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
 
         $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))
+            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
             ->getValidator();
 
         $errors = $validator->validate(42, $this->targetType->getConstraints());
@@ -86,8 +84,7 @@ final class PageTest extends TestCase
     {
         $page = new PageStub(42, 'contact-us');
 
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn($page);
@@ -97,8 +94,7 @@ final class PageTest extends TestCase
 
     public function testGetValueObjectWithNoPage(): void
     {
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);

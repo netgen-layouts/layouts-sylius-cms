@@ -10,7 +10,7 @@ use Netgen\Layouts\Sylius\BitBag\Validator\Constraint\Page;
 use Netgen\Layouts\Sylius\BitBag\Validator\PageValidator;
 use Netgen\Layouts\Tests\TestCase\ValidatorTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\ConstraintValidatorInterface;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
@@ -18,7 +18,7 @@ use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 #[CoversClass(PageValidator::class)]
 final class PageValidatorTest extends ValidatorTestCase
 {
-    private MockObject&PageRepositoryInterface $repositoryMock;
+    private Stub&PageRepositoryInterface $repositoryStub;
 
     protected function setUp(): void
     {
@@ -29,15 +29,14 @@ final class PageValidatorTest extends ValidatorTestCase
 
     public function getValidator(): ConstraintValidatorInterface
     {
-        $this->repositoryMock = $this->createMock(PageRepositoryInterface::class);
+        $this->repositoryStub = self::createStub(PageRepositoryInterface::class);
 
-        return new PageValidator($this->repositoryMock);
+        return new PageValidator($this->repositoryStub);
     }
 
     public function testValidateValid(): void
     {
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(new PageStub(42, 'contact-us'));
@@ -47,17 +46,12 @@ final class PageValidatorTest extends ValidatorTestCase
 
     public function testValidateNull(): void
     {
-        $this->repositoryMock
-            ->expects($this->never())
-            ->method('find');
-
         $this->assertValid(true, null);
     }
 
     public function testValidateInvalid(): void
     {
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);

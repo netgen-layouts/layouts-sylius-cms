@@ -12,7 +12,7 @@ use Netgen\Layouts\Sylius\BitBag\Tests\Validator\RepositoryValidatorFactory;
 use Netgen\Layouts\Tests\Parameters\ParameterType\ParameterTypeTestTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\OptionsResolver\Exception\InvalidArgumentException;
 use Symfony\Component\Validator\Validation;
@@ -22,13 +22,13 @@ final class SectionTypeTest extends TestCase
 {
     use ParameterTypeTestTrait;
 
-    private MockObject&SectionRepositoryInterface $repositoryMock;
+    private Stub&SectionRepositoryInterface $repositoryStub;
 
     protected function setUp(): void
     {
-        $this->repositoryMock = $this->createMock(SectionRepositoryInterface::class);
+        $this->repositoryStub = self::createStub(SectionRepositoryInterface::class);
 
-        $this->type = new SectionType($this->repositoryMock);
+        $this->type = new SectionType($this->repositoryStub);
     }
 
     public function testGetIdentifier(): void
@@ -87,15 +87,14 @@ final class SectionTypeTest extends TestCase
 
     public function testValidationValid(): void
     {
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(new SectionStub(42, 'blog'));
 
         $parameter = $this->getParameterDefinition([], true);
         $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))
+            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
             ->getValidator();
 
         $errors = $validator->validate(42, $this->type->getConstraints($parameter, 42));
@@ -104,13 +103,9 @@ final class SectionTypeTest extends TestCase
 
     public function testValidationValidWithNonRequiredValue(): void
     {
-        $this->repositoryMock
-            ->expects($this->never())
-            ->method('find');
-
         $parameter = $this->getParameterDefinition();
         $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))
+            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
             ->getValidator();
 
         $errors = $validator->validate(null, $this->type->getConstraints($parameter, null));
@@ -119,15 +114,14 @@ final class SectionTypeTest extends TestCase
 
     public function testValidationInvalid(): void
     {
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
 
         $parameter = $this->getParameterDefinition([], true);
         $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))
+            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
             ->getValidator();
 
         $errors = $validator->validate(42, $this->type->getConstraints($parameter, 42));
@@ -152,8 +146,7 @@ final class SectionTypeTest extends TestCase
     {
         $section = new SectionStub(42, 'blog');
 
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn($section);
@@ -166,8 +159,7 @@ final class SectionTypeTest extends TestCase
 
     public function testGetValueObjectWithNoSection(): void
     {
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);

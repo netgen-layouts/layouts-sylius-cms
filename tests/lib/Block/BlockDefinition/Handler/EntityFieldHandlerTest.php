@@ -13,7 +13,7 @@ use Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler\EntityFieldHandle
 use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Page as PageStub;
 use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Section as SectionStub;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -21,15 +21,15 @@ use Symfony\Component\HttpFoundation\RequestStack;
 #[CoversClass(EntityFieldHandler::class)]
 final class EntityFieldHandlerTest extends TestCase
 {
-    private MockObject&RequestStack $requestStackMock;
+    private Stub&RequestStack $requestStackStub;
 
     private EntityFieldHandler $handler;
 
     protected function setUp(): void
     {
-        $this->requestStackMock = $this->createMock(RequestStack::class);
+        $this->requestStackStub = self::createStub(RequestStack::class);
 
-        $this->handler = new EntityFieldHandler($this->requestStackMock);
+        $this->handler = new EntityFieldHandler($this->requestStackStub);
     }
 
     public function testIsContextual(): void
@@ -46,8 +46,7 @@ final class EntityFieldHandlerTest extends TestCase
         $request = Request::create('/');
         $request->attributes->set('nglayouts_sylius_bitbag_page', $page);
 
-        $this->requestStackMock
-            ->expects($this->once())
+        $this->requestStackStub
             ->method('getCurrentRequest')
             ->willReturn($request);
 
@@ -85,8 +84,7 @@ final class EntityFieldHandlerTest extends TestCase
         $request = Request::create('/');
         $request->attributes->set('nglayouts_sylius_bitbag_section', $section);
 
-        $this->requestStackMock
-            ->expects($this->once())
+        $this->requestStackStub
             ->method('getCurrentRequest')
             ->willReturn($request);
 
@@ -119,8 +117,7 @@ final class EntityFieldHandlerTest extends TestCase
 
     public function testGetDynamicParametersWithoutRequest(): void
     {
-        $this->requestStackMock
-            ->expects($this->once())
+        $this->requestStackStub
             ->method('getCurrentRequest')
             ->willReturn(null);
 
