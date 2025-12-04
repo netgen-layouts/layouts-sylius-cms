@@ -59,7 +59,7 @@ final class SectionTypeTest extends TestCase
     }
 
     /**
-     * Provider for testing valid parameter attributes.
+     * @return iterable<mixed>
      */
     public static function validOptionsDataProvider(): iterable
     {
@@ -72,7 +72,7 @@ final class SectionTypeTest extends TestCase
     }
 
     /**
-     * Provider for testing invalid parameter attributes.
+     * @return iterable<mixed>
      */
     public static function invalidOptionsDataProvider(): iterable
     {
@@ -134,6 +134,9 @@ final class SectionTypeTest extends TestCase
         self::assertSame($isEmpty, $this->type->isValueEmpty(new ParameterDefinition(), $value));
     }
 
+    /**
+     * @return iterable<mixed>
+     */
     public static function emptyDataProvider(): iterable
     {
         return [
