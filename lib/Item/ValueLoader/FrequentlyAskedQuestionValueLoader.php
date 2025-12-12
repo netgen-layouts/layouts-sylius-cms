@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\BitBag\Item\ValueLoader;
 
-use BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionInterface;
 use Netgen\Layouts\Item\ValueLoaderInterface;
 use Netgen\Layouts\Sylius\BitBag\Repository\FrequentlyAskedQuestionRepositoryInterface;
+use Sylius\Resource\Model\ResourceInterface;
 use Throwable;
 
 final class FrequentlyAskedQuestionValueLoader implements ValueLoaderInterface
@@ -15,7 +15,7 @@ final class FrequentlyAskedQuestionValueLoader implements ValueLoaderInterface
         private FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository,
     ) {}
 
-    public function load(int|string $id): ?FrequentlyAskedQuestionInterface
+    public function load(int|string $id): ?ResourceInterface
     {
         try {
             return $this->frequentlyAskedQuestionRepository->find($id);
@@ -24,7 +24,7 @@ final class FrequentlyAskedQuestionValueLoader implements ValueLoaderInterface
         }
     }
 
-    public function loadByRemoteId(int|string $remoteId): ?FrequentlyAskedQuestionInterface
+    public function loadByRemoteId(int|string $remoteId): ?ResourceInterface
     {
         return $this->load($remoteId);
     }

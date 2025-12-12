@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\BitBag\Item\ValueLoader;
 
-use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use Netgen\Layouts\Item\ValueLoaderInterface;
 use Netgen\Layouts\Sylius\BitBag\Repository\BlockRepositoryInterface;
+use Sylius\Resource\Model\ResourceInterface;
 use Throwable;
 
 final class BlockValueLoader implements ValueLoaderInterface
@@ -15,7 +15,7 @@ final class BlockValueLoader implements ValueLoaderInterface
         private BlockRepositoryInterface $blockRepository,
     ) {}
 
-    public function load(int|string $id): ?BlockInterface
+    public function load(int|string $id): ?ResourceInterface
     {
         try {
             return $this->blockRepository->find($id);
@@ -24,7 +24,7 @@ final class BlockValueLoader implements ValueLoaderInterface
         }
     }
 
-    public function loadByRemoteId(int|string $remoteId): ?BlockInterface
+    public function loadByRemoteId(int|string $remoteId): ?ResourceInterface
     {
         return $this->load($remoteId);
     }

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\BitBag\Item\ValueLoader;
 
-use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use Netgen\Layouts\Item\ValueLoaderInterface;
 use Netgen\Layouts\Sylius\BitBag\Repository\MediaRepositoryInterface;
+use Sylius\Resource\Model\ResourceInterface;
 use Throwable;
 
 final class MediaValueLoader implements ValueLoaderInterface
@@ -15,7 +15,7 @@ final class MediaValueLoader implements ValueLoaderInterface
         private MediaRepositoryInterface $mediaRepository,
     ) {}
 
-    public function load(int|string $id): ?MediaInterface
+    public function load(int|string $id): ?ResourceInterface
     {
         try {
             return $this->mediaRepository->find($id);
@@ -24,7 +24,7 @@ final class MediaValueLoader implements ValueLoaderInterface
         }
     }
 
-    public function loadByRemoteId(int|string $remoteId): ?MediaInterface
+    public function loadByRemoteId(int|string $remoteId): ?ResourceInterface
     {
         return $this->load($remoteId);
     }
