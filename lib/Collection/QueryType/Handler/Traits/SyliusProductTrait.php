@@ -58,7 +58,7 @@ trait SyliusProductTrait
         $useCurrentProduct = $parameterCollection->getParameter('use_current_product')->value === true;
         $syliusProductId = $parameterCollection->getParameter('sylius_product_id')->value;
 
-        if ($useCurrentProduct === true) {
+        if ($useCurrentProduct) {
             $syliusProductId = $this->getCurrentProductId($request);
         }
 

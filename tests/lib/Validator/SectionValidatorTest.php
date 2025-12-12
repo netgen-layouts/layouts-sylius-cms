@@ -27,13 +27,6 @@ final class SectionValidatorTest extends ValidatorTestCase
         $this->constraint = new Section();
     }
 
-    public function getValidator(): ConstraintValidatorInterface
-    {
-        $this->repositoryStub = self::createStub(SectionRepositoryInterface::class);
-
-        return new SectionValidator($this->repositoryStub);
-    }
-
     public function testValidateValid(): void
     {
         $this->repositoryStub
@@ -74,5 +67,12 @@ final class SectionValidatorTest extends ValidatorTestCase
         $this->expectExceptionMessage('Expected argument of type "scalar", "array" given');
 
         $this->assertValid(true, []);
+    }
+
+    protected function getValidator(): ConstraintValidatorInterface
+    {
+        $this->repositoryStub = self::createStub(SectionRepositoryInterface::class);
+
+        return new SectionValidator($this->repositoryStub);
     }
 }

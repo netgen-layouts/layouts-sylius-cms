@@ -27,13 +27,6 @@ final class PageValidatorTest extends ValidatorTestCase
         $this->constraint = new Page();
     }
 
-    public function getValidator(): ConstraintValidatorInterface
-    {
-        $this->repositoryStub = self::createStub(PageRepositoryInterface::class);
-
-        return new PageValidator($this->repositoryStub);
-    }
-
     public function testValidateValid(): void
     {
         $this->repositoryStub
@@ -74,5 +67,12 @@ final class PageValidatorTest extends ValidatorTestCase
         $this->expectExceptionMessage('Expected argument of type "scalar", "array" given');
 
         $this->assertValid(true, []);
+    }
+
+    protected function getValidator(): ConstraintValidatorInterface
+    {
+        $this->repositoryStub = self::createStub(PageRepositoryInterface::class);
+
+        return new PageValidator($this->repositoryStub);
     }
 }
