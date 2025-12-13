@@ -44,7 +44,7 @@ final class PageIndexListener implements EventSubscriberInterface
         }
 
         $section = $this->sectionRepository->findOneByCode(
-            $currentRequest->attributes->get('sectionCode'),
+            $currentRequest->attributes->getString('sectionCode'),
             $this->localeContext->getLocaleCode(),
         );
 

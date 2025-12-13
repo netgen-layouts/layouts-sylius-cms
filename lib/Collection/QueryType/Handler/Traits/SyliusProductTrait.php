@@ -85,7 +85,6 @@ trait SyliusProductTrait
         }
 
         $product = $request->attributes->get('nglayouts_sylius_resource');
-
         if (!$product instanceof ProductInterface) {
             return null;
         }

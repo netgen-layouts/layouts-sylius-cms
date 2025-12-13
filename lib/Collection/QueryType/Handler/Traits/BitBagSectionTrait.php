@@ -85,7 +85,6 @@ trait BitBagSectionTrait
         }
 
         $section = $request->attributes->get('nglayouts_sylius_bitbag_section');
-
         if (!$section instanceof SectionInterface) {
             return null;
         }

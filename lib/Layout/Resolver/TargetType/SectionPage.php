@@ -44,7 +44,6 @@ final class SectionPage extends TargetType implements ValueObjectProviderInterfa
     public function provideValue(Request $request): ?array
     {
         $page = $request->attributes->get('nglayouts_sylius_bitbag_page');
-
         if (!$page instanceof PageInterface) {
             return null;
         }
