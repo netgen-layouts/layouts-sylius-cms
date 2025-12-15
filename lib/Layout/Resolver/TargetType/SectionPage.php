@@ -61,6 +61,6 @@ final class SectionPage extends TargetType implements ValueObjectProviderInterfa
 
     public function getValueObject(mixed $value): ?ResourceInterface
     {
-        return $this->sectionRepository->find($value);
+        return $this->sectionRepository->find((int) $value);
     }
 }

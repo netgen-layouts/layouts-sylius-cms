@@ -33,7 +33,7 @@ final class SectionType extends ParameterType implements ValueObjectProviderInte
 
     public function getValueObject(mixed $value): ?ResourceInterface
     {
-        return $this->sectionRepository->find($value);
+        return $this->sectionRepository->find((int) $value);
     }
 
     protected function getValueConstraints(ParameterDefinition $parameterDefinition, mixed $value): array

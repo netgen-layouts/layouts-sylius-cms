@@ -43,6 +43,6 @@ final class Page extends TargetType implements ValueObjectProviderInterface
 
     public function getValueObject(mixed $value): ?ResourceInterface
     {
-        return $this->pageRepository->find($value);
+        return $this->pageRepository->find((int) $value);
     }
 }
