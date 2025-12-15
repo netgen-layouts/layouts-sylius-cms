@@ -7,7 +7,7 @@ services:
             - { name: netgen_layouts.target_type, priority: 190 }
 
     netgen_layouts.sylius.bitbag.layout_resolver.target_type.form_mapper.page:
-        class: Netgen\Layouts\Sylius\BitBag\Layout\Resolver\Form\TargetType\Mapper\Page
+        class: Netgen\Layouts\Sylius\BitBag\Layout\Resolver\Form\TargetType\Mapper\PageMapper
         tags:
             - { name: netgen_layouts.target_type.form_mapper, target_type: bitbag_page }
 
@@ -24,7 +24,7 @@ services:
             - { name: netgen_layouts.target_type, priority: 180 }
 
     netgen_layouts.sylius.bitbag.layout_resolver.target_type.form_mapper.section:
-        class: Netgen\Layouts\Sylius\BitBag\Layout\Resolver\Form\TargetType\Mapper\Section
+        class: Netgen\Layouts\Sylius\BitBag\Layout\Resolver\Form\TargetType\Mapper\SectionMapper
         tags:
             - { name: netgen_layouts.target_type.form_mapper, target_type: bitbag_section }
 
@@ -41,7 +41,7 @@ services:
             - { name: netgen_layouts.target_type, priority: 180 }
 
     netgen_layouts.sylius.bitbag.layout_resolver.target_type.form_mapper.section_page:
-        class: Netgen\Layouts\Sylius\BitBag\Layout\Resolver\Form\TargetType\Mapper\SectionPage
+        class: Netgen\Layouts\Sylius\BitBag\Layout\Resolver\Form\TargetType\Mapper\SectionPageMapper
         tags:
             - { name: netgen_layouts.target_type.form_mapper, target_type: bitbag_section_page }
 

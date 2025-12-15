@@ -5,18 +5,18 @@ declare(strict_types=1);
 namespace Netgen\Layouts\Sylius\BitBag\Tests\Layout\Resolver\Form\TargetType\Mapper;
 
 use Netgen\ContentBrowser\Form\Type\ContentBrowserIntegerType;
-use Netgen\Layouts\Sylius\BitBag\Layout\Resolver\Form\TargetType\Mapper\Page;
+use Netgen\Layouts\Sylius\BitBag\Layout\Resolver\Form\TargetType\Mapper\PageMapper;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-#[CoversClass(Page::class)]
-final class PageTest extends TestCase
+#[CoversClass(PageMapper::class)]
+final class PageMapperTest extends TestCase
 {
-    private Page $mapper;
+    private PageMapper $mapper;
 
     protected function setUp(): void
     {
-        $this->mapper = new Page();
+        $this->mapper = new PageMapper();
     }
 
     public function testGetFormType(): void

@@ -7,7 +7,7 @@ namespace Netgen\Layouts\Sylius\BitBag\Layout\Resolver\Form\TargetType\Mapper;
 use Netgen\ContentBrowser\Form\Type\ContentBrowserIntegerType;
 use Netgen\Layouts\Layout\Resolver\Form\TargetType\Mapper;
 
-final class SectionPage extends Mapper
+final class PageMapper extends Mapper
 {
     public function getFormType(): string
     {
@@ -17,7 +17,7 @@ final class SectionPage extends Mapper
     public function getFormOptions(): array
     {
         return [
-            'item_type' => 'bitbag_section',
+            'item_type' => 'bitbag_page',
         ];
     }
 }
