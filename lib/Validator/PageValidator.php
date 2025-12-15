@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
-use function is_scalar;
+use function is_int;
 
 final class PageValidator extends ConstraintValidator
 {
@@ -29,8 +29,8 @@ final class PageValidator extends ConstraintValidator
             throw new UnexpectedTypeException($constraint, Page::class);
         }
 
-        if (!is_scalar($value)) {
-            throw new UnexpectedTypeException($value, 'scalar');
+        if (!is_int($value)) {
+            throw new UnexpectedTypeException($value, 'int');
         }
 
         $page = $this->pageRepository->find($value);

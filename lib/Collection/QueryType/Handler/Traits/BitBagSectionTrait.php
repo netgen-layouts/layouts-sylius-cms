@@ -75,7 +75,7 @@ trait BitBagSectionTrait
         }
 
         $queryBuilder->andWhere($queryBuilder->expr()->eq('sections.id', ':sectionId'));
-        $queryBuilder->setParameter(':sectionId', (int) $bitBagSectionId);
+        $queryBuilder->setParameter(':sectionId', $bitBagSectionId);
     }
 
     private function getCurrentSectionId(?Request $request): ?int
