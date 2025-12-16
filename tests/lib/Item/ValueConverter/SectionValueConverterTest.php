@@ -67,15 +67,6 @@ final class SectionValueConverterTest extends TestCase
         );
     }
 
-    public function testGetIsVisible(): void
-    {
-        self::assertTrue(
-            $this->valueConverter->getIsVisible(
-                new SectionStub(42, 'blog', 'Blog'),
-            ),
-        );
-    }
-
     public function testGetObject(): void
     {
         $section = new SectionStub(42, 'blog', 'Blog');

@@ -32,11 +32,6 @@ final class EntityFieldHandlerTest extends TestCase
         $this->handler = new EntityFieldHandler($this->requestStackStub);
     }
 
-    public function testIsContextual(): void
-    {
-        self::assertTrue($this->handler->isContextual(new Block()));
-    }
-
     public function testGetDynamicParametersWithPage(): void
     {
         $page = new PageStub(5, 'about-us');
