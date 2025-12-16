@@ -37,7 +37,7 @@ final class SectionValueConverter implements ValueConverterInterface
         return (string) $object->getName();
     }
 
-    public function getIsVisible(object $object): bool
+    public function getIsVisible(object $object): true
     {
         return true;
     }

@@ -65,7 +65,7 @@ final class EntityFieldHandler extends BlockDefinitionHandler
         }
     }
 
-    public function isContextual(Block $block): bool
+    public function isContextual(Block $block): true
     {
         return true;
     }
