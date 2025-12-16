@@ -36,7 +36,7 @@ final class BitBagEntityField
         $methodName = 'get' . ucfirst($fieldIdentifier);
 
         if (method_exists($resource, $methodName)) {
-            $value = $resource->{$methodName}();
+            $value = ($resource->{$methodName}(...))();
 
             return new self($value);
         }
@@ -44,7 +44,7 @@ final class BitBagEntityField
         $methodName = 'is' . ucfirst($fieldIdentifier);
 
         if (method_exists($resource, $methodName)) {
-            $value = $resource->{$methodName}();
+            $value = ($resource->{$methodName}(...))();
 
             return new self($value);
         }
