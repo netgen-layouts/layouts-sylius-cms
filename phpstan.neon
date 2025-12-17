@@ -6,5 +6,11 @@ includes:
     - vendor/phpstan/phpstan-symfony/rules.neon
 
 parameters:
+    level: 8
+
+    paths:
+        - lib
+        - bundle
+
     ignoreErrors:
         - '#Variable method call on Sylius\\Resource\\Model\\ResourceInterface#'
