@@ -41,7 +41,7 @@ final class Section extends TargetType implements ValueObjectProviderInterface
         return $section instanceof SectionInterface ? $section->getId() : null;
     }
 
-    public function getValueObject(mixed $value): ?ResourceInterface
+    public function getValueObject(int|string $value): ?ResourceInterface
     {
         return $this->sectionRepository->find((int) $value);
     }
