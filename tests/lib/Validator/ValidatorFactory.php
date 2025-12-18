@@ -14,7 +14,7 @@ use Symfony\Component\Validator\ConstraintValidatorFactory;
 use Symfony\Component\Validator\ConstraintValidatorFactoryInterface;
 use Symfony\Component\Validator\ConstraintValidatorInterface;
 
-final class RepositoryValidatorFactory implements ConstraintValidatorFactoryInterface
+final class ValidatorFactory implements ConstraintValidatorFactoryInterface
 {
     private ConstraintValidatorFactory $baseValidatorFactory;
 

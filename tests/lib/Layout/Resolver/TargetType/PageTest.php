@@ -7,16 +7,17 @@ namespace Netgen\Layouts\Sylius\BitBag\Tests\Layout\Resolver\TargetType;
 use Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\Page;
 use Netgen\Layouts\Sylius\BitBag\Repository\PageRepositoryInterface;
 use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Page as PageStub;
-use Netgen\Layouts\Sylius\BitBag\Tests\Validator\RepositoryValidatorFactory;
+use Netgen\Layouts\Sylius\BitBag\Tests\TestCase\ValidatorTestCaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Validator\Validation;
 
 #[CoversClass(Page::class)]
 final class PageTest extends TestCase
 {
+    use ValidatorTestCaseTrait;
+
     private Stub&PageRepositoryInterface $repositoryStub;
 
     private Page $targetType;
@@ -40,9 +41,7 @@ final class PageTest extends TestCase
             ->with(self::identicalTo(42))
             ->willReturn(new PageStub(42, 'contact-us'));
 
-        $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
-            ->getValidator();
+        $validator = $this->createValidator($this->repositoryStub);
 
         $errors = $validator->validate(42, $this->targetType->getConstraints());
         self::assertCount(0, $errors);
@@ -55,9 +54,7 @@ final class PageTest extends TestCase
             ->with(self::identicalTo(42))
             ->willReturn(null);
 
-        $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
-            ->getValidator();
+        $validator = $this->createValidator($this->repositoryStub);
 
         $errors = $validator->validate(42, $this->targetType->getConstraints());
         self::assertNotCount(0, $errors);
