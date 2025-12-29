@@ -6,4 +6,7 @@ parameters:
         - bundle
 
     ignoreErrors:
-        - '#Variable method call on Sylius\\Resource\\Model\\ResourceInterface#'
+        # Netgen Layouts
+
+        -
+            identifier: method.dynamicName
