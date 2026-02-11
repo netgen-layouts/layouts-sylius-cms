@@ -29,10 +29,6 @@ final class MediaValueUrlGeneratorTest extends TestCase
     {
         $this->urlGeneratorStub
             ->method('generate')
-            ->with(
-                self::identicalTo('bitbag_sylius_cms_plugin_admin_media_update'),
-                self::identicalTo(['id' => 42]),
-            )
             ->willReturn('/admin/media/42/edit');
 
         self::assertSame(

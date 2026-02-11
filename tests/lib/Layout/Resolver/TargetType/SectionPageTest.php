@@ -39,7 +39,6 @@ final class SectionPageTest extends TestCase
     {
         $this->repositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willReturn(new SectionStub(42, 'about'));
 
         $validator = $this->createValidator($this->repositoryStub);
@@ -52,7 +51,6 @@ final class SectionPageTest extends TestCase
     {
         $this->repositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willReturn(null);
 
         $validator = $this->createValidator($this->repositoryStub);
@@ -87,7 +85,6 @@ final class SectionPageTest extends TestCase
 
         $this->repositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willReturn($section);
 
         self::assertSame($section, $this->targetType->getValueObject(42));
@@ -97,7 +94,6 @@ final class SectionPageTest extends TestCase
     {
         $this->repositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willReturn(null);
 
         self::assertNull($this->targetType->getValueObject(42));

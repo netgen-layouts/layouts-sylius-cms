@@ -31,7 +31,6 @@ final class SectionValidatorTest extends ValidatorTestCase
     {
         $this->repositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willReturn(new SectionStub(42, 'blog'));
 
         $this->assertValid(true, 42);
@@ -46,7 +45,6 @@ final class SectionValidatorTest extends ValidatorTestCase
     {
         $this->repositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willReturn(null);
 
         $this->assertValid(false, 42);

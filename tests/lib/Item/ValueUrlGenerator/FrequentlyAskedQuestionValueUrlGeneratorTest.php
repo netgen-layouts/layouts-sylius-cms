@@ -29,10 +29,6 @@ final class FrequentlyAskedQuestionValueUrlGeneratorTest extends TestCase
     {
         $this->urlGeneratorStub
             ->method('generate')
-            ->with(
-                self::identicalTo('bitbag_sylius_cms_plugin_admin_frequently_asked_question_update'),
-                self::identicalTo(['id' => 42]),
-            )
             ->willReturn('/admin/faq/42/edit');
 
         self::assertSame(

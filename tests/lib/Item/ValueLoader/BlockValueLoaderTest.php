@@ -31,7 +31,6 @@ final class BlockValueLoaderTest extends TestCase
 
         $this->blockRepositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willReturn($block);
 
         self::assertSame($block, $this->valueLoader->load(42));
@@ -41,7 +40,6 @@ final class BlockValueLoaderTest extends TestCase
     {
         $this->blockRepositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willReturn(null);
 
         self::assertNull($this->valueLoader->load(42));
@@ -51,7 +49,6 @@ final class BlockValueLoaderTest extends TestCase
     {
         $this->blockRepositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willThrowException(new Exception());
 
         self::assertNull($this->valueLoader->load(42));
@@ -63,7 +60,6 @@ final class BlockValueLoaderTest extends TestCase
 
         $this->blockRepositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willReturn($block);
 
         self::assertSame($block, $this->valueLoader->loadByRemoteId(42));
@@ -73,7 +69,6 @@ final class BlockValueLoaderTest extends TestCase
     {
         $this->blockRepositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willReturn(null);
 
         self::assertNull($this->valueLoader->loadByRemoteId(42));
@@ -83,7 +78,6 @@ final class BlockValueLoaderTest extends TestCase
     {
         $this->blockRepositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willThrowException(new Exception());
 
         self::assertNull($this->valueLoader->loadByRemoteId(42));

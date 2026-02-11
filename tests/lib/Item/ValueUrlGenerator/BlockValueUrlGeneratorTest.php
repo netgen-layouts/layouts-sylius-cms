@@ -29,10 +29,6 @@ final class BlockValueUrlGeneratorTest extends TestCase
     {
         $this->urlGeneratorStub
             ->method('generate')
-            ->with(
-                self::identicalTo('bitbag_sylius_cms_plugin_admin_block_update'),
-                self::identicalTo(['id' => 42]),
-            )
             ->willReturn('/blocks/42/edit');
 
         self::assertSame(

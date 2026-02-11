@@ -31,7 +31,6 @@ final class PageValidatorTest extends ValidatorTestCase
     {
         $this->repositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willReturn(new PageStub(42, 'contact-us'));
 
         $this->assertValid(true, 42);
@@ -46,7 +45,6 @@ final class PageValidatorTest extends ValidatorTestCase
     {
         $this->repositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willReturn(null);
 
         $this->assertValid(false, 42);

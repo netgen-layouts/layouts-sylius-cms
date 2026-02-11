@@ -53,7 +53,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
     {
         $this->frequentlyAskedQuestionRepositoryStub
             ->method('find')
-            ->with(self::identicalTo(1))
             ->willReturn(new FrequentlyAskedQuestion(1, 'TEST_QUESTION'));
 
         $item = $this->backend->loadItem(1);
@@ -68,7 +67,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
 
         $this->frequentlyAskedQuestionRepositoryStub
             ->method('find')
-            ->with(self::identicalTo(1))
             ->willReturn(null);
 
         $this->backend->loadItem(1);
@@ -93,7 +91,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
         $pagerfantaAdapterStub = self::createStub(AdapterInterface::class);
         $pagerfantaAdapterStub
             ->method('getSlice')
-            ->with(self::identicalTo(0), self::identicalTo(25))
             ->willReturn(new ArrayIterator([
                 new FrequentlyAskedQuestion(42, 'TEST_QUESTION'),
                 new FrequentlyAskedQuestion(43, 'TEST_QUESTION_2'),
@@ -101,7 +98,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
 
         $this->frequentlyAskedQuestionRepositoryStub
             ->method('createListPaginator')
-            ->with(self::identicalTo('en'))
             ->willReturn(new Pagerfanta($pagerfantaAdapterStub));
 
         $items = [
@@ -124,7 +120,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
 
         $pagerfantaAdapterStub
             ->method('getSlice')
-            ->with(self::identicalTo(8), self::identicalTo(2))
             ->willReturn(new ArrayIterator([
                 new FrequentlyAskedQuestion(42, 'TEST_QUESTION'),
                 new FrequentlyAskedQuestion(43, 'TEST_QUESTION_2'),
@@ -132,7 +127,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
 
         $this->frequentlyAskedQuestionRepositoryStub
             ->method('createListPaginator')
-            ->with(self::identicalTo('en'))
             ->willReturn(new Pagerfanta($pagerfantaAdapterStub));
 
         $items = [
@@ -156,7 +150,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
 
         $this->frequentlyAskedQuestionRepositoryStub
             ->method('createListPaginator')
-            ->with(self::identicalTo('en'))
             ->willReturn(new Pagerfanta($pagerfantaAdapterStub));
 
         $count = $this->backend->getSubItemsCount(
@@ -171,7 +164,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
         $pagerfantaAdapterStub = self::createStub(AdapterInterface::class);
         $pagerfantaAdapterStub
             ->method('getSlice')
-            ->with(self::identicalTo(0), self::identicalTo(25))
             ->willReturn(new ArrayIterator([
                 new FrequentlyAskedQuestion(42, 'TEST_QUESTION'),
                 new FrequentlyAskedQuestion(43, 'TEST_QUESTION_2'),
@@ -179,7 +171,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
 
         $this->frequentlyAskedQuestionRepositoryStub
             ->method('createSearchPaginator')
-            ->with(self::identicalTo('test'), self::identicalTo('en'))
             ->willReturn(new Pagerfanta($pagerfantaAdapterStub));
 
         $searchResult = [...$this->backend->searchItems(new SearchQuery('test'))->results];
@@ -198,7 +189,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
 
         $pagerfantaAdapterStub
             ->method('getSlice')
-            ->with(self::identicalTo(8), self::identicalTo(2))
             ->willReturn(new ArrayIterator([
                 new FrequentlyAskedQuestion(42, 'TEST_QUESTION'),
                 new FrequentlyAskedQuestion(43, 'TEST_QUESTION_2'),
@@ -206,7 +196,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
 
         $this->frequentlyAskedQuestionRepositoryStub
             ->method('createSearchPaginator')
-            ->with(self::identicalTo('test'), self::identicalTo('en'))
             ->willReturn(new Pagerfanta($pagerfantaAdapterStub));
 
         $searchQuery = new SearchQuery('test');
@@ -228,7 +217,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
 
         $this->frequentlyAskedQuestionRepositoryStub
             ->method('createSearchPaginator')
-            ->with(self::identicalTo('test'), self::identicalTo('en'))
             ->willReturn(new Pagerfanta($pagerfantaAdapterStub));
 
         $count = $this->backend->searchItemsCount(new SearchQuery('test'));

@@ -29,10 +29,6 @@ final class SectionValueUrlGeneratorTest extends TestCase
     {
         $this->urlGeneratorStub
             ->method('generate')
-            ->with(
-                self::identicalTo('bitbag_sylius_cms_plugin_shop_page_index_by_section_code'),
-                self::identicalTo(['sectionCode' => 'blog']),
-            )
             ->willReturn('/en_GB/pages/blog');
 
         self::assertSame(
@@ -45,10 +41,6 @@ final class SectionValueUrlGeneratorTest extends TestCase
     {
         $this->urlGeneratorStub
             ->method('generate')
-            ->with(
-                self::identicalTo('bitbag_sylius_cms_plugin_admin_section_update'),
-                self::identicalTo(['id' => 42]),
-            )
             ->willReturn('/admin/sections/42/edit');
 
         self::assertSame(

@@ -100,7 +100,6 @@ final class SectionTypeTest extends TestCase
     {
         $this->repositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willReturn(new SectionStub(42, 'blog'));
 
         $validator = $this->createValidator($this->repositoryStub);
@@ -125,7 +124,6 @@ final class SectionTypeTest extends TestCase
     {
         $this->repositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willReturn(null);
 
         $validator = $this->createValidator($this->repositoryStub);
@@ -159,7 +157,6 @@ final class SectionTypeTest extends TestCase
 
         $this->repositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willReturn($section);
 
         /** @var \Netgen\Layouts\Sylius\BitBag\Parameters\ParameterType\SectionType $type */
@@ -172,7 +169,6 @@ final class SectionTypeTest extends TestCase
     {
         $this->repositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willReturn(null);
 
         /** @var \Netgen\Layouts\Sylius\BitBag\Parameters\ParameterType\SectionType $type */

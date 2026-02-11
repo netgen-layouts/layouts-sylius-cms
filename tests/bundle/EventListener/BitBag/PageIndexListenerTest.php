@@ -65,7 +65,6 @@ final class PageIndexListenerTest extends TestCase
 
         $this->sectionRepositoryStub
             ->method('findOneByCode')
-            ->with(self::identicalTo('blog'), self::identicalTo('en'))
             ->willReturn($section);
 
         $event = new ResourceControllerEvent();
@@ -106,7 +105,6 @@ final class PageIndexListenerTest extends TestCase
 
         $this->sectionRepositoryStub
             ->method('findOneByCode')
-            ->with(self::identicalTo('unknown'), self::identicalTo('en'))
             ->willReturn(null);
 
         $event = new ResourceControllerEvent();

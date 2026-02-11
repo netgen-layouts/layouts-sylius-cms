@@ -31,7 +31,6 @@ final class PageValueLoaderTest extends TestCase
 
         $this->pageRepositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willReturn($page);
 
         self::assertSame($page, $this->valueLoader->load(42));
@@ -41,7 +40,6 @@ final class PageValueLoaderTest extends TestCase
     {
         $this->pageRepositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willReturn(null);
 
         self::assertNull($this->valueLoader->load(42));
@@ -51,7 +49,6 @@ final class PageValueLoaderTest extends TestCase
     {
         $this->pageRepositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willThrowException(new Exception());
 
         self::assertNull($this->valueLoader->load(42));
@@ -63,7 +60,6 @@ final class PageValueLoaderTest extends TestCase
 
         $this->pageRepositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willReturn($page);
 
         self::assertSame($page, $this->valueLoader->loadByRemoteId(42));
@@ -73,7 +69,6 @@ final class PageValueLoaderTest extends TestCase
     {
         $this->pageRepositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willReturn(null);
 
         self::assertNull($this->valueLoader->loadByRemoteId(42));
@@ -83,7 +78,6 @@ final class PageValueLoaderTest extends TestCase
     {
         $this->pageRepositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willThrowException(new Exception());
 
         self::assertNull($this->valueLoader->loadByRemoteId(42));

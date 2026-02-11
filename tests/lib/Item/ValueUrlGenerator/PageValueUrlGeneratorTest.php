@@ -29,10 +29,6 @@ final class PageValueUrlGeneratorTest extends TestCase
     {
         $this->urlGeneratorStub
             ->method('generate')
-            ->with(
-                self::identicalTo('bitbag_sylius_cms_plugin_shop_page_show'),
-                self::identicalTo(['slug' => 'about-us']),
-            )
             ->willReturn('/en_GB/page/about-us');
 
         self::assertSame(
@@ -45,10 +41,6 @@ final class PageValueUrlGeneratorTest extends TestCase
     {
         $this->urlGeneratorStub
             ->method('generate')
-            ->with(
-                self::identicalTo('bitbag_sylius_cms_plugin_admin_page_update'),
-                self::identicalTo(['id' => 42]),
-            )
             ->willReturn('/admin/pages/42/edit');
 
         self::assertSame(

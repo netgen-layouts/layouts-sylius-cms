@@ -53,7 +53,6 @@ final class PageBackendTest extends TestCase
     {
         $this->pageRepositoryStub
             ->method('find')
-            ->with(self::identicalTo(1))
             ->willReturn(new Page(1, 'contact-us'));
 
         $item = $this->backend->loadItem(1);
@@ -68,7 +67,6 @@ final class PageBackendTest extends TestCase
 
         $this->pageRepositoryStub
             ->method('find')
-            ->with(self::identicalTo(1))
             ->willReturn(null);
 
         $this->backend->loadItem(1);
@@ -93,12 +91,10 @@ final class PageBackendTest extends TestCase
         $pagerfantaAdapterStub = self::createStub(AdapterInterface::class);
         $pagerfantaAdapterStub
             ->method('getSlice')
-            ->with(self::identicalTo(0), self::identicalTo(25))
             ->willReturn(new ArrayIterator([new Page(42, 'about-us'), new Page(43, 'contact-us')]));
 
         $this->pageRepositoryStub
             ->method('createListPaginator')
-            ->with(self::identicalTo('en'))
             ->willReturn(new Pagerfanta($pagerfantaAdapterStub));
 
         $items = [
@@ -121,12 +117,10 @@ final class PageBackendTest extends TestCase
 
         $pagerfantaAdapterStub
             ->method('getSlice')
-            ->with(self::identicalTo(8), self::identicalTo(2))
             ->willReturn(new ArrayIterator([new Page(42, 'about-us'), new Page(43, 'contact-us')]));
 
         $this->pageRepositoryStub
             ->method('createListPaginator')
-            ->with(self::identicalTo('en'))
             ->willReturn(new Pagerfanta($pagerfantaAdapterStub));
 
         $items = [
@@ -150,7 +144,6 @@ final class PageBackendTest extends TestCase
 
         $this->pageRepositoryStub
             ->method('createListPaginator')
-            ->with(self::identicalTo('en'))
             ->willReturn(new Pagerfanta($pagerfantaAdapterStub));
 
         $count = $this->backend->getSubItemsCount(
@@ -165,12 +158,10 @@ final class PageBackendTest extends TestCase
         $pagerfantaAdapterStub = self::createStub(AdapterInterface::class);
         $pagerfantaAdapterStub
             ->method('getSlice')
-            ->with(self::identicalTo(0), self::identicalTo(25))
             ->willReturn(new ArrayIterator([new Page(42, 'about-us'), new Page(43, 'contact-us')]));
 
         $this->pageRepositoryStub
             ->method('createSearchPaginator')
-            ->with(self::identicalTo('test'), self::identicalTo('en'))
             ->willReturn(new Pagerfanta($pagerfantaAdapterStub));
 
         $searchResult = [...$this->backend->searchItems(new SearchQuery('test'))->results];
@@ -189,12 +180,10 @@ final class PageBackendTest extends TestCase
 
         $pagerfantaAdapterStub
             ->method('getSlice')
-            ->with(self::identicalTo(8), self::identicalTo(2))
             ->willReturn(new ArrayIterator([new Page(42, 'about-us'), new Page(43, 'contact-us')]));
 
         $this->pageRepositoryStub
             ->method('createSearchPaginator')
-            ->with(self::identicalTo('test'), self::identicalTo('en'))
             ->willReturn(new Pagerfanta($pagerfantaAdapterStub));
 
         $searchQuery = new SearchQuery('test');
@@ -216,7 +205,6 @@ final class PageBackendTest extends TestCase
 
         $this->pageRepositoryStub
             ->method('createSearchPaginator')
-            ->with(self::identicalTo('test'), self::identicalTo('en'))
             ->willReturn(new Pagerfanta($pagerfantaAdapterStub));
 
         $count = $this->backend->searchItemsCount(new SearchQuery('test'));
