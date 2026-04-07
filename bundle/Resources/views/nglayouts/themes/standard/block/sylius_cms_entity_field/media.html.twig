@@ -4,9 +4,9 @@
     {% set field_identifier = block.parameter('field_identifier').value %}
     {% set field = block.dynamicParameter('field') %}
 
-    {% block bitbag_entity_field %}
+    {% block sylius_cms_entity_field %}
         {% if field is not empty %}
-            {% if field.type == enum('Netgen\\Layouts\\Sylius\\BitBag\\Block\\BlockDefinition\\Handler\\BitBagEntityFieldType').Media %}
+            {% if field.type == enum('Netgen\\Layouts\\Sylius\\Cms\\Block\\BlockDefinition\\Handler\\EntityFieldType').Media %}
                 <div class="field field-{{ field.type.value }} field-{{ field_identifier }}">
                     {% set media = field.value %}
 
@@ -19,7 +19,7 @@
                     {% endif %}
                 </div>
             {% else %}
-                {{ 'bitbag.field_not_compatible'|trans({ '%field_identifier%': field_identifier }, 'bitbag') }}
+                {{ 'sylius_cms.field_not_compatible'|trans({ '%field_identifier%': field_identifier }, 'sylius_cms') }}
             {% endif %}
         {% endif %}
     {% endblock %}

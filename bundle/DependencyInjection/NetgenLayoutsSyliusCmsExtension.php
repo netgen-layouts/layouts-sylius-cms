@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Bundle\LayoutsSyliusBitBagBundle\DependencyInjection;
+namespace Netgen\Bundle\LayoutsSyliusCmsBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Config\Loader\DelegatingLoader;
@@ -17,7 +17,7 @@ use Symfony\Component\Yaml\Yaml;
 
 use function file_get_contents;
 
-final class NetgenLayoutsSyliusBitBagExtension extends Extension implements PrependExtensionInterface
+final class NetgenLayoutsSyliusCmsExtension extends Extension implements PrependExtensionInterface
 {
     public function load(array $configs, ContainerBuilder $container): void
     {

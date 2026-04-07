@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Browser\ColumnProvider\Block;
+namespace Netgen\Layouts\Sylius\Cms\Browser\ColumnProvider\Block;
 
 use Netgen\ContentBrowser\Item\ColumnProvider\ColumnValueProviderInterface;
 use Netgen\ContentBrowser\Item\ItemInterface;
-use Netgen\Layouts\Sylius\BitBag\Browser\Item\Block\BlockInterface;
+use Netgen\Layouts\Sylius\Cms\Browser\Item\Block\BlockInterface;
 
 final class Code implements ColumnValueProviderInterface
 {

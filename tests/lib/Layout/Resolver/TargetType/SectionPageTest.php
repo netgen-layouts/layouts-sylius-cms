@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Tests\Layout\Resolver\TargetType;
+namespace Netgen\Layouts\Sylius\Cms\Tests\Layout\Resolver\TargetType;
 
-use Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\SectionPage;
-use Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface;
-use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Page as PageStub;
-use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Section as SectionStub;
-use Netgen\Layouts\Sylius\BitBag\Tests\TestCase\ValidatorTestCaseTrait;
+use Netgen\Layouts\Sylius\Cms\Layout\Resolver\TargetType\SectionPage;
+use Netgen\Layouts\Sylius\Cms\Repository\SectionRepositoryInterface;
+use Netgen\Layouts\Sylius\Cms\Tests\Stubs\Page as PageStub;
+use Netgen\Layouts\Sylius\Cms\Tests\Stubs\Section as SectionStub;
+use Netgen\Layouts\Sylius\Cms\Tests\TestCase\ValidatorTestCaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
@@ -32,7 +32,7 @@ final class SectionPageTest extends TestCase
 
     public function testGetType(): void
     {
-        self::assertSame('bitbag_section_page', $this->targetType::getType());
+        self::assertSame('sylius_cms_section_page', $this->targetType::getType());
     }
 
     public function testValidationValid(): void
@@ -67,7 +67,7 @@ final class SectionPageTest extends TestCase
         }
 
         $request = Request::create('/');
-        $request->attributes->set('nglayouts_sylius_bitbag_page', $page);
+        $request->attributes->set('nglayouts_sylius_cms_page', $page);
 
         self::assertSame([12, 13], $this->targetType->provideValue($request));
     }

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Bundle\LayoutsSyliusBitBagBundle\EventListener\BitBag;
+namespace Netgen\Bundle\LayoutsSyliusCmsBundle\EventListener;
 
-use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
 use Netgen\Layouts\Context\Context;
-use Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface;
+use Netgen\Layouts\Sylius\Cms\Repository\SectionRepositoryInterface;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
+use Sylius\CmsPlugin\Entity\SectionInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -52,10 +52,10 @@ final class PageIndexListener implements EventSubscriberInterface
             return;
         }
 
-        $currentRequest->attributes->set('nglayouts_sylius_bitbag_section', $section);
+        $currentRequest->attributes->set('nglayouts_sylius_cms_section', $section);
         $currentRequest->attributes->set('nglayouts_sylius_resource', $section);
         // We set context here instead in a ContextProvider, since bitbag_sylius_cms_plugin.page.index
         // event happens too late, after onKernelRequest event has already been executed
-        $this->context->set('bitbag_section_id', (int) $section->getId());
+        $this->context->set('sylius_cms_section_id', (int) $section->getId());
     }
 }

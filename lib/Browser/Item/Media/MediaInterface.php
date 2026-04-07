@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Browser\Item\Media;
+namespace Netgen\Layouts\Sylius\Cms\Browser\Item\Media;
 
-use BitBag\SyliusCmsPlugin\Entity\MediaInterface as BitBagMediaInterface;
+use Sylius\CmsPlugin\Entity\MediaInterface as SyliusCmsMediaInterface;
 
 interface MediaInterface
 {
     /**
-     * Returns the BitBag media.
+     * Returns the Sylius CMS media.
      */
-    public BitBagMediaInterface $media { get; }
+    public SyliusCmsMediaInterface $media { get; }
 }

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Browser\Item\Block;
+namespace Netgen\Layouts\Sylius\Cms\Browser\Item\Block;
 
-use BitBag\SyliusCmsPlugin\Entity\BlockInterface as BitBagBlockInterface;
+use Sylius\CmsPlugin\Entity\BlockInterface as SyliusCmsBlockInterface;
 
 interface BlockInterface
 {
     /**
-     * Returns the BitBag block.
+     * Returns the Sylius CMS block.
      */
-    public BitBagBlockInterface $block { get; }
+    public SyliusCmsBlockInterface $block { get; }
 }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Parameters\Form\Mapper;
+namespace Netgen\Layouts\Sylius\Cms\Parameters\Form\Mapper;
 
 use Netgen\ContentBrowser\Form\Type\ContentBrowserIntegerType;
 use Netgen\Layouts\Parameters\Form\Mapper;
@@ -18,7 +18,7 @@ final class SectionMapper extends Mapper
     public function mapOptions(ParameterDefinition $parameterDefinition): array
     {
         return [
-            'item_type' => 'bitbag_section',
+            'item_type' => 'sylius_cms_section',
             'required' => $parameterDefinition->isRequired,
         ];
     }

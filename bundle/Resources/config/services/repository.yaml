@@ -1,20 +1,20 @@
 services:
-    netgen_layouts.sylius.bitbag.repository.page:
-        class: Netgen\Layouts\Sylius\BitBag\Repository\PageRepository
+    netgen_layouts.sylius.cms.repository.page:
+        class: Netgen\Layouts\Sylius\Cms\Repository\PageRepository
         parent: bitbag_sylius_cms_plugin.repository.page
 
-    netgen_layouts.sylius.bitbag.repository.section:
-        class: Netgen\Layouts\Sylius\BitBag\Repository\SectionRepository
+    netgen_layouts.sylius.cms.repository.section:
+        class: Netgen\Layouts\Sylius\Cms\Repository\SectionRepository
         parent: bitbag_sylius_cms_plugin.repository.section
 
-    netgen_layouts.sylius.bitbag.repository.block:
-        class: Netgen\Layouts\Sylius\BitBag\Repository\BlockRepository
+    netgen_layouts.sylius.cms.repository.block:
+        class: Netgen\Layouts\Sylius\Cms\Repository\BlockRepository
         parent: bitbag_sylius_cms_plugin.repository.block
 
-    netgen_layouts.sylius.bitbag.repository.media:
-        class: Netgen\Layouts\Sylius\BitBag\Repository\MediaRepository
+    netgen_layouts.sylius.cms.repository.media:
+        class: Netgen\Layouts\Sylius\Cms\Repository\MediaRepository
         parent: bitbag_sylius_cms_plugin.repository.media
 
-    netgen_layouts.sylius.bitbag.repository.frequently_asked_question:
-        class: Netgen\Layouts\Sylius\BitBag\Repository\FrequentlyAskedQuestionRepository
+    netgen_layouts.sylius.cms.repository.frequently_asked_question:
+        class: Netgen\Layouts\Sylius\Cms\Repository\FrequentlyAskedQuestionRepository
         parent: bitbag_sylius_cms_plugin.repository.frequently_asked_question

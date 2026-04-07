@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Tests\Parameters\ParameterType;
+namespace Netgen\Layouts\Sylius\Cms\Tests\Parameters\ParameterType;
 
 use Netgen\Layouts\Parameters\ParameterDefinition;
-use Netgen\Layouts\Sylius\BitBag\Parameters\ParameterType\SectionType;
-use Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface;
-use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Section as SectionStub;
-use Netgen\Layouts\Sylius\BitBag\Tests\TestCase\ValidatorTestCaseTrait;
+use Netgen\Layouts\Sylius\Cms\Parameters\ParameterType\SectionType;
+use Netgen\Layouts\Sylius\Cms\Repository\SectionRepositoryInterface;
+use Netgen\Layouts\Sylius\Cms\Tests\Stubs\Section as SectionStub;
+use Netgen\Layouts\Sylius\Cms\Tests\TestCase\ValidatorTestCaseTrait;
 use Netgen\Layouts\Tests\Parameters\ParameterType\ParameterTypeTestTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -34,7 +34,7 @@ final class SectionTypeTest extends TestCase
 
     public function testGetIdentifier(): void
     {
-        self::assertSame('bitbag_section', $this->type::getIdentifier());
+        self::assertSame('sylius_cms_section', $this->type::getIdentifier());
     }
 
     public function testFromHash(): void
@@ -159,7 +159,7 @@ final class SectionTypeTest extends TestCase
             ->method('find')
             ->willReturn($section);
 
-        /** @var \Netgen\Layouts\Sylius\BitBag\Parameters\ParameterType\SectionType $type */
+        /** @var \Netgen\Layouts\Sylius\Cms\Parameters\ParameterType\SectionType $type */
         $type = $this->type;
 
         self::assertSame($section, $type->getValueObject(42));
@@ -171,7 +171,7 @@ final class SectionTypeTest extends TestCase
             ->method('find')
             ->willReturn(null);
 
-        /** @var \Netgen\Layouts\Sylius\BitBag\Parameters\ParameterType\SectionType $type */
+        /** @var \Netgen\Layouts\Sylius\Cms\Parameters\ParameterType\SectionType $type */
         $type = $this->type;
 
         self::assertNull($type->getValueObject(42));

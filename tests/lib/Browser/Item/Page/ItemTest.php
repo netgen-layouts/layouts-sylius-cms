@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Tests\ContentBrowser\Item\Page;
+namespace Netgen\Layouts\Sylius\Cms\Tests\ContentBrowser\Item\Page;
 
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
-use Netgen\Layouts\Sylius\BitBag\Browser\Item\Page\Item;
-use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Page;
+use Netgen\Layouts\Sylius\Cms\Browser\Item\Page\Item;
+use Netgen\Layouts\Sylius\Cms\Tests\Stubs\Page;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Sylius\CmsPlugin\Entity\PageInterface;
 
 #[CoversClass(Item::class)]
 final class ItemTest extends TestCase

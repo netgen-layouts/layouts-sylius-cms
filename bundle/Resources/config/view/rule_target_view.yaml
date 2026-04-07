@@ -1,15 +1,15 @@
 view:
     rule_target_view:
         value:
-            bitbag_page:
-                template: "@NetgenLayoutsSyliusBitBag/admin/layout_resolver/target/value/page.html.twig"
+            sylius_cms_page:
+                template: "@NetgenLayoutsSyliusCms/admin/layout_resolver/target/value/sylius_cms_page.html.twig"
                 match:
-                    rule_target\type: bitbag_page
-            bitbag_section:
-                template: "@NetgenLayoutsSyliusBitBag/admin/layout_resolver/target/value/section.html.twig"
+                    rule_target\type: sylius_cms_page
+            sylius_cms_section:
+                template: "@NetgenLayoutsSyliusCms/admin/layout_resolver/target/value/sylius_cms_section.html.twig"
                 match:
-                    rule_target\type: bitbag_section
-            bitbag_section_page:
-                template: "@NetgenLayoutsSyliusBitBag/admin/layout_resolver/target/value/section_page.html.twig"
+                    rule_target\type: sylius_cms_section
+            sylius_cms_section_page:
+                template: "@NetgenLayoutsSyliusCms/admin/layout_resolver/target/value/sylius_cms_section_page.html.twig"
                 match:
-                    rule_target\type: bitbag_section_page
+                    rule_target\type: sylius_cms_section_page

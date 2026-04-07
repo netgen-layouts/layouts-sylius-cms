@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Item\ValueUrlGenerator;
+namespace Netgen\Layouts\Sylius\Cms\Item\ValueUrlGenerator;
 
 use Netgen\Layouts\Item\ValueUrlGeneratorInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
- * @implements \Netgen\Layouts\Item\ValueUrlGeneratorInterface<\BitBag\SyliusCmsPlugin\Entity\MediaInterface>
+ * @implements \Netgen\Layouts\Item\ValueUrlGeneratorInterface<\Sylius\CmsPlugin\Entity\MediaInterface>
  */
 final class MediaValueUrlGenerator implements ValueUrlGeneratorInterface
 {

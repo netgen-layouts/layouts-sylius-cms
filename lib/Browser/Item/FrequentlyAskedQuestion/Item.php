@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Browser\Item\FrequentlyAskedQuestion;
+namespace Netgen\Layouts\Sylius\Cms\Browser\Item\FrequentlyAskedQuestion;
 
-use BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionInterface as BitBagFrequentlyAskedQuestionInterface;
 use Netgen\ContentBrowser\Item\ItemInterface;
+use Sylius\CmsPlugin\Entity\FrequentlyAskedQuestionInterface as SyliusCmsFrequentlyAskedQuestionInterface;
 
 final class Item implements ItemInterface, FrequentlyAskedQuestionInterface
 {
@@ -26,6 +26,6 @@ final class Item implements ItemInterface, FrequentlyAskedQuestionInterface
     }
 
     public function __construct(
-        public private(set) BitBagFrequentlyAskedQuestionInterface $frequentlyAskedQuestion,
+        public private(set) SyliusCmsFrequentlyAskedQuestionInterface $frequentlyAskedQuestion,
     ) {}
 }

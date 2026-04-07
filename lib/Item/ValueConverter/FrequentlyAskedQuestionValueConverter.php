@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Item\ValueConverter;
+namespace Netgen\Layouts\Sylius\Cms\Item\ValueConverter;
 
-use BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionInterface;
 use Netgen\Layouts\Item\ValueConverterInterface;
+use Sylius\CmsPlugin\Entity\FrequentlyAskedQuestionInterface;
 
 /**
- * @implements \Netgen\Layouts\Item\ValueConverterInterface<\BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionInterface>
+ * @implements \Netgen\Layouts\Item\ValueConverterInterface<\Sylius\CmsPlugin\Entity\FrequentlyAskedQuestionInterface>
  */
 final class FrequentlyAskedQuestionValueConverter implements ValueConverterInterface
 {
@@ -19,7 +19,7 @@ final class FrequentlyAskedQuestionValueConverter implements ValueConverterInter
 
     public function getValueType(object $object): string
     {
-        return 'bitbag_frequently_asked_question';
+        return 'sylius_cms_frequently_asked_question';
     }
 
     public function getId(object $object): int

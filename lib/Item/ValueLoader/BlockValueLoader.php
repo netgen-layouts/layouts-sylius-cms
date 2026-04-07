@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Item\ValueLoader;
+namespace Netgen\Layouts\Sylius\Cms\Item\ValueLoader;
 
 use Netgen\Layouts\Item\ValueLoaderInterface;
-use Netgen\Layouts\Sylius\BitBag\Repository\BlockRepositoryInterface;
+use Netgen\Layouts\Sylius\Cms\Repository\BlockRepositoryInterface;
 use Sylius\Resource\Model\ResourceInterface;
 use Throwable;
 

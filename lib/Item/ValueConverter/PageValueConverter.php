@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Item\ValueConverter;
+namespace Netgen\Layouts\Sylius\Cms\Item\ValueConverter;
 
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use Netgen\Layouts\Item\ValueConverterInterface;
+use Sylius\CmsPlugin\Entity\PageInterface;
 
 /**
- * @implements \Netgen\Layouts\Item\ValueConverterInterface<\BitBag\SyliusCmsPlugin\Entity\PageInterface>
+ * @implements \Netgen\Layouts\Item\ValueConverterInterface<\Sylius\CmsPlugin\Entity\PageInterface>
  */
 final class PageValueConverter implements ValueConverterInterface
 {
@@ -19,7 +19,7 @@ final class PageValueConverter implements ValueConverterInterface
 
     public function getValueType(object $object): string
     {
-        return 'bitbag_page';
+        return 'sylius_cms_page';
     }
 
     public function getId(object $object): int

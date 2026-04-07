@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Tests\Validator;
+namespace Netgen\Layouts\Sylius\Cms\Tests\Validator;
 
-use Netgen\Layouts\Sylius\BitBag\Repository\PageRepositoryInterface;
-use Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface;
-use Netgen\Layouts\Sylius\BitBag\Validator\PageValidator;
-use Netgen\Layouts\Sylius\BitBag\Validator\SectionValidator;
+use Netgen\Layouts\Sylius\Cms\Repository\PageRepositoryInterface;
+use Netgen\Layouts\Sylius\Cms\Repository\SectionRepositoryInterface;
+use Netgen\Layouts\Sylius\Cms\Validator\PageValidator;
+use Netgen\Layouts\Sylius\Cms\Validator\SectionValidator;
 use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidatorFactory;
@@ -31,11 +31,11 @@ final class ValidatorFactory implements ConstraintValidatorFactoryInterface
     {
         $name = $constraint->validatedBy();
 
-        if ($name === 'nglayouts_sylius_bitbag_page' && $this->repository instanceof PageRepositoryInterface) {
+        if ($name === 'nglayouts_sylius_cms_page' && $this->repository instanceof PageRepositoryInterface) {
             return new PageValidator($this->repository);
         }
 
-        if ($name === 'nglayouts_sylius_bitbag_section' && $this->repository instanceof SectionRepositoryInterface) {
+        if ($name === 'nglayouts_sylius_cms_section' && $this->repository instanceof SectionRepositoryInterface) {
             return new SectionValidator($this->repository);
         }
 

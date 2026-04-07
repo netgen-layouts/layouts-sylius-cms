@@ -1,2 +1,2 @@
-netgen_layouts.sylius.bitbag.page.page_not_found: 'Page with ID %pageId% does not exist.'
-netgen_layouts.sylius.bitbag.section.section_not_found: 'Section with ID %sectionId% does not exist.'
+netgen_layouts.sylius.cms.page.page_not_found: 'Page with ID %pageId% does not exist.'
+netgen_layouts.sylius.cms.section.section_not_found: 'Section with ID %sectionId% does not exist.'

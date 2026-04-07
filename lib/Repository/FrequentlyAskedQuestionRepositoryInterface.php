@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Repository;
+namespace Netgen\Layouts\Sylius\Cms\Repository;
 
-use BitBag\SyliusCmsPlugin\Repository\FrequentlyAskedQuestionRepositoryInterface as BaseFrequentlyAskedQuestionRepositoryInterface;
 use Pagerfanta\PagerfantaInterface;
+use Sylius\CmsPlugin\Repository\FrequentlyAskedQuestionRepositoryInterface as BaseFrequentlyAskedQuestionRepositoryInterface;
 
 interface FrequentlyAskedQuestionRepositoryInterface extends BaseFrequentlyAskedQuestionRepositoryInterface
 {
     /**
      * Creates a paginator which is used to list frequently asked questions.
      *
-     * @return \Pagerfanta\PagerfantaInterface<\BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestion>
+     * @return \Pagerfanta\PagerfantaInterface<\Sylius\CmsPlugin\Entity\FrequentlyAskedQuestion>
      */
     public function createListPaginator(string $localeCode): PagerfantaInterface;
 
     /**
      * Creates a paginator which is used to search for frequently asked questions.
      *
-     * @return \Pagerfanta\PagerfantaInterface<\BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestion>
+     * @return \Pagerfanta\PagerfantaInterface<\Sylius\CmsPlugin\Entity\FrequentlyAskedQuestion>
      */
     public function createSearchPaginator(string $searchText, string $localeCode): PagerfantaInterface;
 }

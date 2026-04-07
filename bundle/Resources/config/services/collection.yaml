@@ -1,43 +1,43 @@
 services:
-    netgen_layouts.sylius.bitbag.collection.query_type_handler.page:
-        class: Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\PageHandler
+    netgen_layouts.sylius.cms.collection.query_type_handler.page:
+        class: Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\PageHandler
         arguments:
-            - "@netgen_layouts.sylius.bitbag.repository.page"
+            - "@netgen_layouts.sylius.cms.repository.page"
             - "@sylius.context.locale"
             - "@request_stack"
         tags:
-            - { name: netgen_layouts.query_type_handler, type: bitbag_page }
+            - { name: netgen_layouts.query_type_handler, type: sylius_cms_page }
 
-    netgen_layouts.sylius.bitbag.collection.query_type_handler.block:
-        class: Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\BlockHandler
+    netgen_layouts.sylius.cms.collection.query_type_handler.block:
+        class: Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\BlockHandler
         arguments:
-            - "@netgen_layouts.sylius.bitbag.repository.block"
+            - "@netgen_layouts.sylius.cms.repository.block"
             - "@sylius.context.locale"
             - "@request_stack"
         tags:
-            - { name: netgen_layouts.query_type_handler, type: bitbag_block }
+            - { name: netgen_layouts.query_type_handler, type: sylius_cms_block }
 
-    netgen_layouts.sylius.bitbag.collection.query_type_handler.media:
-        class: Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\MediaHandler
+    netgen_layouts.sylius.cms.collection.query_type_handler.media:
+        class: Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\MediaHandler
         arguments:
-            - "@netgen_layouts.sylius.bitbag.repository.media"
+            - "@netgen_layouts.sylius.cms.repository.media"
             - "@sylius.context.locale"
             - "@request_stack"
         tags:
-            - { name: netgen_layouts.query_type_handler, type: bitbag_media }
+            - { name: netgen_layouts.query_type_handler, type: sylius_cms_media }
 
-    netgen_layouts.sylius.bitbag.collection.query_type_handler.section:
-        class: Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\SectionHandler
+    netgen_layouts.sylius.cms.collection.query_type_handler.section:
+        class: Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\SectionHandler
         arguments:
-            - "@netgen_layouts.sylius.bitbag.repository.section"
+            - "@netgen_layouts.sylius.cms.repository.section"
             - "@sylius.context.locale"
         tags:
-            - { name: netgen_layouts.query_type_handler, type: bitbag_section }
+            - { name: netgen_layouts.query_type_handler, type: sylius_cms_section }
 
-    netgen_layouts.sylius.bitbag.collection.query_type_handler.frequently_asked_question:
-        class: Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\FrequentlyAskedQuestionHandler
+    netgen_layouts.sylius.cms.collection.query_type_handler.frequently_asked_question:
+        class: Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\FrequentlyAskedQuestionHandler
         arguments:
-            - "@netgen_layouts.sylius.bitbag.repository.frequently_asked_question"
+            - "@netgen_layouts.sylius.cms.repository.frequently_asked_question"
             - "@sylius.context.locale"
         tags:
-            - { name: netgen_layouts.query_type_handler, type: bitbag_frequently_asked_question }
+            - { name: netgen_layouts.query_type_handler, type: sylius_cms_frequently_asked_question }

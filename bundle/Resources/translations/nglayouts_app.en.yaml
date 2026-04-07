@@ -1,2 +1,2 @@
-block.info.bitbag_entity_field: 'BitBag entity field with identifier "%field%" will be rendered here.'
-block.notice.empty_bitbag_entity_field: 'This block is not configured yet. Please define the BitBag entity field identifier which will be used to render the block.'
+block.info.sylius_cms_entity_field: 'Sylius CMS entity field with identifier "%field%" will be rendered here.'
+block.notice.empty_sylius_cms_entity_field: 'This block is not configured yet. Please define the Sylius CMS entity field identifier which will be used to render the block.'

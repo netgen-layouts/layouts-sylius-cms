@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Browser\ColumnProvider\FrequentlyAskedQuestion;
+namespace Netgen\Layouts\Sylius\Cms\Browser\ColumnProvider\FrequentlyAskedQuestion;
 
 use Netgen\ContentBrowser\Item\ColumnProvider\ColumnValueProviderInterface;
 use Netgen\ContentBrowser\Item\ItemInterface;
-use Netgen\Layouts\Sylius\BitBag\Browser\Item\FrequentlyAskedQuestion\FrequentlyAskedQuestionInterface;
+use Netgen\Layouts\Sylius\Cms\Browser\Item\FrequentlyAskedQuestion\FrequentlyAskedQuestionInterface;
 
 final class Code implements ColumnValueProviderInterface
 {

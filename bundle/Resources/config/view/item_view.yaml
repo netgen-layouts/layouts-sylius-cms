@@ -1,65 +1,65 @@
 view:
     item_view:
         default:
-            bitbag_page:
-                template: "@nglayouts/item/bitbag_page.html.twig"
+            sylius_cms_page:
+                template: "@nglayouts/item/sylius_cms_page.html.twig"
                 match:
-                    item\value_type: bitbag_page
-            bitbag_section:
-                template: "@nglayouts/item/bitbag_section.html.twig"
+                    item\value_type: sylius_cms_page
+            sylius_cms_section:
+                template: "@nglayouts/item/sylius_cms_section.html.twig"
                 match:
-                    item\value_type: bitbag_section
-            bitbag_block:
-                template: "@nglayouts/item/bitbag_block.html.twig"
+                    item\value_type: sylius_cms_section
+            sylius_cms_block:
+                template: "@nglayouts/item/sylius_cms_block.html.twig"
                 match:
-                    item\value_type: bitbag_block
-            bitbag_media:
-                template: "@nglayouts/item/bitbag_media.html.twig"
+                    item\value_type: sylius_cms_block
+            sylius_cms_media:
+                template: "@nglayouts/item/sylius_cms_media.html.twig"
                 match:
-                    item\value_type: bitbag_media
-            bitbag_frequently_asked_question:
-                template: "@nglayouts/item/bitbag_frequently_asked_question.html.twig"
+                    item\value_type: sylius_cms_media
+            sylius_cms_frequently_asked_question:
+                template: "@nglayouts/item/sylius_cms_frequently_asked_question.html.twig"
                 match:
-                    item\value_type: bitbag_frequently_asked_question
+                    item\value_type: sylius_cms_frequently_asked_question
         ajax:
-            bitbag_page:
-                template: "@nglayouts/item/bitbag_page.html.twig"
+            sylius_cms_page:
+                template: "@nglayouts/item/sylius_cms_page.html.twig"
                 match:
-                    item\value_type: bitbag_page
-            bitbag_section:
-                template: "@nglayouts/item/bitbag_section.html.twig"
+                    item\value_type: sylius_cms_page
+            sylius_cms_section:
+                template: "@nglayouts/item/sylius_cms_section.html.twig"
                 match:
-                    item\value_type: bitbag_section
-            bitbag_block:
-                template: "@nglayouts/item/bitbag_block.html.twig"
+                    item\value_type: sylius_cms_section
+            sylius_cms_block:
+                template: "@nglayouts/item/sylius_cms_block.html.twig"
                 match:
-                    item\value_type: bitbag_block
-            bitbag_media:
-                template: "@nglayouts/item/bitbag_media.html.twig"
+                    item\value_type: sylius_cms_block
+            sylius_cms_media:
+                template: "@nglayouts/item/sylius_cms_media.html.twig"
                 match:
-                    item\value_type: bitbag_media
-            bitbag_frequently_asked_question:
-                template: "@nglayouts/item/bitbag_frequently_asked_question.html.twig"
+                    item\value_type: sylius_cms_media
+            sylius_cms_frequently_asked_question:
+                template: "@nglayouts/item/sylius_cms_frequently_asked_question.html.twig"
                 match:
-                    item\value_type: bitbag_frequently_asked_question
+                    item\value_type: sylius_cms_frequently_asked_question
         app:
-            bitbag_page:
-                template: "@nglayouts_admin/app/item/bitbag_page.html.twig"
+            sylius_cms_page:
+                template: "@nglayouts_admin/app/item/sylius_cms_page.html.twig"
                 match:
-                    item\value_type: bitbag_page
-            bitbag_section:
-                template: "@nglayouts_admin/app/item/bitbag_section.html.twig"
+                    item\value_type: sylius_cms_page
+            sylius_cms_section:
+                template: "@nglayouts_admin/app/item/sylius_cms_section.html.twig"
                 match:
-                    item\value_type: bitbag_section
-            bitbag_block:
-                template: "@nglayouts_admin/app/item/bitbag_block.html.twig"
+                    item\value_type: sylius_cms_section
+            sylius_cms_block:
+                template: "@nglayouts_admin/app/item/sylius_cms_block.html.twig"
                 match:
-                    item\value_type: bitbag_block
-            bitbag_media:
-                template: "@nglayouts_admin/app/item/bitbag_media.html.twig"
+                    item\value_type: sylius_cms_block
+            sylius_cms_media:
+                template: "@nglayouts_admin/app/item/sylius_cms_media.html.twig"
                 match:
-                    item\value_type: bitbag_media
-            bitbag_frequently_asked_question:
-                template: "@nglayouts_admin/app/item/bitbag_frequently_asked_question.html.twig"
+                    item\value_type: sylius_cms_media
+            sylius_cms_frequently_asked_question:
+                template: "@nglayouts_admin/app/item/sylius_cms_frequently_asked_question.html.twig"
                 match:
-                    item\value_type: bitbag_frequently_asked_question
+                    item\value_type: sylius_cms_frequently_asked_question

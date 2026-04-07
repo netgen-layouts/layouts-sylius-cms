@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Browser\Item\Section;
+namespace Netgen\Layouts\Sylius\Cms\Browser\Item\Section;
 
-use BitBag\SyliusCmsPlugin\Entity\SectionInterface as BitBagSectionInterface;
 use Netgen\ContentBrowser\Item\ItemInterface;
+use Sylius\CmsPlugin\Entity\SectionInterface as SyliusCmsSectionInterface;
 
 final class Item implements ItemInterface, SectionInterface
 {
@@ -26,6 +26,6 @@ final class Item implements ItemInterface, SectionInterface
     }
 
     public function __construct(
-        public private(set) BitBagSectionInterface $section,
+        public private(set) SyliusCmsSectionInterface $section,
     ) {}
 }

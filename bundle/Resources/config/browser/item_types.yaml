@@ -1,6 +1,6 @@
 item_types:
-    bitbag_page:
-        name: item_types.bitbag_page
+    sylius_cms_page:
+        name: item_types.sylius_cms_page
         tree:
             enabled: false
         preview:
@@ -10,18 +10,18 @@ item_types:
                 name: columns.name
                 value_provider: name
             code:
-                name: columns.bitbag_page.code
-                value_provider: bitbag_page\code
+                name: columns.sylius_cms_page.code
+                value_provider: sylius_cms_page\code
             slug:
-                name: columns.bitbag_page.slug
-                value_provider: bitbag_page\slug
+                name: columns.sylius_cms_page.slug
+                value_provider: sylius_cms_page\slug
         default_columns:
             - name
             - code
             - slug
 
-    bitbag_section:
-        name: item_types.bitbag_section
+    sylius_cms_section:
+        name: item_types.sylius_cms_section
         tree:
             enabled: false
         preview:
@@ -31,14 +31,14 @@ item_types:
                 name: columns.name
                 value_provider: name
             code:
-                name: columns.bitbag_section.code
-                value_provider: bitbag_section\code
+                name: columns.sylius_cms_section.code
+                value_provider: sylius_cms_section\code
         default_columns:
             - name
             - code
 
-    bitbag_block:
-        name: item_types.bitbag_block
+    sylius_cms_block:
+        name: item_types.sylius_cms_block
         tree:
             enabled: false
         preview:
@@ -48,39 +48,39 @@ item_types:
                 name: columns.name
                 value_provider: name
             code:
-                name: columns.bitbag_block.code
-                value_provider: bitbag_block\code
+                name: columns.sylius_cms_block.code
+                value_provider: sylius_cms_block\code
         default_columns:
             - name
             - code
 
-    bitbag_media:
-        name: item_types.bitbag_media
+    sylius_cms_media:
+        name: item_types.sylius_cms_media
         tree:
             enabled: false
         preview:
-            template: '@NetgenLayoutsSyliusBitBag/ngcb/bitbag_media.html.twig'
+            template: '@NetgenLayoutsSyliusCms/ngcb/sylius_cms_media.html.twig'
         columns:
             name:
                 name: columns.name
                 value_provider: name
             code:
-                name: columns.bitbag_media.code
-                value_provider: bitbag_media\code
+                name: columns.sylius_cms_media.code
+                value_provider: sylius_cms_media\code
             type:
-                name: columns.bitbag_media.type
-                value_provider: bitbag_media\type
+                name: columns.sylius_cms_media.type
+                value_provider: sylius_cms_media\type
             mime_type:
-                name: columns.bitbag_media.mime_type
-                value_provider: bitbag_media\mime_type
+                name: columns.sylius_cms_media.mime_type
+                value_provider: sylius_cms_media\mime_type
         default_columns:
             - name
             - code
             - type
             - mime_type
 
-    bitbag_frequently_asked_question:
-        name: item_types.bitbag_frequently_asked_question
+    sylius_cms_frequently_asked_question:
+        name: item_types.sylius_cms_frequently_asked_question
         tree:
             enabled: false
         preview:
@@ -90,8 +90,8 @@ item_types:
                 name: columns.name
                 value_provider: name
             code:
-                name: columns.bitbag_frequently_asked_question.code
-                value_provider: bitbag_frequently_asked_question\code
+                name: columns.sylius_cms_frequently_asked_question.code
+                value_provider: sylius_cms_frequently_asked_question\code
         default_columns:
             - name
             - code

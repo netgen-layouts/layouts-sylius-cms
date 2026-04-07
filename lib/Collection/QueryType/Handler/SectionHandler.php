@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler;
+namespace Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler;
 
 use Netgen\Layouts\API\Values\Collection\Query;
 use Netgen\Layouts\Collection\QueryType\QueryTypeHandlerInterface;
 use Netgen\Layouts\Parameters\ParameterBuilderInterface;
-use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\BitBagSortingTrait;
-use Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface;
+use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\SortingTrait;
+use Netgen\Layouts\Sylius\Cms\Repository\SectionRepositoryInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 
 use function max;
@@ -17,7 +17,7 @@ use const PHP_INT_MAX;
 
 final class SectionHandler implements QueryTypeHandlerInterface
 {
-    use BitBagSortingTrait;
+    use SortingTrait;
 
     /**
      * @var array<string, string>
@@ -34,7 +34,7 @@ final class SectionHandler implements QueryTypeHandlerInterface
 
     public function buildParameters(ParameterBuilderInterface $builder): void
     {
-        $this->buildBitBagSortingParameters($builder, $this->sortingOptions);
+        $this->buildSortingParameters($builder, $this->sortingOptions);
     }
 
     public function getValues(Query $query, int $offset = 0, ?int $limit = null): iterable
@@ -43,7 +43,7 @@ final class SectionHandler implements QueryTypeHandlerInterface
             $this->localeContext->getLocaleCode(),
         );
 
-        $this->addBitBagSortingClause($query, $queryBuilder);
+        $this->addSortingClause($query, $queryBuilder);
 
         $limit = max(0, $limit ?? PHP_INT_MAX);
         $offset = max(0, $offset);

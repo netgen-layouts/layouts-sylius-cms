@@ -1,12 +1,12 @@
 services:
-    netgen_layouts.sylius.bitbag.parameters.parameter_type.section:
-        class: Netgen\Layouts\Sylius\BitBag\Parameters\ParameterType\SectionType
+    netgen_layouts.sylius.cms.parameters.parameter_type.section:
+        class: Netgen\Layouts\Sylius\Cms\Parameters\ParameterType\SectionType
         arguments:
-            - "@netgen_layouts.sylius.bitbag.repository.section"
+            - "@netgen_layouts.sylius.cms.repository.section"
         tags:
             - { name: netgen_layouts.parameter_type }
 
-    netgen_layouts.sylius.bitbag.parameters.form_mapper.section:
-        class: Netgen\Layouts\Sylius\BitBag\Parameters\Form\Mapper\SectionMapper
+    netgen_layouts.sylius.cms.parameters.form_mapper.section:
+        class: Netgen\Layouts\Sylius\Cms\Parameters\Form\Mapper\SectionMapper
         tags:
-            - { name: netgen_layouts.parameter_type.form_mapper, type: bitbag_section }
+            - { name: netgen_layouts.parameter_type.form_mapper, type: sylius_cms_section }

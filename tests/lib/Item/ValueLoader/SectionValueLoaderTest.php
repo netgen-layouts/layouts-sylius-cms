@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Tests\Item\ValueLoader;
+namespace Netgen\Layouts\Sylius\Cms\Tests\Item\ValueLoader;
 
 use Exception;
-use Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\SectionValueLoader;
-use Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface;
-use Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs\Section;
+use Netgen\Layouts\Sylius\Cms\Item\ValueLoader\SectionValueLoader;
+use Netgen\Layouts\Sylius\Cms\Repository\SectionRepositoryInterface;
+use Netgen\Layouts\Sylius\Cms\Tests\Item\Stubs\Section;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;

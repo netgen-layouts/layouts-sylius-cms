@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Browser\Backend;
+namespace Netgen\Layouts\Sylius\Cms\Browser\Backend;
 
-use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use Netgen\ContentBrowser\Backend\BackendInterface;
 use Netgen\ContentBrowser\Backend\SearchQuery;
 use Netgen\ContentBrowser\Backend\SearchResult;
@@ -12,8 +11,9 @@ use Netgen\ContentBrowser\Backend\SearchResultInterface;
 use Netgen\ContentBrowser\Exceptions\NotFoundException;
 use Netgen\ContentBrowser\Item\LocationInterface;
 use Netgen\Layouts\Browser\Item\Layout\RootLocation;
-use Netgen\Layouts\Sylius\BitBag\Browser\Item\Block\Item;
-use Netgen\Layouts\Sylius\BitBag\Repository\BlockRepositoryInterface;
+use Netgen\Layouts\Sylius\Cms\Browser\Item\Block\Item;
+use Netgen\Layouts\Sylius\Cms\Repository\BlockRepositoryInterface;
+use Sylius\CmsPlugin\Entity\BlockInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 
 use function max;
@@ -38,7 +38,7 @@ final class BlockBackend implements BackendInterface
 
     public function loadItem(int|string $value): Item
     {
-        /** @var \BitBag\SyliusCmsPlugin\Entity\BlockInterface $block */
+        /** @var \Sylius\CmsPlugin\Entity\BlockInterface $block */
         $block = $this->blockRepository->find($value) ??
             throw new NotFoundException(
                 sprintf(
@@ -124,9 +124,9 @@ final class BlockBackend implements BackendInterface
     /**
      * Builds the items from provided blocks.
      *
-     * @param iterable<\BitBag\SyliusCmsPlugin\Entity\BlockInterface> $blocks
+     * @param iterable<\Sylius\CmsPlugin\Entity\BlockInterface> $blocks
      *
-     * @return iterable<\Netgen\Layouts\Sylius\BitBag\Browser\Item\Block\Item>
+     * @return iterable<\Netgen\Layouts\Sylius\Cms\Browser\Item\Block\Item>
      */
     private function buildItems(iterable $blocks): iterable
     {

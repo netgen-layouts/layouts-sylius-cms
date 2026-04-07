@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Tests\ContentBrowser\ColumnProvider\FrequentlyAskedQuestion;
+namespace Netgen\Layouts\Sylius\Cms\Tests\ContentBrowser\ColumnProvider\FrequentlyAskedQuestion;
 
-use Netgen\Layouts\Sylius\BitBag\Browser\ColumnProvider\FrequentlyAskedQuestion\Code;
-use Netgen\Layouts\Sylius\BitBag\Browser\Item\FrequentlyAskedQuestion\Item as FrequentlyAskedQuestionItem;
-use Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs\FrequentlyAskedQuestion as FrequentlyAskedQuestionStub;
+use Netgen\Layouts\Sylius\Cms\Browser\ColumnProvider\FrequentlyAskedQuestion\Code;
+use Netgen\Layouts\Sylius\Cms\Browser\Item\FrequentlyAskedQuestion\Item as FrequentlyAskedQuestionItem;
+use Netgen\Layouts\Sylius\Cms\Tests\Item\Stubs\FrequentlyAskedQuestion as FrequentlyAskedQuestionStub;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 

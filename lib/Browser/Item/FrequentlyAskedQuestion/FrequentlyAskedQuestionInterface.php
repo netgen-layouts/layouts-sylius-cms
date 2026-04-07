@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Browser\Item\FrequentlyAskedQuestion;
+namespace Netgen\Layouts\Sylius\Cms\Browser\Item\FrequentlyAskedQuestion;
 
-use BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionInterface as BitBagFrequentlyAskedQuestionInterface;
+use Sylius\CmsPlugin\Entity\FrequentlyAskedQuestionInterface as SyliusCmsFrequentlyAskedQuestionInterface;
 
 interface FrequentlyAskedQuestionInterface
 {
     /**
-     * Returns the BitBag frequently asked question.
+     * Returns the Sylius CMS frequently asked question.
      */
-    public BitBagFrequentlyAskedQuestionInterface $frequentlyAskedQuestion { get; }
+    public SyliusCmsFrequentlyAskedQuestionInterface $frequentlyAskedQuestion { get; }
 }

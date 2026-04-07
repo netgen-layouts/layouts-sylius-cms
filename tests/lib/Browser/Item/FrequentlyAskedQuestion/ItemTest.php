@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Tests\ContentBrowser\Item\FrequentlyAskedQuestion;
+namespace Netgen\Layouts\Sylius\Cms\Tests\ContentBrowser\Item\FrequentlyAskedQuestion;
 
-use BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionInterface;
-use Netgen\Layouts\Sylius\BitBag\Browser\Item\FrequentlyAskedQuestion\Item;
-use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\FrequentlyAskedQuestion;
+use Netgen\Layouts\Sylius\Cms\Browser\Item\FrequentlyAskedQuestion\Item;
+use Netgen\Layouts\Sylius\Cms\Tests\Stubs\FrequentlyAskedQuestion;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Sylius\CmsPlugin\Entity\FrequentlyAskedQuestionInterface;
 
 #[CoversClass(Item::class)]
 final class ItemTest extends TestCase

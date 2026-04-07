@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler;
+namespace Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler;
 
 use Netgen\Layouts\API\Values\Collection\Query;
 use Netgen\Layouts\Collection\QueryType\QueryTypeHandlerInterface;
 use Netgen\Layouts\Parameters\ParameterBuilderInterface;
-use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\BitBagEnabledTrait;
-use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\BitBagSectionTrait;
-use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\BitBagSortingTrait;
-use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\SyliusChannelFilterTrait;
-use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\SyliusProductTrait;
-use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\SyliusTaxonTrait;
-use Netgen\Layouts\Sylius\BitBag\Repository\BlockRepositoryInterface;
+use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\EnabledTrait;
+use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\SectionTrait;
+use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\SortingTrait;
+use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\SyliusChannelFilterTrait;
+use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\SyliusProductTrait;
+use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\SyliusTaxonTrait;
+use Netgen\Layouts\Sylius\Cms\Repository\BlockRepositoryInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -23,9 +23,9 @@ use const PHP_INT_MAX;
 
 final class BlockHandler implements QueryTypeHandlerInterface
 {
-    use BitBagEnabledTrait;
-    use BitBagSectionTrait;
-    use BitBagSortingTrait;
+    use EnabledTrait;
+    use SectionTrait;
+    use SortingTrait;
     use SyliusChannelFilterTrait;
     use SyliusProductTrait;
     use SyliusTaxonTrait;
@@ -48,9 +48,9 @@ final class BlockHandler implements QueryTypeHandlerInterface
     {
         $this->buildSyliusProductParameters($builder);
         $this->buildSyliusTaxonParameters($builder);
-        $this->buildBitBagSectionParameters($builder);
+        $this->buildSectionParameters($builder);
         $this->buildSyliusChannelFilterParameters($builder);
-        $this->buildBitBagSortingParameters($builder, $this->sortingOptions);
+        $this->buildSortingParameters($builder, $this->sortingOptions);
     }
 
     public function getValues(Query $query, int $offset = 0, ?int $limit = null): iterable
@@ -63,10 +63,10 @@ final class BlockHandler implements QueryTypeHandlerInterface
 
         $this->addSyliusProductCriterion($query, $queryBuilder, $request);
         $this->addSyliusTaxonCriterion($query, $queryBuilder, $request);
-        $this->addBitBagSectionCriterion($query, $queryBuilder, $request);
+        $this->addSectionCriterion($query, $queryBuilder, $request);
         $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
-        $this->addBitBagEnabledCriterion($queryBuilder);
-        $this->addBitBagSortingClause($query, $queryBuilder);
+        $this->addEnabledCriterion($queryBuilder);
+        $this->addSortingClause($query, $queryBuilder);
 
         $limit = max(0, $limit ?? PHP_INT_MAX);
         $offset = max(0, $offset);
@@ -87,9 +87,9 @@ final class BlockHandler implements QueryTypeHandlerInterface
 
         $this->addSyliusProductCriterion($query, $queryBuilder, $request);
         $this->addSyliusTaxonCriterion($query, $queryBuilder, $request);
-        $this->addBitBagSectionCriterion($query, $queryBuilder, $request);
+        $this->addSectionCriterion($query, $queryBuilder, $request);
         $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
-        $this->addBitBagEnabledCriterion($queryBuilder);
+        $this->addEnabledCriterion($queryBuilder);
 
         return (int) $queryBuilder
             ->select('count(o.id)')
@@ -101,6 +101,6 @@ final class BlockHandler implements QueryTypeHandlerInterface
     {
         return $this->isSyliusProductContextual($query)
             || $this->isSyliusTaxonContextual($query)
-            || $this->isBitBagSectionContextual($query);
+            || $this->isSectionContextual($query);
     }
 }

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Tests\Stubs;
+namespace Netgen\Layouts\Sylius\Cms\Tests\Stubs;
 
-use BitBag\SyliusCmsPlugin\Entity\Block as BaseBlock;
+use Sylius\CmsPlugin\Entity\Block as BaseBlock;
 
 final class Block extends BaseBlock
 {

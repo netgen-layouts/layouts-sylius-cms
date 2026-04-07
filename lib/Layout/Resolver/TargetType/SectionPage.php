@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType;
+namespace Netgen\Layouts\Sylius\Cms\Layout\Resolver\TargetType;
 
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
-use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
 use Doctrine\Common\Collections\Collection;
 use Netgen\Layouts\Layout\Resolver\TargetType;
 use Netgen\Layouts\Layout\Resolver\ValueObjectProviderInterface;
-use Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface;
-use Netgen\Layouts\Sylius\BitBag\Validator\Constraint as SyliusBitBagConstraints;
+use Netgen\Layouts\Sylius\Cms\Repository\SectionRepositoryInterface;
+use Netgen\Layouts\Sylius\Cms\Validator\Constraint as SyliusCmsConstraints;
+use Sylius\CmsPlugin\Entity\PageInterface;
+use Sylius\CmsPlugin\Entity\SectionInterface;
 use Sylius\Resource\Model\ResourceInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints;
@@ -25,7 +25,7 @@ final class SectionPage extends TargetType implements ValueObjectProviderInterfa
 
     public static function getType(): string
     {
-        return 'bitbag_section_page';
+        return 'sylius_cms_section_page';
     }
 
     public function getConstraints(): array
@@ -34,7 +34,7 @@ final class SectionPage extends TargetType implements ValueObjectProviderInterfa
             new Constraints\NotBlank(),
             new Constraints\Type(type: 'int'),
             new Constraints\Positive(),
-            new SyliusBitBagConstraints\Section(),
+            new SyliusCmsConstraints\Section(),
         ];
     }
 
@@ -43,7 +43,7 @@ final class SectionPage extends TargetType implements ValueObjectProviderInterfa
      */
     public function provideValue(Request $request): ?array
     {
-        $page = $request->attributes->get('nglayouts_sylius_bitbag_page');
+        $page = $request->attributes->get('nglayouts_sylius_cms_page');
         if (!$page instanceof PageInterface) {
             return null;
         }

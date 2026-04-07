@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Tests\Item\ValueConverter;
+namespace Netgen\Layouts\Sylius\Cms\Tests\Item\ValueConverter;
 
-use BitBag\SyliusCmsPlugin\Entity\Block;
-use BitBag\SyliusCmsPlugin\Entity\Section;
-use Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\BlockValueConverter;
-use Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs\Block as BlockStub;
+use Netgen\Layouts\Sylius\Cms\Item\ValueConverter\BlockValueConverter;
+use Netgen\Layouts\Sylius\Cms\Tests\Item\Stubs\Block as BlockStub;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Sylius\CmsPlugin\Entity\Block;
+use Sylius\CmsPlugin\Entity\Section;
 
 #[CoversClass(BlockValueConverter::class)]
 final class BlockValueConverterTest extends TestCase
@@ -30,7 +30,7 @@ final class BlockValueConverterTest extends TestCase
     public function testGetValueType(): void
     {
         self::assertSame(
-            'bitbag_block',
+            'sylius_cms_block',
             $this->valueConverter->getValueType(
                 new Block(),
             ),

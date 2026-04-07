@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Bundle\LayoutsSyliusBitBagBundle\Tests\EventListener\BitBag;
+namespace Netgen\Bundle\LayoutsSyliusCmsBundle\Tests\EventListener;
 
-use Netgen\Bundle\LayoutsSyliusBitBagBundle\EventListener\BitBag\PageIndexListener;
+use Netgen\Bundle\LayoutsSyliusCmsBundle\EventListener\PageIndexListener;
 use Netgen\Layouts\Context\Context;
-use Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface;
-use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Section;
+use Netgen\Layouts\Sylius\Cms\Repository\SectionRepositoryInterface;
+use Netgen\Layouts\Sylius\Cms\Tests\Stubs\Section;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
@@ -70,10 +70,10 @@ final class PageIndexListenerTest extends TestCase
         $event = new ResourceControllerEvent();
         $this->listener->onPageIndex($event);
 
-        self::assertSame($section, $request->attributes->get('nglayouts_sylius_bitbag_section'));
+        self::assertSame($section, $request->attributes->get('nglayouts_sylius_cms_section'));
 
-        self::assertTrue($this->context->has('bitbag_section_id'));
-        self::assertSame(42, $this->context->get('bitbag_section_id'));
+        self::assertTrue($this->context->has('sylius_cms_section_id'));
+        self::assertSame(42, $this->context->get('sylius_cms_section_id'));
     }
 
     public function testOnPageIndexWithoutRequest(): void
@@ -81,7 +81,7 @@ final class PageIndexListenerTest extends TestCase
         $event = new ResourceControllerEvent();
         $this->listener->onPageIndex($event);
 
-        self::assertFalse($this->context->has('bitbag_section_id'));
+        self::assertFalse($this->context->has('sylius_cms_section_id'));
     }
 
     public function testOnPageIndexWithoutSectionCode(): void
@@ -92,8 +92,8 @@ final class PageIndexListenerTest extends TestCase
         $event = new ResourceControllerEvent();
         $this->listener->onPageIndex($event);
 
-        self::assertFalse($request->attributes->has('nglayouts_sylius_bitbag_section'));
-        self::assertFalse($this->context->has('bitbag_section_id'));
+        self::assertFalse($request->attributes->has('nglayouts_sylius_cms_section'));
+        self::assertFalse($this->context->has('sylius_cms_section_id'));
     }
 
     public function testOnPageIndexWithNonExistingSection(): void
@@ -110,7 +110,7 @@ final class PageIndexListenerTest extends TestCase
         $event = new ResourceControllerEvent();
         $this->listener->onPageIndex($event);
 
-        self::assertFalse($request->attributes->has('nglayouts_sylius_bitbag_section'));
-        self::assertFalse($this->context->has('bitbag_section_id'));
+        self::assertFalse($request->attributes->has('nglayouts_sylius_cms_section'));
+        self::assertFalse($this->context->has('sylius_cms_section_id'));
     }
 }

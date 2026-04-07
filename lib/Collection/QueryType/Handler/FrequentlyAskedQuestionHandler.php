@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler;
+namespace Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler;
 
 use Netgen\Layouts\API\Values\Collection\Query;
 use Netgen\Layouts\Collection\QueryType\QueryTypeHandlerInterface;
 use Netgen\Layouts\Parameters\ParameterBuilderInterface;
-use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\BitBagEnabledTrait;
-use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\BitBagSortingTrait;
-use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\SyliusChannelFilterTrait;
-use Netgen\Layouts\Sylius\BitBag\Repository\FrequentlyAskedQuestionRepositoryInterface;
+use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\EnabledTrait;
+use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\SortingTrait;
+use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\SyliusChannelFilterTrait;
+use Netgen\Layouts\Sylius\Cms\Repository\FrequentlyAskedQuestionRepositoryInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 
 use function max;
@@ -19,8 +19,8 @@ use const PHP_INT_MAX;
 
 final class FrequentlyAskedQuestionHandler implements QueryTypeHandlerInterface
 {
-    use BitBagEnabledTrait;
-    use BitBagSortingTrait;
+    use EnabledTrait;
+    use SortingTrait;
     use SyliusChannelFilterTrait;
 
     /**
@@ -41,7 +41,7 @@ final class FrequentlyAskedQuestionHandler implements QueryTypeHandlerInterface
     public function buildParameters(ParameterBuilderInterface $builder): void
     {
         $this->buildSyliusChannelFilterParameters($builder);
-        $this->buildBitBagSortingParameters($builder, $this->sortingOptions);
+        $this->buildSortingParameters($builder, $this->sortingOptions);
     }
 
     public function getValues(Query $query, int $offset = 0, ?int $limit = null): iterable
@@ -51,8 +51,8 @@ final class FrequentlyAskedQuestionHandler implements QueryTypeHandlerInterface
         );
 
         $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
-        $this->addBitBagEnabledCriterion($queryBuilder);
-        $this->addBitBagSortingClause($query, $queryBuilder);
+        $this->addEnabledCriterion($queryBuilder);
+        $this->addSortingClause($query, $queryBuilder);
 
         $limit = max(0, $limit ?? PHP_INT_MAX);
         $offset = max(0, $offset);
@@ -70,7 +70,7 @@ final class FrequentlyAskedQuestionHandler implements QueryTypeHandlerInterface
         );
 
         $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
-        $this->addBitBagEnabledCriterion($queryBuilder);
+        $this->addEnabledCriterion($queryBuilder);
 
         return (int) $queryBuilder
             ->select('count(o.id)')

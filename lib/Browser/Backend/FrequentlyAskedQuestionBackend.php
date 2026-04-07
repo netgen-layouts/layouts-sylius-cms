@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Browser\Backend;
+namespace Netgen\Layouts\Sylius\Cms\Browser\Backend;
 
-use BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionInterface;
 use Netgen\ContentBrowser\Backend\BackendInterface;
 use Netgen\ContentBrowser\Backend\SearchQuery;
 use Netgen\ContentBrowser\Backend\SearchResult;
@@ -12,8 +11,9 @@ use Netgen\ContentBrowser\Backend\SearchResultInterface;
 use Netgen\ContentBrowser\Exceptions\NotFoundException;
 use Netgen\ContentBrowser\Item\LocationInterface;
 use Netgen\Layouts\Browser\Item\Layout\RootLocation;
-use Netgen\Layouts\Sylius\BitBag\Browser\Item\FrequentlyAskedQuestion\Item;
-use Netgen\Layouts\Sylius\BitBag\Repository\FrequentlyAskedQuestionRepositoryInterface;
+use Netgen\Layouts\Sylius\Cms\Browser\Item\FrequentlyAskedQuestion\Item;
+use Netgen\Layouts\Sylius\Cms\Repository\FrequentlyAskedQuestionRepositoryInterface;
+use Sylius\CmsPlugin\Entity\FrequentlyAskedQuestionInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 
 use function max;
@@ -38,7 +38,7 @@ final class FrequentlyAskedQuestionBackend implements BackendInterface
 
     public function loadItem(int|string $value): Item
     {
-        /** @var \BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionInterface $frequentlyAskedQuestion */
+        /** @var \Sylius\CmsPlugin\Entity\FrequentlyAskedQuestionInterface $frequentlyAskedQuestion */
         $frequentlyAskedQuestion = $this->frequentlyAskedQuestionRepository->find($value) ??
             throw new NotFoundException(
                 sprintf(
@@ -122,9 +122,9 @@ final class FrequentlyAskedQuestionBackend implements BackendInterface
     /**
      * Builds the items from provided frequently asked questions.
      *
-     * @param iterable<\BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionInterface> $frequentlyAskedQuestions
+     * @param iterable<\Sylius\CmsPlugin\Entity\FrequentlyAskedQuestionInterface> $frequentlyAskedQuestions
      *
-     * @return iterable<\Netgen\Layouts\Sylius\BitBag\Browser\Item\FrequentlyAskedQuestion\Item>
+     * @return iterable<\Netgen\Layouts\Sylius\Cms\Browser\Item\FrequentlyAskedQuestion\Item>
      */
     private function buildItems(iterable $frequentlyAskedQuestions): iterable
     {

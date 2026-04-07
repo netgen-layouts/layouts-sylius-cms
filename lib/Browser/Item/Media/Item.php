@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Browser\Item\Media;
+namespace Netgen\Layouts\Sylius\Cms\Browser\Item\Media;
 
-use BitBag\SyliusCmsPlugin\Entity\MediaInterface as BitBagMediaInterface;
 use Netgen\ContentBrowser\Item\ItemInterface;
+use Sylius\CmsPlugin\Entity\MediaInterface as SyliusCmsMediaInterface;
 
 final class Item implements ItemInterface, MediaInterface
 {
@@ -26,6 +26,6 @@ final class Item implements ItemInterface, MediaInterface
     }
 
     public function __construct(
-        public private(set) BitBagMediaInterface $media,
+        public private(set) SyliusCmsMediaInterface $media,
     ) {}
 }

@@ -1,33 +1,33 @@
 view:
     block_view:
         default:
-            bitbag_entity_field\string:
-                template: "@nglayouts/block/bitbag_entity_field/string.html.twig"
+            sylius_cms_entity_field\string:
+                template: "@nglayouts/block/sylius_cms_entity_field/string.html.twig"
                 match:
-                    block\definition: bitbag_entity_field
+                    block\definition: sylius_cms_entity_field
                     block\view_type: string
-            bitbag_entity_field\content:
-                template: "@nglayouts/block/bitbag_entity_field/content.html.twig"
+            sylius_cms_entity_field\content:
+                template: "@nglayouts/block/sylius_cms_entity_field/content.html.twig"
                 match:
-                    block\definition: bitbag_entity_field
+                    block\definition: sylius_cms_entity_field
                     block\view_type: content
-            bitbag_entity_field\number:
-                template: "@nglayouts/block/bitbag_entity_field/number.html.twig"
+            sylius_cms_entity_field\number:
+                template: "@nglayouts/block/sylius_cms_entity_field/number.html.twig"
                 match:
-                    block\definition: bitbag_entity_field
+                    block\definition: sylius_cms_entity_field
                     block\view_type: number
-            bitbag_entity_field\datetime:
-                template: "@nglayouts/block/bitbag_entity_field/datetime.html.twig"
+            sylius_cms_entity_field\datetime:
+                template: "@nglayouts/block/sylius_cms_entity_field/datetime.html.twig"
                 match:
-                    block\definition: bitbag_entity_field
+                    block\definition: sylius_cms_entity_field
                     block\view_type: datetime
-            bitbag_entity_field\media:
-                template: "@nglayouts/block/bitbag_entity_field/media.html.twig"
+            sylius_cms_entity_field\media:
+                template: "@nglayouts/block/sylius_cms_entity_field/media.html.twig"
                 match:
-                    block\definition: bitbag_entity_field
+                    block\definition: sylius_cms_entity_field
                     block\view_type: media
         app:
-            bitbag_entity_field:
-                template: "@nglayouts_admin/app/block/bitbag_entity_field.html.twig"
+            sylius_cms_entity_field:
+                template: "@nglayouts_admin/app/block/sylius_cms_entity_field.html.twig"
                 match:
-                    block\definition: bitbag_entity_field
+                    block\definition: sylius_cms_entity_field

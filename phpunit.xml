@@ -11,10 +11,10 @@
     colors="true"
 >
     <testsuites>
-        <testsuite name="Netgen\Layouts\Sylius\BitBag">
+        <testsuite name="Netgen\Layouts\Sylius\Cms">
             <directory>tests/lib</directory>
         </testsuite>
-        <testsuite name="Netgen\Bundle\LayoutsSyliusBitBagBundle">
+        <testsuite name="Netgen\Bundle\LayoutsSyliusCmsBundle">
             <directory>tests/bundle</directory>
         </testsuite>
     </testsuites>
@@ -26,8 +26,8 @@
         </include>
         <exclude>
             <directory>bundle/Resources</directory>
-            <file>bundle/NetgenLayoutsSyliusBitBagBundle.php</file>
-            <file>bundle/DependencyInjection/NetgenLayoutsSyliusBitBagExtension.php</file>
+            <file>bundle/NetgenLayoutsSyliusCmsBundle.php</file>
+            <file>bundle/DependencyInjection/NetgenLayoutsSyliusCmsExtension.php</file>
         </exclude>
     </source>
 </phpunit>

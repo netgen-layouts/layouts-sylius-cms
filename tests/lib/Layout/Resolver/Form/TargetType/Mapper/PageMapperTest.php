@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Tests\Layout\Resolver\Form\TargetType\Mapper;
+namespace Netgen\Layouts\Sylius\Cms\Tests\Layout\Resolver\Form\TargetType\Mapper;
 
 use Netgen\ContentBrowser\Form\Type\ContentBrowserIntegerType;
-use Netgen\Layouts\Sylius\BitBag\Layout\Resolver\Form\TargetType\Mapper\PageMapper;
+use Netgen\Layouts\Sylius\Cms\Layout\Resolver\Form\TargetType\Mapper\PageMapper;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
@@ -28,7 +28,7 @@ final class PageMapperTest extends TestCase
     {
         self::assertSame(
             [
-                'item_type' => 'bitbag_page',
+                'item_type' => 'sylius_cms_page',
             ],
             $this->mapper->getFormOptions(),
         );

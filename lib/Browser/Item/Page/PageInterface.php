@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Browser\Item\Page;
+namespace Netgen\Layouts\Sylius\Cms\Browser\Item\Page;
 
-use BitBag\SyliusCmsPlugin\Entity\PageInterface as BitBagPageInterface;
+use Sylius\CmsPlugin\Entity\PageInterface as SyliusCmsPageInterface;
 
 interface PageInterface
 {
     /**
-     * Returns the BitBag page.
+     * Returns the Sylius CMS page.
      */
-    public BitBagPageInterface $page { get; }
+    public SyliusCmsPageInterface $page { get; }
 }

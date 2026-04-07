@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType;
+namespace Netgen\Layouts\Sylius\Cms\Layout\Resolver\TargetType;
 
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use Netgen\Layouts\Layout\Resolver\TargetType;
 use Netgen\Layouts\Layout\Resolver\ValueObjectProviderInterface;
-use Netgen\Layouts\Sylius\BitBag\Repository\PageRepositoryInterface;
-use Netgen\Layouts\Sylius\BitBag\Validator\Constraint as SyliusBitBagConstraints;
+use Netgen\Layouts\Sylius\Cms\Repository\PageRepositoryInterface;
+use Netgen\Layouts\Sylius\Cms\Validator\Constraint as SyliusCmsConstraints;
+use Sylius\CmsPlugin\Entity\PageInterface;
 use Sylius\Resource\Model\ResourceInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints;
@@ -21,7 +21,7 @@ final class Page extends TargetType implements ValueObjectProviderInterface
 
     public static function getType(): string
     {
-        return 'bitbag_page';
+        return 'sylius_cms_page';
     }
 
     public function getConstraints(): array
@@ -30,13 +30,13 @@ final class Page extends TargetType implements ValueObjectProviderInterface
             new Constraints\NotBlank(),
             new Constraints\Type(type: 'int'),
             new Constraints\Positive(),
-            new SyliusBitBagConstraints\Page(),
+            new SyliusCmsConstraints\Page(),
         ];
     }
 
     public function provideValue(Request $request): ?int
     {
-        $page = $request->attributes->get('nglayouts_sylius_bitbag_page');
+        $page = $request->attributes->get('nglayouts_sylius_cms_page');
 
         return $page instanceof PageInterface ? $page->getId() : null;
     }

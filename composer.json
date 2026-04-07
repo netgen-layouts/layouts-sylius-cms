@@ -1,6 +1,6 @@
 {
-    "name": "netgen/layouts-sylius-bitbag",
-    "description": "Netgen Layouts, Sylius eCommerce & BitBag Sylius CMS plugin integration",
+    "name": "netgen/layouts-sylius-cms",
+    "description": "Netgen Layouts, Sylius eCommerce & Sylius CMS plugin integration",
     "license": "MIT",
     "type": "symfony-bundle",
     "authors": [
@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": "^8.4",
-        "bitbag/cms-plugin": "^4.4",
+        "sylius/cms-plugin": "^1.1",
         "netgen/layouts-sylius": "~2.0.0"
     },
     "require-dev": {
@@ -36,14 +36,14 @@
     },
     "autoload": {
         "psr-4": {
-            "Netgen\\Layouts\\Sylius\\BitBag\\": "lib/",
-            "Netgen\\Bundle\\LayoutsSyliusBitBagBundle\\": "bundle/"
+            "Netgen\\Layouts\\Sylius\\Cms\\": "lib/",
+            "Netgen\\Bundle\\LayoutsSyliusCmsBundle\\": "bundle/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Netgen\\Layouts\\Sylius\\BitBag\\Tests\\": "tests/lib/",
-            "Netgen\\Bundle\\LayoutsSyliusBitBagBundle\\Tests\\": "tests/bundle/",
+            "Netgen\\Layouts\\Sylius\\Cms\\Tests\\": "tests/lib/",
+            "Netgen\\Bundle\\LayoutsSyliusCmsBundle\\Tests\\": "tests/bundle/",
             "Netgen\\Layouts\\Tests\\": "vendor/netgen/layouts-core/tests/lib/"
         }
     },

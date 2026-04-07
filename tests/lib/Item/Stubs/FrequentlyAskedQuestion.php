@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs;
+namespace Netgen\Layouts\Sylius\Cms\Tests\Item\Stubs;
 
-use BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestion as BaseFrequentlyAskedQuestion;
+use Sylius\CmsPlugin\Entity\FrequentlyAskedQuestion as BaseFrequentlyAskedQuestion;
 
 final class FrequentlyAskedQuestion extends BaseFrequentlyAskedQuestion
 {

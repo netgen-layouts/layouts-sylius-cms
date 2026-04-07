@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Tests\Item\ValueConverter;
+namespace Netgen\Layouts\Sylius\Cms\Tests\Item\ValueConverter;
 
-use BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestion;
-use BitBag\SyliusCmsPlugin\Entity\Section;
-use Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\FrequentlyAskedQuestionValueConverter;
-use Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs\FrequentlyAskedQuestion as FrequentlyAskedQuestionStub;
+use Netgen\Layouts\Sylius\Cms\Item\ValueConverter\FrequentlyAskedQuestionValueConverter;
+use Netgen\Layouts\Sylius\Cms\Tests\Item\Stubs\FrequentlyAskedQuestion as FrequentlyAskedQuestionStub;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Sylius\CmsPlugin\Entity\FrequentlyAskedQuestion;
+use Sylius\CmsPlugin\Entity\Section;
 
 #[CoversClass(FrequentlyAskedQuestionValueConverter::class)]
 final class FrequentlyAskedQuestionValueConverterTest extends TestCase
@@ -30,7 +30,7 @@ final class FrequentlyAskedQuestionValueConverterTest extends TestCase
     public function testGetValueType(): void
     {
         self::assertSame(
-            'bitbag_frequently_asked_question',
+            'sylius_cms_frequently_asked_question',
             $this->valueConverter->getValueType(
                 new FrequentlyAskedQuestion(),
             ),

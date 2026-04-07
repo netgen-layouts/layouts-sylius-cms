@@ -1,7 +1,7 @@
 resource_type_condition:
     available_resources:
-      BitBag\SyliusCmsPlugin\Entity\PageInterface: page
-      BitBag\SyliusCmsPlugin\Entity\SectionInterface: section
+      Sylius\CmsPlugin\Entity\PageInterface: page
+      Sylius\CmsPlugin\Entity\SectionInterface: section
 
 page_target:
     available_pages:

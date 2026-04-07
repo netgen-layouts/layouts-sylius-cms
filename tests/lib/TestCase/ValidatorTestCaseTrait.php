@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Tests\TestCase;
+namespace Netgen\Layouts\Sylius\Cms\Tests\TestCase;
 
-use Netgen\Layouts\Sylius\BitBag\Tests\Validator\ValidatorFactory;
+use Netgen\Layouts\Sylius\Cms\Tests\Validator\ValidatorFactory;
 use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
 use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Validator\ValidatorInterface;

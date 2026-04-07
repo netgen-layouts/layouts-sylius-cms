@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Tests\ContentBrowser\ColumnProvider\Page;
+namespace Netgen\Layouts\Sylius\Cms\Tests\ContentBrowser\ColumnProvider\Page;
 
-use Netgen\Layouts\Sylius\BitBag\Browser\ColumnProvider\Page\Code;
-use Netgen\Layouts\Sylius\BitBag\Browser\Item\Page\Item as PageItem;
-use Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs\Page as PageStub;
+use Netgen\Layouts\Sylius\Cms\Browser\ColumnProvider\Page\Code;
+use Netgen\Layouts\Sylius\Cms\Browser\Item\Page\Item as PageItem;
+use Netgen\Layouts\Sylius\Cms\Tests\Item\Stubs\Page as PageStub;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 

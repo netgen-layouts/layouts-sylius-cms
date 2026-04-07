@@ -2,27 +2,27 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits;
+namespace Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits;
 
-use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
 use Doctrine\ORM\QueryBuilder;
 use Netgen\Layouts\Parameters\ParameterBuilderInterface;
 use Netgen\Layouts\Parameters\ParameterCollectionInterface;
 use Netgen\Layouts\Parameters\ParameterType;
-use Netgen\Layouts\Sylius\BitBag\Parameters\ParameterType as BitBagParameterType;
+use Netgen\Layouts\Sylius\Cms\Parameters\ParameterType as SyliusCmsParameterType;
+use Sylius\CmsPlugin\Entity\SectionInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 use function count;
 use function in_array;
 
-trait BitBagSectionTrait
+trait SectionTrait
 {
     /**
-     * Builds the parameters for filtering by specific or contextual BitBag section.
+     * Builds the parameters for filtering by specific or contextual Sylius CMS section.
      *
      * @param string[] $groups
      */
-    private function buildBitBagSectionParameters(ParameterBuilderInterface $builder, array $groups = []): void
+    private function buildSectionParameters(ParameterBuilderInterface $builder, array $groups = []): void
     {
         $builder->add(
             'use_current_section',
@@ -34,35 +34,35 @@ trait BitBagSectionTrait
         );
 
         $builder->get('use_current_section')->add(
-            'bitbag_section_id',
-            BitBagParameterType\SectionType::class,
+            'section_id',
+            SyliusCmsParameterType\SectionType::class,
             [
                 'groups' => $groups,
             ],
         );
     }
 
-    private function isBitBagSectionContextual(ParameterCollectionInterface $parameterCollection): bool
+    private function isSectionContextual(ParameterCollectionInterface $parameterCollection): bool
     {
         return $parameterCollection->getParameter('use_current_section')->value === true;
     }
 
     /**
-     * Builds the criteria for filtering by BitBag section.
+     * Builds the criteria for filtering by Sylius CMS section.
      */
-    private function addBitBagSectionCriterion(
+    private function addSectionCriterion(
         ParameterCollectionInterface $parameterCollection,
         QueryBuilder $queryBuilder,
         ?Request $request,
     ): void {
         $useCurrentSection = $parameterCollection->getParameter('use_current_section')->value;
-        $bitBagSectionId = $parameterCollection->getParameter('bitbag_section_id')->value;
+        $sectionId = $parameterCollection->getParameter('section_id')->value;
 
         if ($useCurrentSection === true) {
-            $bitBagSectionId = $this->getCurrentSectionId($request);
+            $sectionId = $this->getCurrentSectionId($request);
         }
 
-        if ($bitBagSectionId === null) {
+        if ($sectionId === null) {
             return;
         }
 
@@ -75,7 +75,7 @@ trait BitBagSectionTrait
         }
 
         $queryBuilder->andWhere($queryBuilder->expr()->eq('sections.id', ':sectionId'));
-        $queryBuilder->setParameter(':sectionId', $bitBagSectionId);
+        $queryBuilder->setParameter(':sectionId', $sectionId);
     }
 
     private function getCurrentSectionId(?Request $request): ?int
@@ -84,7 +84,7 @@ trait BitBagSectionTrait
             return null;
         }
 
-        $section = $request->attributes->get('nglayouts_sylius_bitbag_section');
+        $section = $request->attributes->get('nglayouts_sylius_cms_section');
         if (!$section instanceof SectionInterface) {
             return null;
         }

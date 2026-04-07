@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Bundle\LayoutsSyliusBitBagBundle\Tests\EventListener\BitBag;
+namespace Netgen\Bundle\LayoutsSyliusCmsBundle\Tests\EventListener;
 
-use Netgen\Bundle\LayoutsSyliusBitBagBundle\EventListener\BitBag\PageShowListener;
+use Netgen\Bundle\LayoutsSyliusCmsBundle\EventListener\PageShowListener;
 use Netgen\Layouts\Context\Context;
-use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Page;
-use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Section;
+use Netgen\Layouts\Sylius\Cms\Tests\Stubs\Page;
+use Netgen\Layouts\Sylius\Cms\Tests\Stubs\Section;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
@@ -48,10 +48,10 @@ final class PageShowListenerTest extends TestCase
         $event = new ResourceControllerEvent($page);
         $this->listener->onPageShow($event);
 
-        self::assertSame($page, $request->attributes->get('nglayouts_sylius_bitbag_page'));
+        self::assertSame($page, $request->attributes->get('nglayouts_sylius_cms_page'));
 
-        self::assertTrue($this->context->has('bitbag_page_id'));
-        self::assertSame(42, $this->context->get('bitbag_page_id'));
+        self::assertTrue($this->context->has('sylius_cms_page_id'));
+        self::assertSame(42, $this->context->get('sylius_cms_page_id'));
     }
 
     public function testOnPageShowWithoutPage(): void
@@ -63,7 +63,7 @@ final class PageShowListenerTest extends TestCase
         $event = new ResourceControllerEvent($section);
         $this->listener->onPageShow($event);
 
-        self::assertFalse($request->attributes->has('nglayouts_sylius_bitbag_page'));
-        self::assertFalse($this->context->has('bitbag_page_id'));
+        self::assertFalse($request->attributes->has('nglayouts_sylius_cms_page'));
+        self::assertFalse($this->context->has('sylius_cms_page_id'));
     }
 }

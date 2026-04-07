@@ -1,9 +1,10 @@
 filter_sets:
-    nglayouts_sylius_bitbag_page_app_preview:
+    nglayouts_sylius_cms_page_app_preview:
         filters:
             thumbnail: { size: [160, 90], mode: outbound }
             strip: ~
-    nglayouts_sylius_bitbag_media_app_preview:
+
+    nglayouts_sylius_cms_media_app_preview:
         filters:
             thumbnail: { size: [ 160, 90 ], mode: outbound }
             strip: ~

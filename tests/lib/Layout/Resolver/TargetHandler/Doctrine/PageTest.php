@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Tests\Layout\Resolver\TargetHandler\Doctrine;
+namespace Netgen\Layouts\Sylius\Cms\Tests\Layout\Resolver\TargetHandler\Doctrine;
 
 use Netgen\Layouts\Persistence\Doctrine\QueryHandler\TargetHandlerInterface;
 use Netgen\Layouts\Persistence\Values\LayoutResolver\RuleGroup;
 use Netgen\Layouts\Persistence\Values\Status;
-use Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetHandler\Doctrine\Page;
+use Netgen\Layouts\Sylius\Cms\Layout\Resolver\TargetHandler\Doctrine\Page;
 use Netgen\Layouts\Tests\Layout\Resolver\TargetHandler\Doctrine\TargetHandlerTestBase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
@@ -28,7 +28,7 @@ final class PageTest extends TargetHandlerTestBase
 
     protected function getTargetIdentifier(): string
     {
-        return 'bitbag_page';
+        return 'sylius_cms_page';
     }
 
     protected function getTargetHandler(): TargetHandlerInterface

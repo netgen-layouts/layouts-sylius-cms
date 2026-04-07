@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Browser\Item\Section;
+namespace Netgen\Layouts\Sylius\Cms\Browser\Item\Section;
 
-use BitBag\SyliusCmsPlugin\Entity\SectionInterface as BitBagSectionInterface;
+use Sylius\CmsPlugin\Entity\SectionInterface as SyliusCmsSectionInterface;
 
 interface SectionInterface
 {
     /**
-     * Returns the BitBag section.
+     * Returns the Sylius CMS section.
      */
-    public BitBagSectionInterface $section { get; }
+    public SyliusCmsSectionInterface $section { get; }
 }

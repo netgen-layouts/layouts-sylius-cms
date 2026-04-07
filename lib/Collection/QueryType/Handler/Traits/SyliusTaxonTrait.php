@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits;
+namespace Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits;
 
 use Doctrine\ORM\QueryBuilder;
 use Netgen\Layouts\Parameters\ParameterBuilderInterface;

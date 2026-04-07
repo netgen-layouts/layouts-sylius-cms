@@ -1,80 +1,80 @@
 services:
-    netgen_layouts.sylius.bitbag.browser.backend.page:
-        class: Netgen\Layouts\Sylius\BitBag\Browser\Backend\PageBackend
+    netgen_layouts.sylius.cms.browser.backend.page:
+        class: Netgen\Layouts\Sylius\Cms\Browser\Backend\PageBackend
         arguments:
-            - "@netgen_layouts.sylius.bitbag.repository.page"
+            - "@netgen_layouts.sylius.cms.repository.page"
             - "@sylius.context.locale"
         tags:
-            - { name: netgen_content_browser.backend, item_type: bitbag_page }
+            - { name: netgen_content_browser.backend, item_type: sylius_cms_page }
 
-    netgen_layouts.sylius.bitbag.browser.backend.section:
-        class: Netgen\Layouts\Sylius\BitBag\Browser\Backend\SectionBackend
+    netgen_layouts.sylius.cms.browser.backend.section:
+        class: Netgen\Layouts\Sylius\Cms\Browser\Backend\SectionBackend
         arguments:
-            - "@netgen_layouts.sylius.bitbag.repository.section"
+            - "@netgen_layouts.sylius.cms.repository.section"
             - "@sylius.context.locale"
         tags:
-            - { name: netgen_content_browser.backend, item_type: bitbag_section }
+            - { name: netgen_content_browser.backend, item_type: sylius_cms_section }
 
-    netgen_layouts.sylius.bitbag.browser.backend.block:
-        class: Netgen\Layouts\Sylius\BitBag\Browser\Backend\BlockBackend
+    netgen_layouts.sylius.cms.browser.backend.block:
+        class: Netgen\Layouts\Sylius\Cms\Browser\Backend\BlockBackend
         arguments:
-            - "@netgen_layouts.sylius.bitbag.repository.block"
+            - "@netgen_layouts.sylius.cms.repository.block"
             - "@sylius.context.locale"
         tags:
-            - { name: netgen_content_browser.backend, item_type: bitbag_block }
+            - { name: netgen_content_browser.backend, item_type: sylius_cms_block }
 
-    netgen_layouts.sylius.bitbag.browser.backend.media:
-        class: Netgen\Layouts\Sylius\BitBag\Browser\Backend\MediaBackend
+    netgen_layouts.sylius.cms.browser.backend.media:
+        class: Netgen\Layouts\Sylius\Cms\Browser\Backend\MediaBackend
         arguments:
-            - "@netgen_layouts.sylius.bitbag.repository.media"
+            - "@netgen_layouts.sylius.cms.repository.media"
             - "@sylius.context.locale"
         tags:
-            - { name: netgen_content_browser.backend, item_type: bitbag_media }
+            - { name: netgen_content_browser.backend, item_type: sylius_cms_media }
 
-    netgen_layouts.sylius.bitbag.browser.backend.frequently_asked_question:
-        class: Netgen\Layouts\Sylius\BitBag\Browser\Backend\FrequentlyAskedQuestionBackend
+    netgen_layouts.sylius.cms.browser.backend.frequently_asked_question:
+        class: Netgen\Layouts\Sylius\Cms\Browser\Backend\FrequentlyAskedQuestionBackend
         arguments:
-            - "@netgen_layouts.sylius.bitbag.repository.frequently_asked_question"
+            - "@netgen_layouts.sylius.cms.repository.frequently_asked_question"
             - "@sylius.context.locale"
         tags:
-            - { name: netgen_content_browser.backend, item_type: bitbag_frequently_asked_question }
+            - { name: netgen_content_browser.backend, item_type: sylius_cms_frequently_asked_question }
 
-    netgen_layouts.sylius.bitbag.browser.column_provider.page.code:
-        class: Netgen\Layouts\Sylius\BitBag\Browser\ColumnProvider\Page\Code
+    netgen_layouts.sylius.cms.browser.column_provider.page.code:
+        class: Netgen\Layouts\Sylius\Cms\Browser\ColumnProvider\Page\Code
         tags:
-            - { name: netgen_content_browser.column_value_provider, identifier: bitbag_page\code }
+            - { name: netgen_content_browser.column_value_provider, identifier: sylius_cms_page\code }
 
-    netgen_layouts.sylius.bitbag.browser.column_provider.page.slug:
-        class: Netgen\Layouts\Sylius\BitBag\Browser\ColumnProvider\Page\Slug
+    netgen_layouts.sylius.cms.browser.column_provider.page.slug:
+        class: Netgen\Layouts\Sylius\Cms\Browser\ColumnProvider\Page\Slug
         tags:
-            - { name: netgen_content_browser.column_value_provider, identifier: bitbag_page\slug }
+            - { name: netgen_content_browser.column_value_provider, identifier: sylius_cms_page\slug }
 
-    netgen_layouts.sylius.bitbag.browser.column_provider.section.code:
-        class: Netgen\Layouts\Sylius\BitBag\Browser\ColumnProvider\Section\Code
+    netgen_layouts.sylius.cms.browser.column_provider.section.code:
+        class: Netgen\Layouts\Sylius\Cms\Browser\ColumnProvider\Section\Code
         tags:
-            - { name: netgen_content_browser.column_value_provider, identifier: bitbag_section\code }
+            - { name: netgen_content_browser.column_value_provider, identifier: sylius_cms_section\code }
 
-    netgen_layouts.sylius.bitbag.browser.column_provider.block.code:
-        class: Netgen\Layouts\Sylius\BitBag\Browser\ColumnProvider\Block\Code
+    netgen_layouts.sylius.cms.browser.column_provider.block.code:
+        class: Netgen\Layouts\Sylius\Cms\Browser\ColumnProvider\Block\Code
         tags:
-            - { name: netgen_content_browser.column_value_provider, identifier: bitbag_block\code }
+            - { name: netgen_content_browser.column_value_provider, identifier: sylius_cms_block\code }
 
-    netgen_layouts.sylius.bitbag.browser.column_provider.media.code:
-        class: Netgen\Layouts\Sylius\BitBag\Browser\ColumnProvider\Media\Code
+    netgen_layouts.sylius.cms.browser.column_provider.media.code:
+        class: Netgen\Layouts\Sylius\Cms\Browser\ColumnProvider\Media\Code
         tags:
-            - { name: netgen_content_browser.column_value_provider, identifier: bitbag_media\code }
+            - { name: netgen_content_browser.column_value_provider, identifier: sylius_cms_media\code }
 
-    netgen_layouts.sylius.bitbag.browser.column_provider.media.type:
-        class: Netgen\Layouts\Sylius\BitBag\Browser\ColumnProvider\Media\Type
+    netgen_layouts.sylius.cms.browser.column_provider.media.type:
+        class: Netgen\Layouts\Sylius\Cms\Browser\ColumnProvider\Media\Type
         tags:
-            - { name: netgen_content_browser.column_value_provider, identifier: bitbag_media\type }
+            - { name: netgen_content_browser.column_value_provider, identifier: sylius_cms_media\type }
 
-    netgen_layouts.sylius.bitbag.browser.column_provider.media.mime_type:
-        class: Netgen\Layouts\Sylius\BitBag\Browser\ColumnProvider\Media\MimeType
+    netgen_layouts.sylius.cms.browser.column_provider.media.mime_type:
+        class: Netgen\Layouts\Sylius\Cms\Browser\ColumnProvider\Media\MimeType
         tags:
-            - { name: netgen_content_browser.column_value_provider, identifier: bitbag_media\mime_type }
+            - { name: netgen_content_browser.column_value_provider, identifier: sylius_cms_media\mime_type }
 
-    netgen_layouts.sylius.bitbag.browser.column_provider.frequently_asked_question.code:
-        class: Netgen\Layouts\Sylius\BitBag\Browser\ColumnProvider\FrequentlyAskedQuestion\Code
+    netgen_layouts.sylius.cms.browser.column_provider.frequently_asked_question.code:
+        class: Netgen\Layouts\Sylius\Cms\Browser\ColumnProvider\FrequentlyAskedQuestion\Code
         tags:
-            - { name: netgen_content_browser.column_value_provider, identifier: bitbag_frequently_asked_question\code }
+            - { name: netgen_content_browser.column_value_provider, identifier: sylius_cms_frequently_asked_question\code }

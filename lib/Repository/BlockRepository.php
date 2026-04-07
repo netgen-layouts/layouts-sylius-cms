@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Repository;
+namespace Netgen\Layouts\Sylius\Cms\Repository;
 
-use BitBag\SyliusCmsPlugin\Repository\BlockRepository as BaseBlockRepository;
 use Pagerfanta\PagerfantaInterface;
+use Sylius\CmsPlugin\Repository\BlockRepository as BaseBlockRepository;
 
 final class BlockRepository extends BaseBlockRepository implements BlockRepositoryInterface
 {

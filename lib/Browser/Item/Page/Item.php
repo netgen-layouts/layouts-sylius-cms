@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Browser\Item\Page;
+namespace Netgen\Layouts\Sylius\Cms\Browser\Item\Page;
 
-use BitBag\SyliusCmsPlugin\Entity\PageInterface as BitBagPageInterface;
 use Netgen\ContentBrowser\Item\ItemInterface;
+use Sylius\CmsPlugin\Entity\PageInterface as SyliusCmsPageInterface;
 
 final class Item implements ItemInterface, PageInterface
 {
@@ -26,6 +26,6 @@ final class Item implements ItemInterface, PageInterface
     }
 
     public function __construct(
-        public private(set) BitBagPageInterface $page,
+        public private(set) SyliusCmsPageInterface $page,
     ) {}
 }

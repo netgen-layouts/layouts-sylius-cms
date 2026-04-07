@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Tests\ContentBrowser\ColumnProvider\Media;
+namespace Netgen\Layouts\Sylius\Cms\Tests\ContentBrowser\ColumnProvider\Media;
 
-use Netgen\Layouts\Sylius\BitBag\Browser\ColumnProvider\Media\Type;
-use Netgen\Layouts\Sylius\BitBag\Browser\Item\Media\Item as MediaItem;
-use Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs\Media as MediaStub;
+use Netgen\Layouts\Sylius\Cms\Browser\ColumnProvider\Media\Type;
+use Netgen\Layouts\Sylius\Cms\Browser\Item\Media\Item as MediaItem;
+use Netgen\Layouts\Sylius\Cms\Tests\Item\Stubs\Media as MediaStub;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 

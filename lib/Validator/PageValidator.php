@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Validator;
+namespace Netgen\Layouts\Sylius\Cms\Validator;
 
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
-use Netgen\Layouts\Sylius\BitBag\Repository\PageRepositoryInterface;
-use Netgen\Layouts\Sylius\BitBag\Validator\Constraint\Page;
+use Netgen\Layouts\Sylius\Cms\Repository\PageRepositoryInterface;
+use Netgen\Layouts\Sylius\Cms\Validator\Constraint\Page;
+use Sylius\CmsPlugin\Entity\PageInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;

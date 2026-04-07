@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Tests\Item\ValueLoader;
+namespace Netgen\Layouts\Sylius\Cms\Tests\Item\ValueLoader;
 
 use Exception;
-use Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\MediaValueLoader;
-use Netgen\Layouts\Sylius\BitBag\Repository\MediaRepositoryInterface;
-use Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs\Media;
+use Netgen\Layouts\Sylius\Cms\Item\ValueLoader\MediaValueLoader;
+use Netgen\Layouts\Sylius\Cms\Repository\MediaRepositoryInterface;
+use Netgen\Layouts\Sylius\Cms\Tests\Item\Stubs\Media;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;

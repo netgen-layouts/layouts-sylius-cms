@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Tests\Item\ValueUrlGenerator;
+namespace Netgen\Layouts\Sylius\Cms\Tests\Item\ValueUrlGenerator;
 
-use Netgen\Layouts\Sylius\BitBag\Item\ValueUrlGenerator\FrequentlyAskedQuestionValueUrlGenerator;
-use Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs\FrequentlyAskedQuestion;
+use Netgen\Layouts\Sylius\Cms\Item\ValueUrlGenerator\FrequentlyAskedQuestionValueUrlGenerator;
+use Netgen\Layouts\Sylius\Cms\Tests\Item\Stubs\FrequentlyAskedQuestion;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;

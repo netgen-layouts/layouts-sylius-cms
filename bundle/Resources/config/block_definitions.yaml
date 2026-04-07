@@ -1,7 +1,7 @@
 block_definitions:
-    bitbag_entity_field:
-        name: 'BitBag entity field'
-        icon: '/bundles/netgenlayoutssyliusbitbag/icons/block/bitbag_entity_field.svg'
+    sylius_cms_entity_field:
+        name: 'Sylius CMS entity field'
+        icon: '/bundles/netgenlayoutssyliuscms/icons/block/sylius_cms_entity_field.svg'
         view_types:
             string:
                 name: 'String'

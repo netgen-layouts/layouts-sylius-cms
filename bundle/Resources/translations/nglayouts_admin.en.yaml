@@ -1,3 +1,3 @@
-layout_resolver.rule.target_header.bitbag_page: 'BitBag page'
-layout_resolver.rule.target_header.bitbag_section: 'BitBag section'
-layout_resolver.rule.target_header.bitbag_section_page: 'BitBag section page'
+layout_resolver.rule.target_header.sylius_cms_page: 'Sylius CMS page'
+layout_resolver.rule.target_header.sylius_cms_section: 'Sylius CMS section'
+layout_resolver.rule.target_header.sylius_cms_section_page: 'Sylius CMS section page'

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits;
+namespace Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits;
 
 use Doctrine\ORM\QueryBuilder;
 use Netgen\Layouts\Parameters\ParameterBuilderInterface;
@@ -13,7 +13,7 @@ use function count;
 use function in_array;
 use function str_starts_with;
 
-trait BitBagSortingTrait
+trait SortingTrait
 {
     /**
      * Builds the parameters for sorting options.
@@ -21,7 +21,7 @@ trait BitBagSortingTrait
      * @param array<string, string> $sortingOptions
      * @param string[] $groups
      */
-    private function buildBitBagSortingParameters(ParameterBuilderInterface $builder, array $sortingOptions, array $groups = []): void
+    private function buildSortingParameters(ParameterBuilderInterface $builder, array $sortingOptions, array $groups = []): void
     {
         $builder->add(
             'sort_type',
@@ -48,9 +48,9 @@ trait BitBagSortingTrait
     }
 
     /**
-     * Builds the query for BitBag sorting.
+     * Builds the query for Sylius CMS sorting.
      */
-    private function addBitBagSortingClause(ParameterCollectionInterface $parameterCollection, QueryBuilder $queryBuilder): void
+    private function addSortingClause(ParameterCollectionInterface $parameterCollection, QueryBuilder $queryBuilder): void
     {
         $sortField = $parameterCollection->getParameter('sort_type')->value;
         $sortDirection = $parameterCollection->getParameter('sort_direction')->value;

@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Tests\Block\BlockDefinition\Handler;
+namespace Netgen\Layouts\Sylius\Cms\Tests\Block\BlockDefinition\Handler;
 
 use Netgen\Layouts\API\Values\Block\Block;
 use Netgen\Layouts\Block\DynamicParameters;
 use Netgen\Layouts\Parameters\Parameter;
 use Netgen\Layouts\Parameters\ParameterList;
-use Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler\BitBagEntityField;
-use Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler\EntityFieldHandler;
-use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Page as PageStub;
-use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Section as SectionStub;
+use Netgen\Layouts\Sylius\Cms\Block\BlockDefinition\Handler\EntityField;
+use Netgen\Layouts\Sylius\Cms\Block\BlockDefinition\Handler\EntityFieldHandler;
+use Netgen\Layouts\Sylius\Cms\Tests\Stubs\Page as PageStub;
+use Netgen\Layouts\Sylius\Cms\Tests\Stubs\Section as SectionStub;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
@@ -39,7 +39,7 @@ final class EntityFieldHandlerTest extends TestCase
         $page->setName('About us');
 
         $request = Request::create('/');
-        $request->attributes->set('nglayouts_sylius_bitbag_page', $page);
+        $request->attributes->set('nglayouts_sylius_cms_page', $page);
 
         $this->requestStackStub
             ->method('getCurrentRequest')
@@ -65,7 +65,7 @@ final class EntityFieldHandlerTest extends TestCase
             ),
         );
 
-        $field = BitBagEntityField::fromBitBagEntity($page, 'name');
+        $field = EntityField::fromEntity($page, 'name');
 
         self::assertSame($field->isEmpty(), $params['field']->isEmpty());
         self::assertSame($field->type, $params['field']->type);
@@ -77,7 +77,7 @@ final class EntityFieldHandlerTest extends TestCase
         $section = new SectionStub(5, 'blog');
 
         $request = Request::create('/');
-        $request->attributes->set('nglayouts_sylius_bitbag_section', $section);
+        $request->attributes->set('nglayouts_sylius_cms_section', $section);
 
         $this->requestStackStub
             ->method('getCurrentRequest')
@@ -103,7 +103,7 @@ final class EntityFieldHandlerTest extends TestCase
             ),
         );
 
-        $field = BitBagEntityField::fromBitBagEntity($section, 'code');
+        $field = EntityField::fromEntity($section, 'code');
 
         self::assertSame($field->isEmpty(), $params['field']->isEmpty());
         self::assertSame($field->type, $params['field']->type);

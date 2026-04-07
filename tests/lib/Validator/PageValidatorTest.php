@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Tests\Validator;
+namespace Netgen\Layouts\Sylius\Cms\Tests\Validator;
 
-use Netgen\Layouts\Sylius\BitBag\Repository\PageRepositoryInterface;
-use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Page as PageStub;
-use Netgen\Layouts\Sylius\BitBag\Validator\Constraint\Page;
-use Netgen\Layouts\Sylius\BitBag\Validator\PageValidator;
+use Netgen\Layouts\Sylius\Cms\Repository\PageRepositoryInterface;
+use Netgen\Layouts\Sylius\Cms\Tests\Stubs\Page as PageStub;
+use Netgen\Layouts\Sylius\Cms\Validator\Constraint\Page;
+use Netgen\Layouts\Sylius\Cms\Validator\PageValidator;
 use Netgen\Layouts\Tests\TestCase\ValidatorTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Stub;
@@ -53,7 +53,7 @@ final class PageValidatorTest extends ValidatorTestCase
     public function testValidateThrowsUnexpectedTypeExceptionWithInvalidConstraint(): void
     {
         $this->expectException(UnexpectedTypeException::class);
-        $this->expectExceptionMessage('Expected argument of type "Netgen\Layouts\Sylius\BitBag\Validator\Constraint\Page", "Symfony\Component\Validator\Constraints\NotBlank" given');
+        $this->expectExceptionMessage('Expected argument of type "Netgen\Layouts\Sylius\Cms\Validator\Constraint\Page", "Symfony\Component\Validator\Constraints\NotBlank" given');
 
         $this->constraint = new NotBlank();
         $this->assertValid(true, 'value');

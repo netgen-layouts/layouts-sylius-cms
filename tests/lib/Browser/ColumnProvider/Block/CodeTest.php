@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Tests\ContentBrowser\ColumnProvider\Block;
+namespace Netgen\Layouts\Sylius\Cms\Tests\ContentBrowser\ColumnProvider\Block;
 
-use Netgen\Layouts\Sylius\BitBag\Browser\ColumnProvider\Block\Code;
-use Netgen\Layouts\Sylius\BitBag\Browser\Item\Block\Item as BlockItem;
-use Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs\Block as BlockStub;
+use Netgen\Layouts\Sylius\Cms\Browser\ColumnProvider\Block\Code;
+use Netgen\Layouts\Sylius\Cms\Browser\Item\Block\Item as BlockItem;
+use Netgen\Layouts\Sylius\Cms\Tests\Item\Stubs\Block as BlockStub;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 

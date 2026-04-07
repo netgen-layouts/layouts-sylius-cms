@@ -1,16 +1,16 @@
 services:
-    netgen_layouts.sylius.bitbag.event_listener.bitbag.page_show:
-        class: Netgen\Bundle\LayoutsSyliusBitBagBundle\EventListener\BitBag\PageShowListener
+    netgen_layouts.sylius.cms.event_listener.page_show:
+        class: Netgen\Bundle\LayoutsSyliusCmsBundle\EventListener\PageShowListener
         arguments:
             - "@request_stack"
             - "@netgen_layouts.context"
         tags:
             - { name: kernel.event_subscriber }
 
-    netgen_layouts.sylius.bitbag.event_listener.bitbag.page_index:
-        class: Netgen\Bundle\LayoutsSyliusBitBagBundle\EventListener\BitBag\PageIndexListener
+    netgen_layouts.sylius.cms.event_listener.page_index:
+        class: Netgen\Bundle\LayoutsSyliusCmsBundle\EventListener\PageIndexListener
         arguments:
-            - "@netgen_layouts.sylius.bitbag.repository.section"
+            - "@netgen_layouts.sylius.cms.repository.section"
             - "@sylius.context.locale"
             - "@request_stack"
             - "@netgen_layouts.context"

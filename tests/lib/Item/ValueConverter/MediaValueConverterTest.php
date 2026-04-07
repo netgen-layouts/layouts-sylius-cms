@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Tests\Item\ValueConverter;
+namespace Netgen\Layouts\Sylius\Cms\Tests\Item\ValueConverter;
 
-use BitBag\SyliusCmsPlugin\Entity\Media;
-use BitBag\SyliusCmsPlugin\Entity\Section;
-use Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\MediaValueConverter;
-use Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs\Media as MediaStub;
+use Netgen\Layouts\Sylius\Cms\Item\ValueConverter\MediaValueConverter;
+use Netgen\Layouts\Sylius\Cms\Tests\Item\Stubs\Media as MediaStub;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Sylius\CmsPlugin\Entity\Media;
+use Sylius\CmsPlugin\Entity\Section;
 
 #[CoversClass(MediaValueConverter::class)]
 final class MediaValueConverterTest extends TestCase
@@ -30,7 +30,7 @@ final class MediaValueConverterTest extends TestCase
     public function testGetValueType(): void
     {
         self::assertSame(
-            'bitbag_media',
+            'sylius_cms_media',
             $this->valueConverter->getValueType(
                 new Media(),
             ),

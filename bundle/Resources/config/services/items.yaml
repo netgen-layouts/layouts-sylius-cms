@@ -1,95 +1,95 @@
 services:
-    netgen_layouts.sylius.bitbag.item.value_converter.page:
-        class: Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\PageValueConverter
+    netgen_layouts.sylius.cms.item.value_converter.page:
+        class: Netgen\Layouts\Sylius\Cms\Item\ValueConverter\PageValueConverter
         tags:
             - { name: netgen_layouts.cms_value_converter }
 
-    netgen_layouts.sylius.bitbag.item.value_loader.page:
-        class: Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\PageValueLoader
+    netgen_layouts.sylius.cms.item.value_loader.page:
+        class: Netgen\Layouts\Sylius\Cms\Item\ValueLoader\PageValueLoader
         arguments:
-            - "@netgen_layouts.sylius.bitbag.repository.page"
+            - "@netgen_layouts.sylius.cms.repository.page"
         tags:
-            - { name: netgen_layouts.cms_value_loader, value_type: bitbag_page }
+            - { name: netgen_layouts.cms_value_loader, value_type: sylius_cms_page }
 
-    netgen_layouts.sylius.bitbag.item.value_url_generator.page:
-        class: Netgen\Layouts\Sylius\BitBag\Item\ValueUrlGenerator\PageValueUrlGenerator
+    netgen_layouts.sylius.cms.item.value_url_generator.page:
+        class: Netgen\Layouts\Sylius\Cms\Item\ValueUrlGenerator\PageValueUrlGenerator
         arguments:
             - "@router"
         tags:
-            - { name: netgen_layouts.cms_value_url_generator, value_type: bitbag_page }
+            - { name: netgen_layouts.cms_value_url_generator, value_type: sylius_cms_page }
 
-    netgen_layouts.sylius.bitbag.item.value_converter.section:
-        class: Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\SectionValueConverter
+    netgen_layouts.sylius.cms.item.value_converter.section:
+        class: Netgen\Layouts\Sylius\Cms\Item\ValueConverter\SectionValueConverter
         tags:
             - { name: netgen_layouts.cms_value_converter }
 
-    netgen_layouts.sylius.bitbag.item.value_loader.section:
-        class: Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\SectionValueLoader
+    netgen_layouts.sylius.cms.item.value_loader.section:
+        class: Netgen\Layouts\Sylius\Cms\Item\ValueLoader\SectionValueLoader
         arguments:
-            - "@netgen_layouts.sylius.bitbag.repository.section"
+            - "@netgen_layouts.sylius.cms.repository.section"
         tags:
-            - { name: netgen_layouts.cms_value_loader, value_type: bitbag_section }
+            - { name: netgen_layouts.cms_value_loader, value_type: sylius_cms_section }
 
-    netgen_layouts.sylius.bitbag.item.value_url_generator.section:
-        class: Netgen\Layouts\Sylius\BitBag\Item\ValueUrlGenerator\SectionValueUrlGenerator
+    netgen_layouts.sylius.cms.item.value_url_generator.section:
+        class: Netgen\Layouts\Sylius\Cms\Item\ValueUrlGenerator\SectionValueUrlGenerator
         arguments:
             - "@router"
         tags:
-            - { name: netgen_layouts.cms_value_url_generator, value_type: bitbag_section }
+            - { name: netgen_layouts.cms_value_url_generator, value_type: sylius_cms_section }
 
-    netgen_layouts.sylius.bitbag.item.value_converter.block:
-        class: Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\BlockValueConverter
+    netgen_layouts.sylius.cms.item.value_converter.block:
+        class: Netgen\Layouts\Sylius\Cms\Item\ValueConverter\BlockValueConverter
         tags:
             - { name: netgen_layouts.cms_value_converter }
 
-    netgen_layouts.sylius.bitbag.item.value_loader.block:
-        class: Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\BlockValueLoader
+    netgen_layouts.sylius.cms.item.value_loader.block:
+        class: Netgen\Layouts\Sylius\Cms\Item\ValueLoader\BlockValueLoader
         arguments:
-            - "@netgen_layouts.sylius.bitbag.repository.block"
+            - "@netgen_layouts.sylius.cms.repository.block"
         tags:
-            - { name: netgen_layouts.cms_value_loader, value_type: bitbag_block }
+            - { name: netgen_layouts.cms_value_loader, value_type: sylius_cms_block }
 
-    netgen_layouts.sylius.bitbag.item.value_url_generator.block:
-        class: Netgen\Layouts\Sylius\BitBag\Item\ValueUrlGenerator\BlockValueUrlGenerator
+    netgen_layouts.sylius.cms.item.value_url_generator.block:
+        class: Netgen\Layouts\Sylius\Cms\Item\ValueUrlGenerator\BlockValueUrlGenerator
         arguments:
             - "@router"
         tags:
-            - { name: netgen_layouts.cms_value_url_generator, value_type: bitbag_block }
+            - { name: netgen_layouts.cms_value_url_generator, value_type: sylius_cms_block }
 
-    netgen_layouts.sylius.bitbag.item.value_converter.media:
-        class: Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\MediaValueConverter
+    netgen_layouts.sylius.cms.item.value_converter.media:
+        class: Netgen\Layouts\Sylius\Cms\Item\ValueConverter\MediaValueConverter
         tags:
             - { name: netgen_layouts.cms_value_converter }
 
-    netgen_layouts.sylius.bitbag.item.value_loader.media:
-        class: Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\MediaValueLoader
+    netgen_layouts.sylius.cms.item.value_loader.media:
+        class: Netgen\Layouts\Sylius\Cms\Item\ValueLoader\MediaValueLoader
         arguments:
-            - "@netgen_layouts.sylius.bitbag.repository.media"
+            - "@netgen_layouts.sylius.cms.repository.media"
         tags:
-            - { name: netgen_layouts.cms_value_loader, value_type: bitbag_media }
+            - { name: netgen_layouts.cms_value_loader, value_type: sylius_cms_media }
 
-    netgen_layouts.sylius.bitbag.item.value_url_generator.media:
-        class: Netgen\Layouts\Sylius\BitBag\Item\ValueUrlGenerator\MediaValueUrlGenerator
+    netgen_layouts.sylius.cms.item.value_url_generator.media:
+        class: Netgen\Layouts\Sylius\Cms\Item\ValueUrlGenerator\MediaValueUrlGenerator
         arguments:
             - "@router"
         tags:
-            - { name: netgen_layouts.cms_value_url_generator, value_type: bitbag_media }
+            - { name: netgen_layouts.cms_value_url_generator, value_type: sylius_cms_media }
 
-    netgen_layouts.sylius.bitbag.item.value_converter.frequently_asked_question:
-        class: Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\FrequentlyAskedQuestionValueConverter
+    netgen_layouts.sylius.cms.item.value_converter.frequently_asked_question:
+        class: Netgen\Layouts\Sylius\Cms\Item\ValueConverter\FrequentlyAskedQuestionValueConverter
         tags:
             - { name: netgen_layouts.cms_value_converter }
 
-    netgen_layouts.sylius.bitbag.item.value_loader.frequently_asked_question:
-        class: Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\FrequentlyAskedQuestionValueLoader
+    netgen_layouts.sylius.cms.item.value_loader.frequently_asked_question:
+        class: Netgen\Layouts\Sylius\Cms\Item\ValueLoader\FrequentlyAskedQuestionValueLoader
         arguments:
-            - "@netgen_layouts.sylius.bitbag.repository.frequently_asked_question"
+            - "@netgen_layouts.sylius.cms.repository.frequently_asked_question"
         tags:
-            - { name: netgen_layouts.cms_value_loader, value_type: bitbag_frequently_asked_question }
+            - { name: netgen_layouts.cms_value_loader, value_type: sylius_cms_frequently_asked_question }
 
-    netgen_layouts.sylius.bitbag.item.value_url_generator.frequently_asked_question:
-        class: Netgen\Layouts\Sylius\BitBag\Item\ValueUrlGenerator\FrequentlyAskedQuestionValueUrlGenerator
+    netgen_layouts.sylius.cms.item.value_url_generator.frequently_asked_question:
+        class: Netgen\Layouts\Sylius\Cms\Item\ValueUrlGenerator\FrequentlyAskedQuestionValueUrlGenerator
         arguments:
             - "@router"
         tags:
-            - { name: netgen_layouts.cms_value_url_generator, value_type: bitbag_frequently_asked_question }
+            - { name: netgen_layouts.cms_value_url_generator, value_type: sylius_cms_frequently_asked_question }

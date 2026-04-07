@@ -1,7 +1,7 @@
 services:
-    netgen_layouts.sylius.bitbag..block.block_definition_handler.entity_field:
-        class: Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler\EntityFieldHandler
+    netgen_layouts.sylius.cms..block.block_definition_handler.entity_field:
+        class: Netgen\Layouts\Sylius\Cms\Block\BlockDefinition\Handler\EntityFieldHandler
         arguments:
             - "@request_stack"
         tags:
-            - { name: netgen_layouts.block_definition_handler, identifier: bitbag_entity_field }
+            - { name: netgen_layouts.block_definition_handler, identifier: sylius_cms_entity_field }

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler;
+namespace Netgen\Layouts\Sylius\Cms\Block\BlockDefinition\Handler;
 
-use BitBag\SyliusCmsPlugin\Entity\ContentableInterface;
-use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use DateTimeInterface;
+use Sylius\CmsPlugin\Entity\ContentableInterface;
+use Sylius\CmsPlugin\Entity\MediaInterface;
 use Sylius\Resource\Model\ResourceInterface;
 
 use function is_bool;
@@ -15,11 +15,11 @@ use function is_string;
 use function method_exists;
 use function ucfirst;
 
-final class BitBagEntityField
+final class EntityField
 {
     private const string CONTENT_FIELD_IDENTIFIER = 'content';
 
-    public private(set) BitBagEntityFieldType $type;
+    public private(set) EntityFieldType $type;
 
     private function __construct(
         public private(set) mixed $value,
@@ -27,7 +27,7 @@ final class BitBagEntityField
         $this->type = $this->resolveType($this->value);
     }
 
-    public static function fromBitBagEntity(ResourceInterface $resource, string $fieldIdentifier): self
+    public static function fromEntity(ResourceInterface $resource, string $fieldIdentifier): self
     {
         if ($resource instanceof ContentableInterface && $fieldIdentifier === self::CONTENT_FIELD_IDENTIFIER) {
             return new self($resource);
@@ -57,16 +57,16 @@ final class BitBagEntityField
         return $this->value === null;
     }
 
-    private function resolveType(mixed $value): BitBagEntityFieldType
+    private function resolveType(mixed $value): EntityFieldType
     {
         return match (true) {
-            $value instanceof DateTimeInterface => BitBagEntityFieldType::DateTime,
-            is_string($value) => BitBagEntityFieldType::String,
-            is_numeric($value) => BitBagEntityFieldType::Number,
-            is_bool($value) => BitBagEntityFieldType::Boolean,
-            $value instanceof MediaInterface => BitBagEntityFieldType::Media,
-            $value instanceof ContentableInterface => BitBagEntityFieldType::Content,
-            default => BitBagEntityFieldType::Other,
+            $value instanceof DateTimeInterface => EntityFieldType::DateTime,
+            is_string($value) => EntityFieldType::String,
+            is_numeric($value) => EntityFieldType::Number,
+            is_bool($value) => EntityFieldType::Boolean,
+            $value instanceof MediaInterface => EntityFieldType::Media,
+            $value instanceof ContentableInterface => EntityFieldType::Content,
+            default => EntityFieldType::Other,
         };
     }
 }

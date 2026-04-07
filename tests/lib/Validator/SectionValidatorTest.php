@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Tests\Validator;
+namespace Netgen\Layouts\Sylius\Cms\Tests\Validator;
 
-use Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface;
-use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Section as SectionStub;
-use Netgen\Layouts\Sylius\BitBag\Validator\Constraint\Section;
-use Netgen\Layouts\Sylius\BitBag\Validator\SectionValidator;
+use Netgen\Layouts\Sylius\Cms\Repository\SectionRepositoryInterface;
+use Netgen\Layouts\Sylius\Cms\Tests\Stubs\Section as SectionStub;
+use Netgen\Layouts\Sylius\Cms\Validator\Constraint\Section;
+use Netgen\Layouts\Sylius\Cms\Validator\SectionValidator;
 use Netgen\Layouts\Tests\TestCase\ValidatorTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Stub;
@@ -53,7 +53,7 @@ final class SectionValidatorTest extends ValidatorTestCase
     public function testValidateThrowsUnexpectedTypeExceptionWithInvalidConstraint(): void
     {
         $this->expectException(UnexpectedTypeException::class);
-        $this->expectExceptionMessage('Expected argument of type "Netgen\Layouts\Sylius\BitBag\Validator\Constraint\Section", "Symfony\Component\Validator\Constraints\NotBlank" given');
+        $this->expectExceptionMessage('Expected argument of type "Netgen\Layouts\Sylius\Cms\Validator\Constraint\Section", "Symfony\Component\Validator\Constraints\NotBlank" given');
 
         $this->constraint = new NotBlank();
         $this->assertValid(true, 'value');

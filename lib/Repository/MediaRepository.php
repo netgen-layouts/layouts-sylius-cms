@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Repository;
+namespace Netgen\Layouts\Sylius\Cms\Repository;
 
-use BitBag\SyliusCmsPlugin\Repository\MediaRepository as BaseMediaRepository;
 use Pagerfanta\PagerfantaInterface;
+use Sylius\CmsPlugin\Repository\MediaRepository as BaseMediaRepository;
 
 final class MediaRepository extends BaseMediaRepository implements MediaRepositoryInterface
 {

@@ -1,51 +1,51 @@
 services:
-    netgen_layouts.sylius.bitbag.layout_resolver.target_type.page:
-        class: Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\Page
+    netgen_layouts.sylius.cms.layout_resolver.target_type.page:
+        class: Netgen\Layouts\Sylius\Cms\Layout\Resolver\TargetType\Page
         arguments:
-            - "@netgen_layouts.sylius.bitbag.repository.page"
+            - "@netgen_layouts.sylius.cms.repository.page"
         tags:
             - { name: netgen_layouts.target_type, priority: 190 }
 
-    netgen_layouts.sylius.bitbag.layout_resolver.target_type.form_mapper.page:
-        class: Netgen\Layouts\Sylius\BitBag\Layout\Resolver\Form\TargetType\Mapper\PageMapper
+    netgen_layouts.sylius.cms.layout_resolver.target_type.form_mapper.page:
+        class: Netgen\Layouts\Sylius\Cms\Layout\Resolver\Form\TargetType\Mapper\PageMapper
         tags:
-            - { name: netgen_layouts.target_type.form_mapper, target_type: bitbag_page }
+            - { name: netgen_layouts.target_type.form_mapper, target_type: sylius_cms_page }
 
-    netgen_layouts.sylius.bitbag.layout_resolver.target_handler.doctrine.bitbag_page:
-        class: Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetHandler\Doctrine\Page
+    netgen_layouts.sylius.cms.layout_resolver.target_handler.doctrine.sylius_cms_page:
+        class: Netgen\Layouts\Sylius\Cms\Layout\Resolver\TargetHandler\Doctrine\Page
         tags:
-            - { name: netgen_layouts.target_type.doctrine_handler, target_type: bitbag_page }
+            - { name: netgen_layouts.target_type.doctrine_handler, target_type: sylius_cms_page }
 
-    netgen_layouts.sylius.bitbag.layout_resolver.target_type.section:
-        class: Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\Section
+    netgen_layouts.sylius.cms.layout_resolver.target_type.section:
+        class: Netgen\Layouts\Sylius\Cms\Layout\Resolver\TargetType\Section
         arguments:
-            - "@netgen_layouts.sylius.bitbag.repository.section"
+            - "@netgen_layouts.sylius.cms.repository.section"
         tags:
             - { name: netgen_layouts.target_type, priority: 180 }
 
-    netgen_layouts.sylius.bitbag.layout_resolver.target_type.form_mapper.section:
-        class: Netgen\Layouts\Sylius\BitBag\Layout\Resolver\Form\TargetType\Mapper\SectionMapper
+    netgen_layouts.sylius.cms.layout_resolver.target_type.form_mapper.section:
+        class: Netgen\Layouts\Sylius\Cms\Layout\Resolver\Form\TargetType\Mapper\SectionMapper
         tags:
-            - { name: netgen_layouts.target_type.form_mapper, target_type: bitbag_section }
+            - { name: netgen_layouts.target_type.form_mapper, target_type: sylius_cms_section }
 
-    netgen_layouts.sylius.bitbag.layout_resolver.target_handler.doctrine.bitbag_section:
-        class: Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetHandler\Doctrine\Section
+    netgen_layouts.sylius.cms.layout_resolver.target_handler.doctrine.sylius_cms_section:
+        class: Netgen\Layouts\Sylius\Cms\Layout\Resolver\TargetHandler\Doctrine\Section
         tags:
-            - { name: netgen_layouts.target_type.doctrine_handler, target_type: bitbag_section }
+            - { name: netgen_layouts.target_type.doctrine_handler, target_type: sylius_cms_section }
 
-    netgen_layouts.sylius.bitbag.layout_resolver.target_type.section_page:
-        class: Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\SectionPage
+    netgen_layouts.sylius.cms.layout_resolver.target_type.section_page:
+        class: Netgen\Layouts\Sylius\Cms\Layout\Resolver\TargetType\SectionPage
         arguments:
-            - "@netgen_layouts.sylius.bitbag.repository.section"
+            - "@netgen_layouts.sylius.cms.repository.section"
         tags:
             - { name: netgen_layouts.target_type, priority: 180 }
 
-    netgen_layouts.sylius.bitbag.layout_resolver.target_type.form_mapper.section_page:
-        class: Netgen\Layouts\Sylius\BitBag\Layout\Resolver\Form\TargetType\Mapper\SectionPageMapper
+    netgen_layouts.sylius.cms.layout_resolver.target_type.form_mapper.section_page:
+        class: Netgen\Layouts\Sylius\Cms\Layout\Resolver\Form\TargetType\Mapper\SectionPageMapper
         tags:
-            - { name: netgen_layouts.target_type.form_mapper, target_type: bitbag_section_page }
+            - { name: netgen_layouts.target_type.form_mapper, target_type: sylius_cms_section_page }
 
-    netgen_layouts.sylius.bitbag.layout_resolver.target_handler.doctrine.bitbag_section_page:
-        class: Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetHandler\Doctrine\SectionPage
+    netgen_layouts.sylius.cms.layout_resolver.target_handler.doctrine.sylius_cms_section_page:
+        class: Netgen\Layouts\Sylius\Cms\Layout\Resolver\TargetHandler\Doctrine\SectionPage
         tags:
-            - { name: netgen_layouts.target_type.doctrine_handler, target_type: bitbag_section_page }
+            - { name: netgen_layouts.target_type.doctrine_handler, target_type: sylius_cms_section_page }

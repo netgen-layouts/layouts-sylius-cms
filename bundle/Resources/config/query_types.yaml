@@ -1,11 +1,11 @@
 query_types:
-    bitbag_page:
-        name: 'BitBag page'
-    bitbag_block:
-        name: 'BitBag block'
-    bitbag_media:
-        name: 'BitBag media'
-    bitbag_section:
-        name: 'BitBag section'
-    bitbag_frequently_asked_question:
-        name: 'BitBag frequently asked question'
+    sylius_cms_page:
+        name: 'Sylius CMS page'
+    sylius_cms_block:
+        name: 'Sylius CMS block'
+    sylius_cms_media:
+        name: 'Sylius CMS media'
+    sylius_cms_section:
+        name: 'Sylius CMS section'
+    sylius_cms_frequently_asked_question:
+        name: 'Sylius CMS frequently asked question'

@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Browser\Backend;
+namespace Netgen\Layouts\Sylius\Cms\Browser\Backend;
 
-use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use Netgen\ContentBrowser\Backend\BackendInterface;
 use Netgen\ContentBrowser\Backend\SearchQuery;
 use Netgen\ContentBrowser\Backend\SearchResult;
@@ -12,8 +11,9 @@ use Netgen\ContentBrowser\Backend\SearchResultInterface;
 use Netgen\ContentBrowser\Exceptions\NotFoundException;
 use Netgen\ContentBrowser\Item\LocationInterface;
 use Netgen\Layouts\Browser\Item\Layout\RootLocation;
-use Netgen\Layouts\Sylius\BitBag\Browser\Item\Media\Item;
-use Netgen\Layouts\Sylius\BitBag\Repository\MediaRepositoryInterface;
+use Netgen\Layouts\Sylius\Cms\Browser\Item\Media\Item;
+use Netgen\Layouts\Sylius\Cms\Repository\MediaRepositoryInterface;
+use Sylius\CmsPlugin\Entity\MediaInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 
 use function max;
@@ -38,7 +38,7 @@ final class MediaBackend implements BackendInterface
 
     public function loadItem(int|string $value): Item
     {
-        /** @var \BitBag\SyliusCmsPlugin\Entity\MediaInterface $media */
+        /** @var \Sylius\CmsPlugin\Entity\MediaInterface $media */
         $media = $this->mediaRepository->find($value) ??
             throw new NotFoundException(
                 sprintf(
@@ -124,9 +124,9 @@ final class MediaBackend implements BackendInterface
     /**
      * Builds the items from provided medias.
      *
-     * @param iterable<\BitBag\SyliusCmsPlugin\Entity\MediaInterface> $medias
+     * @param iterable<\Sylius\CmsPlugin\Entity\MediaInterface> $medias
      *
-     * @return iterable<\Netgen\Layouts\Sylius\BitBag\Browser\Item\Media\Item>
+     * @return iterable<\Netgen\Layouts\Sylius\Cms\Browser\Item\Media\Item>
      */
     private function buildItems(iterable $medias): iterable
     {

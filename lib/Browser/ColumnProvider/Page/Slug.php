@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Browser\ColumnProvider\Page;
+namespace Netgen\Layouts\Sylius\Cms\Browser\ColumnProvider\Page;
 
 use Netgen\ContentBrowser\Item\ColumnProvider\ColumnValueProviderInterface;
 use Netgen\ContentBrowser\Item\ItemInterface;
-use Netgen\Layouts\Sylius\BitBag\Browser\Item\Page\PageInterface;
+use Netgen\Layouts\Sylius\Cms\Browser\Item\Page\PageInterface;
 
 final class Slug implements ColumnValueProviderInterface
 {

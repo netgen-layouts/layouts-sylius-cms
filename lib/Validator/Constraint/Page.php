@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Validator\Constraint;
+namespace Netgen\Layouts\Sylius\Cms\Validator\Constraint;
 
 use Symfony\Component\Validator\Attribute\HasNamedArguments;
 use Symfony\Component\Validator\Constraint;
@@ -11,7 +11,7 @@ final class Page extends Constraint
 {
     #[HasNamedArguments]
     public function __construct(
-        public string $message = 'netgen_layouts.sylius.bitbag.page.page_not_found',
+        public string $message = 'netgen_layouts.sylius.cms.page.page_not_found',
         ?array $groups = null,
         mixed $payload = null,
     ) {
@@ -20,6 +20,6 @@ final class Page extends Constraint
 
     public function validatedBy(): string
     {
-        return 'nglayouts_sylius_bitbag_page';
+        return 'nglayouts_sylius_cms_page';
     }
 }

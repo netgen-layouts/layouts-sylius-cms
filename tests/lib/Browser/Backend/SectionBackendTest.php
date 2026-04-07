@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Tests\ContentBrowser\Backend;
+namespace Netgen\Layouts\Sylius\Cms\Tests\ContentBrowser\Backend;
 
 use ArrayIterator;
 use Netgen\ContentBrowser\Backend\SearchQuery;
 use Netgen\ContentBrowser\Exceptions\NotFoundException;
 use Netgen\Layouts\Browser\Item\Layout\RootLocation;
-use Netgen\Layouts\Sylius\BitBag\Browser\Backend\SectionBackend;
-use Netgen\Layouts\Sylius\BitBag\Browser\Item\Section\Item;
-use Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface;
-use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Section;
+use Netgen\Layouts\Sylius\Cms\Browser\Backend\SectionBackend;
+use Netgen\Layouts\Sylius\Cms\Browser\Item\Section\Item;
+use Netgen\Layouts\Sylius\Cms\Repository\SectionRepositoryInterface;
+use Netgen\Layouts\Sylius\Cms\Tests\Stubs\Section;
 use Pagerfanta\Adapter\AdapterInterface;
 use Pagerfanta\Pagerfanta;
 use PHPUnit\Framework\Attributes\CoversClass;

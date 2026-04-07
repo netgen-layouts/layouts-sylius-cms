@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Browser\Backend;
+namespace Netgen\Layouts\Sylius\Cms\Browser\Backend;
 
-use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
 use Netgen\ContentBrowser\Backend\BackendInterface;
 use Netgen\ContentBrowser\Backend\SearchQuery;
 use Netgen\ContentBrowser\Backend\SearchResult;
@@ -12,8 +11,9 @@ use Netgen\ContentBrowser\Backend\SearchResultInterface;
 use Netgen\ContentBrowser\Exceptions\NotFoundException;
 use Netgen\ContentBrowser\Item\LocationInterface;
 use Netgen\Layouts\Browser\Item\Layout\RootLocation;
-use Netgen\Layouts\Sylius\BitBag\Browser\Item\Section\Item;
-use Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface;
+use Netgen\Layouts\Sylius\Cms\Browser\Item\Section\Item;
+use Netgen\Layouts\Sylius\Cms\Repository\SectionRepositoryInterface;
+use Sylius\CmsPlugin\Entity\SectionInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 
 use function max;
@@ -38,7 +38,7 @@ final class SectionBackend implements BackendInterface
 
     public function loadItem(int|string $value): Item
     {
-        /** @var \BitBag\SyliusCmsPlugin\Entity\SectionInterface $section */
+        /** @var \Sylius\CmsPlugin\Entity\SectionInterface $section */
         $section = $this->sectionRepository->find($value) ??
             throw new NotFoundException(
                 sprintf(
@@ -124,9 +124,9 @@ final class SectionBackend implements BackendInterface
     /**
      * Builds the items from provided sections.
      *
-     * @param iterable<\BitBag\SyliusCmsPlugin\Entity\SectionInterface> $sections
+     * @param iterable<\Sylius\CmsPlugin\Entity\SectionInterface> $sections
      *
-     * @return iterable<\Netgen\Layouts\Sylius\BitBag\Browser\Item\Section\Item>
+     * @return iterable<\Netgen\Layouts\Sylius\Cms\Browser\Item\Section\Item>
      */
     private function buildItems(iterable $sections): iterable
     {

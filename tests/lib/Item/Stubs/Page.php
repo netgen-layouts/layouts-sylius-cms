@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs;
+namespace Netgen\Layouts\Sylius\Cms\Tests\Item\Stubs;
 
-use BitBag\SyliusCmsPlugin\Entity\Page as BasePage;
+use Sylius\CmsPlugin\Entity\Page as BasePage;
 
 final class Page extends BasePage
 {
