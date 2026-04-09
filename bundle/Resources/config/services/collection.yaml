@@ -33,11 +33,3 @@ services:
             - "@sylius.context.locale"
         tags:
             - { name: netgen_layouts.query_type_handler, type: sylius_cms_section }
-
-    netgen_layouts.sylius.cms.collection.query_type_handler.frequently_asked_question:
-        class: Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\FrequentlyAskedQuestionHandler
-        arguments:
-            - "@netgen_layouts.sylius.cms.repository.frequently_asked_question"
-            - "@sylius.context.locale"
-        tags:
-            - { name: netgen_layouts.query_type_handler, type: sylius_cms_frequently_asked_question }

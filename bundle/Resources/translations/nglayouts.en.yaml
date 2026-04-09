@@ -40,12 +40,6 @@ query.sylius_cms_section.channels_filter: 'Filter type'
 query.sylius_cms_section.sort_type: 'Sort type'
 query.sylius_cms_section.sort_direction: 'Sort direction'
 
-query.sylius_cms_frequently_asked_question.filter_by_channel: 'Filter by Sylius channel'
-query.sylius_cms_frequently_asked_question.channels: 'Sylius channels'
-query.sylius_cms_frequently_asked_question.channels_filter: 'Filter type'
-query.sylius_cms_frequently_asked_question.sort_type: 'Sort type'
-query.sylius_cms_frequently_asked_question.sort_direction: 'Sort direction'
-
 block.sylius_cms_entity_field.field_identifier: 'Field identifier'
 block.sylius_cms_entity_field.html_element: 'HTML element'
 block.sylius_cms_entity_field.datetime_format: 'Date & time format'

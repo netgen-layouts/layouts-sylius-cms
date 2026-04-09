@@ -17,10 +17,6 @@ view:
                 template: "@nglayouts/item/sylius_cms_media.html.twig"
                 match:
                     item\value_type: sylius_cms_media
-            sylius_cms_frequently_asked_question:
-                template: "@nglayouts/item/sylius_cms_frequently_asked_question.html.twig"
-                match:
-                    item\value_type: sylius_cms_frequently_asked_question
         ajax:
             sylius_cms_page:
                 template: "@nglayouts/item/sylius_cms_page.html.twig"
@@ -38,10 +34,6 @@ view:
                 template: "@nglayouts/item/sylius_cms_media.html.twig"
                 match:
                     item\value_type: sylius_cms_media
-            sylius_cms_frequently_asked_question:
-                template: "@nglayouts/item/sylius_cms_frequently_asked_question.html.twig"
-                match:
-                    item\value_type: sylius_cms_frequently_asked_question
         app:
             sylius_cms_page:
                 template: "@nglayouts_admin/app/item/sylius_cms_page.html.twig"
@@ -59,7 +51,3 @@ view:
                 template: "@nglayouts_admin/app/item/sylius_cms_media.html.twig"
                 match:
                     item\value_type: sylius_cms_media
-            sylius_cms_frequently_asked_question:
-                template: "@nglayouts_admin/app/item/sylius_cms_frequently_asked_question.html.twig"
-                match:
-                    item\value_type: sylius_cms_frequently_asked_question
