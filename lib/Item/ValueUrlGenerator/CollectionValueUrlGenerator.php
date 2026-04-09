@@ -19,9 +19,9 @@ final class CollectionValueUrlGenerator implements ValueUrlGeneratorInterface
     public function generateDefaultUrl(object $object): string
     {
         return $this->urlGenerator->generate(
-            'bitbag_sylius_cms_plugin_shop_page_index_by_section_code',
+            'sylius_cms_shop_collections_page_index',
             [
-                'sectionCode' => $object->getCode(),
+                'code' => $object->getCode(),
             ],
         );
     }
@@ -29,7 +29,7 @@ final class CollectionValueUrlGenerator implements ValueUrlGeneratorInterface
     public function generateAdminUrl(object $object): string
     {
         return $this->urlGenerator->generate(
-            'bitbag_sylius_cms_plugin_admin_section_update',
+            'sylius_cms_admin_collection_update',
             [
                 'id' => $object->getId(),
             ],

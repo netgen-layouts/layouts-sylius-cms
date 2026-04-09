@@ -24,7 +24,7 @@ final class MediaValueUrlGenerator implements ValueUrlGeneratorInterface
     public function generateAdminUrl(object $object): string
     {
         return $this->urlGenerator->generate(
-            'bitbag_sylius_cms_plugin_admin_media_update',
+            'sylius_cms_admin_media_update',
             [
                 'id' => $object->getId(),
             ],
