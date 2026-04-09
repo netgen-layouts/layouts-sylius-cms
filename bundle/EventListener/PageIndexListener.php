@@ -6,53 +6,51 @@ namespace Netgen\Bundle\LayoutsSyliusCmsBundle\EventListener;
 
 use Netgen\Layouts\Context\Context;
 use Netgen\Layouts\Sylius\Cms\Repository\CollectionRepositoryInterface;
-use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
 use Sylius\CmsPlugin\Entity\CollectionInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
+use Symfony\Component\HttpKernel\KernelEvents;
 
 final class PageIndexListener implements EventSubscriberInterface
 {
     public function __construct(
         private CollectionRepositoryInterface $collectionRepository,
-        private RequestStack $requestStack,
         private Context $context,
     ) {}
 
     public static function getSubscribedEvents(): array
     {
-        return ['bitbag_sylius_cms_plugin.page.index' => 'onPageIndex'];
+        return [KernelEvents::REQUEST => 'onKernelRequest'];
     }
 
     /**
      * Sets the currently displayed collection to the request,
      * to be able to match with layout resolver.
      */
-    public function onPageIndex(ResourceControllerEvent $event): void
+    public function onKernelRequest(RequestEvent $event): void
     {
-        $currentRequest = $this->requestStack->getCurrentRequest();
-        if (!$currentRequest instanceof Request) {
+        if (!$event->isMainRequest()) {
             return;
         }
 
-        // Only sane way to extract the reference to the collection
-        if (!$currentRequest->attributes->has('collectionCode')) {
+        $request = $event->getRequest();
+        if ($request->attributes->get('_route') !== 'sylius_cms_shop_collections_page_index') {
             return;
         }
 
-        $collection = $this->collectionRepository->findOneByCode(
-            $currentRequest->attributes->getString('collectionCode'),
-        );
+        $code = $request->attributes->getString('code');
+        if ($code === '') {
+            return;
+        }
+
+        $collection = $this->collectionRepository->findOneByCode($code);
 
         if (!$collection instanceof CollectionInterface) {
             return;
         }
 
-        $currentRequest->attributes->set('nglayouts_sylius_cms_collection', $collection);
-        $currentRequest->attributes->set('nglayouts_sylius_resource', $collection);
-        // We set context here instead in a ContextProvider, since bitbag_sylius_cms_plugin.page.index
-        // event happens too late, after onKernelRequest event has already been executed
+        $request->attributes->set('nglayouts_sylius_cms_collection', $collection);
+        $request->attributes->set('nglayouts_sylius_resource', $collection);
         $this->context->set('sylius_cms_collection_id', (int) $collection->getId());
     }
 }

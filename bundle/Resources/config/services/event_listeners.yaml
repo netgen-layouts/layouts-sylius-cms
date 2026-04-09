@@ -2,7 +2,9 @@ services:
     netgen_layouts.sylius.cms.event_listener.page_show:
         class: Netgen\Bundle\LayoutsSyliusCmsBundle\EventListener\PageShowListener
         arguments:
-            - "@request_stack"
+            - "@netgen_layouts.sylius.cms.repository.page"
+            - "@sylius.context.locale"
+            - "@sylius.context.channel"
             - "@netgen_layouts.context"
         tags:
             - { name: kernel.event_subscriber }
@@ -11,7 +13,6 @@ services:
         class: Netgen\Bundle\LayoutsSyliusCmsBundle\EventListener\PageIndexListener
         arguments:
             - "@netgen_layouts.sylius.cms.repository.collection"
-            - "@request_stack"
             - "@netgen_layouts.context"
         tags:
             - { name: kernel.event_subscriber }

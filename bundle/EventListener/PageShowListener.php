@@ -5,41 +5,64 @@ declare(strict_types=1);
 namespace Netgen\Bundle\LayoutsSyliusCmsBundle\EventListener;
 
 use Netgen\Layouts\Context\Context;
-use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
+use Netgen\Layouts\Sylius\Cms\Repository\PageRepositoryInterface;
 use Sylius\CmsPlugin\Entity\PageInterface;
+use Sylius\Component\Channel\Context\ChannelContextInterface;
+use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
+use Symfony\Component\HttpKernel\KernelEvents;
 
 final class PageShowListener implements EventSubscriberInterface
 {
     public function __construct(
-        private RequestStack $requestStack,
+        private PageRepositoryInterface $pageRepository,
+        private LocaleContextInterface $localeContext,
+        private ChannelContextInterface $channelContext,
         private Context $context,
     ) {}
 
     public static function getSubscribedEvents(): array
     {
-        return ['bitbag_sylius_cms_plugin.page.show' => 'onPageShow'];
+        return [KernelEvents::REQUEST => 'onKernelRequest'];
     }
 
     /**
      * Sets the currently displayed page to the request,
      * to be able to match with layout resolver.
      */
-    public function onPageShow(ResourceControllerEvent $event): void
+    public function onKernelRequest(RequestEvent $event): void
     {
-        $page = $event->getSubject();
+        if (!$event->isMainRequest()) {
+            return;
+        }
+
+        $request = $event->getRequest();
+        if ($request->attributes->get('_route') !== 'sylius_cms_shop_page_show') {
+            return;
+        }
+
+        $slug = $request->attributes->getString('slug');
+        if ($slug === '') {
+            return;
+        }
+
+        $channelCode = $this->channelContext->getChannel()->getCode();
+        if ($channelCode === null) {
+            return;
+        }
+
+        $page = $this->pageRepository->findOneEnabledBySlugAndChannelCode(
+            $slug,
+            $this->localeContext->getLocaleCode(),
+            $channelCode,
+        );
+
         if (!$page instanceof PageInterface) {
             return;
         }
 
-        $currentRequest = $this->requestStack->getCurrentRequest();
-        if ($currentRequest instanceof Request) {
-            $currentRequest->attributes->set('nglayouts_sylius_cms_page', $page);
-            // We set context here instead in a ContextProvider, since bitbag_sylius_cms_plugin.page.show
-            // event happens too late, after onKernelRequest event has already been executed
-            $this->context->set('sylius_cms_page_id', (int) $page->getId());
-        }
+        $request->attributes->set('nglayouts_sylius_cms_page', $page);
+        $this->context->set('sylius_cms_page_id', (int) $page->getId());
     }
 }
