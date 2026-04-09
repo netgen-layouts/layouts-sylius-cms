@@ -5,5 +5,5 @@ query_types:
         name: 'Sylius CMS block'
     sylius_cms_media:
         name: 'Sylius CMS media'
-    sylius_cms_section:
-        name: 'Sylius CMS section'
+    sylius_cms_collection:
+        name: 'Sylius CMS collection'

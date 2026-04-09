@@ -9,7 +9,7 @@ use Netgen\Layouts\Sylius\Cms\Tests\Item\Stubs\Media as MediaStub;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Sylius\CmsPlugin\Entity\Media;
-use Sylius\CmsPlugin\Entity\Section;
+use Sylius\CmsPlugin\Entity\Collection;
 
 #[CoversClass(MediaValueConverter::class)]
 final class MediaValueConverterTest extends TestCase
@@ -24,7 +24,7 @@ final class MediaValueConverterTest extends TestCase
     public function testSupports(): void
     {
         self::assertTrue($this->valueConverter->supports(new Media()));
-        self::assertFalse($this->valueConverter->supports(new Section()));
+        self::assertFalse($this->valueConverter->supports(new Collection()));
     }
 
     public function testGetValueType(): void

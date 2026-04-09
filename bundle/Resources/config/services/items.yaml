@@ -18,24 +18,24 @@ services:
         tags:
             - { name: netgen_layouts.cms_value_url_generator, value_type: sylius_cms_page }
 
-    netgen_layouts.sylius.cms.item.value_converter.section:
-        class: Netgen\Layouts\Sylius\Cms\Item\ValueConverter\SectionValueConverter
+    netgen_layouts.sylius.cms.item.value_converter.collection:
+        class: Netgen\Layouts\Sylius\Cms\Item\ValueConverter\CollectionValueConverter
         tags:
             - { name: netgen_layouts.cms_value_converter }
 
-    netgen_layouts.sylius.cms.item.value_loader.section:
-        class: Netgen\Layouts\Sylius\Cms\Item\ValueLoader\SectionValueLoader
+    netgen_layouts.sylius.cms.item.value_loader.collection:
+        class: Netgen\Layouts\Sylius\Cms\Item\ValueLoader\CollectionValueLoader
         arguments:
-            - "@netgen_layouts.sylius.cms.repository.section"
+            - "@netgen_layouts.sylius.cms.repository.collection"
         tags:
-            - { name: netgen_layouts.cms_value_loader, value_type: sylius_cms_section }
+            - { name: netgen_layouts.cms_value_loader, value_type: sylius_cms_collection }
 
-    netgen_layouts.sylius.cms.item.value_url_generator.section:
-        class: Netgen\Layouts\Sylius\Cms\Item\ValueUrlGenerator\SectionValueUrlGenerator
+    netgen_layouts.sylius.cms.item.value_url_generator.collection:
+        class: Netgen\Layouts\Sylius\Cms\Item\ValueUrlGenerator\CollectionValueUrlGenerator
         arguments:
             - "@router"
         tags:
-            - { name: netgen_layouts.cms_value_url_generator, value_type: sylius_cms_section }
+            - { name: netgen_layouts.cms_value_url_generator, value_type: sylius_cms_collection }
 
     netgen_layouts.sylius.cms.item.value_converter.block:
         class: Netgen\Layouts\Sylius\Cms\Item\ValueConverter\BlockValueConverter

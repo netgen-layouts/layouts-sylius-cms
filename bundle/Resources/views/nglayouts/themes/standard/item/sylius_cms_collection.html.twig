@@ -1,0 +1,5 @@
+{% set collection = item.object %}
+
+<a href="{{ path('bitbag_sylius_cms_plugin_shop_page_index_by_section_code', { 'sectionCode' : collection.code }) }}">
+    {{ item.name }}
+</a>

@@ -1,8 +1,8 @@
 value_types:
     sylius_cms_page:
         name: 'Sylius CMS page'
-    sylius_cms_section:
-        name: 'Sylius CMS section'
+    sylius_cms_collection:
+        name: 'Sylius CMS collection'
     sylius_cms_block:
         name: 'Sylius CMS block'
     sylius_cms_media:

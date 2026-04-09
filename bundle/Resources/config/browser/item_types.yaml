@@ -20,8 +20,8 @@ item_types:
             - code
             - slug
 
-    sylius_cms_section:
-        name: item_types.sylius_cms_section
+    sylius_cms_collection:
+        name: item_types.sylius_cms_collection
         tree:
             enabled: false
         preview:
@@ -31,8 +31,8 @@ item_types:
                 name: columns.name
                 value_provider: name
             code:
-                name: columns.sylius_cms_section.code
-                value_provider: sylius_cms_section\code
+                name: columns.sylius_cms_collection.code
+                value_provider: sylius_cms_collection\code
         default_columns:
             - name
             - code

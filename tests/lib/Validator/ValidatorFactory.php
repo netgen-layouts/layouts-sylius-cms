@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Netgen\Layouts\Sylius\Cms\Tests\Validator;
 
 use Netgen\Layouts\Sylius\Cms\Repository\PageRepositoryInterface;
-use Netgen\Layouts\Sylius\Cms\Repository\SectionRepositoryInterface;
+use Netgen\Layouts\Sylius\Cms\Repository\CollectionRepositoryInterface;
 use Netgen\Layouts\Sylius\Cms\Validator\PageValidator;
-use Netgen\Layouts\Sylius\Cms\Validator\SectionValidator;
+use Netgen\Layouts\Sylius\Cms\Validator\CollectionValidator;
 use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidatorFactory;
@@ -35,8 +35,8 @@ final class ValidatorFactory implements ConstraintValidatorFactoryInterface
             return new PageValidator($this->repository);
         }
 
-        if ($name === 'nglayouts_sylius_cms_section' && $this->repository instanceof SectionRepositoryInterface) {
-            return new SectionValidator($this->repository);
+        if ($name === 'nglayouts_sylius_cms_collection' && $this->repository instanceof CollectionRepositoryInterface) {
+            return new CollectionValidator($this->repository);
         }
 
         return $this->baseValidatorFactory->getInstance($constraint);

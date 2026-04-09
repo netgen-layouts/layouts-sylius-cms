@@ -1,0 +1,23 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Netgen\Layouts\Sylius\Cms\Layout\Resolver\Form\TargetType\Mapper;
+
+use Netgen\ContentBrowser\Form\Type\ContentBrowserIntegerType;
+use Netgen\Layouts\Layout\Resolver\Form\TargetType\Mapper;
+
+final class CollectionPageMapper extends Mapper
+{
+    public function getFormType(): string
+    {
+        return ContentBrowserIntegerType::class;
+    }
+
+    public function getFormOptions(): array
+    {
+        return [
+            'item_type' => 'sylius_cms_collection',
+        ];
+    }
+}

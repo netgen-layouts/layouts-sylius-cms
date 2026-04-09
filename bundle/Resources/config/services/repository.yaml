@@ -3,9 +3,9 @@ services:
         class: Netgen\Layouts\Sylius\Cms\Repository\PageRepository
         parent: bitbag_sylius_cms_plugin.repository.page
 
-    netgen_layouts.sylius.cms.repository.section:
-        class: Netgen\Layouts\Sylius\Cms\Repository\SectionRepository
-        parent: bitbag_sylius_cms_plugin.repository.section
+    netgen_layouts.sylius.cms.repository.collection:
+        class: Netgen\Layouts\Sylius\Cms\Repository\CollectionRepository
+        parent: sylius_cms.repository.collection
 
     netgen_layouts.sylius.cms.repository.block:
         class: Netgen\Layouts\Sylius\Cms\Repository\BlockRepository

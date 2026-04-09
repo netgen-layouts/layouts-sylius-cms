@@ -16,36 +16,36 @@ services:
         tags:
             - { name: netgen_layouts.target_type.doctrine_handler, target_type: sylius_cms_page }
 
-    netgen_layouts.sylius.cms.layout_resolver.target_type.section:
-        class: Netgen\Layouts\Sylius\Cms\Layout\Resolver\TargetType\Section
+    netgen_layouts.sylius.cms.layout_resolver.target_type.collection:
+        class: Netgen\Layouts\Sylius\Cms\Layout\Resolver\TargetType\Collection
         arguments:
-            - "@netgen_layouts.sylius.cms.repository.section"
+            - "@netgen_layouts.sylius.cms.repository.collection"
         tags:
             - { name: netgen_layouts.target_type, priority: 180 }
 
-    netgen_layouts.sylius.cms.layout_resolver.target_type.form_mapper.section:
-        class: Netgen\Layouts\Sylius\Cms\Layout\Resolver\Form\TargetType\Mapper\SectionMapper
+    netgen_layouts.sylius.cms.layout_resolver.target_type.form_mapper.collection:
+        class: Netgen\Layouts\Sylius\Cms\Layout\Resolver\Form\TargetType\Mapper\CollectionMapper
         tags:
-            - { name: netgen_layouts.target_type.form_mapper, target_type: sylius_cms_section }
+            - { name: netgen_layouts.target_type.form_mapper, target_type: sylius_cms_collection }
 
-    netgen_layouts.sylius.cms.layout_resolver.target_handler.doctrine.sylius_cms_section:
-        class: Netgen\Layouts\Sylius\Cms\Layout\Resolver\TargetHandler\Doctrine\Section
+    netgen_layouts.sylius.cms.layout_resolver.target_handler.doctrine.sylius_cms_collection:
+        class: Netgen\Layouts\Sylius\Cms\Layout\Resolver\TargetHandler\Doctrine\Collection
         tags:
-            - { name: netgen_layouts.target_type.doctrine_handler, target_type: sylius_cms_section }
+            - { name: netgen_layouts.target_type.doctrine_handler, target_type: sylius_cms_collection }
 
-    netgen_layouts.sylius.cms.layout_resolver.target_type.section_page:
-        class: Netgen\Layouts\Sylius\Cms\Layout\Resolver\TargetType\SectionPage
+    netgen_layouts.sylius.cms.layout_resolver.target_type.collection_page:
+        class: Netgen\Layouts\Sylius\Cms\Layout\Resolver\TargetType\CollectionPage
         arguments:
-            - "@netgen_layouts.sylius.cms.repository.section"
+            - "@netgen_layouts.sylius.cms.repository.collection"
         tags:
             - { name: netgen_layouts.target_type, priority: 180 }
 
-    netgen_layouts.sylius.cms.layout_resolver.target_type.form_mapper.section_page:
-        class: Netgen\Layouts\Sylius\Cms\Layout\Resolver\Form\TargetType\Mapper\SectionPageMapper
+    netgen_layouts.sylius.cms.layout_resolver.target_type.form_mapper.collection_page:
+        class: Netgen\Layouts\Sylius\Cms\Layout\Resolver\Form\TargetType\Mapper\CollectionPageMapper
         tags:
-            - { name: netgen_layouts.target_type.form_mapper, target_type: sylius_cms_section_page }
+            - { name: netgen_layouts.target_type.form_mapper, target_type: sylius_cms_collection_page }
 
-    netgen_layouts.sylius.cms.layout_resolver.target_handler.doctrine.sylius_cms_section_page:
-        class: Netgen\Layouts\Sylius\Cms\Layout\Resolver\TargetHandler\Doctrine\SectionPage
+    netgen_layouts.sylius.cms.layout_resolver.target_handler.doctrine.sylius_cms_collection_page:
+        class: Netgen\Layouts\Sylius\Cms\Layout\Resolver\TargetHandler\Doctrine\CollectionPage
         tags:
-            - { name: netgen_layouts.target_type.doctrine_handler, target_type: sylius_cms_section_page }
+            - { name: netgen_layouts.target_type.doctrine_handler, target_type: sylius_cms_collection_page }

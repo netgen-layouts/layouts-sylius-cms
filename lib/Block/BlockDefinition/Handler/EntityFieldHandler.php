@@ -10,7 +10,7 @@ use Netgen\Layouts\Block\DynamicParameters;
 use Netgen\Layouts\Parameters\ParameterBuilderInterface;
 use Netgen\Layouts\Parameters\ParameterType;
 use Sylius\CmsPlugin\Entity\PageInterface;
-use Sylius\CmsPlugin\Entity\SectionInterface;
+use Sylius\CmsPlugin\Entity\CollectionInterface;
 use Sylius\Resource\Model\ResourceInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -82,9 +82,9 @@ final class EntityFieldHandler extends BlockDefinitionHandler
             return $page;
         }
 
-        $section = $currentRequest->attributes->get('nglayouts_sylius_cms_section');
-        if ($section instanceof SectionInterface) {
-            return $section;
+        $collection = $currentRequest->attributes->get('nglayouts_sylius_cms_collection');
+        if ($collection instanceof CollectionInterface) {
+            return $collection;
         }
 
         return null;

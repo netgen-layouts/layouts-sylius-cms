@@ -10,8 +10,7 @@ services:
     netgen_layouts.sylius.cms.event_listener.page_index:
         class: Netgen\Bundle\LayoutsSyliusCmsBundle\EventListener\PageIndexListener
         arguments:
-            - "@netgen_layouts.sylius.cms.repository.section"
-            - "@sylius.context.locale"
+            - "@netgen_layouts.sylius.cms.repository.collection"
             - "@request_stack"
             - "@netgen_layouts.context"
         tags:

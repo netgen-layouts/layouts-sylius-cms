@@ -8,7 +8,7 @@ use Netgen\Layouts\API\Values\Collection\Query;
 use Netgen\Layouts\Collection\QueryType\QueryTypeHandlerInterface;
 use Netgen\Layouts\Parameters\ParameterBuilderInterface;
 use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\EnabledTrait;
-use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\SectionTrait;
+use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\CollectionTrait;
 use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\SortingTrait;
 use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\SyliusChannelFilterTrait;
 use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\SyliusProductTrait;
@@ -23,7 +23,7 @@ use const PHP_INT_MAX;
 final class MediaHandler implements QueryTypeHandlerInterface
 {
     use EnabledTrait;
-    use SectionTrait;
+    use CollectionTrait;
     use SortingTrait;
     use SyliusChannelFilterTrait;
     use SyliusProductTrait;
@@ -45,7 +45,7 @@ final class MediaHandler implements QueryTypeHandlerInterface
     public function buildParameters(ParameterBuilderInterface $builder): void
     {
         $this->buildSyliusProductParameters($builder);
-        $this->buildSectionParameters($builder);
+        $this->buildCollectionParameters($builder);
         $this->buildSyliusChannelFilterParameters($builder);
         $this->buildSortingParameters($builder, $this->sortingOptions);
     }
@@ -59,7 +59,7 @@ final class MediaHandler implements QueryTypeHandlerInterface
         $request = $this->requestStack->getCurrentRequest();
 
         $this->addSyliusProductCriterion($query, $queryBuilder, $request);
-        $this->addSectionCriterion($query, $queryBuilder, $request);
+        $this->addCollectionCriterion($query, $queryBuilder, $request);
         $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
         $this->addEnabledCriterion($queryBuilder);
         $this->addSortingClause($query, $queryBuilder);
@@ -82,7 +82,7 @@ final class MediaHandler implements QueryTypeHandlerInterface
         $request = $this->requestStack->getCurrentRequest();
 
         $this->addSyliusProductCriterion($query, $queryBuilder, $request);
-        $this->addSectionCriterion($query, $queryBuilder, $request);
+        $this->addCollectionCriterion($query, $queryBuilder, $request);
         $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
         $this->addEnabledCriterion($queryBuilder);
 
@@ -95,6 +95,6 @@ final class MediaHandler implements QueryTypeHandlerInterface
     public function isContextual(Query $query): bool
     {
         return $this->isSyliusProductContextual($query)
-            || $this->isSectionContextual($query);
+            || $this->isCollectionContextual($query);
     }
 }

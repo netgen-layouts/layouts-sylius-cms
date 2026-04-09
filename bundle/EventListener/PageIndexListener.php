@@ -5,10 +5,9 @@ declare(strict_types=1);
 namespace Netgen\Bundle\LayoutsSyliusCmsBundle\EventListener;
 
 use Netgen\Layouts\Context\Context;
-use Netgen\Layouts\Sylius\Cms\Repository\SectionRepositoryInterface;
+use Netgen\Layouts\Sylius\Cms\Repository\CollectionRepositoryInterface;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
-use Sylius\CmsPlugin\Entity\SectionInterface;
-use Sylius\Component\Locale\Context\LocaleContextInterface;
+use Sylius\CmsPlugin\Entity\CollectionInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -16,8 +15,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 final class PageIndexListener implements EventSubscriberInterface
 {
     public function __construct(
-        private SectionRepositoryInterface $sectionRepository,
-        private LocaleContextInterface $localeContext,
+        private CollectionRepositoryInterface $collectionRepository,
         private RequestStack $requestStack,
         private Context $context,
     ) {}
@@ -28,7 +26,7 @@ final class PageIndexListener implements EventSubscriberInterface
     }
 
     /**
-     * Sets the currently displayed section to the request,
+     * Sets the currently displayed collection to the request,
      * to be able to match with layout resolver.
      */
     public function onPageIndex(ResourceControllerEvent $event): void
@@ -38,24 +36,23 @@ final class PageIndexListener implements EventSubscriberInterface
             return;
         }
 
-        // Only sane way to extract the reference to the section
-        if (!$currentRequest->attributes->has('sectionCode')) {
+        // Only sane way to extract the reference to the collection
+        if (!$currentRequest->attributes->has('collectionCode')) {
             return;
         }
 
-        $section = $this->sectionRepository->findOneByCode(
-            $currentRequest->attributes->getString('sectionCode'),
-            $this->localeContext->getLocaleCode(),
+        $collection = $this->collectionRepository->findOneByCode(
+            $currentRequest->attributes->getString('collectionCode'),
         );
 
-        if (!$section instanceof SectionInterface) {
+        if (!$collection instanceof CollectionInterface) {
             return;
         }
 
-        $currentRequest->attributes->set('nglayouts_sylius_cms_section', $section);
-        $currentRequest->attributes->set('nglayouts_sylius_resource', $section);
+        $currentRequest->attributes->set('nglayouts_sylius_cms_collection', $collection);
+        $currentRequest->attributes->set('nglayouts_sylius_resource', $collection);
         // We set context here instead in a ContextProvider, since bitbag_sylius_cms_plugin.page.index
         // event happens too late, after onKernelRequest event has already been executed
-        $this->context->set('sylius_cms_section_id', (int) $section->getId());
+        $this->context->set('sylius_cms_collection_id', (int) $collection->getId());
     }
 }

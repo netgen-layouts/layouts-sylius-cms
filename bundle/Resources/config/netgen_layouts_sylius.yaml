@@ -1,5 +1,4 @@
 resource_type_condition:
     available_resources:
       Sylius\CmsPlugin\Entity\PageInterface: page
-      Sylius\CmsPlugin\Entity\SectionInterface: section
-
+      Sylius\CmsPlugin\Entity\CollectionInterface: collection

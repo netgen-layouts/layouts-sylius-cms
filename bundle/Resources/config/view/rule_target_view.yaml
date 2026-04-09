@@ -5,11 +5,11 @@ view:
                 template: "@NetgenLayoutsSyliusCms/admin/layout_resolver/target/value/sylius_cms_page.html.twig"
                 match:
                     rule_target\type: sylius_cms_page
-            sylius_cms_section:
-                template: "@NetgenLayoutsSyliusCms/admin/layout_resolver/target/value/sylius_cms_section.html.twig"
+            sylius_cms_collection:
+                template: "@NetgenLayoutsSyliusCms/admin/layout_resolver/target/value/sylius_cms_collection.html.twig"
                 match:
-                    rule_target\type: sylius_cms_section
-            sylius_cms_section_page:
-                template: "@NetgenLayoutsSyliusCms/admin/layout_resolver/target/value/sylius_cms_section_page.html.twig"
+                    rule_target\type: sylius_cms_collection
+            sylius_cms_collection_page:
+                template: "@NetgenLayoutsSyliusCms/admin/layout_resolver/target/value/sylius_cms_collection_page.html.twig"
                 match:
-                    rule_target\type: sylius_cms_section_page
+                    rule_target\type: sylius_cms_collection_page

@@ -26,10 +26,9 @@ services:
         tags:
             - { name: netgen_layouts.query_type_handler, type: sylius_cms_media }
 
-    netgen_layouts.sylius.cms.collection.query_type_handler.section:
-        class: Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\SectionHandler
+    netgen_layouts.sylius.cms.collection.query_type_handler.collection:
+        class: Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\CollectionHandler
         arguments:
-            - "@netgen_layouts.sylius.cms.repository.section"
-            - "@sylius.context.locale"
+            - "@netgen_layouts.sylius.cms.repository.collection"
         tags:
-            - { name: netgen_layouts.query_type_handler, type: sylius_cms_section }
+            - { name: netgen_layouts.query_type_handler, type: sylius_cms_collection }

@@ -6,13 +6,12 @@ namespace Netgen\Bundle\LayoutsSyliusCmsBundle\Tests\EventListener;
 
 use Netgen\Bundle\LayoutsSyliusCmsBundle\EventListener\PageIndexListener;
 use Netgen\Layouts\Context\Context;
-use Netgen\Layouts\Sylius\Cms\Repository\SectionRepositoryInterface;
-use Netgen\Layouts\Sylius\Cms\Tests\Stubs\Section;
+use Netgen\Layouts\Sylius\Cms\Repository\CollectionRepositoryInterface;
+use Netgen\Layouts\Sylius\Cms\Tests\Stubs\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
-use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -21,7 +20,7 @@ final class PageIndexListenerTest extends TestCase
 {
     private PageIndexListener $listener;
 
-    private Stub&SectionRepositoryInterface $sectionRepositoryStub;
+    private Stub&CollectionRepositoryInterface $collectionRepositoryStub;
 
     private RequestStack $requestStack;
 
@@ -29,18 +28,12 @@ final class PageIndexListenerTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->sectionRepositoryStub = self::createStub(SectionRepositoryInterface::class);
+        $this->collectionRepositoryStub = self::createStub(CollectionRepositoryInterface::class);
         $this->requestStack = new RequestStack();
         $this->context = new Context();
 
-        $localeContextStub = self::createStub(LocaleContextInterface::class);
-        $localeContextStub
-            ->method('getLocaleCode')
-            ->willReturn('en');
-
         $this->listener = new PageIndexListener(
-            $this->sectionRepositoryStub,
-            $localeContextStub,
+            $this->collectionRepositoryStub,
             $this->requestStack,
             $this->context,
         );
@@ -57,23 +50,23 @@ final class PageIndexListenerTest extends TestCase
     public function testOnPageIndex(): void
     {
         $request = Request::create('/');
-        $request->attributes->set('sectionCode', 'blog');
+        $request->attributes->set('collectionCode', 'blog');
 
         $this->requestStack->push($request);
 
-        $section = new Section(42, 'blog');
+        $collection = new Collection(42, 'blog');
 
-        $this->sectionRepositoryStub
+        $this->collectionRepositoryStub
             ->method('findOneByCode')
-            ->willReturn($section);
+            ->willReturn($collection);
 
         $event = new ResourceControllerEvent();
         $this->listener->onPageIndex($event);
 
-        self::assertSame($section, $request->attributes->get('nglayouts_sylius_cms_section'));
+        self::assertSame($collection, $request->attributes->get('nglayouts_sylius_cms_collection'));
 
-        self::assertTrue($this->context->has('sylius_cms_section_id'));
-        self::assertSame(42, $this->context->get('sylius_cms_section_id'));
+        self::assertTrue($this->context->has('sylius_cms_collection_id'));
+        self::assertSame(42, $this->context->get('sylius_cms_collection_id'));
     }
 
     public function testOnPageIndexWithoutRequest(): void
@@ -81,10 +74,10 @@ final class PageIndexListenerTest extends TestCase
         $event = new ResourceControllerEvent();
         $this->listener->onPageIndex($event);
 
-        self::assertFalse($this->context->has('sylius_cms_section_id'));
+        self::assertFalse($this->context->has('sylius_cms_collection_id'));
     }
 
-    public function testOnPageIndexWithoutSectionCode(): void
+    public function testOnPageIndexWithoutCollectionCode(): void
     {
         $request = Request::create('/');
         $this->requestStack->push($request);
@@ -92,25 +85,25 @@ final class PageIndexListenerTest extends TestCase
         $event = new ResourceControllerEvent();
         $this->listener->onPageIndex($event);
 
-        self::assertFalse($request->attributes->has('nglayouts_sylius_cms_section'));
-        self::assertFalse($this->context->has('sylius_cms_section_id'));
+        self::assertFalse($request->attributes->has('nglayouts_sylius_cms_collection'));
+        self::assertFalse($this->context->has('sylius_cms_collection_id'));
     }
 
-    public function testOnPageIndexWithNonExistingSection(): void
+    public function testOnPageIndexWithNonExistingCollection(): void
     {
         $request = Request::create('/');
-        $request->attributes->set('sectionCode', 'unknown');
+        $request->attributes->set('collectionCode', 'unknown');
 
         $this->requestStack->push($request);
 
-        $this->sectionRepositoryStub
+        $this->collectionRepositoryStub
             ->method('findOneByCode')
             ->willReturn(null);
 
         $event = new ResourceControllerEvent();
         $this->listener->onPageIndex($event);
 
-        self::assertFalse($request->attributes->has('nglayouts_sylius_cms_section'));
-        self::assertFalse($this->context->has('sylius_cms_section_id'));
+        self::assertFalse($request->attributes->has('nglayouts_sylius_cms_collection'));
+        self::assertFalse($this->context->has('sylius_cms_collection_id'));
     }
 }

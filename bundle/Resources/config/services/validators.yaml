@@ -6,9 +6,9 @@ services:
         tags:
             - { name: validator.constraint_validator, alias: nglayouts_sylius_cms_page }
 
-    netgen_layouts.sylius.cms.validator.section:
-        class: Netgen\Layouts\Sylius\Cms\Validator\SectionValidator
+    netgen_layouts.sylius.cms.validator.collection:
+        class: Netgen\Layouts\Sylius\Cms\Validator\CollectionValidator
         arguments:
-            - "@netgen_layouts.sylius.cms.repository.section"
+            - "@netgen_layouts.sylius.cms.repository.collection"
         tags:
-            - { name: validator.constraint_validator, alias: nglayouts_sylius_cms_section }
+            - { name: validator.constraint_validator, alias: nglayouts_sylius_cms_collection }

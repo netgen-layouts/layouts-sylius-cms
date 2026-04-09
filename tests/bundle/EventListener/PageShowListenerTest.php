@@ -7,7 +7,7 @@ namespace Netgen\Bundle\LayoutsSyliusCmsBundle\Tests\EventListener;
 use Netgen\Bundle\LayoutsSyliusCmsBundle\EventListener\PageShowListener;
 use Netgen\Layouts\Context\Context;
 use Netgen\Layouts\Sylius\Cms\Tests\Stubs\Page;
-use Netgen\Layouts\Sylius\Cms\Tests\Stubs\Section;
+use Netgen\Layouts\Sylius\Cms\Tests\Stubs\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
@@ -59,8 +59,8 @@ final class PageShowListenerTest extends TestCase
         $request = Request::create('/');
         $this->requestStack->push($request);
 
-        $section = new Section(5, 'blog');
-        $event = new ResourceControllerEvent($section);
+        $collection = new Collection(5, 'blog');
+        $event = new ResourceControllerEvent($collection);
         $this->listener->onPageShow($event);
 
         self::assertFalse($request->attributes->has('nglayouts_sylius_cms_page'));
