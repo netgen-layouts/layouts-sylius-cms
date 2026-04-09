@@ -10,14 +10,14 @@ use Sylius\CmsPlugin\Repository\MediaRepositoryInterface as BaseMediaRepositoryI
 interface MediaRepositoryInterface extends BaseMediaRepositoryInterface
 {
     /**
-     * Creates a paginator which is used to list medias.
+     * Creates a paginator which is used to list media.
      *
      * @return \Pagerfanta\PagerfantaInterface<\Sylius\CmsPlugin\Entity\Media>
      */
     public function createListPaginator(string $localeCode): PagerfantaInterface;
 
     /**
-     * Creates a paginator which is used to search for medias.
+     * Creates a paginator which is used to search for media.
      *
      * @return \Pagerfanta\PagerfantaInterface<\Sylius\CmsPlugin\Entity\Media>
      */

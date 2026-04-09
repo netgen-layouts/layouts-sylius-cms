@@ -23,8 +23,7 @@ final class BlockRepository extends BaseBlockRepository implements BlockReposito
             ->andWhere(
                 $queryBuilder->expr()->orX(
                     'o.code LIKE :search',
-                    'translation.name LIKE :search',
-                    'translation.link LIKE :search',
+                    'o.name LIKE :search',
                     'translation.content LIKE :search',
                 ),
             )

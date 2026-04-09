@@ -23,10 +23,10 @@ final class MediaRepository extends BaseMediaRepository implements MediaReposito
             ->andWhere(
                 $queryBuilder->expr()->orX(
                     'o.code LIKE :search',
-                    'translation.name LIKE :search',
+                    'o.name LIKE :search',
+                    'translation.content LIKE :search',
                     'translation.alt LIKE :search',
                     'translation.link LIKE :search',
-                    'translation.content LIKE :search',
                 ),
             )
             ->setParameter('search', '%' . $searchText . '%');
