@@ -13,4 +13,5 @@ enum EntityFieldType: string
     case Boolean = 'boolean';
     case Other = 'other';
     case Content = 'content';
+    case ContentElements = 'content_elements';
 }

@@ -1,0 +1,18 @@
+{% extends '@nglayouts/block/block.html.twig' %}
+
+{% block content %}
+    {% set field_identifier = block.parameter('field_identifier').value %}
+    {% set field = block.dynamicParameter('field') %}
+
+    {% block sylius_cms_entity_field %}
+        {% if field is not empty %}
+            {% if field.type == enum('Netgen\\Layouts\\Sylius\\Cms\\Block\\BlockDefinition\\Handler\\EntityFieldType').ContentElements %}
+                <div class="field field-{{ field.type.value }} field-{{ field_identifier }}">
+                    {{ sylius_cms_render_content_elements(field.value) }}
+                </div>
+            {% else %}
+                {{ 'sylius_cms.field_not_compatible'|trans({ '%field_identifier%': field_identifier }, 'sylius_cms') }}
+            {% endif %}
+        {% endif %}
+    {% endblock %}
+{% endblock %}
