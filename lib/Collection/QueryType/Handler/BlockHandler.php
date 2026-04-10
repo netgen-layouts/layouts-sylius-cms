@@ -34,7 +34,7 @@ final class BlockHandler implements QueryTypeHandlerInterface
      * @var array<string, string>
      */
     private array $sortingOptions = [
-        'Name' => 'translation.name',
+        'Name' => 'name',
         'Code' => 'code',
     ];
 

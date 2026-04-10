@@ -20,8 +20,6 @@ final class ItemTest extends TestCase
     protected function setUp(): void
     {
         $this->block = new Block(42, 'header');
-        $this->block->setCurrentLocale('en');
-        $this->block->setFallbackLocale('en');
         $this->block->setName('Header');
 
         $this->item = new Item($this->block);

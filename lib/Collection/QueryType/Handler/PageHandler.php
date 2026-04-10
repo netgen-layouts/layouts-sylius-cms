@@ -32,7 +32,7 @@ final class PageHandler implements QueryTypeHandlerInterface
      * @var array<string, string>
      */
     private array $sortingOptions = [
-        'Name' => 'translation.name',
+        'Name' => 'name',
         'Code' => 'code',
         'Published' => 'publishAt',
         'Created' => 'createdAt',

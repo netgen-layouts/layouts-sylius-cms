@@ -14,8 +14,5 @@ final class Block extends BaseBlock
 
         $this->id = $id;
         $this->setCode($code);
-
-        $this->setCurrentLocale('en');
-        $this->setFallbackLocale('en');
     }
 }

@@ -56,13 +56,13 @@ trait SortingTrait
         $sortDirection = $parameterCollection->getParameter('sort_direction')->value;
         $rootAliases = $queryBuilder->getRootAliases();
 
-        if (!in_array('translation', $queryBuilder->getAllAliases(), true)) {
-            $join = count($rootAliases) === 0 ? 'translations' : $rootAliases[0] . '.translations';
+        if (str_starts_with($sortField, 'translation.')) {
+            if (!in_array('translation', $queryBuilder->getAllAliases(), true)) {
+                $join = count($rootAliases) === 0 ? 'translations' : $rootAliases[0] . '.translations';
 
-            $queryBuilder->innerJoin($join, 'translation');
-        }
-
-        if (!str_starts_with($sortField, 'translation.') && count($rootAliases) !== 0) {
+                $queryBuilder->innerJoin($join, 'translation');
+            }
+        } elseif (count($rootAliases) !== 0) {
             $sortField = $rootAliases[0] . '.' . $sortField;
         }
 

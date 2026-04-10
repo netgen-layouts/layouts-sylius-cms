@@ -11,9 +11,10 @@ use Netgen\Layouts\Sylius\Cms\Tests\Stubs\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
-use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
+use Symfony\Component\HttpKernel\HttpKernelInterface;
+use Symfony\Component\HttpKernel\KernelEvents;
 
 #[CoversClass(PageIndexListener::class)]
 final class PageIndexListenerTest extends TestCase
@@ -22,19 +23,15 @@ final class PageIndexListenerTest extends TestCase
 
     private Stub&CollectionRepositoryInterface $collectionRepositoryStub;
 
-    private RequestStack $requestStack;
-
     private Context $context;
 
     protected function setUp(): void
     {
         $this->collectionRepositoryStub = self::createStub(CollectionRepositoryInterface::class);
-        $this->requestStack = new RequestStack();
         $this->context = new Context();
 
         $this->listener = new PageIndexListener(
             $this->collectionRepositoryStub,
-            $this->requestStack,
             $this->context,
         );
     }
@@ -42,17 +39,16 @@ final class PageIndexListenerTest extends TestCase
     public function testGetSubscribedEvents(): void
     {
         self::assertSame(
-            ['bitbag_sylius_cms_plugin.page.index' => 'onPageIndex'],
+            [KernelEvents::REQUEST => 'onKernelRequest'],
             $this->listener::getSubscribedEvents(),
         );
     }
 
-    public function testOnPageIndex(): void
+    public function testOnKernelRequest(): void
     {
-        $request = Request::create('/');
-        $request->attributes->set('collectionCode', 'blog');
-
-        $this->requestStack->push($request);
+        $request = Request::create('/collections/blog/pages');
+        $request->attributes->set('_route', 'sylius_cms_shop_collections_page_index');
+        $request->attributes->set('code', 'blog');
 
         $collection = new Collection(42, 'blog');
 
@@ -60,50 +56,75 @@ final class PageIndexListenerTest extends TestCase
             ->method('findOneByCode')
             ->willReturn($collection);
 
-        $event = new ResourceControllerEvent();
-        $this->listener->onPageIndex($event);
+        $event = $this->createRequestEvent($request);
+        $this->listener->onKernelRequest($event);
 
         self::assertSame($collection, $request->attributes->get('nglayouts_sylius_cms_collection'));
-
+        self::assertSame($collection, $request->attributes->get('nglayouts_sylius_resource'));
         self::assertTrue($this->context->has('sylius_cms_collection_id'));
         self::assertSame(42, $this->context->get('sylius_cms_collection_id'));
     }
 
-    public function testOnPageIndexWithoutRequest(): void
-    {
-        $event = new ResourceControllerEvent();
-        $this->listener->onPageIndex($event);
-
-        self::assertFalse($this->context->has('sylius_cms_collection_id'));
-    }
-
-    public function testOnPageIndexWithoutCollectionCode(): void
+    public function testOnKernelRequestWithWrongRoute(): void
     {
         $request = Request::create('/');
-        $this->requestStack->push($request);
+        $request->attributes->set('_route', 'some_other_route');
 
-        $event = new ResourceControllerEvent();
-        $this->listener->onPageIndex($event);
+        $event = $this->createRequestEvent($request);
+        $this->listener->onKernelRequest($event);
 
         self::assertFalse($request->attributes->has('nglayouts_sylius_cms_collection'));
         self::assertFalse($this->context->has('sylius_cms_collection_id'));
     }
 
-    public function testOnPageIndexWithNonExistingCollection(): void
+    public function testOnKernelRequestWithoutCode(): void
     {
         $request = Request::create('/');
-        $request->attributes->set('collectionCode', 'unknown');
+        $request->attributes->set('_route', 'sylius_cms_shop_collections_page_index');
 
-        $this->requestStack->push($request);
+        $event = $this->createRequestEvent($request);
+        $this->listener->onKernelRequest($event);
+
+        self::assertFalse($request->attributes->has('nglayouts_sylius_cms_collection'));
+        self::assertFalse($this->context->has('sylius_cms_collection_id'));
+    }
+
+    public function testOnKernelRequestWithNonExistingCollection(): void
+    {
+        $request = Request::create('/collections/unknown/pages');
+        $request->attributes->set('_route', 'sylius_cms_shop_collections_page_index');
+        $request->attributes->set('code', 'unknown');
 
         $this->collectionRepositoryStub
             ->method('findOneByCode')
             ->willReturn(null);
 
-        $event = new ResourceControllerEvent();
-        $this->listener->onPageIndex($event);
+        $event = $this->createRequestEvent($request);
+        $this->listener->onKernelRequest($event);
 
         self::assertFalse($request->attributes->has('nglayouts_sylius_cms_collection'));
         self::assertFalse($this->context->has('sylius_cms_collection_id'));
+    }
+
+    public function testOnKernelRequestWithSubRequest(): void
+    {
+        $request = Request::create('/collections/blog/pages');
+        $request->attributes->set('_route', 'sylius_cms_shop_collections_page_index');
+        $request->attributes->set('code', 'blog');
+
+        $event = $this->createRequestEvent($request, HttpKernelInterface::SUB_REQUEST);
+        $this->listener->onKernelRequest($event);
+
+        self::assertFalse($request->attributes->has('nglayouts_sylius_cms_collection'));
+        self::assertFalse($this->context->has('sylius_cms_collection_id'));
+    }
+
+    private function createRequestEvent(Request $request, int $requestType = HttpKernelInterface::MAIN_REQUEST): RequestEvent
+    {
+        return new RequestEvent(
+            self::createStub(HttpKernelInterface::class),
+            $request,
+            $requestType,
+        );
     }
 }
