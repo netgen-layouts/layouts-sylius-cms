@@ -9,4 +9,4 @@ services:
     netgen_layouts.sylius.cms.parameters.form_mapper.collection:
         class: Netgen\Layouts\Sylius\Cms\Parameters\Form\Mapper\CollectionMapper
         tags:
-            - { name: netgen_layouts.parameter_type.form_mapper, type: sylius_cms_collection }
+            - { name: netgen_layouts.parameter_type.form_mapper, parameter_type: sylius_cms_collection }
