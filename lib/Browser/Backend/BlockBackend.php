@@ -14,7 +14,6 @@ use Netgen\Layouts\Browser\Item\Layout\RootLocation;
 use Netgen\Layouts\Sylius\Cms\Browser\Item\Block\Item;
 use Netgen\Layouts\Sylius\Cms\Repository\BlockRepositoryInterface;
 use Sylius\CmsPlugin\Entity\BlockInterface;
-use Sylius\Component\Locale\Context\LocaleContextInterface;
 
 use function max;
 use function sprintf;
@@ -23,7 +22,6 @@ final class BlockBackend implements BackendInterface
 {
     public function __construct(
         private BlockRepositoryInterface $blockRepository,
-        private LocaleContextInterface $localeContext,
     ) {}
 
     public function getSections(): iterable
@@ -62,9 +60,7 @@ final class BlockBackend implements BackendInterface
 
     public function getSubItems(LocationInterface $location, int $offset = 0, int $limit = 25): iterable
     {
-        $paginator = $this->blockRepository->createListPaginator(
-            $this->localeContext->getLocaleCode(),
-        );
+        $paginator = $this->blockRepository->createListPaginator();
 
         $limit = max(0, $limit);
         $offset = max(0, $offset);
@@ -79,9 +75,7 @@ final class BlockBackend implements BackendInterface
 
     public function getSubItemsCount(LocationInterface $location): int
     {
-        $paginator = $this->blockRepository->createListPaginator(
-            $this->localeContext->getLocaleCode(),
-        );
+        $paginator = $this->blockRepository->createListPaginator();
 
         return $paginator->getNbResults();
     }
@@ -90,7 +84,6 @@ final class BlockBackend implements BackendInterface
     {
         $paginator = $this->blockRepository->createSearchPaginator(
             $searchQuery->searchText,
-            $this->localeContext->getLocaleCode(),
         );
 
         $paginator->setMaxPerPage($searchQuery->limit);
@@ -107,7 +100,6 @@ final class BlockBackend implements BackendInterface
     {
         $paginator = $this->blockRepository->createSearchPaginator(
             $searchQuery->searchText,
-            $this->localeContext->getLocaleCode(),
         );
 
         return $paginator->getNbResults();

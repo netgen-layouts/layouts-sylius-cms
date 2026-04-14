@@ -18,7 +18,6 @@ services:
         class: Netgen\Layouts\Sylius\Cms\Browser\Backend\BlockBackend
         arguments:
             - "@netgen_layouts.sylius.cms.repository.block"
-            - "@sylius.context.locale"
         tags:
             - { name: netgen_content_browser.backend, item_type: sylius_cms_block }
 

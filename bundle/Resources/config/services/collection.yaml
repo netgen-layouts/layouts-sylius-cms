@@ -12,7 +12,6 @@ services:
         class: Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\BlockHandler
         arguments:
             - "@netgen_layouts.sylius.cms.repository.block"
-            - "@sylius.context.locale"
             - "@request_stack"
         tags:
             - { name: netgen_layouts.query_type_handler, type: sylius_cms_block }

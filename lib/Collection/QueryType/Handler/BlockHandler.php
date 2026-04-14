@@ -14,7 +14,6 @@ use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\SyliusChannelF
 use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\SyliusProductTrait;
 use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\SyliusTaxonTrait;
 use Netgen\Layouts\Sylius\Cms\Repository\BlockRepositoryInterface;
-use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 use function max;
@@ -40,7 +39,6 @@ final class BlockHandler implements QueryTypeHandlerInterface
 
     public function __construct(
         private BlockRepositoryInterface $blockRepository,
-        private LocaleContextInterface $localeContext,
         private RequestStack $requestStack,
     ) {}
 
@@ -55,9 +53,7 @@ final class BlockHandler implements QueryTypeHandlerInterface
 
     public function getValues(Query $query, int $offset = 0, ?int $limit = null): iterable
     {
-        $queryBuilder = $this->blockRepository->createListQueryBuilder(
-            $this->localeContext->getLocaleCode(),
-        );
+        $queryBuilder = $this->blockRepository->createListQueryBuilder();
 
         $request = $this->requestStack->getCurrentRequest();
 
@@ -79,9 +75,7 @@ final class BlockHandler implements QueryTypeHandlerInterface
 
     public function getCount(Query $query): int
     {
-        $queryBuilder = $this->blockRepository->createListQueryBuilder(
-            $this->localeContext->getLocaleCode(),
-        );
+        $queryBuilder = $this->blockRepository->createListQueryBuilder();
 
         $request = $this->requestStack->getCurrentRequest();
 
