@@ -8,8 +8,5 @@ use Sylius\CmsPlugin\Entity\CollectionInterface as SyliusCmsCollectionInterface;
 
 interface CollectionInterface
 {
-    /**
-     * Returns the Sylius CMS collection.
-     */
     public SyliusCmsCollectionInterface $collection { get; }
 }

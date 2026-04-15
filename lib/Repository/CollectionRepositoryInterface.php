@@ -10,22 +10,11 @@ use Sylius\CmsPlugin\Repository\CollectionRepositoryInterface as BaseCollectionR
 
 interface CollectionRepositoryInterface extends BaseCollectionRepositoryInterface
 {
-    /**
-     * Creates a query builder for listing collections.
-     */
     public function createListQueryBuilder(): QueryBuilder;
 
-    /**
-     * Creates a paginator which is used to list collections.
-     *
-     * @return \Pagerfanta\PagerfantaInterface<\Sylius\CmsPlugin\Entity\Collection>
-     */
+    /** @return \Pagerfanta\PagerfantaInterface<\Sylius\CmsPlugin\Entity\Collection> */
     public function createListPaginator(): PagerfantaInterface;
 
-    /**
-     * Creates a paginator which is used to search for collections.
-     *
-     * @return \Pagerfanta\PagerfantaInterface<\Sylius\CmsPlugin\Entity\Collection>
-     */
+    /** @return \Pagerfanta\PagerfantaInterface<\Sylius\CmsPlugin\Entity\Collection> */
     public function createSearchPaginator(string $searchText): PagerfantaInterface;
 }

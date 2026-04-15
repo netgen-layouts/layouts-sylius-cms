@@ -11,21 +11,13 @@ use Sylius\CmsPlugin\Repository\PageRepositoryInterface as BasePageRepositoryInt
 interface PageRepositoryInterface extends BasePageRepositoryInterface
 {
     /**
-     * Creates a query builder for listing pages with translations.
+     * Creates a query builder for listing pages with translations joined by locale.
      */
     public function createListQueryBuilder(string $localeCode): QueryBuilder;
 
-    /**
-     * Creates a paginator which is used to list pages.
-     *
-     * @return \Pagerfanta\PagerfantaInterface<\Sylius\CmsPlugin\Entity\Page>
-     */
+    /** @return \Pagerfanta\PagerfantaInterface<\Sylius\CmsPlugin\Entity\Page> */
     public function createListPaginator(string $localeCode): PagerfantaInterface;
 
-    /**
-     * Creates a paginator which is used to search for pages.
-     *
-     * @return \Pagerfanta\PagerfantaInterface<\Sylius\CmsPlugin\Entity\Page>
-     */
+    /** @return \Pagerfanta\PagerfantaInterface<\Sylius\CmsPlugin\Entity\Page> */
     public function createSearchPaginator(string $searchText, string $localeCode): PagerfantaInterface;
 }
