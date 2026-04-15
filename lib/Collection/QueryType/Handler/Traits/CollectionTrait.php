@@ -17,11 +17,7 @@ use function in_array;
 
 trait CollectionTrait
 {
-    /**
-     * Builds the parameters for filtering by specific or contextual Sylius CMS collection.
-     *
-     * @param string[] $groups
-     */
+    /** @param string[] $groups */
     private function buildCollectionParameters(ParameterBuilderInterface $builder, array $groups = []): void
     {
         $builder->add(
@@ -47,9 +43,6 @@ trait CollectionTrait
         return $parameterCollection->getParameter('use_current_collection')->value === true;
     }
 
-    /**
-     * Builds the criteria for filtering by Sylius CMS collection.
-     */
     private function addCollectionCriterion(
         ParameterCollectionInterface $parameterCollection,
         QueryBuilder $queryBuilder,
