@@ -1,13 +1,5 @@
-{% set page = item.object %}
-
-{% if page.image %}
-    <div class="image">
-        <img src="{{ page.image.path|imagine_filter('nglayouts_sylius_cms_page_app_preview') }}" alt="{{ item.name }}" />
-    </div>
-{% endif %}
-
 <div class="name">
-    <p><a href="{{ nglayouts_item_path(item) }}" target="_blank">{{ item.name }}</a></p>
+    <p><a href="{{ nglayouts_item_admin_path(item) }}" target="_blank">{{ item.name }}</a></p>
 </div>
 
 <div class="value-type">
