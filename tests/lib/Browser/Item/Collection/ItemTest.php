@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\Cms\Tests\ContentBrowser\Item\Collection;
+namespace Netgen\Layouts\Sylius\Cms\Tests\Browser\Item\Collection;
 
 use Netgen\Layouts\Sylius\Cms\Browser\Item\Collection\Item;
 use Netgen\Layouts\Sylius\Cms\Tests\Stubs\Collection;

@@ -1,5 +1,5 @@
 services:
-    netgen_layouts.sylius.cms..block.block_definition_handler.entity_field:
+    netgen_layouts.sylius.cms.block.block_definition_handler.entity_field:
         class: Netgen\Layouts\Sylius\Cms\Block\BlockDefinition\Handler\EntityFieldHandler
         arguments:
             - "@request_stack"

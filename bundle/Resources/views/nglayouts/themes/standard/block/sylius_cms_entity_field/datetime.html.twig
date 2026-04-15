@@ -8,7 +8,7 @@
     {% block sylius_cms_entity_field %}
         {% if field is not empty %}
             {% if field.type == enum('Netgen\\Layouts\\Sylius\\Cms\\Block\\BlockDefinition\\Handler\\EntityFieldType').DateTime %}
-                <{{ html_element }} field field-{{ field.type.value }} field-{{ field_identifier }}">
+                <{{ html_element }} class="field field-{{ field.type.value }} field-{{ field_identifier }}">
                     {{ field.value|date(block.parameter('datetime_format').value)  }}
                 </{{ html_element }}>
             {% else %}

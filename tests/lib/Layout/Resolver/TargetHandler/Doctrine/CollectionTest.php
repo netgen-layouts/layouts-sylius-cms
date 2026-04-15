@@ -7,11 +7,11 @@ namespace Netgen\Layouts\Sylius\Cms\Tests\Layout\Resolver\TargetHandler\Doctrine
 use Netgen\Layouts\Persistence\Doctrine\QueryHandler\TargetHandlerInterface;
 use Netgen\Layouts\Persistence\Values\LayoutResolver\RuleGroup;
 use Netgen\Layouts\Persistence\Values\Status;
-use Netgen\Layouts\Sylius\Cms\Layout\Resolver\TargetHandler\Doctrine\Page;
+use Netgen\Layouts\Sylius\Cms\Layout\Resolver\TargetHandler\Doctrine\Collection;
 use Netgen\Layouts\Tests\Layout\Resolver\TargetHandler\Doctrine\TargetHandlerTestBase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversClass(Page::class)]
+#[CoversClass(Collection::class)]
 final class CollectionTest extends TargetHandlerTestBase
 {
     public function testMatchRules(): void
@@ -33,7 +33,7 @@ final class CollectionTest extends TargetHandlerTestBase
 
     protected function getTargetHandler(): TargetHandlerInterface
     {
-        return new Page();
+        return new Collection();
     }
 
     protected function provideFixturesPath(): string

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\Cms\Tests\ContentBrowser\Item\Page;
+namespace Netgen\Layouts\Sylius\Cms\Tests\Browser\Item\Page;
 
 use Netgen\Layouts\Sylius\Cms\Browser\Item\Page\Item;
 use Netgen\Layouts\Sylius\Cms\Tests\Stubs\Page;

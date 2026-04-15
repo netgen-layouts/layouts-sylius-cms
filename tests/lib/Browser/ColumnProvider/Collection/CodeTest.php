@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\Cms\Tests\ContentBrowser\ColumnProvider\Collection;
+namespace Netgen\Layouts\Sylius\Cms\Tests\Browser\ColumnProvider\Collection;
 
 use Netgen\Layouts\Sylius\Cms\Browser\ColumnProvider\Collection\Code;
 use Netgen\Layouts\Sylius\Cms\Browser\Item\Collection\Item as CollectionItem;

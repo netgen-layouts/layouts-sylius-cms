@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\Cms\Tests\ContentBrowser\ColumnProvider\Media;
+namespace Netgen\Layouts\Sylius\Cms\Tests\Browser\ColumnProvider\Media;
 
 use Netgen\Layouts\Sylius\Cms\Browser\ColumnProvider\Media\Code;
 use Netgen\Layouts\Sylius\Cms\Browser\Item\Media\Item as MediaItem;

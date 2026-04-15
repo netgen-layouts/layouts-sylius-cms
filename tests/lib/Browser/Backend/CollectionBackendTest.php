@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\Cms\Tests\ContentBrowser\Backend;
+namespace Netgen\Layouts\Sylius\Cms\Tests\Browser\Backend;
 
 use ArrayIterator;
 use Netgen\ContentBrowser\Backend\SearchQuery;

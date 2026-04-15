@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\Cms\Tests\ContentBrowser\ColumnProvider\Page;
+namespace Netgen\Layouts\Sylius\Cms\Tests\Browser\ColumnProvider\Page;
 
 use Netgen\Layouts\Sylius\Cms\Browser\ColumnProvider\Page\Slug;
 use Netgen\Layouts\Sylius\Cms\Browser\Item\Page\Item as PageItem;
