@@ -14,12 +14,15 @@ use Symfony\Component\Validator\ConstraintValidatorFactory;
 use Symfony\Component\Validator\ConstraintValidatorFactoryInterface;
 use Symfony\Component\Validator\ConstraintValidatorInterface;
 
+/**
+ * @template T of \Sylius\Resource\Model\ResourceInterface
+ */
 final class ValidatorFactory implements ConstraintValidatorFactoryInterface
 {
     private ConstraintValidatorFactory $baseValidatorFactory;
 
     /**
-     * @param \Sylius\Resource\Doctrine\Persistence\RepositoryInterface<\Sylius\Resource\Model\ResourceInterface> $repository
+     * @param \Sylius\Resource\Doctrine\Persistence\RepositoryInterface<T> $repository
      */
     public function __construct(
         private RepositoryInterface $repository,
