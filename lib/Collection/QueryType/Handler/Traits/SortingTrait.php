@@ -10,8 +10,6 @@ use Netgen\Layouts\Parameters\ParameterCollectionInterface;
 use Netgen\Layouts\Parameters\ParameterType;
 
 use function count;
-use function in_array;
-use function str_starts_with;
 
 trait SortingTrait
 {
@@ -56,13 +54,7 @@ trait SortingTrait
         $sortDirection = $parameterCollection->getParameter('sort_direction')->value;
         $rootAliases = $queryBuilder->getRootAliases();
 
-        if (str_starts_with($sortField, 'translation.')) {
-            if (!in_array('translation', $queryBuilder->getAllAliases(), true)) {
-                $join = count($rootAliases) === 0 ? 'translations' : $rootAliases[0] . '.translations';
-
-                $queryBuilder->innerJoin($join, 'translation');
-            }
-        } elseif (count($rootAliases) !== 0) {
+        if (count($rootAliases) !== 0) {
             $sortField = $rootAliases[0] . '.' . $sortField;
         }
 
