@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\Cms\Tests\Validator;
 
-use Netgen\Layouts\Sylius\Cms\Repository\PageRepositoryInterface;
 use Netgen\Layouts\Sylius\Cms\Repository\CollectionRepositoryInterface;
-use Netgen\Layouts\Sylius\Cms\Validator\PageValidator;
+use Netgen\Layouts\Sylius\Cms\Repository\PageRepositoryInterface;
 use Netgen\Layouts\Sylius\Cms\Validator\CollectionValidator;
+use Netgen\Layouts\Sylius\Cms\Validator\PageValidator;
 use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidatorFactory;

@@ -8,8 +8,8 @@ use Netgen\Layouts\Sylius\Cms\Item\ValueConverter\PageValueConverter;
 use Netgen\Layouts\Sylius\Cms\Tests\Item\Stubs\Page as PageStub;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use Sylius\CmsPlugin\Entity\Page;
 use Sylius\CmsPlugin\Entity\Collection;
+use Sylius\CmsPlugin\Entity\Page;
 
 #[CoversClass(PageValueConverter::class)]
 final class PageValueConverterTest extends TestCase

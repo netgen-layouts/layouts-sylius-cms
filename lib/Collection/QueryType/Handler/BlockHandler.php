@@ -7,8 +7,8 @@ namespace Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler;
 use Netgen\Layouts\API\Values\Collection\Query;
 use Netgen\Layouts\Collection\QueryType\QueryTypeHandlerInterface;
 use Netgen\Layouts\Parameters\ParameterBuilderInterface;
-use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\EnabledTrait;
 use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\CollectionTrait;
+use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\EnabledTrait;
 use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\SortingTrait;
 use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\SyliusChannelFilterTrait;
 use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\SyliusProductTrait;
@@ -22,8 +22,8 @@ use const PHP_INT_MAX;
 
 final class BlockHandler implements QueryTypeHandlerInterface
 {
-    use EnabledTrait;
     use CollectionTrait;
+    use EnabledTrait;
     use SortingTrait;
     use SyliusChannelFilterTrait;
     use SyliusProductTrait;

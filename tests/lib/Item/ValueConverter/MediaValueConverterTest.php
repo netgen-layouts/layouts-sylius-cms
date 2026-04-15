@@ -8,8 +8,8 @@ use Netgen\Layouts\Sylius\Cms\Item\ValueConverter\MediaValueConverter;
 use Netgen\Layouts\Sylius\Cms\Tests\Item\Stubs\Media as MediaStub;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use Sylius\CmsPlugin\Entity\Media;
 use Sylius\CmsPlugin\Entity\Collection;
+use Sylius\CmsPlugin\Entity\Media;
 
 #[CoversClass(MediaValueConverter::class)]
 final class MediaValueConverterTest extends TestCase

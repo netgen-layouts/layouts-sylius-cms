@@ -6,8 +6,8 @@ namespace Netgen\Layouts\Sylius\Cms\Tests\Validator;
 
 use Netgen\Layouts\Sylius\Cms\Repository\CollectionRepositoryInterface;
 use Netgen\Layouts\Sylius\Cms\Tests\Stubs\Collection as CollectionStub;
-use Netgen\Layouts\Sylius\Cms\Validator\Constraint\Collection;
 use Netgen\Layouts\Sylius\Cms\Validator\CollectionValidator;
+use Netgen\Layouts\Sylius\Cms\Validator\Constraint\Collection;
 use Netgen\Layouts\Tests\TestCase\ValidatorTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Stub;
