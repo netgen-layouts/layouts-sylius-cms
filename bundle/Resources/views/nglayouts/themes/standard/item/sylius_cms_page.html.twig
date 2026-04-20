@@ -4,7 +4,7 @@
     <a href="{{ nglayouts_item_path(item) }}">
         <div class="content">
             {% if page.teaserImage %}
-                <img class="ui left floated image" src="{{ page.teaserImage.path|imagine_filter(filter|default('sylius_small')) }}" alt="">
+                <img class="ui left floated image" src="{{ page.teaserImage.path|imagine_filter(filter|default('sylius_small')) }}" alt="{{ page.teaserImage.alt }}">
             {% endif %}
 
             <h3>{{ page.name }}</h3>
