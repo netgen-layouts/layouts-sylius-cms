@@ -12,7 +12,7 @@ use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\EnabledTrait;
 use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\SortingTrait;
 use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\SyliusChannelFilterTrait;
 use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\SyliusProductTrait;
-use Netgen\Layouts\Sylius\Cms\Repository\PageRepositoryInterface;
+use Netgen\Layouts\Sylius\Cms\Repository\PageRepository;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -40,7 +40,7 @@ final class PageHandler implements QueryTypeHandlerInterface
     ];
 
     public function __construct(
-        private PageRepositoryInterface $pageRepository,
+        private PageRepository $pageRepository,
         private LocaleContextInterface $localeContext,
         private RequestStack $requestStack,
     ) {}
@@ -55,7 +55,7 @@ final class PageHandler implements QueryTypeHandlerInterface
 
     public function getValues(Query $query, int $offset = 0, ?int $limit = null): iterable
     {
-        $queryBuilder = $this->pageRepository->createListQueryBuilder(
+        $queryBuilder = $this->pageRepository->createQueryBuilderWithTranslations(
             $this->localeContext->getLocaleCode(),
         );
 
@@ -78,7 +78,7 @@ final class PageHandler implements QueryTypeHandlerInterface
 
     public function getCount(Query $query): int
     {
-        $queryBuilder = $this->pageRepository->createListQueryBuilder(
+        $queryBuilder = $this->pageRepository->createQueryBuilderWithTranslations(
             $this->localeContext->getLocaleCode(),
         );
 

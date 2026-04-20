@@ -8,7 +8,7 @@ use Netgen\Layouts\API\Values\Collection\Query;
 use Netgen\Layouts\Collection\QueryType\QueryTypeHandlerInterface;
 use Netgen\Layouts\Parameters\ParameterBuilderInterface;
 use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\SortingTrait;
-use Netgen\Layouts\Sylius\Cms\Repository\CollectionRepositoryInterface;
+use Netgen\Layouts\Sylius\Cms\Repository\CollectionRepository;
 
 use function max;
 
@@ -27,7 +27,7 @@ final class CollectionHandler implements QueryTypeHandlerInterface
     ];
 
     public function __construct(
-        private CollectionRepositoryInterface $collectionRepository,
+        private CollectionRepository $collectionRepository,
     ) {}
 
     public function buildParameters(ParameterBuilderInterface $builder): void
@@ -37,7 +37,7 @@ final class CollectionHandler implements QueryTypeHandlerInterface
 
     public function getValues(Query $query, int $offset = 0, ?int $limit = null): iterable
     {
-        $queryBuilder = $this->collectionRepository->createListQueryBuilder();
+        $queryBuilder = $this->collectionRepository->createQueryBuilder('o');
 
         $this->addSortingClause($query, $queryBuilder);
 
@@ -52,7 +52,7 @@ final class CollectionHandler implements QueryTypeHandlerInterface
 
     public function getCount(Query $query): int
     {
-        $queryBuilder = $this->collectionRepository->createListQueryBuilder();
+        $queryBuilder = $this->collectionRepository->createQueryBuilder('o');
 
         return (int) $queryBuilder
             ->select('count(o.id)')

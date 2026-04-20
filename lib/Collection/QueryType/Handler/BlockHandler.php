@@ -13,7 +13,7 @@ use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\SortingTrait;
 use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\SyliusChannelFilterTrait;
 use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\SyliusProductTrait;
 use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\SyliusTaxonTrait;
-use Netgen\Layouts\Sylius\Cms\Repository\BlockRepositoryInterface;
+use Netgen\Layouts\Sylius\Cms\Repository\BlockRepository;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 use function max;
@@ -38,7 +38,7 @@ final class BlockHandler implements QueryTypeHandlerInterface
     ];
 
     public function __construct(
-        private BlockRepositoryInterface $blockRepository,
+        private BlockRepository $blockRepository,
         private RequestStack $requestStack,
     ) {}
 
@@ -53,7 +53,7 @@ final class BlockHandler implements QueryTypeHandlerInterface
 
     public function getValues(Query $query, int $offset = 0, ?int $limit = null): iterable
     {
-        $queryBuilder = $this->blockRepository->createListQueryBuilder();
+        $queryBuilder = $this->blockRepository->createQueryBuilder('o');
 
         $request = $this->requestStack->getCurrentRequest();
 
@@ -75,7 +75,7 @@ final class BlockHandler implements QueryTypeHandlerInterface
 
     public function getCount(Query $query): int
     {
-        $queryBuilder = $this->blockRepository->createListQueryBuilder();
+        $queryBuilder = $this->blockRepository->createQueryBuilder('o');
 
         $request = $this->requestStack->getCurrentRequest();
 
