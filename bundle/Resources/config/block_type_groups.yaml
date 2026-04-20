@@ -1,4 +1,3 @@
 block_type_groups:
     placeholders:
-        name: 'Sylius CMS'
         block_types: [sylius_cms_entity_field]
