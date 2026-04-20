@@ -78,8 +78,8 @@ final class PageShowListenerTest extends TestCase
         $this->listener->onKernelRequest($event);
 
         self::assertSame($page, $request->attributes->get('nglayouts_sylius_cms_page'));
-        self::assertTrue($this->context->has('sylius_cms_page_id'));
-        self::assertSame(42, $this->context->get('sylius_cms_page_id'));
+        self::assertTrue($this->context->has('nglayouts_sylius_cms_page_id'));
+        self::assertSame(42, $this->context->get('nglayouts_sylius_cms_page_id'));
     }
 
     public function testOnKernelRequestWithWrongRoute(): void
@@ -91,7 +91,7 @@ final class PageShowListenerTest extends TestCase
         $this->listener->onKernelRequest($event);
 
         self::assertFalse($request->attributes->has('nglayouts_sylius_cms_page'));
-        self::assertFalse($this->context->has('sylius_cms_page_id'));
+        self::assertFalse($this->context->has('nglayouts_sylius_cms_page_id'));
     }
 
     public function testOnKernelRequestWithoutSlug(): void
@@ -103,7 +103,7 @@ final class PageShowListenerTest extends TestCase
         $this->listener->onKernelRequest($event);
 
         self::assertFalse($request->attributes->has('nglayouts_sylius_cms_page'));
-        self::assertFalse($this->context->has('sylius_cms_page_id'));
+        self::assertFalse($this->context->has('nglayouts_sylius_cms_page_id'));
     }
 
     public function testOnKernelRequestWithNonExistingPage(): void
@@ -120,7 +120,7 @@ final class PageShowListenerTest extends TestCase
         $this->listener->onKernelRequest($event);
 
         self::assertFalse($request->attributes->has('nglayouts_sylius_cms_page'));
-        self::assertFalse($this->context->has('sylius_cms_page_id'));
+        self::assertFalse($this->context->has('nglayouts_sylius_cms_page_id'));
     }
 
     public function testOnKernelRequestWithSubRequest(): void
@@ -133,7 +133,7 @@ final class PageShowListenerTest extends TestCase
         $this->listener->onKernelRequest($event);
 
         self::assertFalse($request->attributes->has('nglayouts_sylius_cms_page'));
-        self::assertFalse($this->context->has('sylius_cms_page_id'));
+        self::assertFalse($this->context->has('nglayouts_sylius_cms_page_id'));
     }
 
     private function createRequestEvent(Request $request, int $requestType = HttpKernelInterface::MAIN_REQUEST): RequestEvent

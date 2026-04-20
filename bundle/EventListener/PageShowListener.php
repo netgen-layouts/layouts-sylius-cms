@@ -58,6 +58,6 @@ final class PageShowListener implements EventSubscriberInterface
         }
 
         $request->attributes->set('nglayouts_sylius_cms_page', $page);
-        $this->context->set('sylius_cms_page_id', (int) $page->getId());
+        $this->context->set('nglayouts_sylius_cms_page_id', (int) $page->getId());
     }
 }

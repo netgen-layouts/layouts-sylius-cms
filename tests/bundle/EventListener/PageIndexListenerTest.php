@@ -61,8 +61,8 @@ final class PageIndexListenerTest extends TestCase
 
         self::assertSame($collection, $request->attributes->get('nglayouts_sylius_cms_collection'));
         self::assertSame($collection, $request->attributes->get('nglayouts_sylius_resource'));
-        self::assertTrue($this->context->has('sylius_cms_collection_id'));
-        self::assertSame(42, $this->context->get('sylius_cms_collection_id'));
+        self::assertTrue($this->context->has('nglayouts_sylius_cms_collection_id'));
+        self::assertSame(42, $this->context->get('nglayouts_sylius_cms_collection_id'));
     }
 
     public function testOnKernelRequestWithWrongRoute(): void
@@ -74,7 +74,7 @@ final class PageIndexListenerTest extends TestCase
         $this->listener->onKernelRequest($event);
 
         self::assertFalse($request->attributes->has('nglayouts_sylius_cms_collection'));
-        self::assertFalse($this->context->has('sylius_cms_collection_id'));
+        self::assertFalse($this->context->has('nglayouts_sylius_cms_collection_id'));
     }
 
     public function testOnKernelRequestWithoutCode(): void
@@ -86,7 +86,7 @@ final class PageIndexListenerTest extends TestCase
         $this->listener->onKernelRequest($event);
 
         self::assertFalse($request->attributes->has('nglayouts_sylius_cms_collection'));
-        self::assertFalse($this->context->has('sylius_cms_collection_id'));
+        self::assertFalse($this->context->has('nglayouts_sylius_cms_collection_id'));
     }
 
     public function testOnKernelRequestWithNonExistingCollection(): void
@@ -103,7 +103,7 @@ final class PageIndexListenerTest extends TestCase
         $this->listener->onKernelRequest($event);
 
         self::assertFalse($request->attributes->has('nglayouts_sylius_cms_collection'));
-        self::assertFalse($this->context->has('sylius_cms_collection_id'));
+        self::assertFalse($this->context->has('nglayouts_sylius_cms_collection_id'));
     }
 
     public function testOnKernelRequestWithSubRequest(): void
@@ -116,7 +116,7 @@ final class PageIndexListenerTest extends TestCase
         $this->listener->onKernelRequest($event);
 
         self::assertFalse($request->attributes->has('nglayouts_sylius_cms_collection'));
-        self::assertFalse($this->context->has('sylius_cms_collection_id'));
+        self::assertFalse($this->context->has('nglayouts_sylius_cms_collection_id'));
     }
 
     private function createRequestEvent(Request $request, int $requestType = HttpKernelInterface::MAIN_REQUEST): RequestEvent

@@ -48,6 +48,6 @@ final class PageIndexListener implements EventSubscriberInterface
 
         $request->attributes->set('nglayouts_sylius_cms_collection', $collection);
         $request->attributes->set('nglayouts_sylius_resource', $collection);
-        $this->context->set('sylius_cms_collection_id', (int) $collection->getId());
+        $this->context->set('nglayouts_sylius_cms_collection_id', (int) $collection->getId());
     }
 }
