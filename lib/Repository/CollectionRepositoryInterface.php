@@ -12,9 +12,17 @@ interface CollectionRepositoryInterface extends BaseCollectionRepositoryInterfac
 {
     public function createListQueryBuilder(): QueryBuilder;
 
-    /** @return \Pagerfanta\PagerfantaInterface<\Sylius\CmsPlugin\Entity\Collection> */
+    /**
+     * Creates a paginator which is used to list collections.
+     *
+     * @return \Pagerfanta\PagerfantaInterface<\Sylius\CmsPlugin\Entity\Collection>
+     */
     public function createListPaginator(): PagerfantaInterface;
 
-    /** @return \Pagerfanta\PagerfantaInterface<\Sylius\CmsPlugin\Entity\Collection> */
+    /**
+     * Creates a paginator which is used to search for collections.
+     *
+     * @return \Pagerfanta\PagerfantaInterface<\Sylius\CmsPlugin\Entity\Collection>
+     */
     public function createSearchPaginator(string $searchText): PagerfantaInterface;
 }

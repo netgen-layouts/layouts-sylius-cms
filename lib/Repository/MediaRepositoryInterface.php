@@ -9,9 +9,17 @@ use Sylius\CmsPlugin\Repository\MediaRepositoryInterface as BaseMediaRepositoryI
 
 interface MediaRepositoryInterface extends BaseMediaRepositoryInterface
 {
-    /** @return \Pagerfanta\PagerfantaInterface<\Sylius\CmsPlugin\Entity\Media> */
+    /**
+     * Creates a paginator which is used to list media.
+     *
+     * @return \Pagerfanta\PagerfantaInterface<\Sylius\CmsPlugin\Entity\Media>
+     */
     public function createListPaginator(string $localeCode): PagerfantaInterface;
 
-    /** @return \Pagerfanta\PagerfantaInterface<\Sylius\CmsPlugin\Entity\Media> */
+    /**
+     * Creates a paginator which is used to search for media.
+     *
+     * @return \Pagerfanta\PagerfantaInterface<\Sylius\CmsPlugin\Entity\Media>
+     */
     public function createSearchPaginator(string $searchText, string $localeCode): PagerfantaInterface;
 }

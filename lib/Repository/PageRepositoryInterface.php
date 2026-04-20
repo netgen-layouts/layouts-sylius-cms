@@ -15,9 +15,17 @@ interface PageRepositoryInterface extends BasePageRepositoryInterface
      */
     public function createListQueryBuilder(string $localeCode): QueryBuilder;
 
-    /** @return \Pagerfanta\PagerfantaInterface<\Sylius\CmsPlugin\Entity\Page> */
+    /**
+     * Creates a paginator which is used to list pages.
+     *
+     * @return \Pagerfanta\PagerfantaInterface<\Sylius\CmsPlugin\Entity\Page>
+     */
     public function createListPaginator(string $localeCode): PagerfantaInterface;
 
-    /** @return \Pagerfanta\PagerfantaInterface<\Sylius\CmsPlugin\Entity\Page> */
+    /**
+     * Creates a paginator which is used to search for pages.
+     *
+     * @return \Pagerfanta\PagerfantaInterface<\Sylius\CmsPlugin\Entity\Page>
+     */
     public function createSearchPaginator(string $searchText, string $localeCode): PagerfantaInterface;
 }

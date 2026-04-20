@@ -12,9 +12,17 @@ interface BlockRepositoryInterface extends BaseBlockRepositoryInterface
 {
     public function createListQueryBuilder(string $localeCode = ''): QueryBuilder;
 
-    /** @return \Pagerfanta\PagerfantaInterface<\Sylius\CmsPlugin\Entity\Block> */
+    /**
+     * Creates a paginator which is used to list blocks.
+     *
+     * @return \Pagerfanta\PagerfantaInterface<\Sylius\CmsPlugin\Entity\Block>
+     */
     public function createListPaginator(): PagerfantaInterface;
 
-    /** @return \Pagerfanta\PagerfantaInterface<\Sylius\CmsPlugin\Entity\Block> */
+    /**
+     * Creates a paginator which is used to search for blocks.
+     *
+     * @return \Pagerfanta\PagerfantaInterface<\Sylius\CmsPlugin\Entity\Block>
+     */
     public function createSearchPaginator(string $searchText): PagerfantaInterface;
 }
