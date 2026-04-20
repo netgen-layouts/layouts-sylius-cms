@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Netgen\Bundle\LayoutsSyliusCmsBundle\Tests\EventListener;
 
-use Netgen\Bundle\LayoutsSyliusCmsBundle\EventListener\PageIndexListener;
+use Netgen\Bundle\LayoutsSyliusCmsBundle\EventListener\CollectionShowListener;
 use Netgen\Layouts\Context\Context;
 use Netgen\Layouts\Sylius\Cms\Repository\CollectionRepositoryInterface;
 use Netgen\Layouts\Sylius\Cms\Tests\Stubs\Collection;
@@ -16,10 +16,10 @@ use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\KernelEvents;
 
-#[CoversClass(PageIndexListener::class)]
-final class PageIndexListenerTest extends TestCase
+#[CoversClass(CollectionShowListener::class)]
+final class CollectionShowListenerTest extends TestCase
 {
-    private PageIndexListener $listener;
+    private CollectionShowListener $listener;
 
     private Stub&CollectionRepositoryInterface $collectionRepositoryStub;
 
@@ -30,7 +30,7 @@ final class PageIndexListenerTest extends TestCase
         $this->collectionRepositoryStub = self::createStub(CollectionRepositoryInterface::class);
         $this->context = new Context();
 
-        $this->listener = new PageIndexListener(
+        $this->listener = new CollectionShowListener(
             $this->collectionRepositoryStub,
             $this->context,
         );

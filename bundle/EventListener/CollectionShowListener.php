@@ -11,7 +11,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
-final class PageIndexListener implements EventSubscriberInterface
+final class CollectionShowListener implements EventSubscriberInterface
 {
     public function __construct(
         private CollectionRepositoryInterface $collectionRepository,
