@@ -38,12 +38,9 @@ final class PageIndexListener implements EventSubscriberInterface
             return;
         }
 
-        $code = $request->attributes->getString('code');
-        if ($code === '') {
-            return;
-        }
-
-        $collection = $this->collectionRepository->findOneByCode($code);
+        $collection = $this->collectionRepository->findOneByCode(
+            $request->attributes->getString('code'),
+        );
 
         if (!$collection instanceof CollectionInterface) {
             return;

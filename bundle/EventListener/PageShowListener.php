@@ -42,18 +42,13 @@ final class PageShowListener implements EventSubscriberInterface
             return;
         }
 
-        $slug = $request->attributes->getString('slug');
-        if ($slug === '') {
-            return;
-        }
-
         $channelCode = $this->channelContext->getChannel()->getCode();
         if ($channelCode === null) {
             return;
         }
 
         $page = $this->pageRepository->findOneEnabledBySlugAndChannelCode(
-            $slug,
+            $request->attributes->getString('slug'),
             $this->localeContext->getLocaleCode(),
             $channelCode,
         );
