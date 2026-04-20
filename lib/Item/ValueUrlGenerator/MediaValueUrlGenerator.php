@@ -16,9 +16,14 @@ final class MediaValueUrlGenerator implements ValueUrlGeneratorInterface
         private UrlGeneratorInterface $urlGenerator,
     ) {}
 
-    public function generateDefaultUrl(object $object): null
+    public function generateDefaultUrl(object $object): string
     {
-        return null;
+        return $this->urlGenerator->generate(
+            'sylius_cms_shop_media_render',
+            [
+                'code' => $object->getCode(),
+            ],
+        );
     }
 
     public function generateAdminUrl(object $object): string
