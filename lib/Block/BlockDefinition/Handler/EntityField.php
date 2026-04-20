@@ -30,14 +30,11 @@ final class EntityField
 
     public static function fromEntity(ResourceInterface $resource, string $fieldIdentifier): self
     {
-        if ($fieldIdentifier === self::CONTENT_FIELD_IDENTIFIER) {
-            if ($resource instanceof ContentElementsAwareInterface) {
-                return new self($resource);
-            }
-
-            if ($resource instanceof ContentableInterface) {
-                return new self($resource);
-            }
+        if (
+            $fieldIdentifier === self::CONTENT_FIELD_IDENTIFIER
+            && ($resource instanceof ContentElementsAwareInterface || $resource instanceof ContentableInterface)
+        ) {
+            return new self($resource);
         }
 
         $methodName = 'get' . ucfirst($fieldIdentifier);
