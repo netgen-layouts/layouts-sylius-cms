@@ -1,7 +1,7 @@
 {% set page = item.object %}
 
 <div class="item sylius-cms-page">
-    <a href="{{ path('sylius_cms_shop_page_show', { 'slug' : page.slug }) }}">
+    <a href="{{ nglayouts_item_path(item) }}">
         <div class="content">
             <h3>{{ page.name }}</h3>
         </div>
