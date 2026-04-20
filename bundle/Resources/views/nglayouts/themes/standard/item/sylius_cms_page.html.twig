@@ -3,6 +3,10 @@
 <div class="item sylius-cms-page">
     <a href="{{ nglayouts_item_path(item) }}">
         <div class="content">
+            {% if page.teaserImage %}
+                <img class="ui left floated image" src="{{ page.teaserImage.path|imagine_filter(filter|default('sylius_small')) }}" alt="">
+            {% endif %}
+
             <h3>{{ page.name }}</h3>
         </div>
     </a>

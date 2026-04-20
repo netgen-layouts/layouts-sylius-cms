@@ -1,3 +1,11 @@
+{% set page = item.object %}
+
+{% if page.teaserImage %}
+    <div class="image">
+        <img src="{{ page.teaserImage.path|imagine_filter('nglayouts_sylius_cms_page_app_preview') }}" />
+    </div>
+{% endif %}
+
 <div class="name">
     <p><a href="{{ nglayouts_item_admin_path(item) }}" target="_blank">{{ item.name }}</a></p>
 </div>
