@@ -10,26 +10,19 @@ use Sylius\CmsPlugin\Repository\PageRepository as BasePageRepository;
 
 final class PageRepository extends BasePageRepository implements PageRepositoryInterface
 {
-    /**
-     * Public wrapper around the protected `createTranslationBasedQueryBuilder` from
-     * Sylius CMS so query type handlers can get a translation-joined query builder
-     * without accessing the protected method directly.
-     */
-    public function createQueryBuilderWithTranslations(string $localeCode): QueryBuilder
+    public function getQueryBuilder(string $localeCode): QueryBuilder
     {
         return $this->createTranslationBasedQueryBuilder($localeCode);
     }
 
     public function createListPaginator(string $localeCode): PagerfantaInterface
     {
-        $queryBuilder = $this->createQueryBuilderWithTranslations($localeCode);
-
-        return $this->getPaginator($queryBuilder);
+        return $this->getPaginator($this->getQueryBuilder($localeCode));
     }
 
     public function createSearchPaginator(string $searchText, string $localeCode): PagerfantaInterface
     {
-        $queryBuilder = $this->createQueryBuilderWithTranslations($localeCode);
+        $queryBuilder = $this->getQueryBuilder($localeCode);
         $queryBuilder
             ->andWhere(
                 $queryBuilder->expr()->orX(

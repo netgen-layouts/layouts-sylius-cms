@@ -52,7 +52,7 @@ final class MediaHandler implements QueryTypeHandlerInterface
 
     public function getValues(Query $query, int $offset = 0, ?int $limit = null): iterable
     {
-        $queryBuilder = $this->mediaRepository->createListQueryBuilder(
+        $queryBuilder = $this->mediaRepository->getQueryBuilder(
             $this->localeContext->getLocaleCode(),
         );
 
@@ -75,7 +75,7 @@ final class MediaHandler implements QueryTypeHandlerInterface
 
     public function getCount(Query $query): int
     {
-        $queryBuilder = $this->mediaRepository->createListQueryBuilder(
+        $queryBuilder = $this->mediaRepository->getQueryBuilder(
             $this->localeContext->getLocaleCode(),
         );
 
