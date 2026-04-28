@@ -1,6 +1,6 @@
 Netgen Layouts, Sylius eCommerce & Sylius CMS plugin integration
 
-Integrates [Netgen Layouts](https://netgen.io/services/netgen-layouts) with
+Integrates [Netgen Layouts](https://netgen.io/layouts) with
 [`sylius/cms-plugin`](https://github.com/Sylius/CmsPlugin), providing
 Content Browser  backends, layout resolver targets, query types, value
 converters and block definitions for the plugin's `Page`, `Block`, `Media` and
