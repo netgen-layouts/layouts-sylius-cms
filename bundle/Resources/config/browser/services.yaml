@@ -7,19 +7,17 @@ services:
         tags:
             - { name: netgen_content_browser.backend, item_type: sylius_cms_page }
 
-    netgen_layouts.sylius.cms.browser.backend.section:
-        class: Netgen\Layouts\Sylius\Cms\Browser\Backend\SectionBackend
+    netgen_layouts.sylius.cms.browser.backend.collection:
+        class: Netgen\Layouts\Sylius\Cms\Browser\Backend\CollectionBackend
         arguments:
-            - "@netgen_layouts.sylius.cms.repository.section"
-            - "@sylius.context.locale"
+            - "@netgen_layouts.sylius.cms.repository.collection"
         tags:
-            - { name: netgen_content_browser.backend, item_type: sylius_cms_section }
+            - { name: netgen_content_browser.backend, item_type: sylius_cms_collection }
 
     netgen_layouts.sylius.cms.browser.backend.block:
         class: Netgen\Layouts\Sylius\Cms\Browser\Backend\BlockBackend
         arguments:
             - "@netgen_layouts.sylius.cms.repository.block"
-            - "@sylius.context.locale"
         tags:
             - { name: netgen_content_browser.backend, item_type: sylius_cms_block }
 
@@ -31,14 +29,6 @@ services:
         tags:
             - { name: netgen_content_browser.backend, item_type: sylius_cms_media }
 
-    netgen_layouts.sylius.cms.browser.backend.frequently_asked_question:
-        class: Netgen\Layouts\Sylius\Cms\Browser\Backend\FrequentlyAskedQuestionBackend
-        arguments:
-            - "@netgen_layouts.sylius.cms.repository.frequently_asked_question"
-            - "@sylius.context.locale"
-        tags:
-            - { name: netgen_content_browser.backend, item_type: sylius_cms_frequently_asked_question }
-
     netgen_layouts.sylius.cms.browser.column_provider.page.code:
         class: Netgen\Layouts\Sylius\Cms\Browser\ColumnProvider\Page\Code
         tags:
@@ -49,10 +39,10 @@ services:
         tags:
             - { name: netgen_content_browser.column_value_provider, identifier: sylius_cms_page\slug }
 
-    netgen_layouts.sylius.cms.browser.column_provider.section.code:
-        class: Netgen\Layouts\Sylius\Cms\Browser\ColumnProvider\Section\Code
+    netgen_layouts.sylius.cms.browser.column_provider.collection.code:
+        class: Netgen\Layouts\Sylius\Cms\Browser\ColumnProvider\Collection\Code
         tags:
-            - { name: netgen_content_browser.column_value_provider, identifier: sylius_cms_section\code }
+            - { name: netgen_content_browser.column_value_provider, identifier: sylius_cms_collection\code }
 
     netgen_layouts.sylius.cms.browser.column_provider.block.code:
         class: Netgen\Layouts\Sylius\Cms\Browser\ColumnProvider\Block\Code
@@ -73,8 +63,3 @@ services:
         class: Netgen\Layouts\Sylius\Cms\Browser\ColumnProvider\Media\MimeType
         tags:
             - { name: netgen_content_browser.column_value_provider, identifier: sylius_cms_media\mime_type }
-
-    netgen_layouts.sylius.cms.browser.column_provider.frequently_asked_question.code:
-        class: Netgen\Layouts\Sylius\Cms\Browser\ColumnProvider\FrequentlyAskedQuestion\Code
-        tags:
-            - { name: netgen_content_browser.column_value_provider, identifier: sylius_cms_frequently_asked_question\code }

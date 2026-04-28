@@ -10,8 +10,8 @@ use Netgen\Layouts\Parameters\Parameter;
 use Netgen\Layouts\Parameters\ParameterList;
 use Netgen\Layouts\Sylius\Cms\Block\BlockDefinition\Handler\EntityField;
 use Netgen\Layouts\Sylius\Cms\Block\BlockDefinition\Handler\EntityFieldHandler;
+use Netgen\Layouts\Sylius\Cms\Tests\Stubs\Collection as CollectionStub;
 use Netgen\Layouts\Sylius\Cms\Tests\Stubs\Page as PageStub;
-use Netgen\Layouts\Sylius\Cms\Tests\Stubs\Section as SectionStub;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
@@ -72,12 +72,12 @@ final class EntityFieldHandlerTest extends TestCase
         self::assertSame($field->value, $params['field']->value);
     }
 
-    public function testGetDynamicParametersWithSection(): void
+    public function testGetDynamicParametersWithCollection(): void
     {
-        $section = new SectionStub(5, 'blog');
+        $collection = new CollectionStub(5, 'blog');
 
         $request = Request::create('/');
-        $request->attributes->set('nglayouts_sylius_cms_section', $section);
+        $request->attributes->set('nglayouts_sylius_cms_collection', $collection);
 
         $this->requestStackStub
             ->method('getCurrentRequest')
@@ -103,7 +103,7 @@ final class EntityFieldHandlerTest extends TestCase
             ),
         );
 
-        $field = EntityField::fromEntity($section, 'code');
+        $field = EntityField::fromEntity($collection, 'code');
 
         self::assertSame($field->isEmpty(), $params['field']->isEmpty());
         self::assertSame($field->type, $params['field']->type);

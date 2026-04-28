@@ -19,7 +19,7 @@ final class PageValueUrlGenerator implements ValueUrlGeneratorInterface
     public function generateDefaultUrl(object $object): string
     {
         return $this->urlGenerator->generate(
-            'bitbag_sylius_cms_plugin_shop_page_show',
+            'sylius_cms_shop_page_show',
             [
                 'slug' => $object->getSlug(),
             ],
@@ -29,7 +29,7 @@ final class PageValueUrlGenerator implements ValueUrlGeneratorInterface
     public function generateAdminUrl(object $object): string
     {
         return $this->urlGenerator->generate(
-            'bitbag_sylius_cms_plugin_admin_page_update',
+            'sylius_cms_admin_page_update',
             [
                 'id' => $object->getId(),
             ],

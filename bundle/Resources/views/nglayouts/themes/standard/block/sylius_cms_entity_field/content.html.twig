@@ -8,7 +8,7 @@
         {% if field is not empty %}
             {% if field.type == enum('Netgen\\Layouts\\Sylius\\Cms\\Block\\BlockDefinition\\Handler\\EntityFieldType').Content %}
                 <div class="field field-{{ field.type.value }} field-{{ field_identifier }}">
-                    {{ bitbag_cms_render_content(field.value) }}
+                    {{ sylius_cms_render_content(field.value) }}
                 </div>
             {% else %}
                 {{ 'sylius_cms.field_not_compatible'|trans({ '%field_identifier%': field_identifier }, 'sylius_cms') }}

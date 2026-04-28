@@ -4,22 +4,28 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\Cms\Repository;
 
+use Doctrine\ORM\QueryBuilder;
 use Pagerfanta\PagerfantaInterface;
 use Sylius\CmsPlugin\Repository\BlockRepositoryInterface as BaseBlockRepositoryInterface;
 
 interface BlockRepositoryInterface extends BaseBlockRepositoryInterface
 {
     /**
+     * Returns a query builder which is used as the starting point for building block queries.
+     */
+    public function getQueryBuilder(): QueryBuilder;
+
+    /**
      * Creates a paginator which is used to list blocks.
      *
      * @return \Pagerfanta\PagerfantaInterface<\Sylius\CmsPlugin\Entity\Block>
      */
-    public function createListPaginator(string $localeCode): PagerfantaInterface;
+    public function createListPaginator(): PagerfantaInterface;
 
     /**
      * Creates a paginator which is used to search for blocks.
      *
      * @return \Pagerfanta\PagerfantaInterface<\Sylius\CmsPlugin\Entity\Block>
      */
-    public function createSearchPaginator(string $searchText, string $localeCode): PagerfantaInterface;
+    public function createSearchPaginator(string $searchText): PagerfantaInterface;
 }

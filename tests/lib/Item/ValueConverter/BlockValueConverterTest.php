@@ -9,7 +9,7 @@ use Netgen\Layouts\Sylius\Cms\Tests\Item\Stubs\Block as BlockStub;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Sylius\CmsPlugin\Entity\Block;
-use Sylius\CmsPlugin\Entity\Section;
+use Sylius\CmsPlugin\Entity\Collection;
 
 #[CoversClass(BlockValueConverter::class)]
 final class BlockValueConverterTest extends TestCase
@@ -24,7 +24,7 @@ final class BlockValueConverterTest extends TestCase
     public function testSupports(): void
     {
         self::assertTrue($this->valueConverter->supports(new Block()));
-        self::assertFalse($this->valueConverter->supports(new Section()));
+        self::assertFalse($this->valueConverter->supports(new Collection()));
     }
 
     public function testGetValueType(): void

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\Cms\Tests\ContentBrowser\Item\Block;
+namespace Netgen\Layouts\Sylius\Cms\Tests\Browser\Item\Block;
 
 use Netgen\Layouts\Sylius\Cms\Browser\Item\Block\Item;
 use Netgen\Layouts\Sylius\Cms\Tests\Stubs\Block;
@@ -20,8 +20,6 @@ final class ItemTest extends TestCase
     protected function setUp(): void
     {
         $this->block = new Block(42, 'header');
-        $this->block->setCurrentLocale('en');
-        $this->block->setFallbackLocale('en');
         $this->block->setName('Header');
 
         $this->item = new Item($this->block);

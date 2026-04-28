@@ -1,9 +1,9 @@
 {% set media = item.object %}
 
 {% if media.type == 'file' %}
-    {{ include('@BitBagSyliusCmsPlugin/Shop/Media/Show/file.html.twig') }}
+    {{ include('@SyliusCmsPlugin/shop/media/show/file.html.twig') }}
 {% elseif media.type == 'image' %}
-    {{ include('@BitBagSyliusCmsPlugin/Shop/Media/Show/image.html.twig') }}
+    {{ include('@SyliusCmsPlugin/shop/media/show/image.html.twig') }}
 {% elseif media.type == 'video' %}
-    {{ include('@BitBagSyliusCmsPlugin/Shop/Media/Show/video.html.twig') }}
+    {{ include('@SyliusCmsPlugin/shop/media/show/video.html.twig') }}
 {% endif %}

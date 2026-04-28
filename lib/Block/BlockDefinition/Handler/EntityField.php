@@ -6,6 +6,7 @@ namespace Netgen\Layouts\Sylius\Cms\Block\BlockDefinition\Handler;
 
 use DateTimeInterface;
 use Sylius\CmsPlugin\Entity\ContentableInterface;
+use Sylius\CmsPlugin\Entity\ContentElementsAwareInterface;
 use Sylius\CmsPlugin\Entity\MediaInterface;
 use Sylius\Resource\Model\ResourceInterface;
 
@@ -29,7 +30,10 @@ final class EntityField
 
     public static function fromEntity(ResourceInterface $resource, string $fieldIdentifier): self
     {
-        if ($resource instanceof ContentableInterface && $fieldIdentifier === self::CONTENT_FIELD_IDENTIFIER) {
+        if (
+            $fieldIdentifier === self::CONTENT_FIELD_IDENTIFIER
+            && ($resource instanceof ContentElementsAwareInterface || $resource instanceof ContentableInterface)
+        ) {
             return new self($resource);
         }
 
@@ -65,6 +69,7 @@ final class EntityField
             is_numeric($value) => EntityFieldType::Number,
             is_bool($value) => EntityFieldType::Boolean,
             $value instanceof MediaInterface => EntityFieldType::Media,
+            $value instanceof ContentElementsAwareInterface => EntityFieldType::ContentElements,
             $value instanceof ContentableInterface => EntityFieldType::Content,
             default => EntityFieldType::Other,
         };

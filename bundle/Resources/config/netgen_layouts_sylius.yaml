@@ -1,8 +1,4 @@
 resource_type_condition:
     available_resources:
       Sylius\CmsPlugin\Entity\PageInterface: page
-      Sylius\CmsPlugin\Entity\SectionInterface: section
-
-page_target:
-    available_pages:
-        bitbag_sylius_cms_plugin_shop_frequently_asked_question_index: frequently_asked_questions
+      Sylius\CmsPlugin\Entity\CollectionInterface: collection

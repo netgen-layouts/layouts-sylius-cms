@@ -1,20 +1,16 @@
 services:
     netgen_layouts.sylius.cms.repository.page:
         class: Netgen\Layouts\Sylius\Cms\Repository\PageRepository
-        parent: bitbag_sylius_cms_plugin.repository.page
+        parent: sylius_cms.repository.page
 
-    netgen_layouts.sylius.cms.repository.section:
-        class: Netgen\Layouts\Sylius\Cms\Repository\SectionRepository
-        parent: bitbag_sylius_cms_plugin.repository.section
+    netgen_layouts.sylius.cms.repository.collection:
+        class: Netgen\Layouts\Sylius\Cms\Repository\CollectionRepository
+        parent: sylius_cms.repository.collection
 
     netgen_layouts.sylius.cms.repository.block:
         class: Netgen\Layouts\Sylius\Cms\Repository\BlockRepository
-        parent: bitbag_sylius_cms_plugin.repository.block
+        parent: sylius_cms.repository.block
 
     netgen_layouts.sylius.cms.repository.media:
         class: Netgen\Layouts\Sylius\Cms\Repository\MediaRepository
-        parent: bitbag_sylius_cms_plugin.repository.media
-
-    netgen_layouts.sylius.cms.repository.frequently_asked_question:
-        class: Netgen\Layouts\Sylius\Cms\Repository\FrequentlyAskedQuestionRepository
-        parent: bitbag_sylius_cms_plugin.repository.frequently_asked_question
+        parent: sylius_cms.repository.media

@@ -11,6 +11,11 @@ view:
                 match:
                     block\definition: sylius_cms_entity_field
                     block\view_type: content
+            sylius_cms_entity_field\content_elements:
+                template: "@nglayouts/block/sylius_cms_entity_field/content_elements.html.twig"
+                match:
+                    block\definition: sylius_cms_entity_field
+                    block\view_type: content_elements
             sylius_cms_entity_field\number:
                 template: "@nglayouts/block/sylius_cms_entity_field/number.html.twig"
                 match:

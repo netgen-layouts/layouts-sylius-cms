@@ -4,28 +4,30 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\Cms\Repository;
 
+use Doctrine\ORM\QueryBuilder;
 use Pagerfanta\PagerfantaInterface;
 use Sylius\CmsPlugin\Repository\BlockRepository as BaseBlockRepository;
 
 final class BlockRepository extends BaseBlockRepository implements BlockRepositoryInterface
 {
-    public function createListPaginator(string $localeCode): PagerfantaInterface
+    public function getQueryBuilder(): QueryBuilder
     {
-        $queryBuilder = $this->createListQueryBuilder($localeCode);
-
-        return $this->getPaginator($queryBuilder);
+        return $this->createQueryBuilder('o');
     }
 
-    public function createSearchPaginator(string $searchText, string $localeCode): PagerfantaInterface
+    public function createListPaginator(): PagerfantaInterface
     {
-        $queryBuilder = $this->createListQueryBuilder($localeCode);
+        return $this->getPaginator($this->getQueryBuilder());
+    }
+
+    public function createSearchPaginator(string $searchText): PagerfantaInterface
+    {
+        $queryBuilder = $this->getQueryBuilder();
         $queryBuilder
             ->andWhere(
                 $queryBuilder->expr()->orX(
                     'o.code LIKE :search',
-                    'translation.name LIKE :search',
-                    'translation.link LIKE :search',
-                    'translation.content LIKE :search',
+                    'o.name LIKE :search',
                 ),
             )
             ->setParameter('search', '%' . $searchText . '%');

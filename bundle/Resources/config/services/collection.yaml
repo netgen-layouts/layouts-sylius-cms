@@ -12,7 +12,6 @@ services:
         class: Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\BlockHandler
         arguments:
             - "@netgen_layouts.sylius.cms.repository.block"
-            - "@sylius.context.locale"
             - "@request_stack"
         tags:
             - { name: netgen_layouts.query_type_handler, type: sylius_cms_block }
@@ -26,18 +25,9 @@ services:
         tags:
             - { name: netgen_layouts.query_type_handler, type: sylius_cms_media }
 
-    netgen_layouts.sylius.cms.collection.query_type_handler.section:
-        class: Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\SectionHandler
+    netgen_layouts.sylius.cms.collection.query_type_handler.collection:
+        class: Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\CollectionHandler
         arguments:
-            - "@netgen_layouts.sylius.cms.repository.section"
-            - "@sylius.context.locale"
+            - "@netgen_layouts.sylius.cms.repository.collection"
         tags:
-            - { name: netgen_layouts.query_type_handler, type: sylius_cms_section }
-
-    netgen_layouts.sylius.cms.collection.query_type_handler.frequently_asked_question:
-        class: Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\FrequentlyAskedQuestionHandler
-        arguments:
-            - "@netgen_layouts.sylius.cms.repository.frequently_asked_question"
-            - "@sylius.context.locale"
-        tags:
-            - { name: netgen_layouts.query_type_handler, type: sylius_cms_frequently_asked_question }
+            - { name: netgen_layouts.query_type_handler, type: sylius_cms_collection }
