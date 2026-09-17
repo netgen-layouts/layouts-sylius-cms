@@ -78,6 +78,7 @@ final class PageShowListenerTest extends TestCase
         $this->listener->onKernelRequest($event);
 
         self::assertSame($page, $request->attributes->get('nglayouts_sylius_cms_page'));
+        self::assertSame($page, $request->attributes->get('nglayouts_sylius_resource'));
         self::assertTrue($this->context->has('nglayouts_sylius_cms_page_id'));
         self::assertSame(42, $this->context->get('nglayouts_sylius_cms_page_id'));
     }
