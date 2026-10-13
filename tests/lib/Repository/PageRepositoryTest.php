@@ -61,7 +61,7 @@ final class PageRepositoryTest extends TestCase
 
         self::assertSame(
             'SELECT o, translation FROM ' . Page::class . ' o LEFT JOIN o.translations translation WITH translation.locale = :locale'
-            . ' WHERE o.code LIKE :search OR o.name LIKE :search OR translation.slug LIKE :search OR translation.title LIKE :search',
+            . ' WHERE o.code LIKE :search OR o.name LIKE :search OR translation.slug LIKE :search OR translation.title LIKE :search OR translation.teaserTitle LIKE :search',
             $this->queryBuilder->getDQL(),
         );
         self::assertSame('%contact%', $this->queryBuilder->getParameter('search')?->getValue());

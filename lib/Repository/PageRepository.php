@@ -38,6 +38,7 @@ final class PageRepository extends BasePageRepository implements PageRepositoryI
                     'o.name LIKE :search',
                     'translation.slug LIKE :search',
                     'translation.title LIKE :search',
+                    'translation.teaserTitle LIKE :search',
                 ),
             )
             ->setParameter('search', '%' . $searchText . '%');
