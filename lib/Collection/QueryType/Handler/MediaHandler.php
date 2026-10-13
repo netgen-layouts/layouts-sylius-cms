@@ -11,7 +11,6 @@ use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\CollectionTrai
 use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\EnabledTrait;
 use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\SortingTrait;
 use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\SyliusChannelFilterTrait;
-use Netgen\Layouts\Sylius\Cms\Collection\QueryType\Handler\Traits\SyliusProductTrait;
 use Netgen\Layouts\Sylius\Cms\Repository\MediaRepositoryInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -26,7 +25,6 @@ final class MediaHandler implements QueryTypeHandlerInterface
     use EnabledTrait;
     use SortingTrait;
     use SyliusChannelFilterTrait;
-    use SyliusProductTrait;
 
     /**
      * @var array<string, string>
@@ -44,7 +42,6 @@ final class MediaHandler implements QueryTypeHandlerInterface
 
     public function buildParameters(ParameterBuilderInterface $builder): void
     {
-        $this->buildSyliusProductParameters($builder);
         $this->buildCollectionParameters($builder);
         $this->buildSyliusChannelFilterParameters($builder);
         $this->buildSortingParameters($builder, $this->sortingOptions);
@@ -58,7 +55,6 @@ final class MediaHandler implements QueryTypeHandlerInterface
 
         $request = $this->requestStack->getCurrentRequest();
 
-        $this->addSyliusProductCriterion($query, $queryBuilder, $request);
         $this->addCollectionCriterion($query, $queryBuilder, $request);
         $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
         $this->addEnabledCriterion($queryBuilder);
@@ -81,7 +77,6 @@ final class MediaHandler implements QueryTypeHandlerInterface
 
         $request = $this->requestStack->getCurrentRequest();
 
-        $this->addSyliusProductCriterion($query, $queryBuilder, $request);
         $this->addCollectionCriterion($query, $queryBuilder, $request);
         $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
         $this->addEnabledCriterion($queryBuilder);
@@ -94,7 +89,6 @@ final class MediaHandler implements QueryTypeHandlerInterface
 
     public function isContextual(Query $query): bool
     {
-        return $this->isSyliusProductContextual($query)
-            || $this->isCollectionContextual($query);
+        return $this->isCollectionContextual($query);
     }
 }
