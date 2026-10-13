@@ -10,9 +10,17 @@ use Sylius\CmsPlugin\Repository\PageRepository as BasePageRepository;
 
 final class PageRepository extends BasePageRepository implements PageRepositoryInterface
 {
+    /**
+     * Joins the translation in the provided locale without requiring one, so a page
+     * without a translation in the current locale is still listed (named through
+     * its fallback locale), as the admin's own lists do.
+     */
     public function getQueryBuilder(string $localeCode): QueryBuilder
     {
-        return $this->createTranslationBasedQueryBuilder($localeCode);
+        return $this->createQueryBuilder('o')
+            ->addSelect('translation')
+            ->leftJoin('o.translations', 'translation', 'WITH', 'translation.locale = :locale')
+            ->setParameter('locale', $localeCode);
     }
 
     public function createListPaginator(string $localeCode): PagerfantaInterface
