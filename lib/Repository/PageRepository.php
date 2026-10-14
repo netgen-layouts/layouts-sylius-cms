@@ -12,13 +12,15 @@ final class PageRepository extends BasePageRepository implements PageRepositoryI
 {
     /**
      * Joins the translation in the provided locale without requiring one, so a page
-     * without a translation in the current locale is still listed (named through
-     * its fallback locale), as the admin's own lists do.
+     * without a translation in the current locale is still listed, as the admin's own
+     * lists do. The translation is joined for the search and the sorting only, not
+     * fetched: a fetch join with the locale condition would hand the entity a translation
+     * collection holding only that locale's row, so a page without one would come out
+     * with an empty title and slug instead of its fallback locale's.
      */
     public function getQueryBuilder(string $localeCode): QueryBuilder
     {
         return $this->createQueryBuilder('o')
-            ->addSelect('translation')
             ->leftJoin('o.translations', 'translation', 'WITH', 'translation.locale = :locale')
             ->setParameter('locale', $localeCode);
     }

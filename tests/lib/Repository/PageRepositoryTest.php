@@ -15,6 +15,8 @@ use Netgen\Layouts\Sylius\Cms\Tests\Item\Stubs\Page;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
+use function array_map;
+
 #[CoversClass(PageRepository::class)]
 final class PageRepositoryTest extends TestCase
 {
@@ -42,7 +44,7 @@ final class PageRepositoryTest extends TestCase
         $queryBuilder = $this->repository->getQueryBuilder('en');
 
         self::assertSame(
-            'SELECT o, translation FROM ' . Page::class . ' o LEFT JOIN o.translations translation WITH translation.locale = :locale',
+            'SELECT o FROM ' . Page::class . ' o LEFT JOIN o.translations translation WITH translation.locale = :locale',
             $queryBuilder->getDQL(),
         );
         self::assertSame('en', $queryBuilder->getParameter('locale')?->getValue());
@@ -53,6 +55,7 @@ final class PageRepositoryTest extends TestCase
         $this->repository->createListPaginator('en');
 
         self::assertStringNotContainsString('WHERE', $this->queryBuilder->getDQL());
+        self::assertSame(['o'], $this->queryBuilder->getDQLPart('select') === [] ? [] : array_map('strval', $this->queryBuilder->getDQLPart('select')));
     }
 
     public function testCreateSearchPaginator(): void
@@ -60,7 +63,7 @@ final class PageRepositoryTest extends TestCase
         $this->repository->createSearchPaginator('contact', 'en');
 
         self::assertSame(
-            'SELECT o, translation FROM ' . Page::class . ' o LEFT JOIN o.translations translation WITH translation.locale = :locale'
+            'SELECT o FROM ' . Page::class . ' o LEFT JOIN o.translations translation WITH translation.locale = :locale'
             . ' WHERE o.code LIKE :search OR o.name LIKE :search OR translation.slug LIKE :search OR translation.title LIKE :search OR translation.teaserTitle LIKE :search',
             $this->queryBuilder->getDQL(),
         );
