@@ -66,15 +66,15 @@ trait SyliusTaxonTrait
             return;
         }
 
-        if (!in_array('taxonomies', $queryBuilder->getAllAliases(), true)) {
+        if (!in_array('taxons', $queryBuilder->getAllAliases(), true)) {
             $rootAliases = $queryBuilder->getRootAliases();
 
-            $join = count($rootAliases) === 0 ? 'taxonomies' : $rootAliases[0] . '.taxonomies';
+            $join = count($rootAliases) === 0 ? 'taxons' : $rootAliases[0] . '.taxons';
 
-            $queryBuilder->innerJoin($join, 'taxonomies');
+            $queryBuilder->innerJoin($join, 'taxons');
         }
 
-        $queryBuilder->andWhere($queryBuilder->expr()->eq('taxonomies.id', ':taxonId'));
+        $queryBuilder->andWhere($queryBuilder->expr()->eq('taxons.id', ':taxonId'));
         $queryBuilder->setParameter(':taxonId', (int) $syliusTaxonId);
     }
 
